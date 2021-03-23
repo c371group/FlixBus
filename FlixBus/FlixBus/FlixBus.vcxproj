@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Rout.cpp" />
+    <ClCompile Include="Route.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Vehicles.cpp" />
   </ItemGroup>
