@@ -1,11 +1,11 @@
 #include <string>
-#include "Rout.h"
+#include "Route.h"
 
 using namespace std;
 
 
 class Ticket{
 public:
-	Rout rout;
+	Route route;
 	double price;
 };

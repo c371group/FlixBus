@@ -18,20 +18,20 @@ int main() {
 
 	// Adding test ticket.
 	Ticket testTicket;
-	Rout testRout;
+	Route testRout;
 	testRout.source = "Green Bay";
 	testRout.destination = "Madison";
 	testRout.distance = 135.6;
-	testTicket.rout = testRout;
+	testTicket.route = testRout;
 	testTicket.price = 55; // FIXME: This will have to be calculated based on seats.
 
 	// Adding second ticket
 	Ticket testTicket2;
-	Rout testRout2;
+	Route testRout2;
 	testRout2.source = "Green Bay";
 	testRout2.destination = "Oshkosh";
 	testRout2.distance = 50.4;
-	testTicket2.rout = testRout2;
+	testTicket2.route = testRout2;
 	testTicket2.price = 25;
 
 	testCustomer.tickets.push_back(testTicket);
@@ -41,8 +41,8 @@ int main() {
 
 	cout << "Cusomter: " << testCustomer.firstName << " " << testCustomer.lastName << endl;
 	for (Ticket item : testCustomer.tickets) {
-		cout << "Ticket: From " << item.rout.source << " To " << item.rout.destination << endl;
-		cout << "Total of " << item.rout.distance << " miles." << endl;
+		cout << "Ticket: From " << item.route.source << " To " << item.route.destination << endl;
+		cout << "Total of " << item.route.distance << " miles." << endl;
 		cout << "Price: $" << item.price << endl;
 	}
 
