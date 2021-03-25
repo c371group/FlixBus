@@ -3,7 +3,7 @@
 using namespace std;
 
 
-class Vehicles{
+class Vehicle{
 public:
 	int idNo; //unique identifier for bus
 	string type;

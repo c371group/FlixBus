@@ -8,7 +8,7 @@ using namespace std;
 class Customer {
 public:
 	string firstName, lastName, address, email;
-	int number;
+	int userID;
 	vector<Ticket> tickets;
 	vector<string> datesOfTravel;
 };
