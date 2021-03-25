@@ -3,15 +3,13 @@
 #include "Customer.h"
 using namespace std;
 
-
 int main() {
-
 	////////////////////////////
 	// TESTING CLASS RELATION //
 	///////////////////////////
 
 	Customer testCustomer;
-	testCustomer.firstName = "Jon";
+	testCustomer.setFirstName = "Jon";
 	testCustomer.lastName = "Doe";
 	testCustomer.address = "123 Road St";
 	testCustomer.email = "JD@uwgb.edu";

@@ -1,6 +1,14 @@
 //implementation file
 #include "Customer.h"
 
+Customer::Customer(string id, string fName, string lName, string address, string email, string number)
+{
+}
+
+void Customer::setUserID(string id)
+{
+}
+
 void Customer::setFirstName(string fName)
 {
 }
