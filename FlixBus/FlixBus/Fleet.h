@@ -9,6 +9,4 @@ public:
 	Vehicle luxuryBuses[3];
 	Vehicle miniBuses[4];
 	Vehicle miniVans[4];
-
 };
-
