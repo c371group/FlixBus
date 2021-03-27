@@ -1,70 +1,75 @@
 //implementation file
 #include "Customer.h"
 
-Customer::Customer(string userID, string fName, string lName, string address, string email, int contactNumber)
+Customer::Customer(string user_id, string f_name, string l_name, string address, string email, string contact_number)
 {
-	this->userID = userID;
-	this->fName = fName;
-	this->lName = lName;
-	this->address = address;
-	this->email = email;
-	this->contactNumber = contactNumber;
-
+	this->user_id_ = user_id;
+	this->f_name_ = f_name;
+	this->l_name_ = l_name;
+	this->address_ = address;
+	this->email_ = email;
+	this->contact_number_ = contact_number;
 }
 
-void Customer::setUserID(string userID)
+void Customer::setUserID(string val)
 {
+	user_id_ = val;
 }
 
+void Customer::setFirstName(std::string f_nam) { f_name_ = val; }
 
-void Customer::setFirstName(std::string val) { fName = val; }
-
-void Customer::setLastName(string lName)
+void Customer::setLastName(std::string val)
 {
+	l_name_ = val;
 }
 
-void Customer::setAddress(string address)
+void Customer::setAddress(std::string val)
 {
+	address_ = val;
 }
 
-void Customer::setEmail(string email)
+void Customer::setEmail(std::string val)
 {
+	email_ = val;
 }
 
-void Customer::setContactNumber(int contactNumber)
+void Customer::setContactNumber(std::string val)
 {
+	contact_number_ = val;
 }
 
-void Customer::addTicket(Ticket ticket)
+void Customer::addTicket(ticket ticket)
 {
+	tickets_.push_back(ticket);
 }
 
-void Customer::removeTicket(int ticketId)
+void Customer::removeTicket(int ticket_id)
 {
+	//TODO: come back to this
 }
 
-std::string Customer::getFirstName() const { return fName; }
+std::string Customer::getFirstName() const { return f_name_; }
 
 std::string Customer::getLastName() const
 {
+	return l_name_;
 }
 
 std::string Customer::getAddress() const
 {
-	return string();
+	return address_;
 }
 
 std::string Customer::getEmail() const
 {
-	return string();
+	return email_;
 }
 
-int Customer::getContactNumber() const
+std::string Customer::getContactNumber() const
 {
-	return 0;
+	return contact_number_;
 }
 
-vector<Ticket> Customer::getTickets() const
-{
-	return vector<Ticket>();
+vector<ticket> Customer::getTickets() {
+	return vector<ticket>();
 }
