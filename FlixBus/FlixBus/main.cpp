@@ -28,7 +28,7 @@ int main() {
 	//testCustomer.datesOfTravel.push_back("1/1/2021 12:00:00PM"); // FIXME: Maybe we should put datetime object here?
 	//i'm gonna be honest, I have no idea what you were trying to do here?
 
-	testCustomer.getTickets()[1].set_travel_date("1/1/2021 12:00:00PM");
+	//testCustomer.getTickets().at(1).set_travel_date("1/1/2021 12:00:00PM");
 	
 	cout << "Customer: " << testCustomer.getFirstName() << " " << testCustomer.getLastName()<< endl;
 	for (ticket item : testCustomer.getTickets()) {
