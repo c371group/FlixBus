@@ -1,14 +1,11 @@
 #pragma once
 #include "Vehicle.h"
 #include <vector>
-using std::vector;
 
-class Fleet
+class fleet
 {
-public:
-	Vehicle luxuryBuses[3];
-	Vehicle miniBuses[4];
-	Vehicle miniVans[4];
-
+public: // TODO: change to private when time comes, rn im lazy lol
+	vehicle luxury_buses[3];
+	vehicle mini_buses[4];
+	vehicle mini_vans[4];
 };
-
