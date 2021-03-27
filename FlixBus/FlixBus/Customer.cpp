@@ -1,17 +1,23 @@
 //implementation file
 #include "Customer.h"
 
-Customer::Customer(string id, string fName, string lName, string address, string email, string number)
+Customer::Customer(string userID, string fName, string lName, string address, string email, int contactNumber)
+{
+	this->userID = userID;
+	this->fName = fName;
+	this->lName = lName;
+	this->address = address;
+	this->email = email;
+	this->contactNumber = contactNumber;
+
+}
+
+void Customer::setUserID(string userID)
 {
 }
 
-void Customer::setUserID(string id)
-{
-}
 
-void Customer::setFirstName(string fName)
-{
-}
+void Customer::setFirstName(std::string val) { fName = val; }
 
 void Customer::setLastName(string lName)
 {
@@ -25,7 +31,7 @@ void Customer::setEmail(string email)
 {
 }
 
-void Customer::setNumber(int number)
+void Customer::setContactNumber(int contactNumber)
 {
 }
 
@@ -37,32 +43,28 @@ void Customer::removeTicket(int ticketId)
 {
 }
 
-string Customer::getFirstName()
+std::string Customer::getFirstName() const { return fName; }
+
+std::string Customer::getLastName() const
+{
+}
+
+std::string Customer::getAddress() const
 {
 	return string();
 }
 
-string Customer::getLastName()
+std::string Customer::getEmail() const
 {
 	return string();
 }
 
-string Customer::getAddress()
-{
-	return string();
-}
-
-string Customer::getEmail()
-{
-	return string();
-}
-
-int Customer::getNumber()
+int Customer::getContactNumber() const
 {
 	return 0;
 }
 
-vector<Ticket> Customer::getTickets()
+vector<Ticket> Customer::getTickets() const
 {
 	return vector<Ticket>();
 }
