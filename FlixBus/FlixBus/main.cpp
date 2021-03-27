@@ -10,7 +10,7 @@ int main() {
 
 	Customer testCustomer;
 	testCustomer.setFirstName = "Jon";
-	testCustomer.lastName = "Doe";
+	testCustomer.lName = "Doe";
 	testCustomer.address = "123 Road St";
 	testCustomer.email = "JD@uwgb.edu";
 
@@ -37,7 +37,7 @@ int main() {
 
 	testCustomer.datesOfTravel.push_back("1/1/2021 12:00:00PM"); // FIXME: Maybe we should put datetime object here?
 
-	cout << "Cusomter: " << testCustomer.firstName << " " << testCustomer.lastName << endl;
+	cout << "Cusomter: " << testCustomer.fName << " " << testCustomer.lName << endl;
 	for (Ticket item : testCustomer.tickets) {
 		cout << "Ticket: From " << item.route.source << " To " << item.route.destination << endl;
 		cout << "Total of " << item.route.distance << " miles." << endl;
