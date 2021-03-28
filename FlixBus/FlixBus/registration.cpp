@@ -9,7 +9,7 @@ registration::registration()
 	set_username(NULL);
 	set_password(NULL);
 }
-registration::registration(interfaceControl iC)
+registration::registration(bool pretend)
 {
 	set_ic(iC);
 	set_username_extended();
@@ -19,7 +19,7 @@ registration::registration(interfaceControl iC)
 
 void registration::set_ic(interfaceControl intC)
 {
-	iC= intC;
+	iC = intC;
 }
 
 void registration::set_username(std::string username)
@@ -43,7 +43,7 @@ void registration::set_username_extended()
 		std::cout << "Enter desired username (Enter \"HELP\" for requirements): ";
 		getline(std::cin, user_input_string);
 	}
-	set_username(user_input_string);	
+	set_username(user_input_string);
 }
 
 void registration::set_password(std::string password)

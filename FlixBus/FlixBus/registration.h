@@ -6,10 +6,10 @@ class registration //this might seem redundant, but we want to ensure we're not 
 private:
 	interfaceControl iC;
 	std::string username_, password_;
-	std::string user_id_, f_name_, l_name_, address_, email_,contact_number_;
+	std::string user_id_, f_name_, l_name_, address_, email_, contact_number_;
 public:
 	registration();
-	registration(interfaceControl iC);
+	registration(bool pretend);
 	void set_ic(interfaceControl iC);
 	void set_username(std::string username);
 	void set_username_extended();

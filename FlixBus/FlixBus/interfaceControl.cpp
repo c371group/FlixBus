@@ -2,13 +2,12 @@
 
 #include <iostream>
 
-interfaceControl::interfaceControl()
-= default;
 
-bool interfaceControl::validateInt(std::string input)
-{
-	return false;
-}
+
+//bool interfaceControl::validateInt(std::string input)
+//{
+//	return false;
+//}
 
 bool interfaceControl::validateInt(std::string input, int min_num, int max_num)
 {
