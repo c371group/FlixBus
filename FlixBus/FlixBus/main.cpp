@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
-#include "Customer.h"
 #include "registration.h"
-#include "interfaceControl.h"
+#include "Customer.h"
 using namespace std;
 
 bool validateInt(std::string, int, int);
