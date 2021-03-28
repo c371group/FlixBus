@@ -21,7 +21,9 @@
   <ItemGroup>
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Fleet.cpp" />
+    <ClCompile Include="interfaceControl.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="registration.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Vehicle.cpp" />
@@ -29,6 +31,8 @@
   <ItemGroup>
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Fleet.h" />
+    <ClInclude Include="interfaceControl.h" />
+    <ClInclude Include="registration.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Ticket.h" />
     <ClInclude Include="Vehicle.h" />

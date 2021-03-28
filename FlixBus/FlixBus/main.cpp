@@ -5,6 +5,7 @@
 using namespace std;
 
 bool validateInt(std::string, int, int);
+int customer_interface();
 
 //TODO: Rewrite this with classes, also find way to use validateInt here without writing twice??
 //Just want to have something "down on paper"

@@ -3,15 +3,10 @@
 
 #include <iostream>
 
-registration::registration()
-{
-	iC = interfaceControl();
-	set_username(NULL);
-	set_password(NULL);
-}
+
 registration::registration(bool pretend)
 {
-	set_ic(iC);
+	iC = interfaceControl();
 	set_username_extended();
 	set_password_extended();
 	std::cout << "Account created! You can now sign in!" << std::endl;

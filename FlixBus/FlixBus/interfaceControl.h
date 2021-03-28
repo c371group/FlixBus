@@ -14,4 +14,5 @@ public:
 	bool violatesLength(std::string input, int min_num, int max_num);
 	bool notMixtureNumAlpha(std::string);
 	bool notMixtureUpperLower(std::string input);
+
 };

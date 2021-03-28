@@ -1,7 +1,7 @@
 #include "interfaceControl.h"
 
 #include <iostream>
-
+#include <cctype>
 
 
 //bool interfaceControl::validateInt(std::string input)
