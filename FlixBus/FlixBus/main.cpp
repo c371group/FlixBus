@@ -91,6 +91,14 @@ int test_basic()
 		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() << endl;
 		cout << "Total of " << item.get_route().get_distance() << " miles." << endl;
 		cout << "Price: $" << item.get_cost() << endl;
+  }
+	testCustomer.getTickets()[1].set_travel_date("1/1/2021 12:00:00PM");
+	
+	cout << "Customer: " << testCustomer.getFirstName() << " " << testCustomer.getLastName()<< endl;
+	for (ticket item : testCustomer.getTickets()) {
+		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() << endl;
+		cout << "Total of " << item.get_route().get_distance()<< " miles." << endl;
+		cout << "Price: $" << item.get_cost()<< endl;
 	}
 
 	return 0;

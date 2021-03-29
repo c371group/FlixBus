@@ -18,6 +18,7 @@ void Customer::setUserID(string val)
 
 void Customer::setFirstName(std::string f_nam) { f_name_ = f_nam; }
 
+
 void Customer::setLastName(std::string val)
 {
 	l_name_ = val;
@@ -73,3 +74,4 @@ std::string Customer::getContactNumber() const
 vector<ticket> Customer::getTickets() {
 	return tickets_;
 }
+
