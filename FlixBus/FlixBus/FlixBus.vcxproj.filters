@@ -33,6 +33,12 @@
     <ClCompile Include="Fleet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="registration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interfaceControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h">
@@ -48,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fleet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="registration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaceControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
