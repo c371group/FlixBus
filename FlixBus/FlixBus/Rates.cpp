@@ -23,9 +23,3 @@ double smallSafety = 3000;
 double miniRentBase = 1000;
 double miniRentMile = 0.15;
 double miniSafety = 1500;
-
-
-int main() {
-
-}
-
