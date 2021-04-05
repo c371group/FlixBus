@@ -21,7 +21,7 @@ int customer_interface()
 		getline(std::cin, user_input_string);
 	}
 	const auto choice_int = stoi(user_input_string);
-	//TODO: Change to allow going back to menu
+	//TODO: Change to allow going back to menu :: This is going to be needed. I tried to register, that worked, but the program terms right away, so I couldn't login
 	if (choice_int == 1) {
 		return 0;
 	}

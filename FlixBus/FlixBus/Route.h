@@ -4,6 +4,7 @@
 
 class route {
 private:
+	int routeID_ = 137; // an identifier Nate can use to reference the route in scheduling
 	std::string source_ = "Green Bay"; //default parameters
 	std::string destination_ = "Green Bay"; // This should be loaded from a file.
 	int distance_ = 0; //To tenth of a mile-- ex. 195.2 miles would be stored as 1952, then divided later
