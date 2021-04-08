@@ -7,8 +7,7 @@
 using namespace std;
 
 
-int main()
-{
+int main() {
 
     //Setting variables for choice, order, and sentinel. 
     int choice = 0;
