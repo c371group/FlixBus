@@ -1,8 +1,6 @@
 //implementation file
 #include "Vehicle.h"
 #include <iostream>
-#include <regex>
-#include <string>
 
 
 vehicle::vehicle()
@@ -89,25 +87,25 @@ int vehicle::get_rate_per_mile()
 
 void luxaryBus::displaySeats()
 {
-	int test = 0;
+	int displayRow = 0;
 	for (const auto& p : this->seats) {
-		if (test == 5) {
+		if (displayRow == 5) {
 			std::cout << std::endl;
-			test = 0;
+			displayRow = 0;
 		}
-		test++;
+		displayRow++;
 		std::cout << p.first.first << p.first.second << "\t ";
 	}
 }
 
 void luxaryBus::displayFreeSeats()
 {
-	int test = 0;
+	int displayRow = 0;
 	for (const auto& p : this->seats) {
 		
-			if (test == 5) {
+			if (displayRow == 5) {
 				std::cout << std::endl;
-				test = 0;
+				displayRow = 0;
 			}
 			if (p.second == 0) {
 				
@@ -116,7 +114,7 @@ void luxaryBus::displayFreeSeats()
 			else {
 				std::cout << "X" << "\t ";
 			}
-			test++;
+			displayRow++;
 	}
 }
 
