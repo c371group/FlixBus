@@ -1,7 +1,9 @@
 //implementation file
 #include "Vehicle.h"
-
 #include <iostream>
+#include <regex>
+#include <string>
+
 
 vehicle::vehicle()
 = default;
@@ -82,4 +84,78 @@ std::string vehicle::get_type()
 int vehicle::get_rate_per_mile()
 {
 	return rate_per_mile_;
+}
+
+
+void luxaryBus::displaySeats()
+{
+	int test = 0;
+	for (const auto& p : this->seats) {
+		if (test == 5) {
+			std::cout << std::endl;
+			test = 0;
+		}
+		test++;
+		std::cout << p.first.first << p.first.second << "\t ";
+	}
+}
+
+void luxaryBus::displayFreeSeats()
+{
+	int test = 0;
+	for (const auto& p : this->seats) {
+		
+			if (test == 5) {
+				std::cout << std::endl;
+				test = 0;
+			}
+			if (p.second == 0) {
+				
+				std::cout << p.first.first << p.first.second << "\t ";
+			}
+			else {
+				std::cout << "X" << "\t ";
+			}
+			test++;
+	}
+}
+
+void luxaryBus::reserveSeat(int row, char column)
+{
+	std::pair<int, char> seat{row, column};
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 1;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column <<" seat was not found." << std::endl;
+	}
+}
+
+void luxaryBus::cancelSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 0;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
+}
+
+void smallBus::displaySeats()
+{
+}
+
+void miniBus::displaySeats()
+{
 }

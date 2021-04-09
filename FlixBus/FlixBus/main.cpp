@@ -106,7 +106,7 @@ int test_basic()
 
 int main()
 {
-	interfaceControl int_con = interfaceControl();
+	/*interfaceControl int_con = interfaceControl();
 	
 	try {
 		customer_interface();
@@ -114,6 +114,16 @@ int main()
 	{
 		std::cout << "epic fail" << std::endl;
 	}
+	*/
+	luxaryBus testLuxBus;
+	//testLuxBus.displaySeats();
+	testLuxBus.displayFreeSeats();
+	testLuxBus.reserveSeat(1, 'B');
+	testLuxBus.reserveSeat(11, 'B');
+	testLuxBus.reserveSeat(33, 'B');
+	testLuxBus.displayFreeSeats();
+	testLuxBus.cancelSeat(11, 'B');
+	testLuxBus.displayFreeSeats();
 	//test_basic();
 	return 0;
 }
