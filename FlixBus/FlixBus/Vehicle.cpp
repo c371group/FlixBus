@@ -84,11 +84,12 @@ int vehicle::get_rate_per_mile()
 	return rate_per_mile_;
 }
 
-
+// Loops through seats map and displays all seats.
 void luxaryBus::displaySeats()
 {
 	int displayRow = 0;
 	for (const auto& p : this->seats) {
+		// This is done so we  can see only 5 columns for luxary bus.
 		if (displayRow == 5) {
 			std::cout << std::endl;
 			displayRow = 0;
@@ -98,11 +99,12 @@ void luxaryBus::displaySeats()
 	}
 }
 
+// Loops through seats map and displays reserved seats as 'X'.
 void luxaryBus::displayFreeSeats()
 {
 	int displayRow = 0;
 	for (const auto& p : this->seats) {
-		
+			// This is done so we  can see only 5 columns for luxary bus.
 			if (displayRow == 5) {
 				std::cout << std::endl;
 				displayRow = 0;
@@ -118,6 +120,7 @@ void luxaryBus::displayFreeSeats()
 	}
 }
 
+// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
 void luxaryBus::reserveSeat(int row, char column)
 {
 	std::pair<int, char> seat{row, column};
@@ -134,6 +137,7 @@ void luxaryBus::reserveSeat(int row, char column)
 	}
 }
 
+// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
 void luxaryBus::cancelSeat(int row, char column)
 {
 	std::pair<int, char> seat{ row, column };
@@ -150,10 +154,12 @@ void luxaryBus::cancelSeat(int row, char column)
 	}
 }
 
+// Loops through seats map and displays all seats.
 void smallBus::displaySeats()
 {
 	int displayRow = 0;
 	for (const auto& p : this->seats) {
+		// This is done so we  can see only 3 columns for luxary bus.
 		if (displayRow == 3) {
 			std::cout << std::endl;
 			displayRow = 0;
@@ -163,11 +169,12 @@ void smallBus::displaySeats()
 	}
 }
 
+// Displaying taken seats as 'X'.
 void smallBus::displayFreeSeats()
 {
 	int displayRow = 0;
 	for (const auto& p : this->seats) {
-
+		// This is done so we  can see only 3 columns for luxary bus.
 		if (displayRow == 3) {
 			std::cout << std::endl;
 			displayRow = 0;
@@ -183,6 +190,7 @@ void smallBus::displayFreeSeats()
 	}
 }
 
+// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
 void smallBus::reserveSeat(int row, char column)
 {
 	std::pair<int, char> seat{ row, column };
@@ -199,6 +207,7 @@ void smallBus::reserveSeat(int row, char column)
 	}
 }
 
+// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
 void smallBus::cancelSeat(int row, char column)
 {
 	std::pair<int, char> seat{ row, column };
@@ -215,10 +224,12 @@ void smallBus::cancelSeat(int row, char column)
 	}
 }
 
+// Loops through seats map and displays all seats.
 void miniBus::displaySeats()
 {
 	int displayRow = 0;
 	for (const auto& p : this->seats) {
+		// This is done so we  can see only 3 columns for luxary bus.
 		if (displayRow == 3) {
 			std::cout << std::endl;
 			displayRow = 0;
@@ -228,11 +239,12 @@ void miniBus::displaySeats()
 	}
 }
 
+// Displaying taken seats as 'X'.
 void miniBus::displayFreeSeats()
 {
 	int displayRow = 0;
 	for (const auto& p : this->seats) {
-
+		// This is done so we  can see only 3 columns for luxary bus.
 		if (displayRow == 3) {
 			std::cout << std::endl;
 			displayRow = 0;
@@ -248,6 +260,7 @@ void miniBus::displayFreeSeats()
 	}
 }
 
+// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
 void miniBus::reserveSeat(int row, char column)
 {
 	std::pair<int, char> seat{ row, column };
@@ -264,6 +277,7 @@ void miniBus::reserveSeat(int row, char column)
 	}
 }
 
+// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
 void miniBus::cancelSeat(int row, char column)
 {
 	std::pair<int, char> seat{ row, column };
