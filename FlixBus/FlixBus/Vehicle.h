@@ -55,15 +55,35 @@ class smallBus : public vehicle {
 private:
 	std::string type_ = "Small Bus";
 public:
-	//std::map<std::string, int> seats{ {"CPU", 10}, {"GPU", 15}, {"RAM", 20}, };
+	std::map<std::pair<int, char>, int> seats{ {{1,'A'},0 }, {{1,'B'},0 }, {{ 1,'C' }, 0},
+		{{2,'A'},0 }, {{2,'B'},0 }, {{ 2,'C' }, 0},
+		{{3,'A'},0 }, {{3,'B'},0 }, {{ 3,'C' }, 0},
+		{{4,'A'},0 }, {{4,'B'},0 }, {{ 4,'C' }, 0},
+		{{5,'A'},0 }, {{5,'B'},0 }, {{ 5,'C' }, 0},
+		{{6,'A'},0 }, {{6,'B'},0 }, {{ 6,'C' }, 0},
+		{{7,'A'},0 }, {{7,'B'},0 }, {{ 7,'C' }, 0},
+		{{8,'A'},0 }, {{8,'B'},0 }, {{ 8,'C' }, 0},
+		{{9,'A'},0 }, {{9,'B'},0 }, {{ 9,'C' }, 0},
+		{{10,'A'},0 }, {{10,'B'},0 }, {{ 10,'C' }, 0},
+		{{11,'A'},0 }, {{11,'B'},0 }, {{ 11,'C' }, 0},
+		{{12,'A'},0 }, {{12,'B'},0 }, {{ 12,'C' }, 0}};
 	
 	void displaySeats();
+	void displayFreeSeats();
+	void reserveSeat(int row, char column);
+	void cancelSeat(int row, char column);
 };
 class miniBus : public vehicle {
 private:
 	std::string type_ = "Minivan";
 public:
-	//std::map<std::string, int> seats{ {"CPU", 10}, {"GPU", 15}, {"RAM", 20}, };
-	
+	std::map<std::pair<int, char>, int> seats{ {{1,'A'},0 }, {{1,'B'},0 }, {{ 1,'C' }, 0},
+		{{2,'A'},0 }, {{2,'B'},0 }, {{ 2,'C' }, 0},
+		{{3,'A'},0 }, {{3,'B'},0 }, {{ 3,'C' }, 0},
+		{{4,'A'},0 }, {{4,'B'},0 }, {{ 4,'C' }, 0} };
+
 	void displaySeats();
+	void displayFreeSeats();
+	void reserveSeat(int row, char column);
+	void cancelSeat(int row, char column);
 };

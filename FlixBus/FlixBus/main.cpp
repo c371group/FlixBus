@@ -60,7 +60,7 @@ Post: Returns true if string satisifies conditions established by min_num and/or
 }
 int test_basic()
 {
-	////////////////////////////
+////////////////////////////
 // TESTING CLASS RELATION //
 ///////////////////////////
 
@@ -106,7 +106,7 @@ int test_basic()
 
 int main()
 {
-	/*interfaceControl int_con = interfaceControl();
+	interfaceControl int_con = interfaceControl();
 	
 	try {
 		customer_interface();
@@ -114,16 +114,43 @@ int main()
 	{
 		std::cout << "epic fail" << std::endl;
 	}
-	*/
+	
+
+	/* 
+	// Testing luxary bus seats
+	cout << "\nTesting luxary bus seats" << endl;
 	luxaryBus testLuxBus;
-	//testLuxBus.displaySeats();
-	testLuxBus.displayFreeSeats();
+	testLuxBus.displaySeats();
 	testLuxBus.reserveSeat(1, 'B');
 	testLuxBus.reserveSeat(11, 'B');
 	testLuxBus.reserveSeat(33, 'B');
 	testLuxBus.displayFreeSeats();
 	testLuxBus.cancelSeat(11, 'B');
 	testLuxBus.displayFreeSeats();
+
+	// Testing small bus seats
+	cout << "\nTesting small bus seats" << endl;
+	smallBus testSmallBus;
+	testSmallBus.displaySeats();
+	testSmallBus.reserveSeat(1, 'A');
+	testSmallBus.reserveSeat(11, 'A');
+	testSmallBus.reserveSeat(42, 'A');
+	testSmallBus.displayFreeSeats();
+	testSmallBus.cancelSeat(1, 'A');
+	testSmallBus.displayFreeSeats();
+
+	// Testing mini bus seats
+	cout << "\nTesting mini bus seats" << endl;
+	miniBus testMiniBus;
+	testMiniBus.displaySeats();
+	testMiniBus.reserveSeat(1, 'C');
+	testMiniBus.reserveSeat(3, 'C');
+	testMiniBus.reserveSeat(12, 'B');
+	testMiniBus.displayFreeSeats();
+	testMiniBus.cancelSeat(1, 'C');
+	testMiniBus.displayFreeSeats();
+	*/
+
 	//test_basic();
 	return 0;
 }

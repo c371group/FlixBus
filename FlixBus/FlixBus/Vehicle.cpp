@@ -152,8 +152,130 @@ void luxaryBus::cancelSeat(int row, char column)
 
 void smallBus::displaySeats()
 {
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		displayRow++;
+		std::cout << p.first.first << p.first.second << "\t ";
+	}
+}
+
+void smallBus::displayFreeSeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		if (p.second == 0) {
+
+			std::cout << p.first.first << p.first.second << "\t ";
+		}
+		else {
+			std::cout << "X" << "\t ";
+		}
+		displayRow++;
+	}
+}
+
+void smallBus::reserveSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 1;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
+}
+
+void smallBus::cancelSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 0;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
 }
 
 void miniBus::displaySeats()
 {
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		displayRow++;
+		std::cout << p.first.first << p.first.second << "\t ";
+	}
+}
+
+void miniBus::displayFreeSeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		if (p.second == 0) {
+
+			std::cout << p.first.first << p.first.second << "\t ";
+		}
+		else {
+			std::cout << "X" << "\t ";
+		}
+		displayRow++;
+	}
+}
+
+void miniBus::reserveSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 1;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
+}
+
+void miniBus::cancelSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 0;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
 }
