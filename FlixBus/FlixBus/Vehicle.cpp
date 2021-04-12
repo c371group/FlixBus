@@ -1,7 +1,7 @@
 //implementation file
 #include "Vehicle.h"
-
 #include <iostream>
+
 
 vehicle::vehicle()
 = default;
@@ -82,4 +82,214 @@ std::string vehicle::get_type()
 int vehicle::get_rate_per_mile()
 {
 	return rate_per_mile_;
+}
+
+// Loops through seats map and displays all seats.
+void luxaryBus::displaySeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+		// This is done so we  can see only 5 columns for luxary bus.
+		if (displayRow == 5) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		displayRow++;
+		std::cout << p.first.first << p.first.second << "\t ";
+	}
+}
+
+// Loops through seats map and displays reserved seats as 'X'.
+void luxaryBus::displayFreeSeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+			// This is done so we  can see only 5 columns for luxary bus.
+			if (displayRow == 5) {
+				std::cout << std::endl;
+				displayRow = 0;
+			}
+			if (p.second == 0) {
+				
+				std::cout << p.first.first << p.first.second << "\t ";
+			}
+			else {
+				std::cout << "X" << "\t ";
+			}
+			displayRow++;
+	}
+}
+
+// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
+void luxaryBus::reserveSeat(int row, char column)
+{
+	std::pair<int, char> seat{row, column};
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 1;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column <<" seat was not found." << std::endl;
+	}
+}
+
+// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
+void luxaryBus::cancelSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 0;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
+}
+
+// Loops through seats map and displays all seats.
+void smallBus::displaySeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+		// This is done so we  can see only 3 columns for luxary bus.
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		displayRow++;
+		std::cout << p.first.first << p.first.second << "\t ";
+	}
+}
+
+// Displaying taken seats as 'X'.
+void smallBus::displayFreeSeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+		// This is done so we  can see only 3 columns for luxary bus.
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		if (p.second == 0) {
+
+			std::cout << p.first.first << p.first.second << "\t ";
+		}
+		else {
+			std::cout << "X" << "\t ";
+		}
+		displayRow++;
+	}
+}
+
+// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
+void smallBus::reserveSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 1;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
+}
+
+// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
+void smallBus::cancelSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 0;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
+}
+
+// Loops through seats map and displays all seats.
+void miniBus::displaySeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+		// This is done so we  can see only 3 columns for luxary bus.
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		displayRow++;
+		std::cout << p.first.first << p.first.second << "\t ";
+	}
+}
+
+// Displaying taken seats as 'X'.
+void miniBus::displayFreeSeats()
+{
+	int displayRow = 0;
+	for (const auto& p : this->seats) {
+		// This is done so we  can see only 3 columns for luxary bus.
+		if (displayRow == 3) {
+			std::cout << std::endl;
+			displayRow = 0;
+		}
+		if (p.second == 0) {
+
+			std::cout << p.first.first << p.first.second << "\t ";
+		}
+		else {
+			std::cout << "X" << "\t ";
+		}
+		displayRow++;
+	}
+}
+
+// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
+void miniBus::reserveSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 1;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
+}
+
+// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
+void miniBus::cancelSeat(int row, char column)
+{
+	std::pair<int, char> seat{ row, column };
+	if (this->seats.count(seat) > 0) {
+		for (auto& p : this->seats) {
+			if (p.first.first == row && p.first.second == column) {
+				p.second = 0;
+				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+			}
+		}
+	}
+	else {
+		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+	}
 }
