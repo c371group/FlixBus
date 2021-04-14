@@ -106,6 +106,7 @@ int test_basic()
 
 int main()
 {
+	/*
 	interfaceControl int_con = interfaceControl();
 	
 	try {
@@ -114,9 +115,9 @@ int main()
 	{
 		std::cout << "epic fail" << std::endl;
 	}
-	
+	*/
 
-	/* 
+	
 	// Testing luxary bus seats
 	cout << "\nTesting luxary bus seats" << endl;
 	luxaryBus testLuxBus;
@@ -149,7 +150,7 @@ int main()
 	testMiniBus.displayFreeSeats();
 	testMiniBus.cancelSeat(1, 'C');
 	testMiniBus.displayFreeSeats();
-	*/
+	
 
 	//test_basic();
 	return 0;
