@@ -6,7 +6,7 @@ ticket::ticket()
 {
 	route_ = route();
 	bus_ = nullptr;
-	//cost_ = route_.get_distance() * *bus_.get_rate_per_mile();
+	cost_ = route_.get_distance() * bus_->get_rate_per_mile();
 	//TODO add actual methods for travel date later on, with trip class
 }
 
@@ -14,7 +14,7 @@ ticket::ticket(route val1, vehicle* val2)
 {
 	route_ = val1;
 	bus_ = val2;
-	//cost_ = val1.get_distance() * val2.get_rate_per_mile(); 
+	cost_ = val1.get_distance() * val2->get_rate_per_mile(); 
 	/*storing as is to make math easier,
 	there's no payment requirement so all we have to really do is display in "regular" numbers for customer
 	by dividing and setting precision. */
@@ -28,7 +28,7 @@ void ticket::set_active(bool val)
 void ticket::set_route(route val)
 {
 	route_ = val;
-	//cost_ = route_.get_distance() * bus_.get_rate_per_mile();
+	cost_ = route_.get_distance() * bus_->get_rate_per_mile();
 }
 
 void ticket::set_cost(int val)
