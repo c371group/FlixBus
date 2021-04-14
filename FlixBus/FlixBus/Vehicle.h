@@ -12,7 +12,7 @@ private:
 	being stored 16 pennies per mile so we can avoid double and float shenanigans */
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{};
 
-	//potentially want to have an attribute of an array of bus drivers who drive said bus
+	//potentially want to have an attribute of an array of bus drivers who drive said bus | ???????? what bus drivers?
 	
 public:
 	vehicle();
@@ -26,7 +26,7 @@ public:
 	int set_values_from_type(std::string val);
 
 	int get_id_no();
-	std::string get_type();
+	virtual std::string get_type();
 	int get_capacity();
 	int get_rate_per_mile();
 
@@ -41,6 +41,7 @@ public:
 	virtual std::map<std::pair<int, char>, std::pair<int, double>> *get_seats() = 0;
 	
 };
+
 
 class luxaryBus : public vehicle {
 private:
@@ -63,9 +64,11 @@ public:
 		{{11,'A'},{0,windowSeatRate} }, {{11,'B'},{0, aisleSeatRate} }};
 
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
-
+	std::string get_type();
 };
-class smallBus : public vehicle {
+
+
+class miniBus : public vehicle {
 private:
 	std::string type = "Mini Bus";
 	int id_no = 0; //unique identifier for bus
@@ -87,9 +90,11 @@ public:
 		{{12,'A'},{0,windowSeatPrice} }, {{12,'B'},{0, aisleSeatPrice} }, {{ 12,'C' }, {0,windowSeatPrice}}};
 
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
-
+	std::string get_type();
 };
-class miniBus : public vehicle {
+
+
+class miniVan : public vehicle {
 private:
 	std::string type = "MiniVan";
 	int id_no = 0; //unique identifier for bus
@@ -103,5 +108,5 @@ public:
 		{{4,'A'},{0,windowSeatPrice} }, {{4,'B'},{0, aisleSeatPrice} }, {{ 4,'C' }, {0,windowSeatPrice}} };
 
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
-
+	std::string get_type();
 };

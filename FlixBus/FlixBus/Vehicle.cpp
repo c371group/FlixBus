@@ -171,11 +171,9 @@ std::map<std::pair<int, char>, std::pair<int, double>>* luxaryBus::get_seats()
 	return &this->seats;
 }
 
-// Returns a refrence of the seats map
-std::map<std::pair<int, char>, std::pair<int, double>>* smallBus::get_seats()
+std::string luxaryBus::get_type()
 {
-	// TODO: insert return statement here
-	return &this->seats;
+	return this->type;
 }
 
 // Returns a refrence of the seats map
@@ -183,4 +181,21 @@ std::map<std::pair<int, char>, std::pair<int, double>>* miniBus::get_seats()
 {
 	// TODO: insert return statement here
 	return &this->seats;
+}
+
+std::string miniBus::get_type()
+{
+	return this->type;
+}
+
+// Returns a refrence of the seats map
+std::map<std::pair<int, char>, std::pair<int, double>>* miniVan::get_seats()
+{
+	// TODO: insert return statement here
+	return &this->seats;
+}
+
+std::string miniVan::get_type()
+{
+	return this->type;
 }

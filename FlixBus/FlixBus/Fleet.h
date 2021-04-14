@@ -4,8 +4,20 @@
 
 class fleet
 {
-public: // TODO: change to private when time comes, rn im lazy lol
-	vehicle* luxury_buses[3];
-	vehicle* mini_buses[4];
-	vehicle* mini_vans[4];
+private:
+	std::vector<vehicle*> luxury_buses;
+	std::vector<vehicle*> mini_buses;
+	std::vector<vehicle*> mini_vans;
+
+public:
+	void addLuxaryBus(vehicle* luxary);
+	void addMiniBus(vehicle* small);
+	void addMiniVan(vehicle* mini);
+
+	vehicle* getLuxaryBus(int index);
+	vehicle* getMiniBus(int index);
+	vehicle* getMiniVan(int index);
+	void displayLuxaryBusFleet();
+	void displayMiniBusFleet();
+	void displayMiniVanFleet();
 };

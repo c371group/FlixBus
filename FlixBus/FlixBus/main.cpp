@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "registration.h"
+#include "Fleet.h"
 #include "Customer.h"
 using namespace std;
 
@@ -106,7 +107,7 @@ int test_basic()
 
 int main()
 {
-	/*
+
 	interfaceControl int_con = interfaceControl();
 	
 	try {
@@ -115,9 +116,12 @@ int main()
 	{
 		std::cout << "epic fail" << std::endl;
 	}
-	*/
 
 	
+	/*
+	////////////////////////
+	// TESTING BUS SEATS //
+	///////////////////////
 	// Testing luxary bus seats
 	cout << "\nTesting luxary bus seats" << endl;
 	luxaryBus testLuxBus;
@@ -130,27 +134,66 @@ int main()
 	testLuxBus.displayFreeSeats();
 
 	// Testing small bus seats
-	cout << "\nTesting small bus seats" << endl;
-	smallBus testSmallBus;
-	testSmallBus.displaySeats();
-	testSmallBus.reserveSeat(1, 'A');
-	testSmallBus.reserveSeat(11, 'A');
-	testSmallBus.reserveSeat(42, 'A');
-	testSmallBus.displayFreeSeats();
-	testSmallBus.cancelSeat(1, 'A');
-	testSmallBus.displayFreeSeats();
-
-	// Testing mini bus seats
 	cout << "\nTesting mini bus seats" << endl;
 	miniBus testMiniBus;
 	testMiniBus.displaySeats();
-	testMiniBus.reserveSeat(1, 'C');
-	testMiniBus.reserveSeat(3, 'C');
-	testMiniBus.reserveSeat(12, 'B');
+	testMiniBus.reserveSeat(1, 'A');
+	testMiniBus.reserveSeat(11, 'A');
+	testMiniBus.reserveSeat(42, 'A');
 	testMiniBus.displayFreeSeats();
-	testMiniBus.cancelSeat(1, 'C');
+	testMiniBus.cancelSeat(1, 'A');
 	testMiniBus.displayFreeSeats();
+
+	// Testing mini bus seats
+	cout << "\nTesting minivan seats" << endl;
+	miniVan testMiniVan;
+	testMiniVan.displaySeats();
+	testMiniVan.reserveSeat(1, 'C');
+	testMiniVan.reserveSeat(3, 'C');
+	testMiniVan.reserveSeat(12, 'B');
+	testMiniVan.displayFreeSeats();
+	testMiniVan.cancelSeat(1, 'C');
+	testMiniVan.displayFreeSeats();
 	
+	*/
+
+
+	/*
+	////////////////////////
+	//     TEST FLEET    //
+	///////////////////////
+
+	fleet busFleet;
+	luxaryBus luxBus;
+	miniVan miniVan;
+	luxaryBus luxBus1;
+	miniBus miniBus;
+	cout << "\nTesting fleet class." << endl;
+	busFleet.displayLuxaryBusFleet();
+	busFleet.displayMiniBusFleet();
+	busFleet.displayMiniVanFleet();
+
+	cout << "\nAdding Luxary buss" << endl;
+	busFleet.addLuxaryBus(&luxBus);
+	cout << "Adding Luxary buss" << endl;
+	busFleet.addLuxaryBus(&luxBus1);
+	cout << "Adding Minivan" << endl;
+	busFleet.addMiniVan(&miniVan);
+	cout << "Adding Mini buss" << endl;
+	busFleet.addMiniBus(&miniBus);
+
+	busFleet.displayLuxaryBusFleet();
+	busFleet.displayMiniBusFleet();
+	busFleet.displayMiniVanFleet();
+
+	vehicle* testSeats = busFleet.getLuxaryBus(0);
+	cout << "\nTesting accessing seats from the fleet class:" << endl;
+	testSeats->displaySeats();
+	cout << "\nTesting reserving a seat from the fleet class:" << endl;
+	testSeats->reserveSeat(1, 'A');
+	testSeats->reserveSeat(1, 'B');
+	testSeats->displayFreeSeats();
+	*/
 
 	//test_basic();
 	return 0;
