@@ -6,10 +6,9 @@
 #include "interfaceView.h"
 using namespace std;
 
-bool validateInt(std::string, int, int);
 int customer_interface();
 
-//TODO: Rewrite this with classes, also find way to use validateInt here without writing twice??
+//TODO: Rewrite this with classes
 //Just want to have something "down on paper"
 int customer_interface()
 {
@@ -18,7 +17,7 @@ int customer_interface()
 	int i = 0;
 	int max = interfaceview.display_menu_items(i);
 	int choice_int = interfaceview.enterChoice(max, intcon);
-	bool confirm = interfaceview.confirm_Choice(i, choice_int - 1, intcon);
+	bool confirm = interfaceview.confirm_Menu_Choice(i, choice_int - 1, intcon);
 	if (!confirm)
 	{
 		customer_interface();
@@ -32,17 +31,12 @@ int customer_interface()
 		}
 		else
 		{
-			registration reg = registration(true);
+			registration reg = registration();
+			customer_interface();
 			return 0;
 		}
 	}
 	return 0;
-}
-
-int registration_interface()
-{
-	interfaceView interfaceview = interfaceView();
-	interfaceControl intcon = interfaceControl();
 }
 
 int test_basic()
@@ -97,7 +91,6 @@ int test_basic()
 
 int main()
 {
-	interfaceControl int_con = interfaceControl();
 
 	try
 	{

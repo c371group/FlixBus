@@ -1,20 +1,38 @@
 #include "registration.h"
+#include "interfaceView.h"
 #include "interfaceControl.h"
 
 #include <iostream>
 
 
-registration::registration(bool pretend)
+registration::registration()
 {
 	iC = interfaceControl();
 	set_username_extended();
 	set_password_extended();
+	humanData();
 	std::cout << "Account created! You can now sign in!" << std::endl;
+}
+
+void registration::humanData()
+{
+	iV = interfaceView();
+	responses_ = iV.prompt_strs(0);
+	bool confirm = iV.confirm_Prompt_Choices(0, iC, responses_);
+	if (!confirm)
+	{
+		humanData();
+	}
 }
 
 void registration::set_ic(interfaceControl intC)
 {
 	iC = intC;
+}
+
+void registration::set_iv(interfaceView iv)
+{
+	iV = iv;
 }
 
 void registration::set_username(std::string username)
@@ -30,7 +48,7 @@ void registration::set_username_extended()
 	//TODO: Add handler for looking at list of usernames already registered in permanent file storage
 	while (!iC.validateRegUser(user_input_string))
 	{
-		if (user_input_string == "HELP" || user_input_string == "\"HELP\"")
+		if (iC.lower_string(user_input_string) == "help" || iC.lower_string(user_input_string) == "\"help\"")
 		{
 			std::cout <<
 				"USERNAME REQUIREMENTS:\n- Length between 6 and 20 characters \n- Spaces are not allowed\n- Usernames are case sensitive"
@@ -57,12 +75,12 @@ void registration::set_password_extended()
 	std::string user_input_string;
 	std::cout << "Enter desired password (Enter \"HELP\" for requirements): ";
 	getline(std::cin, user_input_string);
-	while (!iC.validateRegUser(user_input_string))
+	while (!iC.validate_reg_pass(user_input_string))
 	{
-		if (user_input_string == "HELP" || user_input_string == "\"HELP\"")
+		if (iC.lower_string(user_input_string) == "help" || iC.lower_string(user_input_string) == "\"help\"")
 		{
 			std::cout <<
-				"PASSWORD REQUIREMENTS:\n- At least 8 characters \n- A mixture of upper and lowercase letters\n- A mixture of numbers and letters\n- Usernames are case sensitive"
+				"PASSWORD REQUIREMENTS:\n- At least 8 characters \n- A mixture of upper and lowercase letters\n- A mixture of numbers and letters\n- Passwords are case sensitive"
 				<< std::endl;
 		}
 		else
@@ -128,6 +146,11 @@ std::string registration::get_contact_number() const
 }
 
 std::string registration::get_i_c() const
+{
+	return std::string();
+}
+
+std::string registration::get_i_v() const
 {
 	return std::string();
 }

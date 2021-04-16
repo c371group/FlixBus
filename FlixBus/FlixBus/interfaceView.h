@@ -20,5 +20,6 @@ public:
 	void remove_menu(int menu);
 	void add_choice(int i, int j, std::string choice);
 	int enterChoice(int max, interfaceControl int_con);
-	bool confirm_Choice(int i, int j, interfaceControl int_con);
+	bool confirm_Menu_Choice(int i, int j, interfaceControl int_con);
+	bool confirm_Prompt_Choices(int i, interfaceControl int_con, std::vector<std::string> choices);
 };

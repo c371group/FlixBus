@@ -53,14 +53,14 @@ bool interfaceControl::validate_reg_pass(std::string input)
 {
 	if (violatesLength(input, 8) || notMixtureNumAlpha(input) || notMixtureUpperLower(input))
 	{
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 }
 
 bool interfaceControl::hasSpace(std::string input)
 {
-	for (int character = 0; character < input.length() - 1; character++)
+	for (int character = 0; character < input.length(); character++)
 	{
 		if (std::isspace(input[character]))
 		{
@@ -73,9 +73,7 @@ bool interfaceControl::hasSpace(std::string input)
 
 bool interfaceControl::violatesLength(std::string input, int min_num)
 {
-	/*if (input == "HELP" || input == "\"HELP\"") {
-		return true;
-	}*/
+	//if the length is less than the minimum number of characters, return true because it violates the length
 	if (input.length() < min_num)
 	{
 		std::cout << "Must be at least " << min_num << " characters." << std::endl;
@@ -89,10 +87,6 @@ bool interfaceControl::violatesLength(std::string input, int min_num)
 
 bool interfaceControl::violatesLength(std::string input, int min_num, int max_num)
 {
-	/*if (input == "HELP" || input == "\"HELP\"") {
-		return true;
-	}*/
-	//commented out because in implementations so far, it's unnecessary
 	if (input.length() > max_num || input.length() < min_num)
 	{
 		std::cout << "Must be between " << min_num << " and " << max_num << " characters." << std::endl;
@@ -108,7 +102,7 @@ bool interfaceControl::notMixtureNumAlpha(std::string input)
 {
 	bool letterFound = false;
 	bool numberFound = false;
-	for (int character = 0; character < input.length() - 1; character++)
+	for (int character = 0; character < input.length(); character++)
 	{
 		if (std::isalpha(input[character]))
 		{
@@ -130,10 +124,14 @@ bool interfaceControl::notMixtureNumAlpha(std::string input)
 }
 
 bool interfaceControl::notMixtureUpperLower(std::string input)
+/*Iterates over the input string, checking to see if the current character is an upper or lowercase
+letter. If so, set respective condition to true. Once the iteration is complete, check if
+lowerFound and upperFound are both true. If so, return false because the string IS a mixture of
+upper and lowercase letters. Else, return true.*/
 {
 	bool lowerFound = false;
 	bool upperFound = false;
-	for (int character = 0; character < input.length() - 1; character++)
+	for (int character = 0; character < input.length(); character++)
 	{
 		if (std::isalpha(input[character]))
 		{
