@@ -5,7 +5,8 @@
 
 using namespace std;
 
-class Customer {
+class Customer
+{
 private:
 	string user_id_;
 	string f_name_, l_name_, address_, email_;
@@ -27,5 +28,5 @@ public:
 	string getAddress() const;
 	string getEmail() const;
 	string getContactNumber() const;
-	vector<ticket> getTickets() ;
+	vector<ticket> getTickets();
 };

@@ -71,7 +71,7 @@ std::string Customer::getContactNumber() const
 	return contact_number_;
 }
 
-vector<ticket> Customer::getTickets() {
+vector<ticket> Customer::getTickets()
+{
 	return tickets_;
 }
-

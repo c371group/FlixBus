@@ -5,7 +5,8 @@
 #include "Vehicle.h"
 
 
-class ticket {
+class ticket
+{
 private:
 	//should have attribute for date and time booked to potentially compare to time and date of route departure versus cancellation date and time
 	std::string ticket_id_ = "DEFAULT";

@@ -29,10 +29,12 @@ void vehicle::set_capacity(int val)
 {
 	this->capacity = val;
 }
+
 void vehicle::set_type(std::string val)
 {
 	this->type = val;
 }
+
 void vehicle::set_rate_per_mile(int val)
 {
 	this->rate_per_mile = val;
@@ -58,7 +60,6 @@ int vehicle::set_values_from_type(std::string val) //TODO: go back and make this
 
 	std::cout << "WARNING: BUS TYPE COULD NOT BE FOUND" << std::endl;
 	return 0;
-	
 }
 
 
@@ -79,7 +80,6 @@ std::string vehicle::get_type()
 }
 
 
-
 int vehicle::get_rate_per_mile()
 {
 	return this->rate_per_mile;
@@ -89,13 +89,15 @@ int vehicle::get_rate_per_mile()
 void vehicle::displaySeats()
 {
 	auto seats = *get_seats();
-	std::pair<int, char> seat{ 1, 'E'};
-	int columns = seats.count(seat) > 0 ? 5:3;
-	
+	std::pair<int, char> seat{1, 'E'};
+	int columns = seats.count(seat) > 0 ? 5 : 3;
+
 	int displayRow = 0;
-	for (const auto& p : seats) {
+	for (const auto& p : seats)
+	{
 		// This is done so we  can see only 5 columns for luxary bus.
-		if (displayRow == columns) {
+		if (displayRow == columns)
+		{
 			std::cout << std::endl;
 			displayRow = 0;
 		}
@@ -108,20 +110,23 @@ void vehicle::displaySeats()
 void vehicle::displayFreeSeats()
 {
 	auto seats = *get_seats();
-	std::pair<int, char> seat{ 1, 'E' };
+	std::pair<int, char> seat{1, 'E'};
 	int columns = seats.count(seat) > 0 ? 5 : 3;
 	int displayRow = 0;
-	for (const auto& p : seats) {
+	for (const auto& p : seats)
+	{
 		// This is done so we  can see only 5 columns for luxary bus.
-		if (displayRow == columns) {
+		if (displayRow == columns)
+		{
 			std::cout << std::endl;
 			displayRow = 0;
 		}
-		if (p.second.first == 0) {
-
+		if (p.second.first == 0)
+		{
 			std::cout << p.first.first << p.first.second << "\t ";
 		}
-		else {
+		else
+		{
 			std::cout << "X" << "\t ";
 		}
 		displayRow++;
@@ -132,16 +137,20 @@ void vehicle::displayFreeSeats()
 void vehicle::reserveSeat(int row, char column)
 {
 	auto seats = get_seats();
-	std::pair<int, char> seat{ row, column };
-	if ((*seats).count(seat) > 0) {
-		for (auto& p : *seats) {
-			if (p.first.first == row && p.first.second == column) {
+	std::pair<int, char> seat{row, column};
+	if ((*seats).count(seat) > 0)
+	{
+		for (auto& p : *seats)
+		{
+			if (p.first.first == row && p.first.second == column)
+			{
 				p.second.first = 1;
 				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
 			}
 		}
 	}
-	else {
+	else
+	{
 		std::cout << std::endl << row << column << " seat was not found." << std::endl;
 	}
 }
@@ -150,16 +159,20 @@ void vehicle::reserveSeat(int row, char column)
 void vehicle::cancelSeat(int row, char column)
 {
 	auto seats = get_seats();
-	std::pair<int, char> seat{ row, column };
-	if ((*seats).count(seat) > 0) {
-		for (auto& p : *seats) {
-			if (p.first.first == row && p.first.second == column) {
+	std::pair<int, char> seat{row, column};
+	if ((*seats).count(seat) > 0)
+	{
+		for (auto& p : *seats)
+		{
+			if (p.first.first == row && p.first.second == column)
+			{
 				p.second.first = 0;
 				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
 			}
 		}
 	}
-	else {
+	else
+	{
 		std::cout << std::endl << row << column << " seat was not found." << std::endl;
 	}
 }

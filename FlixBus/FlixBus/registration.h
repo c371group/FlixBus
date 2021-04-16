@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include "interfaceControl.h"
-class registration //this might seem redundant, but we want to ensure we're not creating account objects with empty parameters
+
+class registration
+	//this might seem redundant, but we want to ensure we're not creating account objects with empty parameters
 {
 private:
 	interfaceControl iC;
@@ -29,5 +31,4 @@ public:
 	std::string get_address() const;
 	std::string get_email() const;
 	std::string get_contact_number() const;
-
 };

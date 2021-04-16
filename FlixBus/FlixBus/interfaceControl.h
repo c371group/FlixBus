@@ -2,9 +2,10 @@
 #include <string>
 #include <vector>
 
-class interfaceControl {
-public: 
-	interfaceControl(){}
+class interfaceControl
+{
+public:
+	interfaceControl() = default;
 	//bool validateInt(std::string input);
 	bool validateInt(std::string input, int min_num, int max_num);
 	bool validateRegUser(std::string); //validate username that user signs up with
@@ -14,5 +15,6 @@ public:
 	bool violatesLength(std::string input, int min_num, int max_num);
 	bool notMixtureNumAlpha(std::string);
 	bool notMixtureUpperLower(std::string input);
-
+	std::string lower_string(std::string str);
+	bool affirm(std::string input);
 };
