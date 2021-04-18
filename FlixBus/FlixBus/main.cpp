@@ -60,27 +60,15 @@ int test_basic()
 	return 0;
 }
 
-int main()
+void busSeatTesting()
 {
-	//TODO: sticking this here before we have capabilities to read from permanent file
-	accountRepo acctRepo = accountRepo();
-
-	try
-	{
-		customerInterface custInterface = customerInterface(acctRepo);
-	}
-	catch (std::exception e)
-	{
-		std::cout << "epic fail" << std::endl;
-	}
-
 
 	/*
 	////////////////////////
 	// TESTING BUS SEATS //
-	///////////////////////
-	// Testing luxary bus seats
-	cout << "\nTesting luxary bus seats" << endl;
+	/////////////////////// */
+	// Testing luxury bus seats
+	cout << "\nTesting luxury bus seats" << endl;
 	luxaryBus testLuxBus;
 	testLuxBus.displaySeats();
 	testLuxBus.reserveSeat(1, 'B');
@@ -111,14 +99,14 @@ int main()
 	testMiniVan.displayFreeSeats();
 	testMiniVan.cancelSeat(1, 'C');
 	testMiniVan.displayFreeSeats();
-	
-	*/
+}
 
-
+void fleetTesting()
+{
 	/*
 	////////////////////////
 	//     TEST FLEET    //
-	///////////////////////
+	/////////////////////// */
 
 	fleet busFleet;
 	luxaryBus luxBus;
@@ -130,13 +118,13 @@ int main()
 	busFleet.displayMiniBusFleet();
 	busFleet.displayMiniVanFleet();
 
-	cout << "\nAdding Luxary buss" << endl;
+	cout << "\nAdding Luxury buss" << endl;
 	busFleet.addLuxaryBus(&luxBus);
-	cout << "Adding Luxary buss" << endl;
+	cout << "Adding Luxury buss" << endl;
 	busFleet.addLuxaryBus(&luxBus1);
 	cout << "Adding Minivan" << endl;
 	busFleet.addMiniVan(&miniVan);
-	cout << "Adding Mini buss" << endl;
+	cout << "Adding Mini bus" << endl;
 	busFleet.addMiniBus(&miniBus);
 
 	busFleet.displayLuxaryBusFleet();
@@ -150,9 +138,22 @@ int main()
 	testSeats->reserveSeat(1, 'A');
 	testSeats->reserveSeat(1, 'B');
 	testSeats->displayFreeSeats();
-	*/
+}
 
-	//test_basic();
-	return 0;
+int main()
+{
+	//TODO: sticking this here before we have capabilities to read from permanent file
+	accountRepo acctRepo = accountRepo();
+
+	try
+	{
+		customerInterface custInterface = customerInterface(acctRepo);
+	}
+	catch (std::exception e)
+	{
+		std::cout << "epic fail" << std::endl;
+	}
+
+
 }
 
