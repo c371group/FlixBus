@@ -1,5 +1,6 @@
 #pragma once
 #include "interfaceView.h"
+
 class loggedInInterface :
     public interfaceView
 {

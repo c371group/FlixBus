@@ -1,8 +1,10 @@
 #include "customerInterface.h"
+
 /*Display menu options of 1. login and 2. register. once selected, ask user to confirm.
  * If they don't confirm, send them back to login and register menu. if they do confirm,
  * send them to either register or login interface
  */
+
 customerInterface::customerInterface(accountRepo acctRep)
 {
 	preLoad(acctRep);

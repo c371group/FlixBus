@@ -1,7 +1,5 @@
 #include "login.h"
 
-
-
 login::login(accountRepo& acctRepo)
 {
 	int index = 0;
