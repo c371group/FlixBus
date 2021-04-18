@@ -2,6 +2,7 @@
 #include "interfaceView.h"
 #include "accountRepo.h"
 #include "registration.h"
+#include "login.h"
 class customerInterface :
     public interfaceView
 {

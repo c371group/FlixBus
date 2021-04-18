@@ -1,10 +1,10 @@
 #include "registration.h"
 
-registration::registration(accountRepo acctRepo)
+registration::registration(accountRepo& acctRepo)
 {
 	interfaceControl intcon = interfaceControl();
 	set_intcon(intcon);
-	this->acctRep = acctRepo;
+	//this->acctRep = acctRepo;
 	std::vector<std::string> promptSet1 = {
 "Enter first name", "Enter last name", "Enter email", "Enter address", "Enter contact number"
 	};
@@ -12,7 +12,7 @@ registration::registration(accountRepo acctRepo)
 	set_vecStr(temp); //see above
 	acctData();
 	humanData();
-	finalCreation();
+	finalCreation(acctRepo);
 }
 
 void registration::humanData()
@@ -180,16 +180,16 @@ void registration::createAcct()
 	set_final_account(acnt);
 }
 
-void registration::addToRepo()
+void registration::addToRepo(accountRepo& acctRep)
 {
 	acctRep.add_acct(finalAccount);
 }
 
-void registration::finalCreation()
+void registration::finalCreation(accountRepo& acctRep)
 {
 	createCustomer();
 	createAcct();
-	addToRepo();
+	addToRepo(acctRep);
 	std::cout << "Account created! You can now sign in!" << std::endl;
 }
 

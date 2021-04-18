@@ -1,5 +1,6 @@
 #include "interfaceControl.h"
 
+
 bool interfaceControl::validateInt(std::string input, int min_num, int max_num)
 {
 	/* Description: the validInt function (overloaded) takes string input (returning false if empty) and attempts to convert to an integer, returning false if not. After successful conversion, the integer version of the string (intInput) is checked to make sure it does not exceed max_num and that min_num is not greater than intInput. If either of these two conditions are violated, return false. Otherwise, return true.
@@ -159,6 +160,26 @@ bool interfaceControl::affirm(std::string input)
 {
 	std::string inputManip = lower_string(input);
 	if (inputManip == "yes" || inputManip == "y")
+	{
+		return true;
+	}
+	return false;
+}
+
+bool interfaceControl::checkUsernameExistence(accountRepo acctRep, std::string claimedUsername, int& index){
+	for (int i = 0; i < acctRep.getAccts().size(); i++) {
+		if (acctRep.getAccts()[i].get_username() == claimedUsername)
+		{
+			index = i;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool interfaceControl::checkPassword(accountRepo acctRep, std::string claimedPassword, int index)
+{
+	if (acctRep.getAccts()[index].get_password() == claimedPassword)
 	{
 		return true;
 	}

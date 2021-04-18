@@ -43,7 +43,7 @@ int customerInterface::menuLogic()
 		//TODO: Change to allow going back to menu
 		if (choice_int == 1)
 		{
-			//login
+			login log = login(acctRep);
 			return 0;
 		}
 		else
