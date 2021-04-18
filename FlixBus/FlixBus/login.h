@@ -5,6 +5,7 @@
 #include "Account.h"
 #include "accountRepo.h"
 #include "interfaceView.h"
+#include "loggedInInterface.h"
 class login :
     public interfaceView
 {
@@ -13,7 +14,7 @@ private:
 	std::string allegedUsername;
 	std::string allegedPassword;
 public:
-	login(accountRepo acctRepo);
+	login(accountRepo& acctRepo);
 	void enter_username(int);
 	void enter_password(int);
 	void set_Alleged_Username(std::string);

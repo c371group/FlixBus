@@ -6,7 +6,7 @@ registration::registration(accountRepo& acctRepo)
 "Enter first name", "Enter last name", "Enter email", "Enter address", "Enter contact number"
 	};
 	std::vector<std::vector<std::string>> temp = {promptSet1};
-	set_vecStr(temp); //see above
+	set_vecStr(temp);
 	acctData();
 	humanData();
 	finalCreation(acctRepo);
@@ -15,7 +15,7 @@ registration::registration(accountRepo& acctRepo)
 void registration::humanData()
 {
 	responses_ = prompt_strs(0);
-	const auto confirm = confirm_Prompt_Choices(0, get_intcon(), responses_);
+	const auto confirm = confirm_Prompt_Choices(0, responses_);
 	if (!confirm)
 	{
 		humanData();
@@ -163,7 +163,6 @@ std::string registration::get_password() const
 {
 	return password_;
 }
-
 
 void registration::createCustomer()
 {

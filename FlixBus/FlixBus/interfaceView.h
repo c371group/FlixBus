@@ -28,7 +28,7 @@ public:
 	void add_menu(std::vector<std::string> menu);
 	void remove_menu(int menu);
 	void add_choice(int i, int j, std::string choice);
-	int enterChoice(int max, interfaceControl int_con);
-	bool confirm_Menu_Choice(int i, int j, interfaceControl int_con);
-	bool confirm_Prompt_Choices(int i, interfaceControl int_con, std::vector<std::string> choices);
+	int enterChoice(int max);
+	bool confirm_Menu_Choice(int i, int j);
+	bool confirm_Prompt_Choices(int i, std::vector<std::string> choices);
 };

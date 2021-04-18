@@ -3,7 +3,6 @@
 interfaceView::interfaceView()
 {
 	this->intcon = interfaceControl();
-	std::cout << "weesnaw" << std::endl;
 }
 
 interfaceControl interfaceView::get_intcon()
@@ -44,7 +43,7 @@ int interfaceView::display_menu_items(int i)
 		std::cout << j + 1 << ". " << get_menu_items()[i][j] << "\n";
 		k++;
 	}
-
+	std::cout << "\n\n" << std::endl;
 	return k;
 }
 
@@ -89,13 +88,13 @@ void interfaceView::add_choice(int i, int j, std::string choice)
 {
 }
 
-int interfaceView::enterChoice(int max, interfaceControl int_con)
+int interfaceView::enterChoice(int max)
 {
 	std::string user_input_string;
 	std::cout << "Enter desired choice: ";
 	getline(std::cin, user_input_string);
 
-	while (!int_con.validateInt(user_input_string, 1, max))
+	while (!get_intcon().validateInt(user_input_string, 1, max))
 	{
 		std::cout << "ERROR-- A valid choice must be entered: ";
 		getline(std::cin, user_input_string);
@@ -104,16 +103,16 @@ int interfaceView::enterChoice(int max, interfaceControl int_con)
 	return choice_int;
 }
 
-bool interfaceView::confirm_Menu_Choice(int i, int j, interfaceControl int_con)
+bool interfaceView::confirm_Menu_Choice(int i, int j)
 {
 	std::string user_input_string;
 	std::cout << "You chose " << get_menu_items()[i][j] << "." << std::endl;
 	std::cout << "Is this correct? (Enter \"Y\" or \"Yes\" to confirm, enter anything else to cancel): ";
 	getline(std::cin, user_input_string);
-	return int_con.affirm(user_input_string);
+	return get_intcon().affirm(user_input_string);
 }
 
-bool interfaceView::confirm_Prompt_Choices(int i, interfaceControl int_con, std::vector<std::string> choices)
+bool interfaceView::confirm_Prompt_Choices(int i, std::vector<std::string> choices)
 {
 	std::string user_input_string;
 	std::cout << "You chose: \n\n" << std::endl;
@@ -123,5 +122,5 @@ bool interfaceView::confirm_Prompt_Choices(int i, interfaceControl int_con, std:
 	}
 	std::cout << "\n\nIs this information correct? (Enter \"Y\" or \"Yes\" to confirm, enter anything else to cancel): ";
 	getline(std::cin, user_input_string);
-	return int_con.affirm(user_input_string);
+	return get_intcon().affirm(user_input_string);
 }

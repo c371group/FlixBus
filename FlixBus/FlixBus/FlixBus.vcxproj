@@ -26,6 +26,7 @@
     <ClCompile Include="Fleet.cpp" />
     <ClCompile Include="interfaceControl.cpp" />
     <ClCompile Include="interfaceView.cpp" />
+    <ClCompile Include="loggedInInterface.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="registration.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="Fleet.h" />
     <ClInclude Include="interfaceControl.h" />
     <ClInclude Include="interfaceView.h" />
+    <ClInclude Include="loggedInInterface.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="registration.h" />
     <ClInclude Include="Route.h" />

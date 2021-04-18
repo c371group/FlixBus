@@ -63,6 +63,9 @@
     <ClCompile Include="registration.cpp">
       <Filter>Source Files\views</Filter>
     </ClCompile>
+    <ClCompile Include="loggedInInterface.cpp">
+      <Filter>Source Files\views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files\views</Filter>
     </ClInclude>
     <ClInclude Include="registration.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="loggedInInterface.h">
       <Filter>Header Files\views</Filter>
     </ClInclude>
   </ItemGroup>

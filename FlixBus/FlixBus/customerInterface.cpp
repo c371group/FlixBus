@@ -1,5 +1,4 @@
 #include "customerInterface.h"
-
 /*Display menu options of 1. login and 2. register. once selected, ask user to confirm.
  * If they don't confirm, send them back to login and register menu. if they do confirm,
  * send them to either register or login interface
@@ -26,8 +25,8 @@ accountRepo customerInterface::getAcctRep()
 int customerInterface::menuLogic()
 {
 	int max = display_menu_items(0);
-	int choice_int = enterChoice(max, get_intcon());
-	bool confirm = confirm_Menu_Choice(0, choice_int - 1, get_intcon());
+	int choice_int = enterChoice(max);
+	bool confirm = confirm_Menu_Choice(0, choice_int - 1);
 
 	if (!confirm)
 	{
