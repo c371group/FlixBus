@@ -1,26 +1,32 @@
 #include <iostream>
 #include <string>
+
+#include "Account.h"
 #include "registration.h"
 #include "Fleet.h"
 #include "Customer.h"
 #include "interfaceView.h"
 using namespace std;
 
-int customer_interface();
+int customer_interface(accountRepo acctRep);
 
 //TODO: Rewrite this with classes
-//Just want to have something "down on paper"
-int customer_interface()
+int customer_interface(accountRepo acctRep)
 {
+	/*Display menu options of 1. login and 2. register. once selected, ask user to confirm.
+	 * If they don't confirm, send them back to login and register menu. if they do confirm,
+	 * send them to either register or login interface
+	 */
 	interfaceView interfaceview = interfaceView();
 	interfaceControl intcon = interfaceControl();
 	int i = 0;
 	int max = interfaceview.display_menu_items(i);
 	int choice_int = interfaceview.enterChoice(max, intcon);
 	bool confirm = interfaceview.confirm_Menu_Choice(i, choice_int - 1, intcon);
+	
 	if (!confirm)
 	{
-		customer_interface();
+		customer_interface(acctRep);
 	}
 	else
 	{
@@ -31,8 +37,8 @@ int customer_interface()
 		}
 		else
 		{
-			registration reg = registration();
-			customer_interface();
+			registration reg = registration(acctRep);
+			customer_interface(acctRep);
 			return 0;
 		}
 	}
@@ -45,8 +51,8 @@ int test_basic()
 	// TESTING CLASS RELATION //
 	///////////////////////////
 
-	Customer testCustomer("3435225", "Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
-
+	Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
+	Account acct(testCustomer);
 	// Adding test ticket.
 	ticket testTicket;
 	route testRout("Green Bay", "Madison", 1356);
@@ -59,26 +65,26 @@ int test_basic()
 	testTicket2.set_route(testRout2);
 	testTicket2.set_cost(2500); //25 dollars, or 2500 pennies
 
-	testCustomer.addTicket(testTicket);
-	testCustomer.addTicket(testTicket2);
+	acct.addTicket(testTicket);
+	acct.addTicket(testTicket2);
 
 	//testCustomer.datesOfTravel.push_back("1/1/2021 12:00:00PM"); // FIXME: Maybe we should put datetime object here?
 	//i'm gonna be honest, I have no idea what you were trying to do here?
 
 	//testCustomer.getTickets().at(1).set_travel_date("1/1/2021 12:00:00PM");
 
-	cout << "Customer: " << testCustomer.getFirstName() << " " << testCustomer.getLastName() << endl;
-	for (ticket item : testCustomer.getTickets())
+	cout << "Customer: " << acct.get_customer().getFirstName() << " " << acct.get_customer().getLastName() << endl;
+	for (ticket item : acct.getTickets())
 	{
 		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() <<
 			endl;
 		cout << "Total of " << item.get_route().get_distance() << " miles." << endl;
 		cout << "Price: $" << item.get_cost() << endl;
 	}
-	testCustomer.getTickets()[1].set_travel_date("1/1/2021 12:00:00PM");
+	acct.getTickets()[1].set_travel_date("1/1/2021 12:00:00PM");
 
-	cout << "Customer: " << testCustomer.getFirstName() << " " << testCustomer.getLastName() << endl;
-	for (ticket item : testCustomer.getTickets())
+	cout << "Customer: " << acct.get_customer().getFirstName() << " " << acct.get_customer().getLastName() << endl;
+	for (ticket item : acct.getTickets())
 	{
 		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() <<
 			endl;
@@ -91,10 +97,12 @@ int test_basic()
 
 int main()
 {
+	//TODO: sticking this here before we have capabilities to read from permanent file
+	accountRepo acctRepo;
 
 	try
 	{
-		customer_interface();
+		customer_interface(acctRepo);
 	}
 	catch (std::exception e)
 	{
@@ -182,3 +190,4 @@ int main()
 	//test_basic();
 	return 0;
 }
+

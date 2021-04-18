@@ -1,6 +1,4 @@
-#include <iostream>
 #include "Fleet.h"
-
 
 void fleet::addLuxaryBus(vehicle* luxary)
 {

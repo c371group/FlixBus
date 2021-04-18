@@ -1,6 +1,4 @@
-//implementation file
 #include "Ticket.h"
-#include "Route.h"
 
 ticket::ticket()
 {

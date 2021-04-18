@@ -1,29 +1,39 @@
 #include "registration.h"
-#include "interfaceView.h"
-#include "interfaceControl.h"
 
-#include <iostream>
-
-
-registration::registration()
+registration::registration(accountRepo acctRepo)
 {
+	this->acctRep = acctRepo;
 	iC = interfaceControl();
-	set_username_extended();
-	set_password_extended();
+	acctData();
 	humanData();
-	std::cout << "Account created! You can now sign in!" << std::endl;
+	finalCreation();
 }
 
 void registration::humanData()
 {
 	iV = interfaceView();
 	responses_ = iV.prompt_strs(0);
-	bool confirm = iV.confirm_Prompt_Choices(0, iC, responses_);
+	const auto confirm = iV.confirm_Prompt_Choices(0, iC, responses_);
 	if (!confirm)
 	{
 		humanData();
 	}
+	else
+	{
+		populate();
+	}
 }
+
+void registration::populate()
+{
+	set_first_name(responses_[0]);
+	set_last_name(responses_[1]);
+	set_email(responses_[2]);
+	set_address(responses_[3]);
+	set_contact_number(responses_[4]);
+}
+
+
 
 void registration::set_ic(interfaceControl intC)
 {
@@ -94,7 +104,6 @@ void registration::set_password_extended()
 	set_password(user_input_string);
 }
 
-
 void registration::set_user_id(std::string val)
 {
 	user_id_ = val;
@@ -122,6 +131,15 @@ void registration::set_contact_number(std::string val)
 	contact_number_ = val;
 }
 
+void registration::set_final_customer(Customer cust)
+{
+	finalCustomer = cust;
+}
+
+void registration::set_final_account(Account acct)
+{
+	finalAccount = acct;
+}
 
 std::string registration::get_first_name() const { return f_name_; }
 
@@ -163,4 +181,36 @@ std::string registration::get_username() const
 std::string registration::get_password() const
 {
 	return password_;
+}
+
+
+void registration::createCustomer()
+{
+	const Customer customer(responses_[0], responses_[1],responses_[2],responses_[3],responses_[4]);
+	set_final_customer(customer);
+}
+
+void registration::createAcct()
+{
+	const Account acnt(finalCustomer, get_username(), get_password());
+	set_final_account(acnt);
+}
+
+void registration::addToRepo()
+{
+	acctRep.add_acct(finalAccount);
+}
+
+void registration::finalCreation()
+{
+	createCustomer();
+	createAcct();
+	addToRepo();
+	std::cout << "Account created! You can now sign in!" << std::endl;
+}
+
+void registration::acctData()
+{
+	set_username_extended();
+	set_password_extended();
 }

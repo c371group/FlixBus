@@ -1,6 +1,4 @@
 #include "interfaceView.h"
-#include "interfaceControl.h"
-#include <iostream>
 
 interfaceView::interfaceView()
 {
@@ -45,7 +43,7 @@ std::vector<std::string> interfaceView::prompt_strs(int i) //i refers to place o
 		getline(std::cin, temp);
 		promptAns.push_back(temp);
 	}
-
+	//TODO: make sure user can't enter blank values
 	return promptAns;
 }
 

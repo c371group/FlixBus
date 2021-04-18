@@ -1,8 +1,5 @@
 //implementation file
 #include "Vehicle.h"
-#include <iostream>
-#include <map>
-
 
 vehicle::vehicle()
 = default;
