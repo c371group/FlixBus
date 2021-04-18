@@ -3,7 +3,7 @@
 interfaceView::interfaceView()
 {
 	this->intcon = interfaceControl();
-	//TODO: make this cleaner I guess? not sure
+	std::cout << "weesnaw" << std::endl;
 }
 
 interfaceControl interfaceView::get_intcon()
@@ -20,7 +20,6 @@ void interfaceView::set_vecStr(std::vector<std::vector<std::string>> vecStr)
 {
 	this->vecStr = vecStr;
 }
-
 
 std::vector<std::vector<std::string>> interfaceView::getVecMen()
 {
@@ -72,7 +71,6 @@ std::vector<std::string> interfaceView::prompt_strs(int i) //i refers to place o
 	//TODO: make sure user can't enter blank values
 	return promptAns;
 }
-
 
 void interfaceView::set_menu_items(std::vector<std::vector<std::string>> full_menus)
 {

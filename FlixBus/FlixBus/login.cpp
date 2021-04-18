@@ -1,9 +1,7 @@
 #include "login.h"
-login::login(accountRepo acctRepo)
+login::login(accountRepo acctRepo) //Not a reference variable this time, as nothing is being changed
 {
 	int index = 0;
-	interfaceControl intcon = interfaceControl();
-	set_intcon(intcon);
 	this->acctRep = acctRepo;
 	enter_username(index);
 	enter_password(index);

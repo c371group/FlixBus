@@ -9,7 +9,6 @@ class customerInterface :
 private:
 	accountRepo acctRep;
 public:
-	customerInterface();
 	customerInterface(accountRepo);
 	void preLoad(accountRepo acctRep);
 	int menuLogic();

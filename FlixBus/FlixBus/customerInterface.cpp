@@ -4,9 +4,6 @@
  * If they don't confirm, send them back to login and register menu. if they do confirm,
  * send them to either register or login interface
  */
-customerInterface::customerInterface()
-{
-}
 customerInterface::customerInterface(accountRepo acctRep)
 {
 	preLoad(acctRep);
@@ -15,8 +12,6 @@ customerInterface::customerInterface(accountRepo acctRep)
 
 void customerInterface::preLoad(accountRepo acctRep)
 {
-	interfaceControl intcon = interfaceControl();
-	set_intcon(intcon);
 	this->acctRep = acctRep;
 	std::vector<std::string> menu1 = { "Login", "Register" };
 	std::vector<std::vector<std::string>> temp = { menu1 };

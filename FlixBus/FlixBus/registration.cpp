@@ -2,9 +2,6 @@
 
 registration::registration(accountRepo& acctRepo)
 {
-	interfaceControl intcon = interfaceControl();
-	set_intcon(intcon);
-	//this->acctRep = acctRepo;
 	std::vector<std::string> promptSet1 = {
 "Enter first name", "Enter last name", "Enter email", "Enter address", "Enter contact number"
 	};
