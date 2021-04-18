@@ -9,7 +9,6 @@
 #include "interfaceView.h"
 using namespace std;
 
-
 int test_basic()
 {
 	////////////////////////////
@@ -62,7 +61,6 @@ int test_basic()
 
 void busSeatTesting()
 {
-
 	/*
 	////////////////////////
 	// TESTING BUS SEATS //
@@ -153,7 +151,4 @@ int main()
 	{
 		std::cout << "epic fail" << std::endl;
 	}
-
-
 }
-
