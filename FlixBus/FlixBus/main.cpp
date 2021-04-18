@@ -5,45 +5,10 @@
 #include "registration.h"
 #include "Fleet.h"
 #include "Customer.h"
+#include "customerInterface.h"
 #include "interfaceView.h"
 using namespace std;
 
-int customer_interface(accountRepo acctRep);
-
-//TODO: Rewrite this with classes
-int customer_interface(accountRepo acctRep)
-{
-	/*Display menu options of 1. login and 2. register. once selected, ask user to confirm.
-	 * If they don't confirm, send them back to login and register menu. if they do confirm,
-	 * send them to either register or login interface
-	 */
-	interfaceView interfaceview = interfaceView();
-	interfaceControl intcon = interfaceControl();
-	int i = 0;
-	int max = interfaceview.display_menu_items(i);
-	int choice_int = interfaceview.enterChoice(max, intcon);
-	bool confirm = interfaceview.confirm_Menu_Choice(i, choice_int - 1, intcon);
-	
-	if (!confirm)
-	{
-		customer_interface(acctRep);
-	}
-	else
-	{
-		//TODO: Change to allow going back to menu
-		if (choice_int == 1)
-		{
-			return 0;
-		}
-		else
-		{
-			registration reg = registration(acctRep);
-			customer_interface(acctRep);
-			return 0;
-		}
-	}
-	return 0;
-}
 
 int test_basic()
 {
@@ -98,11 +63,11 @@ int test_basic()
 int main()
 {
 	//TODO: sticking this here before we have capabilities to read from permanent file
-	accountRepo acctRepo;
+	accountRepo acctRepo = accountRepo();
 
 	try
 	{
-		customer_interface(acctRepo);
+		customerInterface custInterface = customerInterface(acctRepo);
 	}
 	catch (std::exception e)
 	{

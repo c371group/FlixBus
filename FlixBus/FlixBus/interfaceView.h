@@ -7,10 +7,19 @@
 class interfaceView
 {
 private:
+	interfaceControl intcon;
 	std::vector<std::vector<std::string>> vecMen;
 	std::vector<std::vector<std::string>> vecStr;
 public:
 	interfaceView();
+	void set_intcon(interfaceControl);
+	interfaceControl get_intcon();
+	
+	void set_vecMen(std::vector<std::vector<std::string>>);
+	void set_vecStr(std::vector<std::vector<std::string>>);
+	std::vector<std::vector<std::string>> getVecMen();
+	std::vector<std::vector<std::string>> getVecStr();
+	
 	int display_menu_items(int i);
 	std::vector<std::vector<std::string>> get_menu_items();
 	std::vector<std::vector<std::string>> get_strs();

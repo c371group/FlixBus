@@ -22,9 +22,11 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="accountRepo.cpp" />
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="customerInterface.cpp" />
     <ClCompile Include="Fleet.cpp" />
     <ClCompile Include="interfaceControl.cpp" />
     <ClCompile Include="interfaceView.cpp" />
+    <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="registration.cpp" />
     <ClCompile Include="Route.cpp" />
@@ -36,9 +38,11 @@
     <ClInclude Include="Account.h" />
     <ClInclude Include="accountRepo.h" />
     <ClInclude Include="Customer.h" />
+    <ClInclude Include="customerInterface.h" />
     <ClInclude Include="Fleet.h" />
     <ClInclude Include="interfaceControl.h" />
     <ClInclude Include="interfaceView.h" />
+    <ClInclude Include="login.h" />
     <ClInclude Include="registration.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Ticket.h" />

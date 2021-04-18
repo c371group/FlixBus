@@ -2,13 +2,39 @@
 
 interfaceView::interfaceView()
 {
-	//TODO: make this cleaner ig
-	std::vector<std::string> menu1 = {"Login", "Register"};
-	std::vector<std::string> promptSet1 = {
-		"Enter first name", "Enter last name", "Enter email", "Enter address", "Enter contact number"
-	};
-	vecMen = {menu1}; // array of menu arrays, hence why we use i and j when working with it
-	vecStr = {promptSet1}; //see above
+	this->intcon = interfaceControl();
+	//TODO: make this cleaner I guess? not sure
+}
+
+interfaceControl interfaceView::get_intcon()
+{
+	return intcon;
+}
+
+void interfaceView::set_vecMen(std::vector<std::vector<std::string>> vecMen)
+{
+	this->vecMen = vecMen;
+}
+
+void interfaceView::set_vecStr(std::vector<std::vector<std::string>> vecStr)
+{
+	this->vecStr = vecStr;
+}
+
+
+std::vector<std::vector<std::string>> interfaceView::getVecMen()
+{
+	return vecMen;
+}
+
+std::vector<std::vector<std::string>> interfaceView::getVecStr()
+{
+	return vecStr;
+}
+
+void interfaceView::set_intcon(interfaceControl intcon)
+{
+	this->intcon = intcon;
 }
 
 int interfaceView::display_menu_items(int i)

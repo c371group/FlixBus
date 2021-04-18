@@ -7,13 +7,12 @@
 #include "accountRepo.h"
 
 
-class registration
+class registration :
+	public interfaceView
 	//this might seem redundant, but we want to ensure we're not creating account objects with empty parameters
 {
 private:
 	accountRepo acctRep;
-	interfaceControl iC;
-	interfaceView iV; //TODO: rewrite this later to make this an inherited class from interfaceView?
 	std::vector<std::string> responses_;
 	std::string username_, password_;
 	std::string user_id_, f_name_, l_name_, address_, email_, contact_number_;
@@ -28,8 +27,6 @@ public:
 	void finalCreation();
 	void acctData();
 	void createCustomer();
-	void set_ic(interfaceControl);
-	void set_iv(interfaceView);
 	void set_username(std::string);
 	void set_username_extended();
 	void set_password(std::string);
@@ -43,8 +40,6 @@ public:
 	void set_final_customer(Customer);
 	void set_final_account(Account);
 
-	std::string get_i_c() const;
-	std::string get_i_v() const;
 	std::string get_username() const;
 	std::string get_password() const;
 	std::string get_first_name() const;

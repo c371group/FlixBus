@@ -8,7 +8,6 @@ class interfaceControl
 {
 public:
 	interfaceControl() = default;
-	//bool validateInt(std::string input);
 	bool validateInt(std::string input, int min_num, int max_num);
 	bool validateRegUser(std::string); //validate username that user signs up with
 	bool validate_reg_pass(std::string input);

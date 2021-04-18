@@ -2,8 +2,14 @@
 
 registration::registration(accountRepo acctRepo)
 {
+	interfaceControl intcon = interfaceControl();
+	set_intcon(intcon);
 	this->acctRep = acctRepo;
-	iC = interfaceControl();
+	std::vector<std::string> promptSet1 = {
+"Enter first name", "Enter last name", "Enter email", "Enter address", "Enter contact number"
+	};
+	std::vector<std::vector<std::string>> temp = {promptSet1};
+	set_vecStr(temp); //see above
 	acctData();
 	humanData();
 	finalCreation();
@@ -11,9 +17,8 @@ registration::registration(accountRepo acctRepo)
 
 void registration::humanData()
 {
-	iV = interfaceView();
-	responses_ = iV.prompt_strs(0);
-	const auto confirm = iV.confirm_Prompt_Choices(0, iC, responses_);
+	responses_ = prompt_strs(0);
+	const auto confirm = confirm_Prompt_Choices(0, get_intcon(), responses_);
 	if (!confirm)
 	{
 		humanData();
@@ -34,17 +39,6 @@ void registration::populate()
 }
 
 
-
-void registration::set_ic(interfaceControl intC)
-{
-	iC = intC;
-}
-
-void registration::set_iv(interfaceView iv)
-{
-	iV = iv;
-}
-
 void registration::set_username(std::string username)
 {
 	username_ = username;
@@ -56,9 +50,9 @@ void registration::set_username_extended()
 	std::cout << "Enter desired username (Enter \"HELP\" for requirements): ";
 	getline(std::cin, user_input_string);
 	//TODO: Add handler for looking at list of usernames already registered in permanent file storage
-	while (!iC.validateRegUser(user_input_string))
+	while (!get_intcon().validateRegUser(user_input_string))
 	{
-		if (iC.lower_string(user_input_string) == "help" || iC.lower_string(user_input_string) == "\"help\"")
+		if (get_intcon().lower_string(user_input_string) == "help" || get_intcon().lower_string(user_input_string) == "\"help\"")
 		{
 			std::cout <<
 				"USERNAME REQUIREMENTS:\n- Length between 6 and 20 characters \n- Spaces are not allowed\n- Usernames are case sensitive"
@@ -85,9 +79,9 @@ void registration::set_password_extended()
 	std::string user_input_string;
 	std::cout << "Enter desired password (Enter \"HELP\" for requirements): ";
 	getline(std::cin, user_input_string);
-	while (!iC.validate_reg_pass(user_input_string))
+	while (!get_intcon().validate_reg_pass(user_input_string))
 	{
-		if (iC.lower_string(user_input_string) == "help" || iC.lower_string(user_input_string) == "\"help\"")
+		if (get_intcon().lower_string(user_input_string) == "help" || get_intcon().lower_string(user_input_string) == "\"help\"")
 		{
 			std::cout <<
 				"PASSWORD REQUIREMENTS:\n- At least 8 characters \n- A mixture of upper and lowercase letters\n- A mixture of numbers and letters\n- Passwords are case sensitive"
@@ -161,16 +155,6 @@ std::string registration::get_email() const
 std::string registration::get_contact_number() const
 {
 	return contact_number_;
-}
-
-std::string registration::get_i_c() const
-{
-	return std::string();
-}
-
-std::string registration::get_i_v() const
-{
-	return std::string();
 }
 
 std::string registration::get_username() const
