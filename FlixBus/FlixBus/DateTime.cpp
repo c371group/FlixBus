@@ -89,11 +89,8 @@ template <class Int> constexpr Int days_from_civil(Int y, unsigned m, unsigned d
 
 int DateTime::differenceDays(DateTime dt)
 {
-	int test = (days_from_civil(this->year, this->month, this->day) - days_from_civil(dt.year, dt.month, dt.day));
-	long  firstDateInSeconds = this->year * 360 + this->month * 30 + this->day;
-	long  secondDateInSeconds = dt.year * 360 + dt.month * 30 + dt.day ;
-	long  difference = firstDateInSeconds - secondDateInSeconds;
-	return abs(difference);
+	int differenceInDays = (days_from_civil(this->year, this->month, this->day) - days_from_civil(dt.year, dt.month, dt.day));
+	return abs(differenceInDays);
 }
 
 void DateTime::displayDate()
