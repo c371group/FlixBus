@@ -2,7 +2,8 @@
 #include <string>
 
 
-class route {
+class route
+{
 private:
 	std::string source_ = "Green Bay"; //default parameters
 	std::string destination_ = "Green Bay"; // This should be loaded from a file.

@@ -1,11 +1,16 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
+#include <cctype>
 
-class interfaceControl {
-public: 
-	interfaceControl(){}
-	//bool validateInt(std::string input);
+#include "accountRepo.h"
+
+
+class interfaceControl
+{
+public:
+	interfaceControl() = default;
 	bool validateInt(std::string input, int min_num, int max_num);
 	bool validateRegUser(std::string); //validate username that user signs up with
 	bool validate_reg_pass(std::string input);
@@ -14,5 +19,8 @@ public:
 	bool violatesLength(std::string input, int min_num, int max_num);
 	bool notMixtureNumAlpha(std::string);
 	bool notMixtureUpperLower(std::string input);
-
+	std::string lower_string(std::string str);
+	bool affirm(std::string input);
+	bool checkUsernameExistence(accountRepo acctRep, std::string, int&);
+	bool checkPassword(accountRepo acctRep, std::string, int);
 };

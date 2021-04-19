@@ -1,4 +1,3 @@
-//implementation file
 #include "Route.h"
 
 route::route()
@@ -9,7 +8,6 @@ route::route(std::string source, std::string destination, int distance)
 	this->source_ = source;
 	this->destination_ = destination;
 	this->distance_ = distance;
-	
 }
 
 void route::set_source(std::string val)

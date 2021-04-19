@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\views">
+      <UniqueIdentifier>{bdc19f1b-97b7-4888-89b8-89c94d5242d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\views">
+      <UniqueIdentifier>{8acde968-0111-4eb6-b46b-ecc06f3ad097}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Customer.cpp">
@@ -33,11 +39,32 @@
     <ClCompile Include="Fleet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="registration.cpp">
+    <ClCompile Include="Account.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="interfaceControl.cpp">
+    <ClCompile Include="accountRepo.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="uniqueID.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interfaceView.cpp">
+      <Filter>Source Files\views</Filter>
+    </ClCompile>
+    <ClCompile Include="interfaceControl.cpp">
+      <Filter>Source Files\views</Filter>
+    </ClCompile>
+    <ClCompile Include="customerInterface.cpp">
+      <Filter>Source Files\views</Filter>
+    </ClCompile>
+    <ClCompile Include="login.cpp">
+      <Filter>Source Files\views</Filter>
+    </ClCompile>
+    <ClCompile Include="registration.cpp">
+      <Filter>Source Files\views</Filter>
+    </ClCompile>
+    <ClCompile Include="loggedInInterface.cpp">
+      <Filter>Source Files\views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,11 +83,32 @@
     <ClInclude Include="Fleet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="registration.h">
+    <ClInclude Include="Account.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="interfaceControl.h">
+    <ClInclude Include="accountRepo.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="uniqueID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaceView.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaceControl.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="login.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="customerInterface.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="registration.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="loggedInInterface.h">
+      <Filter>Header Files\views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
