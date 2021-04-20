@@ -5,6 +5,7 @@
 #include "registration.h"
 #include "Fleet.h"
 #include "Customer.h"
+#include "DateTime.h"
 #include "customerInterface.h"
 #include "interfaceView.h"
 using namespace std;
@@ -138,11 +139,26 @@ void fleetTesting()
 	testSeats->displayFreeSeats();
 }
 
+void dateTesting() {
+	DateTime currentDate;
+	DateTime testTicketDate(2021, 6, 20, 12,0,0);
+	std::cout << "Current date: " << std::endl;
+	currentDate.displayDate();
+	std::cout << "\nTicket date: " << std::endl;
+	testTicketDate.displayDate();
+	std::cout << "\nDifference in days: " << std::endl;
+	std::cout << currentDate.differenceDays(testTicketDate) << std::endl;
+	
+	// Needs sleep if we want the 2 times to be different.
+	std::cout << "Get updated current date: " << std::endl;
+	currentDate.getCurrentTime();
+}
+
 int main()
 {
 	//TODO: sticking this here before we have capabilities to read from permanent file
 	accountRepo acctRepo = accountRepo();
-
+	//dateTesting();
 	try
 	{
 		customerInterface custInterface = customerInterface(acctRepo);

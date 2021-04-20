@@ -66,6 +66,9 @@
     <ClCompile Include="loggedInInterface.cpp">
       <Filter>Source Files\views</Filter>
     </ClCompile>
+    <ClCompile Include="DateTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="loggedInInterface.h">
       <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="DateTime.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
