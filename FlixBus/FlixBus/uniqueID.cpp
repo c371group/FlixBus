@@ -1,4 +1,6 @@
-#include "uniqueID.h"
+#include "uniqueID.h" //TODO: watch this, i'm dumb
+
+
 
 class UniqueID {
 protected:
@@ -6,6 +8,7 @@ protected:
 public:
 	int id;
 	UniqueID();
+	std::string toString();
 	UniqueID(const UniqueID& orig);
 	UniqueID& operator=(const UniqueID& orig);
 };
@@ -16,6 +19,11 @@ UniqueID::UniqueID() {
 	id = ++nextID;
 }
 
+std::string UniqueID::toString()
+{
+	std::string str = std::to_string(id);
+	return str;
+}
 UniqueID::UniqueID(const UniqueID& orig) {
 	id = orig.id;
 }

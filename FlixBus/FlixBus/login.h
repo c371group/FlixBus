@@ -15,7 +15,7 @@ private:
 	std::string allegedPassword;
 public:
 	login(accountRepo& acctRepo);
-	void enter_username(int);
+	int enter_username();
 	void enter_password(int);
 	void set_Alleged_Username(std::string);
 	void set_Alleged_Password(std::string);

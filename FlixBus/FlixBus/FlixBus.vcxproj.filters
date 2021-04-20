@@ -87,6 +87,9 @@
     <ClCompile Include="adminInterface.cpp">
       <Filter>Source Files\views\Admin</Filter>
     </ClCompile>
+    <ClCompile Include="accountInfoView.cpp">
+      <Filter>Source Files\views\Customer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h">
@@ -139,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="adminInterface.h">
       <Filter>Header Files\views\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="accountInfoView.h">
+      <Filter>Header Files\views\Customer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

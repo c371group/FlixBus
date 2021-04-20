@@ -1,5 +1,5 @@
 #include "interfaceView.h"
-
+//OUR ABSTRACT CLASS
 interfaceView::interfaceView()
 {
 	this->intcon = interfaceControl();
