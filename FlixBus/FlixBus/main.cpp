@@ -8,6 +8,7 @@
 #include "DateTime.h"
 #include "customerInterface.h"
 #include "interfaceView.h"
+#include "userTypeMenuView.h"
 using namespace std;
 
 int test_basic()
@@ -336,7 +337,7 @@ int main()
 	//dateTesting();
 	try
 	{
-		customerInterface custInterface = customerInterface(acctRepo);
+		userTypeMenuView usertypemenuview = userTypeMenuView(acctRepo);
 	}
 	catch (std::exception e)
 	{

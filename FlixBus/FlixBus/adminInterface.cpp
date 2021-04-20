@@ -1,34 +1,32 @@
-#include "customerInterface.h"
-
+#include "adminInterface.h"
 /*Display menu options of 1. login and 2. register. once selected, ask user to confirm.
  * If they don't confirm, send them back to login and register menu. if they do confirm,
  * send them to either register or login interface
  */
 
-customerInterface::customerInterface()
+adminInterface::adminInterface()
 {
-	
 }
-customerInterface::customerInterface(accountRepo& acctRep)
+adminInterface::adminInterface(accountRepo& acctRep)
 {
 	preLoad(acctRep);
 	menuLogic();
 }
 
-void customerInterface::preLoad(accountRepo& acctRep)
+void adminInterface::preLoad(accountRepo& acctRep)
 {
 	this->acctRep = acctRep;
-	std::vector<std::string> menu1 = { "Login", "Register" };
+	std::vector<std::string> menu1 = { "Add a vehicle to the fleet", "View reservation by bus and date", "Edit passenger's name and charges", "Change reservation charges", "View income", "Exit"};
 	std::vector<std::vector<std::string>> temp = { menu1 };
 	set_vecMen(temp);
 }
 
-accountRepo customerInterface::getAcctRep()
+accountRepo adminInterface::getAcctRep()
 {
 	return acctRep;
 }
 
-int customerInterface::menuLogic()
+int adminInterface::menuLogic()
 {
 	int max = display_menu_items(0);
 	int choice_int = enterChoice(max);
@@ -43,18 +41,31 @@ int customerInterface::menuLogic()
 		//TODO: Change to allow going back to menu
 		if (choice_int == 1)
 		{
-			login log = login(acctRep);
 			return 0;
 		}
-		else
+		if (choice_int == 2)
 		{
-			registration reg = registration(acctRep);
-			menuLogic();
+			return 0;
+		}
+		if (choice_int == 3)
+		{
+			
+			return 0;
+		}
+		if (choice_int == 4)
+		{
+			
+			return 0;
+		}
+		if (choice_int == 5)
+		{
+			
+			return 0;
+		}
+		else //exit
+		{
 			return 0;
 		}
 	}
 	return 0;
 }
-
-
-
