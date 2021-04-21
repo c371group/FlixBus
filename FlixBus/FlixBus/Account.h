@@ -9,7 +9,7 @@ private:
 	uniqueID acctID;
 	std::string username_, password_;
 	Customer customer;
-	vector<ticket> tickets_;
+	std::vector<ticket> tickets_;
 public:
 	Account();
 	Account(Customer);
@@ -25,6 +25,6 @@ public:
 	std::string get_username() const;
 	std::string get_password() const;
 	Customer get_customer() const;
-	vector<ticket> getTickets();
+	std::vector<ticket> getTickets();
 };
 

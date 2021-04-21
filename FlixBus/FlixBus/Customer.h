@@ -3,32 +3,32 @@
 #include <vector>
 #include "Ticket.h"
 
-using namespace std;
+//using namespace std;
 
 class Customer
 {
 private:
-	string f_name_, l_name_, address_, email_;
-	string contact_number_;
+	std::string f_name_, l_name_, address_, email_;
+	std::string contact_number_;
 	ticket* ticket_;
 	
 public:
 	Customer();
-	Customer(string f_name, string l_name, string address, string email, string contact_number);
+	Customer(std::string f_name, std::string l_name, std::string address, std::string email, std::string contact_number);
 	
-	void setFirstName(string f_nam);
-	void setLastName(string l_name);
-	void setAddress(string address);
-	void setEmail(string email);
-	void setContactNumber(string contact_number);
+	void setFirstName(std::string f_nam);
+	void setLastName(std::string l_name);
+	void setAddress(std::string address);
+	void setEmail(std::string email);
+	void setContactNumber(std::string contact_number);
 	void setTicket(ticket*);
 	
 
-	string getFirstName() const;
-	string getLastName() const;
-	string getAddress() const;
-	string getEmail() const;
-	string getContactNumber() const;
+	std::string getFirstName() const;
+	std::string getLastName() const;
+	std::string getAddress() const;
+	std::string getEmail() const;
+	std::string getContactNumber() const;
 	ticket* get_ticket();
 	
 };

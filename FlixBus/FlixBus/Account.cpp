@@ -67,7 +67,7 @@ Customer Account::get_customer() const
 	return customer;
 }
 
-vector<ticket> Account::getTickets()
+std::vector<ticket> Account::getTickets()
 {
 	return tickets_;
 }

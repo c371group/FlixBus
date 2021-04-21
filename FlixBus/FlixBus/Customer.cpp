@@ -8,7 +8,7 @@ Customer::Customer()
 	this->email_ = "johndoughey@yahoo.com";
 	this->contact_number_ = "920-345-3536";
 }
-Customer::Customer(string f_name, string l_name, string address, string email, string contact_number)
+Customer::Customer(std::string f_name, std::string l_name, std::string email, std::string address, std::string contact_number)
 {
 	this->f_name_ = f_name;
 	this->l_name_ = l_name;
@@ -71,7 +71,7 @@ std::string Customer::getEmail() const
 
 std::string Customer::getContactNumber() const
 {
-	return this->contact_number_; 
+	return this->contact_number_;
 }
 
 ticket* Customer::get_ticket()

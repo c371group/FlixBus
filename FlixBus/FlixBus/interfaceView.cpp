@@ -7,7 +7,7 @@ interfaceView::interfaceView()
 
 interfaceControl interfaceView::get_intcon()
 {
-	return intcon;
+	return this->intcon;
 }
 
 void interfaceView::set_vecMen(std::vector<std::vector<std::string>> vecMen)
@@ -22,12 +22,12 @@ void interfaceView::set_vecStr(std::vector<std::vector<std::string>> vecStr)
 
 std::vector<std::vector<std::string>> interfaceView::getVecMen()
 {
-	return vecMen;
+	return this->vecMen;
 }
 
-std::vector<std::vector<std::string>> interfaceView::getVecStr()
-{
-	return vecStr;
+std::vector<std::vector<std::string>> interfaceView::get_strs()
+{ //returns the vector of different vectors/sets of strings
+	return this->vecStr;
 }
 
 void interfaceView::set_intcon(interfaceControl intcon)
@@ -48,19 +48,19 @@ int interfaceView::display_menu_items(int i)
 }
 
 std::vector<std::vector<std::string>> interfaceView::get_menu_items()
-{
-	return vecMen;
+{ //returns the vector of different vectors/menus
+	return this->vecMen;
 }
 
-std::vector<std::vector<std::string>> interfaceView::get_strs()
+std::vector<std::string> interfaceView::prompt_strs(int i)
+//i refers to the index of a set of prompts/strings in vecStr
 {
-	return vecStr;
-}
-
-std::vector<std::string> interfaceView::prompt_strs(int i) //i refers to place of a set of prompts in the master list
-{
+	//keeps a set of answers to the prompts
 	std::vector<std::string> promptAns;
+	//the persons answer to any given prompt
 	std::string temp;
+	/*iterates over the vector of strings and takes the persons response, adding it to
+	the promptAns vector*/
 	for (int j = 0; j < get_strs()[i].size(); j++)
 	{
 		std::cout << get_strs()[i][j] << ": ";
