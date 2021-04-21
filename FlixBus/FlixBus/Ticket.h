@@ -13,14 +13,14 @@ private:
 	std::string ticket_id_ = "DEFAULT";
 	bool active_ = true; //active or cancelled ticket
 	route* route_;
-	luxaryBus* bus_; // might change this, but we'll want to still somehow associate the ticket with that particular bus
+	luxuryBus* bus_; // might change this, but we'll want to still somehow associate the ticket with that particular bus
 	//TODO: CREATE TRIP CLASS TO IMPLEMENT IT HERE
 	double cost_ = 0; //cost of ticket-- want to do this as int!
 	DateTime travel_date;
 
 public:
 	ticket();
-	ticket(route*, luxaryBus*);
+	ticket(route*, luxuryBus*);
 	//ticket(route*, miniBus*);
 	//ticket(route*, miniVan*);
 	void set_active(bool);

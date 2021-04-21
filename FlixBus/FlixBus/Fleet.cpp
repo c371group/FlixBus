@@ -1,6 +1,6 @@
 #include "Fleet.h"
 
-void fleet::addLuxaryBus(luxaryBus* luxary)
+void fleet::addLuxaryBus(luxuryBus* luxary)
 {
 	this->luxury_buses.push_back(luxary);
 }
@@ -15,13 +15,14 @@ void fleet::addMiniVan(miniVan* mini)
 	this->mini_vans.push_back(mini);
 }
 
-luxaryBus* fleet::getLuxaryBus(int index)
+luxuryBus* fleet::getLuxaryBus(int index)
 {
 	for (auto item : this->luxury_buses) {
 		if (item->get_id_no() == index) {
 			return item;
 		}
 	}
+	return nullptr;
 }
 
 miniBus* fleet::getMiniBus(int index)

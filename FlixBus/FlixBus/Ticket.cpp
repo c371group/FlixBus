@@ -9,7 +9,7 @@ ticket::ticket()
 	//TODO add actual methods for travel date later on, with trip class
 }
 
-ticket::ticket(route* val1, luxaryBus* val2)
+ticket::ticket(route* val1, luxuryBus* val2)
 {
 	this->route_ = val1;
 	this->bus_ = val2;

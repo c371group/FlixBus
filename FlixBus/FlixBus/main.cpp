@@ -70,7 +70,7 @@ void busSeatTesting()
 	/////////////////////// */
 	// Testing luxury bus seats
 	cout << "\nTesting luxury bus seats" << endl;
-	luxaryBus testLuxBus;
+	luxuryBus testLuxBus;
 	testLuxBus.displaySeats();
 	testLuxBus.reserveSeat(1, 'B');
 	testLuxBus.reserveSeat(11, 'B');
@@ -110,9 +110,9 @@ void fleetTesting()
 	/////////////////////// */
 
 	fleet busFleet;
-	luxaryBus luxBus;
+	luxuryBus luxBus;
 	miniVan miniVan;
-	luxaryBus luxBus1;
+	luxuryBus luxBus1;
 	miniBus miniBus;
 	cout << "\nTesting fleet class." << endl;
 	busFleet.displayLuxaryBusFleet();
@@ -333,8 +333,8 @@ int mainMenu()
 
 void functionalityTesting() {
 
-    luxaryBus luxBus(201);
-    luxaryBus luxBus1(203);
+    luxuryBus luxBus(201);
+    luxuryBus luxBus1(203);
     miniVan miniVan(202);
     miniBus miniBus(204);
     fleet GBMadisonFleet;
@@ -344,7 +344,7 @@ void functionalityTesting() {
     GBMadisonFleet.addMiniBus(&miniBus);
     route GreenBayMadison("Green Bay", "Madison", 135.6, &GBMadisonFleet);
     Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
-    luxaryBus* test = GBMadisonFleet.getLuxaryBus(203);
+    luxuryBus* test = GBMadisonFleet.getLuxaryBus(203);
     ticket customerTicket(&GreenBayMadison, test);
     DateTime ticketDate(2021, 5, 5, 12, 0, 0);
     customerTicket.set_travel_date(ticketDate);

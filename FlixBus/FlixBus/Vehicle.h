@@ -11,12 +11,13 @@ private:
 	int capacity = 0; //how many seats-- this is implicitly linked to type.
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{};
 public:
+	virtual ~vehicle() = default;
 	vehicle();
-	vehicle(int);
+	explicit vehicle(int);
 	void set_id_no(int);
 	void set_capacity(int);
 
-	int get_id_no();
+	virtual int get_id_no();
 	virtual std::string get_type();
 	int get_capacity();
 	int get_all_seats_count();
@@ -35,18 +36,18 @@ public:
 };
 
 
-class luxaryBus : public vehicle
+class luxuryBus : public vehicle
 {
 private:
-	const std::string type = "Luxary Bus";
+	const std::string type = "Luxury Bus";
 	int id_no = 0; //unique identifier for bus
 	const double windowSeatRate = 0.95;
 	const double aisleSeatRate = 0.75;
 	const double busHireRate = 1500;
 	const double busHireRatePerMile = 0.25;
 public:
-	luxaryBus();
-	luxaryBus(int);
+	luxuryBus();
+	explicit luxuryBus(int);
 	// Seats map. <int, char> represents seats id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{
 		{{1, 'A'}, {0, windowSeatRate}}, {{1, 'B'}, {0, aisleSeatRate}}, {{1, 'C'}, {0, aisleSeatRate}},
@@ -72,9 +73,11 @@ public:
 		{{11, 'A'}, {0, windowSeatRate}}, {{11, 'B'}, {0, aisleSeatRate}}
 	};
 
-	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
-	std::string get_type();
-	int get_id_no();
+	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() override;
+	std::string get_type() override;
+	int get_id_no() override;
+	double getBusHireRate() const;
+	double getBusHireRatePerMile() const;
 };
 
 
@@ -109,6 +112,8 @@ public:
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
 	std::string get_type();
 	int get_id_no();
+	double getBusHireRate() const;
+	double getBusHireRatePerMile() const;
 };
 
 
@@ -135,4 +140,6 @@ public:
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
 	std::string get_type();
 	int get_id_no();
+	double getBusHireRate() const;
+	double getBusHireRatePerMile() const;
 };

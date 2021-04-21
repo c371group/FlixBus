@@ -223,30 +223,40 @@ int vehicle::get_free_seats_count()
 }
 
 // Returns a refrence of the seats map
-std::map<std::pair<int, char>, std::pair<int, double>>* luxaryBus::get_seats()
+std::map<std::pair<int, char>, std::pair<int, double>>* luxuryBus::get_seats()
 {
 	return &this->seats;
 }
 
-luxaryBus::luxaryBus()
+luxuryBus::luxuryBus()
 = default;
 
-luxaryBus::luxaryBus(int id)
+luxuryBus::luxuryBus(int id)
 {
 	this->id_no = id;
 }
 
-std::string luxaryBus::get_type()
+std::string luxuryBus::get_type()
 {
 	return this->type;
 }
 
-int luxaryBus::get_id_no()
+int luxuryBus::get_id_no()
 {
 	return this->id_no;
 }
 
-// Returns a refrence of the seats map
+double luxuryBus::getBusHireRate() const
+{
+	return this->busHireRate;
+}
+
+double luxuryBus::getBusHireRatePerMile() const
+{
+	return this->busHireRatePerMile;
+}
+
+// Returns a reference of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* miniBus::get_seats()
 {
 	return &this->seats;
@@ -270,7 +280,17 @@ int miniBus::get_id_no()
 	return this->id_no;
 }
 
-// Returns a refrence of the seats map
+double miniBus::getBusHireRate() const
+{
+	return this->busHireRate;
+}
+
+double miniBus::getBusHireRatePerMile() const
+{
+	return this->busHireRatePerMile;
+}
+
+// Returns a reference of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* miniVan::get_seats()
 {
 	return &this->seats;
@@ -292,4 +312,14 @@ std::string miniVan::get_type()
 int miniVan::get_id_no()
 {
 	return this->id_no;
+}
+
+double miniVan::getBusHireRate() const
+{
+	return this->busHireRate;
+}
+
+double miniVan::getBusHireRatePerMile() const
+{
+	return this->busHireRatePerMile;
 }
