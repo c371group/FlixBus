@@ -71,7 +71,7 @@ std::string Customer::getEmail() const
 
 std::string Customer::getContactNumber() const
 {
-	return this->contact_number_;
+	return this->contact_number_; 
 }
 
 ticket* Customer::get_ticket()
