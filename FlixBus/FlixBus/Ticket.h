@@ -3,6 +3,7 @@
 #include <vector>
 #include "Route.h"
 #include "Vehicle.h"
+#include "DateTime.h"
 
 
 class ticket
@@ -10,30 +11,31 @@ class ticket
 private:
 	//should have attribute for date and time booked to potentially compare to time and date of route departure versus cancellation date and time
 	std::string ticket_id_ = "DEFAULT";
+	std::string seat_number_ = "";
 	bool active_ = true; //active or cancelled ticket
-	route route_;
-	vehicle* bus_; // might change this, but we'll want to still somehow associate the ticket with that particular bus
-	//TODO: CREATE SEAT CLASS TO IMPLEMENT IT HERE
-	std::vector<std::pair<int, char>> seats;
+	route* route_;
+	vehicle* bus_;
 	//TODO: CREATE TRIP CLASS TO IMPLEMENT IT HERE
-	int cost_; //cost of ticket-- want to do this as int! | Trifon: Why ????????
-	std::string travel_date_; //TODO: might want to do this as a time struct object instead
+	double cost_ = 0; //cost of ticket-- want to do this as int!
+	DateTime travel_date;
 
 public:
 	ticket();
-	ticket(route, vehicle*);
+	ticket(route*, luxuryBus*);
+	ticket(route*, miniBus*);
+	ticket(route*, miniVan*);
 	void set_active(bool);
-	void set_route(route);
-	void set_cost(int);
+	void set_route(route*);
+	void set_cost(double);
 	void set_ticket_id(std::string);
-	void set_bus(vehicle*);
-	void set_travel_date(std::string);
+	void set_travel_date(DateTime);
 	void add_seat(int row, char column);
-
+	void set_bus(vehicle*);
 	bool get_active();
-	route get_route();
-	int get_cost();
+	route* get_route();
+	double get_cost();
 	std::string get_ticket_id();
 	vehicle* get_bus();
-	std::string get_travel_date();
+	DateTime get_travel_date();
+	std::string get_seat_number();
 };

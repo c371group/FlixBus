@@ -19,16 +19,17 @@ int test_basic()
 
 	Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
 	Account acct(testCustomer);
+    fleet testFleet;
 	// Adding test ticket.
 	ticket testTicket;
-	route testRout("Green Bay", "Madison", 1356);
-	testTicket.set_route(testRout);
+	route testRout("Green Bay", "Madison", 1356, &testFleet);
+	testTicket.set_route(&testRout);
 	//testTicket.set_cost(5500); // TODO: This will have to be calculated based on type of bus chosen for ticket;
 
 	// Adding second ticket
 	ticket testTicket2;
-	route testRout2("Green Bay", "Oshkosh", 504);
-	testTicket2.set_route(testRout2);
+	route testRout2("Green Bay", "Oshkosh", 504, &testFleet);
+	testTicket2.set_route(&testRout2);
 	testTicket2.set_cost(2500); //25 dollars, or 2500 pennies
 
 	acct.addTicket(testTicket);
@@ -42,19 +43,20 @@ int test_basic()
 	cout << "Customer: " << acct.get_customer().getFirstName() << " " << acct.get_customer().getLastName() << endl;
 	for (ticket item : acct.getTickets())
 	{
-		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() <<
+		cout << "Ticket: From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() <<
 			endl;
-		cout << "Total of " << item.get_route().get_distance() << " miles." << endl;
+		cout << "Total of " << item.get_route()->get_distance() << " miles." << endl;
 		cout << "Price: $" << item.get_cost() << endl;
 	}
-	acct.getTickets()[1].set_travel_date("1/1/2021 12:00:00PM");
+    DateTime ticketDate(2021, 1, 1, 12, 0, 0);
+	acct.getTickets()[1].set_travel_date(ticketDate);
 
 	cout << "Customer: " << acct.get_customer().getFirstName() << " " << acct.get_customer().getLastName() << endl;
 	for (ticket item : acct.getTickets())
 	{
-		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() <<
+		cout << "Ticket: From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() <<
 			endl;
-		cout << "Total of " << item.get_route().get_distance() << " miles." << endl;
+		cout << "Total of " << item.get_route()->get_distance() << " miles." << endl;
 		cout << "Price: $" << item.get_cost() << endl;
 	}
 
@@ -69,7 +71,7 @@ void busSeatTesting()
 	/////////////////////// */
 	// Testing luxury bus seats
 	cout << "\nTesting luxury bus seats" << endl;
-	luxaryBus testLuxBus;
+	luxuryBus testLuxBus;
 	testLuxBus.displaySeats();
 	testLuxBus.reserveSeat(1, 'B');
 	testLuxBus.reserveSeat(11, 'B');
@@ -109,9 +111,9 @@ void fleetTesting()
 	/////////////////////// */
 
 	fleet busFleet;
-	luxaryBus luxBus;
+	luxuryBus luxBus;
 	miniVan miniVan;
-	luxaryBus luxBus1;
+	luxuryBus luxBus1;
 	miniBus miniBus;
 	cout << "\nTesting fleet class." << endl;
 	busFleet.displayLuxaryBusFleet();
@@ -323,19 +325,81 @@ int mainMenu()
                 }
             }
         case 3:
-            exit;
+            exit(0);
         }
         system("PAUSE");
-        return 0;
     }
+    return 0;
+}
+
+void functionalityTesting() {
+
+    std::cout << "Creating buses" << std::endl;
+    luxuryBus luxBus(201);
+    luxuryBus luxBus1(203);
+    miniVan miniVan_(202);
+    miniBus miniBus(204);
+    std::cout << "Creating fleet object" << std::endl;
+    fleet GBMadisonFleet;
+    std::cout << "Adding buses to fleet object" << std::endl;
+    GBMadisonFleet.addLuxaryBus(&luxBus);
+    GBMadisonFleet.addLuxaryBus(&luxBus1);
+    GBMadisonFleet.addMiniVan(&miniVan_);
+    GBMadisonFleet.addMiniBus(&miniBus);
+    std::cout << "Creating route object" << std::endl;
+    route GreenBayMadison("Green Bay", "Madison", 135.6, &GBMadisonFleet);
+    std::cout << "Creating customer." << std::endl;
+    Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
+    luxuryBus* testBussPtr = GBMadisonFleet.getLuxaryBus(203);
+    ticket customerTicket(&GreenBayMadison, testBussPtr);
+    DateTime ticketDate(2021, 5, 5, 12, 0, 0);
+    customerTicket.set_travel_date(ticketDate);
+    customerTicket.set_active(true);
+    customerTicket.add_seat(1, 'A');
+    testCustomer.setTicket(&customerTicket);
+    std::cout << "Customer: " << std::endl;
+    std::cout << "\tName: " << testCustomer.getFirstName() << " " << testCustomer.getLastName() << std::endl;
+    std::cout << "\tContact number: " << testCustomer.getContactNumber() << std::endl;
+    std::cout << "\tRoute: " << testCustomer.get_ticket()->get_route()->get_source() << " - " << testCustomer.get_ticket()->get_route()->get_destination() << std::endl;
+    std::cout << "\tBus type: " << testCustomer.get_ticket()->get_bus()->get_type() << std::endl;
+    std::cout << "\tSeat number: " << testCustomer.get_ticket()->get_seat_number()<< std::endl;
+    std::cout << "\tTicket cost: " << testCustomer.get_ticket()->get_cost() << std::endl;
+    std::cout << "All seats count on the bus: " << testCustomer.get_ticket()->get_bus()->get_all_seats_count() << std::endl;
+    std::cout << "All free seats count on the bus: " << testCustomer.get_ticket()->get_bus()->get_free_seats_count() << std::endl;
+
+
+    std::cout << "\nTesting 2nd Customer" << std::endl;
+    route GreenBayMilwaukee("Green Bay", "Milwaukee", 118.7, &GBMadisonFleet);
+    Customer testCustomer2("Poo", "Moo", "852 Road St", "PM@uwgb.edu", "(920) 123-4567");
+    miniVan* testMinivanPtr = GBMadisonFleet.getMiniVan(202);
+    ticket customerTicket2(&GreenBayMilwaukee, testMinivanPtr);
+    DateTime newTicketDate(2021, 5, 1, 17, 45, 0);
+    customerTicket2.set_travel_date(ticketDate);
+    customerTicket2.set_active(true);
+    customerTicket2.add_seat(4, 'B');
+    testCustomer2.setTicket(&customerTicket2);
+    std::cout << "Customer: " << std::endl;
+    std::cout << "\tName: " << testCustomer2.getFirstName() << " " << testCustomer2.getLastName() << std::endl;
+    std::cout << "\tContact number: " << testCustomer2.getContactNumber() << std::endl;
+    std::cout << "\tRoute: " << customerTicket2.get_route()->get_source() << " - " << customerTicket2.get_route()->get_destination() << std::endl;
+    std::cout << "\tBus type: " << customerTicket2.get_bus()->get_type() << std::endl;
+    std::cout << "\tSeat number: " << customerTicket2.get_seat_number() << std::endl;
+    std::cout << "\tTicket cost: " << customerTicket2.get_cost() << std::endl;
+    std::cout << "All seats count on the bus: " << testCustomer2.get_ticket()->get_bus()->get_all_seats_count() << std::endl;
+    std::cout << "All free seats count on the bus: " << testCustomer2.get_ticket()->get_bus()->get_free_seats_count() << std::endl;
+
 }
 
 int main()
 {
 	//TODO: sticking this here before we have capabilities to read from permanent file
 	accountRepo acctRepo = accountRepo();
+    //busSeatTesting();
+    //fleetTesting();
 	//dateTesting();
-	try
+    //functionalityTesting();
+
+    try
 	{
 		userTypeMenuView usertypemenuview = userTypeMenuView(acctRepo);
 	}

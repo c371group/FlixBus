@@ -18,48 +18,63 @@ Customer::Customer(string f_name, string l_name, string address, string email, s
 }
 
 
-void Customer::setFirstName(std::string f_nam) { f_name_ = f_nam; }
+void Customer::setFirstName(std::string val) 
+{ 
+	this->f_name_ = val; 
+}
 
 
 void Customer::setLastName(std::string val)
 {
-	l_name_ = val;
+	this->l_name_ = val;
 }
 
 void Customer::setAddress(std::string val)
 {
-	address_ = val;
+	this->address_ = val;
 }
 
 void Customer::setEmail(std::string val)
 {
-	email_ = val;
+	this->email_ = val;
 }
 
 void Customer::setContactNumber(std::string val)
 {
-	contact_number_ = val;
+	this->contact_number_ = val;
 }
 
+void Customer::setTicket(ticket* tckt)
+{
+	this->ticket_ = tckt;
+}
 
-std::string Customer::getFirstName() const { return f_name_; }
+std::string Customer::getFirstName() const 
+{ 
+	return this->f_name_;
+}
 
 std::string Customer::getLastName() const
 {
-	return l_name_;
+	return this->l_name_;
 }
 
 std::string Customer::getAddress() const
 {
-	return address_;
+	return this->address_;
 }
 
 std::string Customer::getEmail() const
 {
-	return email_;
+	return this->email_;
 }
 
 std::string Customer::getContactNumber() const
 {
-	return contact_number_;
+	return this->contact_number_;
+}
+
+ticket* Customer::get_ticket()
+{
+	return this->ticket_;
 }
