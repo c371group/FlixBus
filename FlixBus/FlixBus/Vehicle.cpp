@@ -4,17 +4,9 @@
 vehicle::vehicle()
 = default;
 
-vehicle::vehicle(std::string val)
-{
-	this->type = val;
-	set_values_from_type(val);
-}
-
-vehicle::vehicle(int val1, std::string val2)
+vehicle::vehicle(int val1)
 {
 	this->id_no = val1;
-	this->type = val2;
-	set_values_from_type(val2);
 }
 
 void vehicle::set_id_no(int val)
@@ -27,23 +19,20 @@ void vehicle::set_capacity(int val)
 	this->capacity = val;
 }
 
-void vehicle::set_type(std::string val)
-{
-	this->type = val;
-}
-
+/*
 void vehicle::set_rate_per_mile(int val)
 {
 	this->rate_per_mile = val;
 }
+*/
 
-int vehicle::set_values_from_type(std::string val) //TODO: go back and make this an enum
+/*int vehicle::set_values_from_type(std::string val) //TODO: go back and make this an enum
 {
 	std::string types[] = {"Luxury Bus", "Mini Bus", "MiniVan"};
 	int capacities[] = {52, 36, 12}; // we'll have to figure out stuff with the seats later
-	int rates_per_mile_regular[] = {75, 65, 50}; /* this is just an array for the regular travel, NOT RENTAL,
-	we'll have to create something for the luxury bus (remember that window and aisle seats are
-	different prices) but this is just for testing*/
+	int rates_per_mile_regular[] = {75, 65, 50}; // this is just an array for the regular travel, NOT RENTAL,
+	//we'll have to create something for the luxury bus (remember that window and aisle seats are
+	//different prices) but this is just for testing
 
 	for (auto i = 0; i < 3; i++)
 	{
@@ -58,7 +47,7 @@ int vehicle::set_values_from_type(std::string val) //TODO: go back and make this
 	std::cout << "WARNING: BUS TYPE COULD NOT BE FOUND" << std::endl;
 	return 0;
 }
-
+*/
 
 int vehicle::get_id_no()
 {
@@ -74,12 +63,6 @@ int vehicle::get_capacity()
 std::string vehicle::get_type()
 {
 	return this->type;
-}
-
-
-int vehicle::get_rate_per_mile()
-{
-	return this->rate_per_mile;
 }
 
 // Loops through seats map and displays all seats.
@@ -131,29 +114,40 @@ void vehicle::displayFreeSeats()
 }
 
 // Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
-void vehicle::reserveSeat(int row, char column)
+// Returns True only if the seat was reserved and not taken before. Else it will return False.
+bool vehicle::reserveSeat(int row, char column)
 {
-	auto seats = get_seats();
+	auto seats = *get_seats();
 	std::pair<int, char> seat{row, column};
-	if ((*seats).count(seat) > 0)
+	if ((seats).count(seat) > 0)
 	{
-		for (auto& p : *seats)
+		for (auto& p : seats)
 		{
 			if (p.first.first == row && p.first.second == column)
 			{
-				p.second.first = 1;
-				std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+				if (p.second.first != 1) {
+					p.second.first = 1;
+					std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
+					return true;
+				}
+				else {
+					std::cout << std::endl << p.first.first << p.first.second << " seat was taken!" << std::endl;
+					return false;
+				}
 			}
 		}
 	}
 	else
 	{
 		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+		return false;
 	}
+	return false;
 }
 
 // Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
-void vehicle::cancelSeat(int row, char column)
+// Returns True only if the seat was cancelled. Else it will return False.
+bool vehicle::cancelSeat(int row, char column)
 {
 	auto seats = get_seats();
 	std::pair<int, char> seat{row, column};
@@ -163,22 +157,83 @@ void vehicle::cancelSeat(int row, char column)
 		{
 			if (p.first.first == row && p.first.second == column)
 			{
-				p.second.first = 0;
-				std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+				if (p.second.first != 0)
+				{
+					p.second.first = 0;
+					std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
+					return true;
+				}
+				else {
+					std::cout << std::endl << p.first.first << p.first.second << " seat was not reserved. No need of cancellation." << std::endl;
+					return false;
+				}
 			}
 		}
 	}
 	else
 	{
 		std::cout << std::endl << row << column << " seat was not found." << std::endl;
+		return false;
 	}
+	return false;
+}
+
+// Returns seat's rate, if it doesn't find the seat, returns 0
+double vehicle::getSeatRate(int row, char column)
+{
+	auto seats = get_seats();
+	std::pair<int, char> seat{ row, column };
+	if ((*seats).count(seat) > 0)
+	{
+		for (auto& p : *seats)
+		{
+			if (p.first.first == row && p.first.second == column)
+			{
+				return p.second.second;
+			}
+		}
+	}
+	return 0;
+}
+
+int vehicle::get_all_seats_count()
+{
+	auto seats = *get_seats();
+	int seatsCount = 0;
+	for (const auto& p : seats)
+	{
+		seatsCount++;
+	}
+	return seatsCount;
+}
+
+int vehicle::get_free_seats_count()
+{
+	auto seats = *get_seats();
+	int seatsCount = 0;
+	for (const auto& p : seats)
+	{
+
+		if (p.second.first == 0)
+		{
+			seatsCount++;
+		}
+	}
+	return seatsCount;
 }
 
 // Returns a refrence of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* luxaryBus::get_seats()
 {
-	// TODO: insert return statement here
 	return &this->seats;
+}
+
+luxaryBus::luxaryBus()
+= default;
+
+luxaryBus::luxaryBus(int id)
+{
+	this->id_no = id;
 }
 
 std::string luxaryBus::get_type()
@@ -186,11 +241,23 @@ std::string luxaryBus::get_type()
 	return this->type;
 }
 
+int luxaryBus::get_id_no()
+{
+	return this->id_no;
+}
+
 // Returns a refrence of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* miniBus::get_seats()
 {
-	// TODO: insert return statement here
 	return &this->seats;
+}
+
+miniBus::miniBus()
+= default;
+
+miniBus::miniBus(int id)
+{
+	this->id_no = id;
 }
 
 std::string miniBus::get_type()
@@ -198,14 +265,31 @@ std::string miniBus::get_type()
 	return this->type;
 }
 
+int miniBus::get_id_no()
+{
+	return this->id_no;
+}
+
 // Returns a refrence of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* miniVan::get_seats()
 {
-	// TODO: insert return statement here
 	return &this->seats;
+}
+
+miniVan::miniVan()
+= default;
+
+miniVan::miniVan(int id)
+{
+	this->id_no = id;
 }
 
 std::string miniVan::get_type()
 {
 	return this->type;
+}
+
+int miniVan::get_id_no()
+{
+	return this->id_no;
 }

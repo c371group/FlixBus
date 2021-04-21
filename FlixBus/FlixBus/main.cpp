@@ -18,16 +18,17 @@ int test_basic()
 
 	Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
 	Account acct(testCustomer);
+    fleet testFleet;
 	// Adding test ticket.
 	ticket testTicket;
-	route testRout("Green Bay", "Madison", 1356);
-	testTicket.set_route(testRout);
+	route testRout("Green Bay", "Madison", 1356, &testFleet);
+	testTicket.set_route(&testRout);
 	//testTicket.set_cost(5500); // TODO: This will have to be calculated based on type of bus chosen for ticket;
 
 	// Adding second ticket
 	ticket testTicket2;
-	route testRout2("Green Bay", "Oshkosh", 504);
-	testTicket2.set_route(testRout2);
+	route testRout2("Green Bay", "Oshkosh", 504, &testFleet);
+	testTicket2.set_route(&testRout2);
 	testTicket2.set_cost(2500); //25 dollars, or 2500 pennies
 
 	acct.addTicket(testTicket);
@@ -41,19 +42,20 @@ int test_basic()
 	cout << "Customer: " << acct.get_customer().getFirstName() << " " << acct.get_customer().getLastName() << endl;
 	for (ticket item : acct.getTickets())
 	{
-		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() <<
+		cout << "Ticket: From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() <<
 			endl;
-		cout << "Total of " << item.get_route().get_distance() << " miles." << endl;
+		cout << "Total of " << item.get_route()->get_distance() << " miles." << endl;
 		cout << "Price: $" << item.get_cost() << endl;
 	}
-	acct.getTickets()[1].set_travel_date("1/1/2021 12:00:00PM");
+    DateTime ticketDate(2021, 1, 1, 12, 0, 0);
+	acct.getTickets()[1].set_travel_date(ticketDate);
 
 	cout << "Customer: " << acct.get_customer().getFirstName() << " " << acct.get_customer().getLastName() << endl;
 	for (ticket item : acct.getTickets())
 	{
-		cout << "Ticket: From " << item.get_route().get_source() << " To " << item.get_route().get_destination() <<
+		cout << "Ticket: From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() <<
 			endl;
-		cout << "Total of " << item.get_route().get_distance() << " miles." << endl;
+		cout << "Total of " << item.get_route()->get_distance() << " miles." << endl;
 		cout << "Price: $" << item.get_cost() << endl;
 	}
 
@@ -322,24 +324,51 @@ int mainMenu()
                 }
             }
         case 3:
-            exit;
+            exit(0);
         }
         system("PAUSE");
-        return 0;
     }
+    return 0;
+}
+
+void functionalityTesting() {
+
+    luxaryBus luxBus(201);
+    luxaryBus luxBus1(203);
+    miniVan miniVan(202);
+    miniBus miniBus(204);
+    fleet GBMadisonFleet;
+    GBMadisonFleet.addLuxaryBus(&luxBus);
+    GBMadisonFleet.addLuxaryBus(&luxBus1);
+    GBMadisonFleet.addMiniVan(&miniVan);
+    GBMadisonFleet.addMiniBus(&miniBus);
+    route GreenBayMadison("Green Bay", "Madison", 135.6, &GBMadisonFleet);
+    Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
+    luxaryBus* test = GBMadisonFleet.getLuxaryBus(203);
+    ticket customerTicket(&GreenBayMadison, test);
+    DateTime ticketDate(2021, 5, 5, 12, 0, 0);
+    customerTicket.set_travel_date(ticketDate);
+    customerTicket.set_active(true);
+    customerTicket.add_seat(1, 'A');
+    std::cout << "Current balance: " << customerTicket.get_cost() << std::endl;
+
 }
 
 int main()
 {
 	//TODO: sticking this here before we have capabilities to read from permanent file
 	accountRepo acctRepo = accountRepo();
+    //busSeatTesting();
+    //fleetTesting();
 	//dateTesting();
-	try
+    functionalityTesting();
+    
+    /*try
 	{
 		customerInterface custInterface = customerInterface(acctRepo);
 	}
 	catch (std::exception e)
 	{
 		std::cout << "epic fail" << std::endl;
-	}
+	}*/
 }

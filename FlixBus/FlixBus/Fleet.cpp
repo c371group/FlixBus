@@ -1,33 +1,47 @@
 #include "Fleet.h"
 
-void fleet::addLuxaryBus(vehicle* luxary)
+void fleet::addLuxaryBus(luxaryBus* luxary)
 {
 	this->luxury_buses.push_back(luxary);
 }
 
-void fleet::addMiniBus(vehicle* small)
+void fleet::addMiniBus(miniBus* small)
 {
 	this->mini_buses.push_back(small);
 }
 
-void fleet::addMiniVan(vehicle* mini)
+void fleet::addMiniVan(miniVan* mini)
 {
 	this->mini_vans.push_back(mini);
 }
 
-vehicle* fleet::getLuxaryBus(int index)
+luxaryBus* fleet::getLuxaryBus(int index)
 {
-	return this->luxury_buses[index];
+	for (auto item : this->luxury_buses) {
+		if (item->get_id_no() == index) {
+			return item;
+		}
+	}
 }
 
-vehicle* fleet::getMiniBus(int index)
+miniBus* fleet::getMiniBus(int index)
 {
-	return this->mini_buses[index];
+	for (auto item : this->mini_buses) {
+		if (item->get_id_no() == index) {
+			return item;
+		}
+	}
+	return nullptr;
 }
 
-vehicle* fleet::getMiniVan(int index)
+miniVan* fleet::getMiniVan(int index)
 {
-	return this->mini_vans[index];
+	for (auto item : this->mini_vans) {
+		if (item->get_id_no() == index) {
+			return item;
+		}
+	}
+	return nullptr;
 }
 
 void fleet::displayLuxaryBusFleet()

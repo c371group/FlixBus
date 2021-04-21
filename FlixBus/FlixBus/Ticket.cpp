@@ -1,86 +1,91 @@
 #include "Ticket.h"
+#include "DateTime.h"
 
 ticket::ticket()
 {
-	route_ = route();
-	bus_ = nullptr;
-	cost_ = route_.get_distance() * bus_->get_rate_per_mile();
+	this->route_ = nullptr;
+	this->bus_ = nullptr;
+	this->cost_ = 0; //route_.get_distance() * bus_->get_rate_per_mile();
 	//TODO add actual methods for travel date later on, with trip class
 }
 
-ticket::ticket(route val1, vehicle* val2)
+ticket::ticket(route* val1, luxaryBus* val2)
 {
-	route_ = val1;
-	bus_ = val2;
-	cost_ = val1.get_distance() * val2->get_rate_per_mile();
-	/*storing as is to make math easier,
-	there's no payment requirement so all we have to really do is display in "regular" numbers for customer
-	by dividing and setting precision. */
+	this->route_ = val1;
+	this->bus_ = val2;
 }
 
 void ticket::set_active(bool val)
 {
-	active_ = val;
+	this->active_ = val;
 }
 
-void ticket::set_route(route val)
+void ticket::set_route(route* val)
 {
-	route_ = val;
-	cost_ = route_.get_distance() * bus_->get_rate_per_mile();
+	this->route_ = val;
+	this->cost_ = 0; //route_.get_distance() * bus_->get_rate_per_mile();
 }
 
-void ticket::set_cost(int val)
+void ticket::set_cost(double val)
 {
-	cost_ = val;
+	this->cost_ = val;
 }
 
 void ticket::set_ticket_id(std::string val)
 {
-	ticket_id_ = val;
+	this->ticket_id_ = val;
 }
 
-void ticket::set_bus(vehicle* val)
+/*void ticket::set_bus(vehicle* val)
 {
-	bus_ = val;
-}
+	this->bus_ = val;
+}*/
 
-void ticket::set_travel_date(std::string val)
+void ticket::set_travel_date(DateTime date)
 {
-	travel_date_ = val;
+	this->travel_date = date;
 }
 
+// Reserves a seat on a bus. If the seat is successfully reserved, reserveSeat() returns true, 
+// Then we calculate the cost, based on the seat. Else we print messege.
 void ticket::add_seat(int row, char column)
-{
-	std::pair<int, char> seat{row, column};
-	this->seats.push_back(seat);
+{	
+	double seatRate;
+	if (this->bus_->reserveSeat(row, column)) {
+		seatRate = this->bus_->getSeatRate(row, column);
+		this->set_cost(this->route_->get_distance() * seatRate);
+	}
+	else {
+		std::cout << "Seat can't be reserved. Try again!" << std::endl;
+	}
 }
 
 bool ticket::get_active()
 {
-	return active_;
+	return this->active_;
 }
 
-route ticket::get_route()
+route* ticket::get_route()
 {
-	return route_;
+	return this->route_;
 }
 
-int ticket::get_cost()
+double ticket::get_cost()
 {
-	return cost_;
+	return this->cost_;
 }
 
 std::string ticket::get_ticket_id()
 {
-	return ticket_id_;
+	return this->ticket_id_;
 }
 
 vehicle* ticket::get_bus()
 {
-	return bus_;
+	return this->bus_;
 }
 
-std::string ticket::get_travel_date()
+DateTime ticket::get_travel_date()
 {
-	return travel_date_;
+	return this->travel_date;
 }
