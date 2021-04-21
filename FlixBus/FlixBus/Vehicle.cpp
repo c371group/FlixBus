@@ -117,22 +117,24 @@ void vehicle::displayFreeSeats()
 // Returns True only if the seat was reserved and not taken before. Else it will return False.
 bool vehicle::reserveSeat(int row, char column)
 {
-	auto seats = *get_seats();
-	std::pair<int, char> seat{row, column};
-	if ((seats).count(seat) > 0)
+	bool validate = false;
+	auto seats = get_seats();
+	std::pair<int, char> seat{ row, column };
+	if ((*seats).count(seat) > 0)
 	{
-		for (auto& p : seats)
+		for (auto& p : *seats)
 		{
 			if (p.first.first == row && p.first.second == column)
 			{
 				if (p.second.first != 1) {
 					p.second.first = 1;
 					std::cout << std::endl << p.first.first << p.first.second << " seat was reserved!" << std::endl;
-					return true;
+					validate = true;
 				}
-				else {
-					std::cout << std::endl << p.first.first << p.first.second << " seat was taken!" << std::endl;
-					return false;
+				else
+				{
+					std::cout << std::endl << p.first.first << p.first.second << " seat was already reserved!" << std::endl;
+					validate = true;
 				}
 			}
 		}
@@ -140,17 +142,17 @@ bool vehicle::reserveSeat(int row, char column)
 	else
 	{
 		std::cout << std::endl << row << column << " seat was not found." << std::endl;
-		return false;
 	}
-	return false;
+	return validate;
 }
 
 // Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
 // Returns True only if the seat was cancelled. Else it will return False.
 bool vehicle::cancelSeat(int row, char column)
 {
+	bool validate = false;
 	auto seats = get_seats();
-	std::pair<int, char> seat{row, column};
+	std::pair<int, char> seat{ row, column };
 	if ((*seats).count(seat) > 0)
 	{
 		for (auto& p : *seats)
@@ -161,11 +163,10 @@ bool vehicle::cancelSeat(int row, char column)
 				{
 					p.second.first = 0;
 					std::cout << std::endl << p.first.first << p.first.second << " seat was cancelled!" << std::endl;
-					return true;
+					validate = true;
 				}
 				else {
 					std::cout << std::endl << p.first.first << p.first.second << " seat was not reserved. No need of cancellation." << std::endl;
-					return false;
 				}
 			}
 		}
@@ -173,9 +174,8 @@ bool vehicle::cancelSeat(int row, char column)
 	else
 	{
 		std::cout << std::endl << row << column << " seat was not found." << std::endl;
-		return false;
 	}
-	return false;
+	return validate;
 }
 
 // Returns seat's rate, if it doesn't find the seat, returns 0

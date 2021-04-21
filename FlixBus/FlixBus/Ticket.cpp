@@ -1,18 +1,30 @@
 #include "Ticket.h"
 #include "DateTime.h"
+#include <string>
+
 
 ticket::ticket()
 {
 	this->route_ = nullptr;
 	this->bus_ = nullptr;
-	this->cost_ = 0; //route_.get_distance() * bus_->get_rate_per_mile();
-	//TODO add actual methods for travel date later on, with trip class
 }
 
-ticket::ticket(route* val1, luxuryBus* val2)
+ticket::ticket(route* route, luxuryBus* bus)
 {
-	this->route_ = val1;
-	this->bus_ = val2;
+	this->route_ = route;
+	this->bus_ = bus;
+}
+
+ticket::ticket(route* route, miniBus* bus)
+{
+	this->route_ = route;
+	this->bus_ = bus;
+}
+
+ticket::ticket(route* route, miniVan* bus)
+{
+	this->route_ = route;
+	this->bus_ = bus;
 }
 
 void ticket::set_active(bool val)
@@ -23,7 +35,6 @@ void ticket::set_active(bool val)
 void ticket::set_route(route* val)
 {
 	this->route_ = val;
-	this->cost_ = 0; //route_.get_distance() * bus_->get_rate_per_mile();
 }
 
 void ticket::set_cost(double val)
@@ -36,10 +47,6 @@ void ticket::set_ticket_id(std::string val)
 	this->ticket_id_ = val;
 }
 
-/*void ticket::set_bus(vehicle* val)
-{
-	this->bus_ = val;
-}*/
 
 void ticket::set_travel_date(DateTime date)
 {
@@ -47,17 +54,23 @@ void ticket::set_travel_date(DateTime date)
 }
 
 // Reserves a seat on a bus. If the seat is successfully reserved, reserveSeat() returns true, 
-// Then we calculate the cost, based on the seat. Else we print messege.
+// Then we calculate the cost, based on the seat. Else we print message.
 void ticket::add_seat(int row, char column)
 {	
 	double seatRate;
 	if (this->bus_->reserveSeat(row, column)) {
 		seatRate = this->bus_->getSeatRate(row, column);
 		this->set_cost(this->route_->get_distance() * seatRate);
+		this->seat_number_ = std::to_string(row) + column;
 	}
 	else {
 		std::cout << "Seat can't be reserved. Try again!" << std::endl;
 	}
+}
+
+void ticket::set_bus(vehicle* bus)
+{
+	this->bus_ = bus;
 }
 
 bool ticket::get_active()
@@ -88,4 +101,9 @@ vehicle* ticket::get_bus()
 DateTime ticket::get_travel_date()
 {
 	return this->travel_date;
+}
+
+std::string ticket::get_seat_number()
+{
+	return this->seat_number_;
 }

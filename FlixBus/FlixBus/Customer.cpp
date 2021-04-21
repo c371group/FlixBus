@@ -44,6 +44,11 @@ void Customer::setContactNumber(std::string val)
 	this->contact_number_ = val;
 }
 
+void Customer::setTicket(ticket* tckt)
+{
+	this->ticket_ = tckt;
+}
+
 std::string Customer::getFirstName() const 
 { 
 	return this->f_name_;
@@ -67,4 +72,9 @@ std::string Customer::getEmail() const
 std::string Customer::getContactNumber() const
 {
 	return this->contact_number_;
+}
+
+ticket* Customer::get_ticket()
+{
+	return this->ticket_;
 }

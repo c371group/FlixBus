@@ -333,24 +333,59 @@ int mainMenu()
 
 void functionalityTesting() {
 
+    std::cout << "Creating buses" << std::endl;
     luxuryBus luxBus(201);
     luxuryBus luxBus1(203);
-    miniVan miniVan(202);
+    miniVan miniVan_(202);
     miniBus miniBus(204);
+    std::cout << "Creating fleet object" << std::endl;
     fleet GBMadisonFleet;
+    std::cout << "Adding buses to fleet object" << std::endl;
     GBMadisonFleet.addLuxaryBus(&luxBus);
     GBMadisonFleet.addLuxaryBus(&luxBus1);
-    GBMadisonFleet.addMiniVan(&miniVan);
+    GBMadisonFleet.addMiniVan(&miniVan_);
     GBMadisonFleet.addMiniBus(&miniBus);
+    std::cout << "Creating route object" << std::endl;
     route GreenBayMadison("Green Bay", "Madison", 135.6, &GBMadisonFleet);
+    std::cout << "Creating customer." << std::endl;
     Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
-    luxuryBus* test = GBMadisonFleet.getLuxaryBus(203);
-    ticket customerTicket(&GreenBayMadison, test);
+    luxuryBus* testBussPtr = GBMadisonFleet.getLuxaryBus(203);
+    ticket customerTicket(&GreenBayMadison, testBussPtr);
     DateTime ticketDate(2021, 5, 5, 12, 0, 0);
     customerTicket.set_travel_date(ticketDate);
     customerTicket.set_active(true);
     customerTicket.add_seat(1, 'A');
-    std::cout << "Current balance: " << customerTicket.get_cost() << std::endl;
+    testCustomer.setTicket(&customerTicket);
+    std::cout << "Customer: " << std::endl;
+    std::cout << "\tName: " << testCustomer.getFirstName() << " " << testCustomer.getLastName() << std::endl;
+    std::cout << "\tContact number: " << testCustomer.getContactNumber() << std::endl;
+    std::cout << "\tRoute: " << testCustomer.get_ticket()->get_route()->get_source() << " - " << testCustomer.get_ticket()->get_route()->get_destination() << std::endl;
+    std::cout << "\tBus type: " << testCustomer.get_ticket()->get_bus()->get_type() << std::endl;
+    std::cout << "\tSeat number: " << testCustomer.get_ticket()->get_seat_number()<< std::endl;
+    std::cout << "\tTicket cost: " << testCustomer.get_ticket()->get_cost() << std::endl;
+    std::cout << "All seats count on the bus: " << testCustomer.get_ticket()->get_bus()->get_all_seats_count() << std::endl;
+    std::cout << "All free seats count on the bus: " << testCustomer.get_ticket()->get_bus()->get_free_seats_count() << std::endl;
+
+
+    std::cout << "\nTesting 2nd Customer" << std::endl;
+    route GreenBayMilwaukee("Green Bay", "Milwaukee", 118.7, &GBMadisonFleet);
+    Customer testCustomer2("Poo", "Moo", "852 Road St", "PM@uwgb.edu", "(920) 123-4567");
+    miniVan* testMinivanPtr = GBMadisonFleet.getMiniVan(202);
+    ticket customerTicket2(&GreenBayMilwaukee, testMinivanPtr);
+    DateTime newTicketDate(2021, 5, 1, 17, 45, 0);
+    customerTicket2.set_travel_date(ticketDate);
+    customerTicket2.set_active(true);
+    customerTicket2.add_seat(4, 'B');
+    testCustomer2.setTicket(&customerTicket2);
+    std::cout << "Customer: " << std::endl;
+    std::cout << "\tName: " << testCustomer2.getFirstName() << " " << testCustomer2.getLastName() << std::endl;
+    std::cout << "\tContact number: " << testCustomer2.getContactNumber() << std::endl;
+    std::cout << "\tRoute: " << customerTicket2.get_route()->get_source() << " - " << customerTicket2.get_route()->get_destination() << std::endl;
+    std::cout << "\tBus type: " << customerTicket2.get_bus()->get_type() << std::endl;
+    std::cout << "\tSeat number: " << customerTicket2.get_seat_number() << std::endl;
+    std::cout << "\tTicket cost: " << customerTicket2.get_cost() << std::endl;
+    std::cout << "All seats count on the bus: " << testCustomer2.get_ticket()->get_bus()->get_all_seats_count() << std::endl;
+    std::cout << "All free seats count on the bus: " << testCustomer2.get_ticket()->get_bus()->get_free_seats_count() << std::endl;
 
 }
 
@@ -361,14 +396,14 @@ int main()
     //busSeatTesting();
     //fleetTesting();
 	//dateTesting();
-    functionalityTesting();
-    
-    /*try
+    //functionalityTesting();
+
+    try
 	{
 		customerInterface custInterface = customerInterface(acctRepo);
 	}
 	catch (std::exception e)
 	{
 		std::cout << "epic fail" << std::endl;
-	}*/
+	}
 }
