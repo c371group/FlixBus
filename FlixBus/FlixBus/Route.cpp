@@ -3,39 +3,51 @@
 route::route()
 = default;
 
-route::route(std::string source, std::string destination, int distance)
+route::route(std::string source, std::string destination, double distance, fleet * busFleet)
 {
 	this->source_ = source;
 	this->destination_ = destination;
 	this->distance_ = distance;
+	this->busFleet = busFleet;
 }
+
 
 void route::set_source(std::string val)
 {
-	source_ = val;
+	this->source_ = val;
 }
 
 void route::set_destination(std::string val)
 {
-	destination_ = val;
+	this->destination_ = val;
 }
 
 void route::set_distance(int val)
 {
-	distance_ = val;
+	this->distance_ = val;
+}
+
+void route::set_fleet(fleet* busFleet)
+{
+	this->busFleet = busFleet;
 }
 
 std::string route::get_source()
 {
-	return source_;
+	return this->source_;
 }
 
 std::string route::get_destination()
 {
-	return destination_;
+	return this->destination_;
 }
 
-int route::get_distance()
+double route::get_distance()
 {
-	return distance_;
+	return this->distance_;
+}
+
+fleet* route::get_fleet()
+{
+	return this->busFleet;
 }

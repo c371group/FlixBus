@@ -6,18 +6,18 @@
 class fleet
 {
 private:
-	std::vector<vehicle*> luxury_buses;
-	std::vector<vehicle*> mini_buses;
-	std::vector<vehicle*> mini_vans;
+	std::vector<luxuryBus*> luxury_buses;
+	std::vector<miniBus*> mini_buses;
+	std::vector<miniVan*> mini_vans;
 
 public:
-	void addLuxaryBus(vehicle* luxary);
-	void addMiniBus(vehicle* small);
-	void addMiniVan(vehicle* mini);
+	void addLuxaryBus(luxuryBus*);
+	void addMiniBus(miniBus*);
+	void addMiniVan(miniVan*);
 
-	vehicle* getLuxaryBus(int index);
-	vehicle* getMiniBus(int index);
-	vehicle* getMiniVan(int index);
+	luxuryBus* getLuxaryBus(int);
+	miniBus* getMiniBus(int);
+	miniVan* getMiniVan(int);
 	void displayLuxaryBusFleet();
 	void displayMiniBusFleet();
 	void displayMiniVanFleet();
