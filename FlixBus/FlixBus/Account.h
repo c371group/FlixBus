@@ -9,10 +9,11 @@ private:
 	uniqueID acctID;
 	std::string username_, password_;
 	Customer customer;
-	vector<ticket> tickets_;
+	std::vector<ticket> tickets_;
 public:
 	Account();
 	Account(Customer);
+	Account(Customer cust, int person); //TESTING ONLY
 	Account(Customer, std::string, std::string);
 	void set_acct_id(uniqueID acctID);
 	void set_username(std::string);
@@ -25,6 +26,6 @@ public:
 	std::string get_username() const;
 	std::string get_password() const;
 	Customer get_customer() const;
-	vector<ticket> getTickets();
+	std::vector<ticket> getTickets();
 };
 

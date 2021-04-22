@@ -20,7 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
+    <ClCompile Include="accountInfoView.cpp" />
     <ClCompile Include="accountRepo.cpp" />
+    <ClCompile Include="adminInterface.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="customerInterface.cpp" />
     <ClCompile Include="DateTime.cpp" />
@@ -32,13 +34,18 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="registration.cpp" />
     <ClCompile Include="Route.cpp" />
+    <ClCompile Include="routeRepo.cpp" />
     <ClCompile Include="Ticket.cpp" />
+    <ClCompile Include="Trip.cpp" />
     <ClCompile Include="uniqueID.cpp" />
+    <ClCompile Include="userTypeMenuView.cpp" />
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
+    <ClInclude Include="accountInfoView.h" />
     <ClInclude Include="accountRepo.h" />
+    <ClInclude Include="adminInterface.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="customerInterface.h" />
     <ClInclude Include="DateTime.h" />
@@ -49,8 +56,11 @@
     <ClInclude Include="login.h" />
     <ClInclude Include="registration.h" />
     <ClInclude Include="Route.h" />
+    <ClInclude Include="routeRepo.h" />
     <ClInclude Include="Ticket.h" />
+    <ClInclude Include="Trip.h" />
     <ClInclude Include="uniqueID.h" />
+    <ClInclude Include="userTypeMenuView.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

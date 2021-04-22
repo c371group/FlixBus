@@ -166,10 +166,17 @@ bool interfaceControl::affirm(std::string input)
 }
 
 bool interfaceControl::checkUsernameExistence(accountRepo acctRep, std::string claimedUsername, int& index){
+/*Takes the account repo and iterates over the accounts in there, checking usernames for a match for
+ * the string the user entered. if the match is found at a certain index, change the index parameter
+ * to that index (passed by reference) and return true because a match WAS found. if not,
+ * return false
+ */
 	for (int i = 0; i < acctRep.getAccts().size(); i++) {
 		if (acctRep.getAccts()[i].get_username() == claimedUsername)
 		{
 			index = i;
+			//DEBUGGING
+			//std::cout << "FOUND YA" << std::endl;
 			return true;
 		}
 	}

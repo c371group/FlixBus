@@ -19,11 +19,26 @@
     <Filter Include="Header Files\views">
       <UniqueIdentifier>{8acde968-0111-4eb6-b46b-ecc06f3ad097}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\views\Admin">
+      <UniqueIdentifier>{814c3cc9-1564-45db-85c4-20178c1d4aed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\views\Customer">
+      <UniqueIdentifier>{8588cc9a-d848-438b-9a2d-0c8f014a1569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\views\Admin">
+      <UniqueIdentifier>{f411739e-4d30-4eac-8156-8d1dcbabc2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\views\Customer">
+      <UniqueIdentifier>{57775fe5-edd0-471c-8aac-5c96f1a153d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\client">
+      <UniqueIdentifier>{879f2241-7e45-4443-a028-9a55e199b2f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client">
+      <UniqueIdentifier>{52482ade-0d13-457a-9cb7-1b59a0c11f2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Customer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Ticket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,41 +54,56 @@
     <ClCompile Include="Fleet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Account.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="accountRepo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="uniqueID.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="interfaceView.cpp">
       <Filter>Source Files\views</Filter>
     </ClCompile>
     <ClCompile Include="interfaceControl.cpp">
       <Filter>Source Files\views</Filter>
     </ClCompile>
-    <ClCompile Include="customerInterface.cpp">
-      <Filter>Source Files\views</Filter>
+    <ClCompile Include="DateTime.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="login.cpp">
-      <Filter>Source Files\views</Filter>
-    </ClCompile>
-    <ClCompile Include="registration.cpp">
+    <ClCompile Include="userTypeMenuView.cpp">
       <Filter>Source Files\views</Filter>
     </ClCompile>
     <ClCompile Include="loggedInInterface.cpp">
-      <Filter>Source Files\views</Filter>
+      <Filter>Source Files\views\Customer</Filter>
     </ClCompile>
-    <ClCompile Include="DateTime.cpp">
+    <ClCompile Include="login.cpp">
+      <Filter>Source Files\views\Customer</Filter>
+    </ClCompile>
+    <ClCompile Include="registration.cpp">
+      <Filter>Source Files\views\Customer</Filter>
+    </ClCompile>
+    <ClCompile Include="customerInterface.cpp">
+      <Filter>Source Files\views\Customer</Filter>
+    </ClCompile>
+    <ClCompile Include="adminInterface.cpp">
+      <Filter>Source Files\views\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="accountInfoView.cpp">
+      <Filter>Source Files\views\Customer</Filter>
+    </ClCompile>
+    <ClCompile Include="Customer.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="accountRepo.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="uniqueID.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="Trip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="routeRepo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Customer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Ticket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -86,34 +116,52 @@
     <ClInclude Include="Fleet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Account.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="accountRepo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="uniqueID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="interfaceView.h">
       <Filter>Header Files\views</Filter>
     </ClInclude>
     <ClInclude Include="interfaceControl.h">
       <Filter>Header Files\views</Filter>
     </ClInclude>
-    <ClInclude Include="login.h">
+    <ClInclude Include="DateTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="userTypeMenuView.h">
       <Filter>Header Files\views</Filter>
     </ClInclude>
     <ClInclude Include="customerInterface.h">
-      <Filter>Header Files\views</Filter>
-    </ClInclude>
-    <ClInclude Include="registration.h">
-      <Filter>Header Files\views</Filter>
+      <Filter>Header Files\views\Customer</Filter>
     </ClInclude>
     <ClInclude Include="loggedInInterface.h">
-      <Filter>Header Files\views</Filter>
+      <Filter>Header Files\views\Customer</Filter>
     </ClInclude>
-    <ClInclude Include="DateTime.h">
+    <ClInclude Include="login.h">
+      <Filter>Header Files\views\Customer</Filter>
+    </ClInclude>
+    <ClInclude Include="registration.h">
+      <Filter>Header Files\views\Customer</Filter>
+    </ClInclude>
+    <ClInclude Include="adminInterface.h">
+      <Filter>Header Files\views\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="accountInfoView.h">
+      <Filter>Header Files\views\Customer</Filter>
+    </ClInclude>
+    <ClInclude Include="Customer.h">
+      <Filter>Header Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="Account.h">
+      <Filter>Header Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="accountRepo.h">
+      <Filter>Header Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="uniqueID.h">
+      <Filter>Header Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="Trip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="routeRepo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

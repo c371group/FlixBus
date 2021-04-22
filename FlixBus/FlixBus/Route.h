@@ -12,6 +12,8 @@ private:
 	fleet* busFleet = nullptr;
 public:
 	route();
+	route(std::string source, std::string destination); //For testing
+	route(std::string source, std::string destination, fleet* busFleet);
 	route(std::string source, std::string destination, double distance, fleet* busFleet);
 	void set_source(std::string);
 	void set_destination(std::string);
