@@ -16,7 +16,7 @@ void userTypeMenuView::preLoad(accountRepo& acctRep)
 
 accountRepo userTypeMenuView::getAcctRep()
 {
-	return acctRep;
+	return this->acctRep;
 }
 
 int userTypeMenuView::menuLogic()

@@ -1,8 +1,6 @@
 #include "Trip.h"
 
-Trip::Trip()
-{
-}
+Trip::Trip() = default;
 
 Trip::Trip(route rt)
 {
@@ -37,22 +35,22 @@ void Trip::set_fleet(fleet* busFleet)
 
 bool Trip::getBookable()
 {
-	return bookable;
+	return this->bookable;
 }
 
 route Trip::getRoute()
 {
-	return route_;
+	return this->route_;
 }
 
 DateTime Trip::getDepartureDT()
 {
-	return departure;
+	return this->departure;
 }
 
 DateTime Trip::getEstArrivalDT()
 {
-	return estimatedArrival;
+	return this->estimatedArrival;
 }
 fleet* Trip::get_fleet()
 {
