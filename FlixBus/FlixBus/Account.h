@@ -13,6 +13,7 @@ private:
 public:
 	Account();
 	Account(Customer);
+	Account(Customer cust, int person); //TESTING ONLY
 	Account(Customer, std::string, std::string);
 	void set_acct_id(uniqueID acctID);
 	void set_username(std::string);

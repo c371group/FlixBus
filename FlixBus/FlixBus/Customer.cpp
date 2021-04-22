@@ -8,6 +8,18 @@ Customer::Customer()
 	this->email_ = "johndoughey@yahoo.com";
 	this->contact_number_ = "920-345-3536";
 }
+
+//DELETE LATER, JUST FOR TESTING
+Customer::Customer(int person)
+{
+	std::vector<std::string> fnames = { "Sam", "Abubakr", "Charlotte", "Tori", "Rhodri", "Kelsea" };
+	std::vector<std::string> lnames = { "Parry", "Harper", "Thornton", "Mathews", "Davey", "Bonilla" };
+	this->f_name_ = fnames[person];
+	this->l_name_ = lnames[person];
+	this->address_ = "123 Backhand Lane";
+	this->email_ = "yolo@yahoo.com";
+	this->contact_number_ = "920-345-3536";
+}
 Customer::Customer(std::string f_name, std::string l_name, std::string email, std::string address, std::string contact_number)
 {
 	this->f_name_ = f_name;

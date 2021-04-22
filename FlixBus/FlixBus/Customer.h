@@ -14,6 +14,8 @@ private:
 	
 public:
 	Customer();
+	//JUST FOR TESTING
+	Customer(int person);
 	Customer(std::string f_name, std::string l_name, std::string address, std::string email, std::string contact_number);
 	
 	void setFirstName(std::string f_nam);

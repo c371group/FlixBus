@@ -99,6 +99,9 @@
     <ClCompile Include="Trip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="routeRepo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ticket.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files\client</Filter>
     </ClInclude>
     <ClInclude Include="Trip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="routeRepo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

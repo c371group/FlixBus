@@ -23,5 +23,4 @@ void accountInfoView::display(int i)
 		//TODO: format this later
 		std::cout << get_strs()[i][j] << ":     " << get_strs()[i+1][j]<< "\n";
 	}
-	std::cout << "\n\n" << "PRESS ANY KEY TO EXIT." << std::endl;
 }

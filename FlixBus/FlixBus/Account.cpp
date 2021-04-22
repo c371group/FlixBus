@@ -4,23 +4,26 @@ Account::Account()
 {
 	uniqueID acctID; //TODO: this might give us difficulty once we do the permanent file storage, but don't worry about it for now
 	set_acct_id(acctID);
-	this->username_ = "bababooey";
-	this->password_ = "getbababoo3yed";
+	this->username_ = "Providence";
+	this->password_ = "Provid3nce";
 }
 
 Account::Account(Customer cust) //Testing purposes
-{
-	uniqueID acctID;
-	set_acct_id(acctID);
+{;
 	this->customer = cust;
-	this->username_ = "bababooey";
-	this->password_ = "getbababoo3yed";
+}
+
+Account::Account(Customer cust, int person) //Testing purposes, DELETE LATER
+{
+	std::vector<std::string> usernames = { "Sam1", "Abubakr2", "Charlotte3", "Tori4", "Rhodri5", "Kelsea6" };
+	std::vector<std::string> passwords = { "Parry1", "Harper2", "Thornton3", "Mathews4", "Davey5", "Bonilla6" };
+	this->customer = cust;
+	this->username_ = usernames[person];
+	this->password_ = passwords[person];
 }
 
 Account::Account(Customer cust, std::string username, std::string password)
 {
-	uniqueID acctID;
-	set_acct_id(acctID); //TODO: check to make sure that putting this twice doesn't cause issues
 	this->customer = cust;
 	this->username_ = username;
 	this->password_ = password;

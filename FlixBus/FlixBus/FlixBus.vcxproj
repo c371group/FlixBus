@@ -34,6 +34,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="registration.cpp" />
     <ClCompile Include="Route.cpp" />
+    <ClCompile Include="routeRepo.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Trip.cpp" />
     <ClCompile Include="uniqueID.cpp" />
@@ -55,6 +56,7 @@
     <ClInclude Include="login.h" />
     <ClInclude Include="registration.h" />
     <ClInclude Include="Route.h" />
+    <ClInclude Include="routeRepo.h" />
     <ClInclude Include="Ticket.h" />
     <ClInclude Include="Trip.h" />
     <ClInclude Include="uniqueID.h" />

@@ -30,6 +30,11 @@ void Trip::set_estArrivalDT(DateTime dt)
 	this->estimatedArrival = dt;
 }
 
+void Trip::set_fleet(fleet* busFleet)
+{
+	this->busFleet = busFleet;
+}
+
 bool Trip::getBookable()
 {
 	return bookable;
@@ -48,4 +53,8 @@ DateTime Trip::getDepartureDT()
 DateTime Trip::getEstArrivalDT()
 {
 	return estimatedArrival;
+}
+fleet* Trip::get_fleet()
+{
+	return this->busFleet;
 }

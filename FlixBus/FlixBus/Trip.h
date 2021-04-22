@@ -8,7 +8,7 @@ class Trip
 private:
 	bool bookable;
 	route route_;
-	//vehicle bus;
+	fleet* busFleet = nullptr;
 	DateTime departure;
 	DateTime estimatedArrival;
 public:
@@ -19,10 +19,12 @@ public:
 	void set_route_(route);
 	void set_departureDT(DateTime);
 	void set_estArrivalDT(DateTime);
+	void set_fleet(fleet*);
 
 	bool getBookable();
 	route getRoute();
 	DateTime getDepartureDT();
 	DateTime getEstArrivalDT();
+	fleet* get_fleet();
 };
 
