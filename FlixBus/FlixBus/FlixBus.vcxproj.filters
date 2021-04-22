@@ -37,6 +37,12 @@
     <Filter Include="Source Files\client">
       <UniqueIdentifier>{52482ade-0d13-457a-9cb7-1b59a0c11f2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Route">
+      <UniqueIdentifier>{d60178d8-6904-4ab1-bd74-c4cb04532afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\route">
+      <UniqueIdentifier>{7a454ce3-e3d7-481e-b943-7bee2ca20296}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ticket.cpp">
@@ -46,9 +52,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Route.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fleet.cpp">
@@ -99,7 +102,13 @@
     <ClCompile Include="Trip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Route.cpp">
+      <Filter>Source Files\Route</Filter>
+    </ClCompile>
     <ClCompile Include="routeRepo.cpp">
+      <Filter>Source Files\Route</Filter>
+    </ClCompile>
+    <ClCompile Include="tripRepo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,9 +117,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vehicle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Route.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fleet.h">
@@ -161,7 +167,13 @@
     <ClInclude Include="Trip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Route.h">
+      <Filter>Header Files\route</Filter>
+    </ClInclude>
     <ClInclude Include="routeRepo.h">
+      <Filter>Header Files\route</Filter>
+    </ClInclude>
+    <ClInclude Include="tripRepo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -24,8 +24,8 @@ Customer::Customer(std::string f_name, std::string l_name, std::string email, st
 {
 	this->f_name_ = f_name;
 	this->l_name_ = l_name;
-	this->address_ = address;
 	this->email_ = email;
+	this->address_ = address;
 	this->contact_number_ = contact_number;
 }
 

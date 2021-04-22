@@ -37,6 +37,7 @@
     <ClCompile Include="routeRepo.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Trip.cpp" />
+    <ClCompile Include="tripRepo.cpp" />
     <ClCompile Include="uniqueID.cpp" />
     <ClCompile Include="userTypeMenuView.cpp" />
     <ClCompile Include="Vehicle.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="routeRepo.h" />
     <ClInclude Include="Ticket.h" />
     <ClInclude Include="Trip.h" />
+    <ClInclude Include="tripRepo.h" />
     <ClInclude Include="uniqueID.h" />
     <ClInclude Include="userTypeMenuView.h" />
     <ClInclude Include="Vehicle.h" />

@@ -2,7 +2,7 @@
 
 Trip::Trip() = default;
 
-Trip::Trip(route rt)
+Trip::Trip(route rt, DateTime leave, DateTime arrive)
 {
 	set_route_(rt);
 	set_Bookable(false);
@@ -28,7 +28,7 @@ void Trip::set_estArrivalDT(DateTime dt)
 	this->estimatedArrival = dt;
 }
 
-void Trip::set_fleet(fleet* busFleet)
+void Trip::set_fleet(fleet* busFleet) //not sure if we need the pointer for this or not here, as a singular trip would only use one bus
 {
 	this->busFleet = busFleet;
 }

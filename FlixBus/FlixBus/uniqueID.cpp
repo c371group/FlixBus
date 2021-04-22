@@ -1,7 +1,5 @@
 #include "uniqueID.h" //TODO: watch this, i'm dumb
 
-
-
 class UniqueID {
 protected:
 	static int nextID;

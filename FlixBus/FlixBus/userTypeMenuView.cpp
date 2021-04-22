@@ -32,7 +32,7 @@ int userTypeMenuView::menuLogic()
 	else
 	{
 		//TODO: Change to allow going back to menu
-		if (choice_int == 1) //This shouldn't impact performance too much, we just run into problems when we do switch statement here
+		if (choice_int == 1) //This shouldn't impact performance at all, we just run into problems when we do switch statement here
 		{
 			customerInterface custInterface = customerInterface(acctRep);
 			return 0;

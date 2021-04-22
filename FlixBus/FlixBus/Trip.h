@@ -13,7 +13,7 @@ private:
 	DateTime estimatedArrival;
 public:
 	Trip();
-	Trip(route);
+	Trip(route, DateTime, DateTime);
 	
 	void set_Bookable(bool);
 	void set_route_(route);
