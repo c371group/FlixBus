@@ -2,7 +2,7 @@
 
 Trip::Trip() = default;
 
-Trip::Trip(route rt, DateTime leave, DateTime arrive)
+Trip::Trip(route* rt, DateTime leave, DateTime arrive)
 {
 	set_route_(rt);
 	set_Bookable(false);
@@ -13,7 +13,7 @@ void Trip::set_Bookable(bool bookable)
 	this->bookable = bookable;
 }
 
-void Trip::set_route_(route route_)
+void Trip::set_route_(route* route_)
 {
 	this->route_ = route_;
 }
@@ -33,12 +33,17 @@ void Trip::set_fleet(fleet* busFleet) //not sure if we need the pointer for this
 	this->busFleet = busFleet;
 }
 
+void Trip::set_busType(std::string type)
+{
+	this->busType = type;
+}
+
 bool Trip::getBookable()
 {
 	return this->bookable;
 }
 
-route Trip::getRoute()
+route* Trip::getRoute()
 {
 	return this->route_;
 }
@@ -55,4 +60,9 @@ DateTime Trip::getEstArrivalDT()
 fleet* Trip::get_fleet()
 {
 	return this->busFleet;
+}
+
+std::string Trip::get_type()
+{
+	return this->busType;
 }
