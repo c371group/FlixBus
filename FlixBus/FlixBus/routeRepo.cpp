@@ -13,24 +13,22 @@ routeRepo::routeRepo()
 	route madtogb = route("Madison", "Green Bay");
 	route gbtoosh = route("Green Bay", "Oshkosh");
 	route oshtogb = route("Oshkosh", "Green Bay");
-	add_route(gbtomke);
-	add_route(mketogb);
-	add_route(gbtoec);
-	add_route(ectogb);
-	add_route(gbtoww);
-	add_route(wwtogb);
-	add_route(gbtomad);
-	add_route(madtogb);
-	add_route(gbtoosh);
-	add_route(oshtogb);
+	
+	std::vector<route> routeList = { gbtomke, mketogb, gbtoec, ectogb,gbtoww,wwtogb,gbtomad,madtogb,
+	gbtoosh,oshtogb,gbtomke,mketogb,gbtoec,ectogb,gbtoww,wwtogb,gbtomad,madtogb,gbtoosh,oshtogb,};
+	
+	for (auto &route : routeList)
+	{
+		add_route(route);
+	}
 }
 
 std::vector<route> routeRepo::getRoutes()
 {
-	return this->routes;
-}
+		return this->routes;
+	}
 
 void routeRepo::add_route(route rt)
-{
-	routes.push_back(rt);
-}
+	{
+		routes.push_back(rt);
+	}

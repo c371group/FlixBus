@@ -10,12 +10,11 @@ accountRepo::accountRepo()
 	Account dummyAcct3 = Account(Customer(3), 3);
 	Account dummyAcct4 = Account(Customer(4), 4);
 	Account dummyAcct5 = Account(Customer(5), 5);
-	add_acct(dummyAcct0);
-	add_acct(dummyAcct1);
-	add_acct(dummyAcct2);
-	add_acct(dummyAcct3);
-	add_acct(dummyAcct4);
-	add_acct(dummyAcct5);
+	std::vector<Account> acctList = { dummyAcct0, dummyAcct1, dummyAcct2, dummyAcct3, dummyAcct4, dummyAcct5 };
+	for (auto &acct : acctList)
+	{
+		add_acct(acct);
+	}
 }
 
 std::vector<Account> accountRepo::getAccts()
