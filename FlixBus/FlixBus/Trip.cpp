@@ -1,10 +1,8 @@
 #include "Trip.h"
 
-Trip::Trip()
-{
-}
+Trip::Trip() = default;
 
-Trip::Trip(route rt)
+Trip::Trip(route* rt, DateTime leave, DateTime arrive)
 {
 	set_route_(rt);
 	set_Bookable(false);
@@ -15,7 +13,7 @@ void Trip::set_Bookable(bool bookable)
 	this->bookable = bookable;
 }
 
-void Trip::set_route_(route route_)
+void Trip::set_route_(route* route_)
 {
 	this->route_ = route_;
 }
@@ -30,31 +28,41 @@ void Trip::set_estArrivalDT(DateTime dt)
 	this->estimatedArrival = dt;
 }
 
-void Trip::set_fleet(fleet* busFleet)
+void Trip::set_fleet(fleet* busFleet) //not sure if we need the pointer for this or not here, as a singular trip would only use one bus
 {
 	this->busFleet = busFleet;
 }
 
-bool Trip::getBookable()
+void Trip::set_busType(std::string type)
 {
-	return bookable;
+	this->busType = type;
 }
 
-route Trip::getRoute()
+bool Trip::getBookable()
 {
-	return route_;
+	return this->bookable;
+}
+
+route* Trip::getRoute()
+{
+	return this->route_;
 }
 
 DateTime Trip::getDepartureDT()
 {
-	return departure;
+	return this->departure;
 }
 
 DateTime Trip::getEstArrivalDT()
 {
-	return estimatedArrival;
+	return this->estimatedArrival;
 }
 fleet* Trip::get_fleet()
 {
 	return this->busFleet;
+}
+
+std::string Trip::get_type()
+{
+	return this->busType;
 }

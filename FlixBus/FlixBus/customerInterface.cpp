@@ -5,10 +5,7 @@
  * send them to either register or login interface
  */
 
-customerInterface::customerInterface()
-{
-	
-}
+customerInterface::customerInterface() = default;
 customerInterface::customerInterface(accountRepo& acctRep)
 {
 	preLoad(acctRep);
@@ -25,7 +22,7 @@ void customerInterface::preLoad(accountRepo& acctRep)
 
 accountRepo customerInterface::getAcctRep()
 {
-	return acctRep;
+	return this->acctRep;
 }
 
 int customerInterface::menuLogic()

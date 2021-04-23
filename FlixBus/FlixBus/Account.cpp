@@ -52,27 +52,27 @@ void Account::set_customer(Customer cust)
 
 uniqueID Account::get_acct_id()
 {
-	return acctID;
+	return this->acctID;
 }
 
 std::string Account::get_username() const
 {
-	return username_;
+	return this->username_;
 }
 
 std::string Account::get_password() const
 {
-	return password_;
+	return this->password_;
 }
 
 Customer Account::get_customer() const
 {
-	return customer;
+	return this->customer;
 }
 
 std::vector<ticket> Account::getTickets()
 {
-	return tickets_;
+	return this->tickets_;
 }
 
 void Account::addTicket(ticket ticket)
