@@ -2,16 +2,14 @@
 
 loggedInInterface::loggedInInterface(Account& account)
 {
-	system("CLS");
 	this->acct = account;
-	std::cout << "Welcome, " << account.get_customer().getFirstName() << std::endl;
 	preLoad();
 	menuLogic();
 }
 
 void loggedInInterface::preLoad()
 {
-	std::vector<std::string> menu = {"Account Info", "Your Upcoming Trips", "Browse Available Trips", "Book Trip", "Account Trip History", "Bus Rental", "Log Out"};
+	std::vector<std::string> menu = { "Account Info", "Your Upcoming Trips", "Browse Available Trips", "Book Trip", "Account Trip History", "Bus Rental", "Log Out" };
 	std::vector<std::vector<std::string>> temp = { menu };
 	set_vecMen(temp);
 }
@@ -19,12 +17,15 @@ void loggedInInterface::preLoad()
 int loggedInInterface::menuLogic()
 {
 	accountInfoView aIV;
+	fullTripListView fTLV;
 	int choice_int = 0;
 	while (choice_int != 7) {
-	int max = display_menu_items(0);
-	choice_int = enterChoice(max);
-	bool confirm = confirm_Menu_Choice(0, choice_int - 1);
-	
+		system("CLS");
+		std::cout << "Welcome, " << acct.get_customer().getFirstName() << std::endl;
+		int max = display_menu_items(0);
+		choice_int = enterChoice(max);
+		bool confirm = confirm_Menu_Choice(0, choice_int - 1);
+
 		if (!confirm)
 		{
 			menuLogic();
@@ -43,6 +44,7 @@ int loggedInInterface::menuLogic()
 				/*see trips that the customer can book--
 				 *not sure if we want to limit this to those that
 				 *can be scheduled already (remember, 2 weeks) or all of them */
+				fTLV = fullTripListView(true); //this currently shows all trips, regardless of if they can book them right now or not
 				break;
 			case 4:
 				/*basically the same thing as before but this time,

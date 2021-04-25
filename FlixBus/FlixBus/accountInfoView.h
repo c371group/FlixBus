@@ -1,5 +1,6 @@
 #pragma once
 #include "interfaceView.h"
+#include <iomanip>
 class accountInfoView :
     public interfaceView
 {

@@ -111,6 +111,9 @@
     <ClCompile Include="tripRepo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fullTripListView.cpp">
+      <Filter>Source Files\views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ticket.h">
@@ -176,5 +179,11 @@
     <ClInclude Include="tripRepo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fullTripListView.h">
+      <Filter>Header Files\views</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Trips502508.csv" />
   </ItemGroup>
 </Project>

@@ -19,11 +19,6 @@ int login::enter_username()
 	while (!get_intcon().checkUsernameExistence(acctRep, user_input_string,ind))
 	{
 		std::cout << "ERROR-- Username does not exist." << std::endl;
-		//DEBUGGING
-		/*for (int i = 0; i < acctRep.getAccts().size(); i++)
-		{
-			std::cout << acctRep.getAccts()[i].get_username() << std::endl;
-		} */
 		std::cout << "Enter username: ";
 		getline(std::cin, user_input_string);
 	}

@@ -7,6 +7,7 @@
 #include "Customer.h"
 #include "DateTime.h"
 #include "customerInterface.h"
+#include "fullTripListView.h"
 #include "interfaceView.h"
 #include "userTypeMenuView.h"
 using namespace std;
@@ -405,6 +406,6 @@ int main()
 	}
 	catch (std::exception e)
 	{
-		std::cout << "epic fail" << std::endl;
+		std::cout << "ERROR: COULD NOT LOAD PROGRAM." << std::endl;
 	}
 }
