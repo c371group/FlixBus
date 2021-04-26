@@ -1,7 +1,7 @@
 #pragma once
 #include "interfaceView.h"
 #include "accountInfoView.h"
-
+#include "fullTripListView.h"
 class loggedInInterface :
     public interfaceView
 {

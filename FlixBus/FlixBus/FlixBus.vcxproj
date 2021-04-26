@@ -27,6 +27,7 @@
     <ClCompile Include="customerInterface.cpp" />
     <ClCompile Include="DateTime.cpp" />
     <ClCompile Include="Fleet.cpp" />
+    <ClCompile Include="fullTripListView.cpp" />
     <ClCompile Include="interfaceControl.cpp" />
     <ClCompile Include="interfaceView.cpp" />
     <ClCompile Include="loggedInInterface.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="customerInterface.h" />
     <ClInclude Include="DateTime.h" />
     <ClInclude Include="Fleet.h" />
+    <ClInclude Include="fullTripListView.h" />
     <ClInclude Include="interfaceControl.h" />
     <ClInclude Include="interfaceView.h" />
     <ClInclude Include="loggedInInterface.h" />
@@ -64,6 +66,9 @@
     <ClInclude Include="uniqueID.h" />
     <ClInclude Include="userTypeMenuView.h" />
     <ClInclude Include="Vehicle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Trips502508.csv" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

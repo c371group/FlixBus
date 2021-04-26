@@ -27,27 +27,26 @@ accountRepo customerInterface::getAcctRep()
 
 int customerInterface::menuLogic()
 {
-	int max = display_menu_items(0);
-	int choice_int = enterChoice(max);
-	bool confirm = confirm_Menu_Choice(0, choice_int - 1);
+	int choice_int = 0;
+	while (choice_int != 3) {
+		int max = display_menu_items(0);
+		choice_int = enterChoice(max);
+		bool confirm = confirm_Menu_Choice(0, choice_int - 1);
 
-	if (!confirm)
-	{
-		menuLogic();
-	}
-	else
-	{
-		//TODO: Change to allow going back to menu
-		if (choice_int == 1)
+		if (!confirm)
 		{
-			login log = login(acctRep);
-			return 0;
+			menuLogic();
 		}
 		else
 		{
-			registration reg = registration(acctRep);
-			menuLogic();
-			return 0;
+			if (choice_int == 1)
+			{
+				login log = login(acctRep);
+			}
+			else
+			{
+				registration reg = registration(acctRep);
+			}
 		}
 	}
 	return 0;
