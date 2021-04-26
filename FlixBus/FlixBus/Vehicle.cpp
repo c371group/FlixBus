@@ -19,36 +19,6 @@ void vehicle::set_capacity(int val)
 	this->capacity = val;
 }
 
-/*
-void vehicle::set_rate_per_mile(int val)
-{
-	this->rate_per_mile = val;
-}
-*/
-
-/*int vehicle::set_values_from_type(std::string val) //TODO: go back and make this an enum
-{
-	std::string types[] = {"Luxury Bus", "Mini Bus", "MiniVan"};
-	int capacities[] = {52, 36, 12}; // we'll have to figure out stuff with the seats later
-	int rates_per_mile_regular[] = {75, 65, 50}; // this is just an array for the regular travel, NOT RENTAL,
-	//we'll have to create something for the luxury bus (remember that window and aisle seats are
-	//different prices) but this is just for testing
-
-	for (auto i = 0; i < 3; i++)
-	{
-		if (val == types[i])
-		{
-			set_rate_per_mile(rates_per_mile_regular[i]);
-			set_capacity(capacities[i]);
-			return 0;
-		}
-	}
-
-	std::cout << "WARNING: BUS TYPE COULD NOT BE FOUND" << std::endl;
-	return 0;
-}
-*/
-
 int vehicle::get_id_no()
 {
 	return this->id_no;
@@ -113,6 +83,17 @@ void vehicle::displayFreeSeats()
 	}
 }
 
+// Reserve all seats when the bus is hired.
+void vehicle::reserveAllSeats()
+{
+	const auto seats = get_seats();
+	for (auto& p : *seats)
+	{
+		p.second.first = 1;
+	}
+	
+}
+
 // Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
 // Returns True only if the seat was reserved and not taken before. Else it will return False.
 bool vehicle::reserveSeat(int row, char column)
@@ -144,6 +125,16 @@ bool vehicle::reserveSeat(int row, char column)
 		std::cout << std::endl << row << column << " seat was not found." << std::endl;
 	}
 	return validate;
+}
+
+// Checks if half of the capacity is > than the free seats.
+bool vehicle::can_hire()
+{
+	if(this->get_capacity()/2 > this->get_free_seats_count())
+	{
+		return false;
+	}
+	return true;
 }
 
 // Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
@@ -256,6 +247,11 @@ double luxuryBus::getBusHireRatePerMile() const
 	return this->busHireRatePerMile;
 }
 
+int luxuryBus::get_capacity()
+{
+	return this->capacity;
+}
+
 // Returns a reference of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* miniBus::get_seats()
 {
@@ -290,6 +286,11 @@ double miniBus::getBusHireRatePerMile() const
 	return this->busHireRatePerMile;
 }
 
+int miniBus::get_capacity()
+{
+	return this->capacity;
+}
+
 // Returns a reference of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* miniVan::get_seats()
 {
@@ -322,4 +323,9 @@ double miniVan::getBusHireRate() const
 double miniVan::getBusHireRatePerMile() const
 {
 	return this->busHireRatePerMile;
+}
+
+int miniVan::get_capacity()
+{
+	return this->capacity;
 }

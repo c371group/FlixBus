@@ -391,6 +391,45 @@ void functionalityTesting() {
 
 }
 
+void busHireTesting()
+{
+    cout << "\nTesting luxury bus hire:" << endl;
+    cout << "Creating luxury bus object and reserving seats." << endl;
+    luxuryBus lux_bus;
+    lux_bus.reserveSeat(1, 'A');
+    lux_bus.reserveSeat(2, 'A');
+    lux_bus.reserveSeat(3, 'A');
+    lux_bus.reserveSeat(4, 'A');
+    lux_bus.reserveSeat(5, 'A');
+    lux_bus.reserveSeat(6, 'A');
+    cout << "Check bus seats:" << endl;
+    lux_bus.displayFreeSeats();
+    cout << "\nTrying to hire bus." << endl;
+    std::cout << std::boolalpha;
+    cout << "Bus hire status: " << lux_bus.can_hire() << endl;
+    cout << "Hire the bus." << endl;
+    lux_bus.reserveAllSeats();
+    lux_bus.displayFreeSeats();
+    cout << "\nFlat fee for " << lux_bus.get_type() << " hire is: " << lux_bus.getBusHireRate() << endl;
+    cout << "Additionally there is a fee of " << lux_bus.getBusHireRatePerMile() << " per mile." << endl;
+	
+    cout << "\nTesting minivan hire:" << endl;
+    miniVan mini_van;
+    mini_van.reserveSeat(1, 'A');
+    mini_van.reserveSeat(2, 'A');
+    mini_van.reserveSeat(3, 'A');
+    mini_van.reserveSeat(4, 'A');
+    mini_van.reserveSeat(1, 'B');
+    mini_van.reserveSeat(2, 'B');
+    mini_van.reserveSeat(3, 'B');
+    mini_van.reserveSeat(4, 'B');
+    cout << "Check bus seats:" << endl;
+    mini_van.displayFreeSeats();
+    cout << "\nTrying to hire minivan." << endl;
+    std::cout << std::boolalpha;
+    cout << "Minivan hire status: " << mini_van.can_hire() << endl;
+}
+
 int main()
 {
 	//TODO: sticking this here before we have capabilities to read from permanent file
@@ -399,6 +438,7 @@ int main()
     //fleetTesting();
 	//dateTesting();
     //functionalityTesting();
+    //busHireTesting();
 
     try
 	{
