@@ -1,6 +1,6 @@
 #include "fullTripListView.h"
 
-fullTripListView::fullTripListView() = default; 
+fullTripListView::fullTripListView() = default;
 
 fullTripListView::fullTripListView(bool voided) //it could be that I'm tired but this is a workaround to a weird problem that loggedInInterface presents where it doesn't like me declaring a new fullTripListView object in the switch case statement
 {
@@ -35,7 +35,7 @@ int fullTripListView::read_full_list() //ideally later we could pass a vector he
 		else
 		{
 			std::cout << std::endl;
-			std::cout << std::left << std::setw(fNum) << " DATE" << std::setw(fNum) << " BUS TYPE" << std::setw(fNum) << " SOURCE" << std::setw(fNum) <<  " DESTINATION" << std::setw(fNum) << " DEPARTURE" << std::setw(fNum) << " ARRIVAL" << std::endl;
+			std::cout << std::left << std::setw(fNum) << " DATE" << std::setw(fNum) << " BUS TYPE" << std::setw(fNum) << " SOURCE" << std::setw(fNum) << " DESTINATION" << std::setw(fNum) << " DEPARTURE" << std::setw(fNum) << " ARRIVAL" << std::endl;
 			std::cout << std::endl;
 		}
 		std::cout << std::endl;

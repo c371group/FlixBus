@@ -68,6 +68,7 @@
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AccountsDB.csv" />
     <None Include="Trips502508.csv" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -8,6 +8,7 @@
 customerInterface::customerInterface() = default;
 customerInterface::customerInterface(accountRepo& acctRep)
 {
+	system("CLS");
 	preLoad(acctRep);
 	menuLogic();
 }
