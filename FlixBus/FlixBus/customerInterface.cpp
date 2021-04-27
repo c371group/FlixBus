@@ -8,13 +8,14 @@
 customerInterface::customerInterface() = default;
 customerInterface::customerInterface(accountRepo& acctRep)
 {
-	system("CLS");
+	
 	preLoad(acctRep);
 	menuLogic();
 }
 
 void customerInterface::preLoad(accountRepo& acctRep)
 {
+	
 	this->acctRep = acctRep;
 	std::vector<std::string> menu1 = { "Login", "Register" };
 	std::vector<std::vector<std::string>> temp = { menu1 };
@@ -28,8 +29,10 @@ accountRepo customerInterface::getAcctRep()
 
 int customerInterface::menuLogic()
 {
+	
 	int choice_int = 0;
 	while (choice_int != 3) {
+		system("CLS");
 		int max = display_menu_items(0);
 		choice_int = enterChoice(max);
 		bool confirm = confirm_Menu_Choice(0, choice_int - 1);

@@ -2,19 +2,6 @@
 
 accountRepo::accountRepo()
 {
-	/*//TODO: probably read from file here, nothing fancy (or secure haha)
-	//DUMMY DATA BELOW, DELETE LATER
-	Account dummyAcct0 = Account(Customer(0), 0);
-	Account dummyAcct1 = Account(Customer(1), 1);
-	Account dummyAcct2 = Account(Customer(2), 2);
-	Account dummyAcct3 = Account(Customer(3), 3);
-	Account dummyAcct4 = Account(Customer(4), 4);
-	Account dummyAcct5 = Account(Customer(5), 5);
-	std::vector<Account> acctList = { dummyAcct0, dummyAcct1, dummyAcct2, dummyAcct3, dummyAcct4, dummyAcct5 };
-	for (auto& acct : acctList)
-	{
-		add_acct(acct);
-	}*/
 	read_acct_db();
 }
 
@@ -47,4 +34,15 @@ int accountRepo::read_acct_db() {
 		add_acct(acct);
 	}
 	return 0;
+}
+
+void accountRepo::add_account_to_db(Account acct) {
+	std::ofstream fout;
+	fout.open("AccountsDB.csv", std::ios::app);
+	fout << std::endl;
+	fout << acct.get_username() << "," << acct.get_password() << ",";
+	fout << acct.get_customer().getFirstName() << "," << acct.get_customer().getLastName() << ",";
+	fout << acct.get_customer().getEmail() << "," << acct.get_customer().getAddress() << ",";   //send to file
+	fout << acct.get_customer().getContactNumber() << std::endl;
+	fout.close();       //close file
 }

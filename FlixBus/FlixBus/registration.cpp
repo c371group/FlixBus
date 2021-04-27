@@ -179,6 +179,7 @@ void registration::createAcct()
 void registration::addToRepo(accountRepo& acctRep)
 {
 	acctRep.add_acct(finalAccount);
+	acctRep.add_account_to_db(finalAccount);
 }
 
 void registration::finalCreation(accountRepo& acctRep)
