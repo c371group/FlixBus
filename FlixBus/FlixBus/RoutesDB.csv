@@ -1,0 +1,11 @@
+Departure,Destination,Distance
+Green Bay,Madison,135.6
+Green Bay,Whitewater,142.2
+Green Bay,Eau Claire,194.4
+Green Bay,Oshkosh,50.4
+Green Bay,Milwaukee,118.7
+Madison,Green Bay,135.6
+Whitewater,Green Bay,142.2
+Eau Claire,Green Bay,194.4
+Oshkosh,Green Bay,50.4
+Milwaukee,Green Bay,118.7

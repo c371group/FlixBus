@@ -2,6 +2,9 @@
 
 accountRepo::accountRepo()
 {
+	/* Loads AccountsDB into acctRepo the moment the object is created-- while this
+	implementation has an unfeasible time complexity with a large userbase, it
+	works for the small userbase of this demo without any hassle. */
 	read_acct_db();
 }
 
@@ -37,8 +40,16 @@ int accountRepo::read_acct_db() {
 }
 
 void accountRepo::add_account_to_db(Account acct) {
+	/* Prints new account to new line of csv file-- I tried to see if I could automatically
+	add a delimiter somehow, but everything I found is too complex for this to be honest. If
+	anyone wants to have a go at it, be my guest. */
+
 	std::ofstream fout;
-	fout.open("AccountsDB.csv", std::ios::app);
+	/* Opens AccountsDB.csv-- if the file is not already present, creates it.
+	Not sure we can count on that last part, however, because of how Visual Studio
+	handles csv files and having to manually add them to the solution for the project. 
+	If you have any questions or comments about this, contact Mason. */
+	fout.open("AccountsDB.csv", std::ios::app); 
 	fout << std::endl;
 	fout << acct.get_username() << "," << acct.get_password() << ",";
 	fout << acct.get_customer().getFirstName() << "," << acct.get_customer().getLastName() << ",";

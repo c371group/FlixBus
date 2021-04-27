@@ -35,7 +35,7 @@ int fullTripListView::read_full_list() //ideally later we could pass a vector he
 		else
 		{
 			std::cout << std::endl;
-			std::cout << std::left << std::setw(fNum) << " DATE" << std::setw(fNum) << " BUS TYPE" << std::setw(fNum) << " SOURCE" << std::setw(fNum) << " DESTINATION" << std::setw(fNum) << " DEPARTURE" << std::setw(fNum) << " ARRIVAL" << std::endl;
+			std::cout << std::left << std::setw(fNum) << "DATE" << std::setw(fNum) << "BUS TYPE" << std::setw(fNum) << "DEPARTING FROM" << std::setw(fNum) << "DESTINATION" << std::setw(fNum) << "DEPARTURE" << std::setw(fNum) << "ARRIVAL" << std::endl;
 			std::cout << std::endl;
 		}
 		std::cout << std::endl;

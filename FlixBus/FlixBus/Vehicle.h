@@ -6,18 +6,18 @@
 class vehicle
 {
 private:
-	int id_no = 0; //unique identifier for bus
+	std::string id_no;
 	const std::string type = "Base";
 	int capacity = 0; //how many seats-- this is implicitly linked to type.
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{};
 public:
 	virtual ~vehicle() = default;
 	vehicle();
-	explicit vehicle(int);
-	void set_id_no(int);
+	explicit vehicle(std::string);
+	void set_id_no(std::string);
 	void set_capacity(int);
 
-	virtual int get_id_no();
+	virtual std::string get_id_no();
 	virtual std::string get_type();
 	int get_capacity();
 	int get_all_seats_count();
@@ -35,19 +35,18 @@ public:
 	virtual std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() = 0;
 };
 
-
 class luxuryBus : public vehicle
 {
 private:
 	const std::string type = "Luxury Bus";
-	int id_no = 0; //unique identifier for bus
+	std::string id_no = "0"; //unique identifier for bus
 	const double windowSeatRate = 0.95;
 	const double aisleSeatRate = 0.75;
 	const double busHireRate = 1500;
 	const double busHireRatePerMile = 0.25;
 public:
 	luxuryBus();
-	explicit luxuryBus(int);
+	explicit luxuryBus(std::string);
 	// Seats map. <int, char> represents seats id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{
 		{{1, 'A'}, {0, windowSeatRate}}, {{1, 'B'}, {0, aisleSeatRate}}, {{1, 'C'}, {0, aisleSeatRate}},
@@ -75,24 +74,23 @@ public:
 
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() override;
 	std::string get_type() override;
-	int get_id_no() override;
+	std::string get_id_no() override;
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
 };
-
 
 class miniBus : public vehicle
 {
 private:
 	const std::string type = "Mini Bus";
-	int id_no = 0; //unique identifier for bus
+	std::string id_no = "0"; //unique identifier for bus
 	const double windowSeatPrice = 0.65;
 	const double aisleSeatPrice = 0.65;
 	const double busHireRate = 1300;
 	const double busHireRatePerMile = 0.2;
 public:
 	miniBus();
-	miniBus(int);
+	miniBus(std::string);
 	// Seats map. <int, char> represents seats id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{
 		{{1, 'A'}, {0, windowSeatPrice}}, {{1, 'B'}, {0, aisleSeatPrice}}, {{1, 'C'}, {0, windowSeatPrice}},
@@ -111,24 +109,25 @@ public:
 
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
 	std::string get_type();
-	int get_id_no();
+	std::string get_id_no();
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
 };
-
 
 class miniVan : public vehicle
 {
 private:
 	const std::string type = "MiniVan";
-	int id_no = 0; //unique identifier for bus
+	std::string id_no = "0"; //unique identifier for bus -- ex. MV002
 	const double windowSeatPrice = 0.5;
 	const double aisleSeatPrice = 0.5;
 	const double busHireRate = 1000;
 	const double busHireRatePerMile = 0.15;
 public:
+
 	miniVan();
-	miniVan(int);
+	miniVan(const miniVan& mv);
+	miniVan(std::string);
 	// Seats map. <int, char> represents seats id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{
 		{{1, 'A'}, {0, windowSeatPrice}}, {{1, 'B'}, {0, aisleSeatPrice}}, {{1, 'C'}, {0, windowSeatPrice}},
@@ -136,10 +135,10 @@ public:
 		{{3, 'A'}, {0, windowSeatPrice}}, {{3, 'B'}, {0, aisleSeatPrice}}, {{3, 'C'}, {0, windowSeatPrice}},
 		{{4, 'A'}, {0, windowSeatPrice}}, {{4, 'B'}, {0, aisleSeatPrice}}, {{4, 'C'}, {0, windowSeatPrice}}
 	};
-
+	void set_seats(std::map<std::pair<int, char>, std::pair<int, double>> temp);
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
 	std::string get_type();
-	int get_id_no();
+	std::string get_id_no();
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
 };

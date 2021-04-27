@@ -10,6 +10,7 @@
 #include "fullTripListView.h"
 #include "interfaceView.h"
 #include "userTypeMenuView.h"
+#include "routeRepo.h"
 using namespace std;
 
 int test_basic()
@@ -117,24 +118,24 @@ void fleetTesting()
 	luxuryBus luxBus1;
 	miniBus miniBus;
 	cout << "\nTesting fleet class." << endl;
-	busFleet.displayLuxaryBusFleet();
+	busFleet.displayLuxuryBusFleet();
 	busFleet.displayMiniBusFleet();
 	busFleet.displayMiniVanFleet();
 
-	cout << "\nAdding Luxury buss" << endl;
-	busFleet.addLuxaryBus(&luxBus);
-	cout << "Adding Luxury buss" << endl;
-	busFleet.addLuxaryBus(&luxBus1);
+	cout << "\nAdding Luxury bus" << endl;
+	busFleet.addLuxuryBus(luxBus);
+	cout << "Adding Luxury bus" << endl;
+	busFleet.addLuxuryBus(luxBus1);
 	cout << "Adding Minivan" << endl;
-	busFleet.addMiniVan(&miniVan);
+	busFleet.addMiniVan(miniVan);
 	cout << "Adding Mini bus" << endl;
-	busFleet.addMiniBus(&miniBus);
+	busFleet.addMiniBus(miniBus);
 
-	busFleet.displayLuxaryBusFleet();
+	busFleet.displayLuxuryBusFleet();
 	busFleet.displayMiniBusFleet();
 	busFleet.displayMiniVanFleet();
 
-	vehicle* testSeats = busFleet.getLuxaryBus(0);
+	vehicle* testSeats = busFleet.getLuxuryBus(0);
 	cout << "\nTesting accessing seats from the fleet class:" << endl;
 	testSeats->displaySeats();
 	cout << "\nTesting reserving a seat from the fleet class:" << endl;
@@ -168,7 +169,7 @@ int mainMenu()
     int luxarySeating = 0;
     int miniBusSeating = 0;
     int miniVanSeating = 0;
-    int adminPrivlages = 0;
+    int adminPrivileges = 0;
     int sentinel = -1;
 
     while (mainMenu != sentinel) {
@@ -292,7 +293,7 @@ int mainMenu()
             //Menu for Admin 
         case 2:
 
-            while (adminPrivlages != sentinel) {
+            while (adminPrivileges != sentinel) {
                 //Showing the code for ordering each item possible. All 3 possible busses. 
                 cout << "1. Add a vehicle \n2. View reservations \n3. Edit passenger information \n4. Change reservation charges \n5. View income \n";
 
@@ -336,22 +337,22 @@ int mainMenu()
 void functionalityTesting() {
 
     std::cout << "Creating buses" << std::endl;
-    luxuryBus luxBus(201);
-    luxuryBus luxBus1(203);
-    miniVan miniVan_(202);
-    miniBus miniBus(204);
+    luxuryBus luxBus("LB002");
+    luxuryBus luxBus1("LB003");
+    miniVan miniVan_("MV202");
+    miniBus miniBus("MB204");
     std::cout << "Creating fleet object" << std::endl;
     fleet GBMadisonFleet;
     std::cout << "Adding buses to fleet object" << std::endl;
-    GBMadisonFleet.addLuxaryBus(&luxBus);
-    GBMadisonFleet.addLuxaryBus(&luxBus1);
-    GBMadisonFleet.addMiniVan(&miniVan_);
-    GBMadisonFleet.addMiniBus(&miniBus);
+    GBMadisonFleet.addLuxuryBus(luxBus);
+    GBMadisonFleet.addLuxuryBus(luxBus1);
+    GBMadisonFleet.addMiniVan(miniVan_);
+    GBMadisonFleet.addMiniBus(miniBus);
     std::cout << "Creating route object" << std::endl;
     route GreenBayMadison("Green Bay", "Madison", 135.6, &GBMadisonFleet);
     std::cout << "Creating customer." << std::endl;
     Customer testCustomer("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");
-    luxuryBus* testBussPtr = GBMadisonFleet.getLuxaryBus(203);
+    luxuryBus* testBussPtr = GBMadisonFleet.getLuxuryBus("203");
     ticket customerTicket(&GreenBayMadison, testBussPtr);
     DateTime ticketDate(2021, 5, 5, 12, 0, 0);
     customerTicket.set_travel_date(ticketDate);
@@ -372,7 +373,7 @@ void functionalityTesting() {
     std::cout << "\nTesting 2nd Customer" << std::endl;
     route GreenBayMilwaukee("Green Bay", "Milwaukee", 118.7, &GBMadisonFleet);
     Customer testCustomer2("Poo", "Moo", "852 Road St", "PM@uwgb.edu", "(920) 123-4567");
-    miniVan* testMinivanPtr = GBMadisonFleet.getMiniVan(202);
+    miniVan* testMinivanPtr = GBMadisonFleet.getMiniVan("202");
     ticket customerTicket2(&GreenBayMilwaukee, testMinivanPtr);
     DateTime newTicketDate(2021, 5, 1, 17, 45, 0);
     customerTicket2.set_travel_date(ticketDate);
@@ -393,8 +394,8 @@ void functionalityTesting() {
 
 int main()
 {
-	//TODO: sticking this here before we have capabilities to read from permanent file
 	accountRepo acctRepo = accountRepo();
+    routeRepo rteRepo = routeRepo();
     //busSeatTesting();
     //fleetTesting();
 	//dateTesting();
@@ -407,5 +408,6 @@ int main()
 	catch (std::exception e)
 	{
 		std::cout << "ERROR: COULD NOT LOAD PROGRAM." << std::endl;
+        exit(0);
 	}
 }

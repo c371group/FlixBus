@@ -1,15 +1,15 @@
 //implementation file
-#include "Vehicle.h"
+#include "vehicle.h"
 
 vehicle::vehicle()
 = default;
 
-vehicle::vehicle(int val1)
+vehicle::vehicle(std::string val1)
 {
 	this->id_no = val1;
 }
 
-void vehicle::set_id_no(int val)
+void vehicle::set_id_no(std::string val)
 {
 	this->id_no = val;
 }
@@ -49,7 +49,7 @@ void vehicle::set_rate_per_mile(int val)
 }
 */
 
-int vehicle::get_id_no()
+std::string vehicle::get_id_no()
 {
 	return this->id_no;
 }
@@ -58,7 +58,6 @@ int vehicle::get_capacity()
 {
 	return this->capacity;
 }
-
 
 std::string vehicle::get_type()
 {
@@ -69,7 +68,7 @@ std::string vehicle::get_type()
 void vehicle::displaySeats()
 {
 	auto seats = *get_seats();
-	std::pair<int, char> seat{1, 'E'};
+	std::pair<int, char> seat{ 1, 'E' };
 	int columns = seats.count(seat) > 0 ? 5 : 3;
 
 	int displayRow = 0;
@@ -90,7 +89,7 @@ void vehicle::displaySeats()
 void vehicle::displayFreeSeats()
 {
 	auto seats = *get_seats();
-	std::pair<int, char> seat{1, 'E'};
+	std::pair<int, char> seat{ 1, 'E' };
 	int columns = seats.count(seat) > 0 ? 5 : 3;
 	int displayRow = 0;
 	for (const auto& p : seats)
@@ -213,7 +212,6 @@ int vehicle::get_free_seats_count()
 	int seatsCount = 0;
 	for (const auto& p : seats)
 	{
-
 		if (p.second.first == 0)
 		{
 			seatsCount++;
@@ -222,7 +220,7 @@ int vehicle::get_free_seats_count()
 	return seatsCount;
 }
 
-// Returns a refrence of the seats map
+// Returns a reference of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* luxuryBus::get_seats()
 {
 	return &this->seats;
@@ -231,7 +229,7 @@ std::map<std::pair<int, char>, std::pair<int, double>>* luxuryBus::get_seats()
 luxuryBus::luxuryBus()
 = default;
 
-luxuryBus::luxuryBus(int id)
+luxuryBus::luxuryBus(std::string id)
 {
 	this->id_no = id;
 }
@@ -240,8 +238,7 @@ std::string luxuryBus::get_type()
 {
 	return this->type;
 }
-
-int luxuryBus::get_id_no()
+std::string luxuryBus::get_id_no()
 {
 	return this->id_no;
 }
@@ -265,7 +262,11 @@ std::map<std::pair<int, char>, std::pair<int, double>>* miniBus::get_seats()
 miniBus::miniBus()
 = default;
 
-miniBus::miniBus(int id)
+/*miniBus::miniBus(const miniBus& mb)
+{	x = sam.x;
+	y = sam.y;
+}*/
+miniBus::miniBus(std::string id)
 {
 	this->id_no = id;
 }
@@ -275,7 +276,7 @@ std::string miniBus::get_type()
 	return this->type;
 }
 
-int miniBus::get_id_no()
+std::string miniBus::get_id_no()
 {
 	return this->id_no;
 }
@@ -290,26 +291,35 @@ double miniBus::getBusHireRatePerMile() const
 	return this->busHireRatePerMile;
 }
 
+//MINIVAN
 // Returns a reference of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* miniVan::get_seats()
 {
 	return &this->seats;
 }
 
+//for use by copies of the object, NOT original
+void miniVan::set_seats(std::map<std::pair<int, char>, std::pair<int, double>> temp) {
+	this->seats = temp;
+}
 miniVan::miniVan()
 = default;
 
-miniVan::miniVan(int id)
+miniVan::miniVan(const miniVan & mv) //copy constructor for minivan
 {
-	this->id_no = id;
+	id_no = mv.id_no;
+	seats = mv.seats;
 }
-
 std::string miniVan::get_type()
 {
 	return this->type;
 }
+miniVan::miniVan(std::string id)
+{
+	this->id_no = id;
+}
 
-int miniVan::get_id_no()
+std::string miniVan::get_id_no()
 {
 	return this->id_no;
 }

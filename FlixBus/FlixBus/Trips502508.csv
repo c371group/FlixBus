@@ -1,41 +1,41 @@
-Day Of Week, Date, Bus Type, Driver, Bus ID, Source, Destination, Leaving, Est Arrival
-Sun, 05/02/2021, Lux Bus, Korina Drivas, LB002, Green Bay, Whitewater, 4:00:00 PM, 6:40:00 PM
-Sun, 05/02/2021, Minibus, Lisandro Alaniz, MB001, Green Bay, Oshkosh, 11:30:00 AM, 12:30:00 PM
-Sun, 05/02/2021, Lux Bus, Korina Drivas, LB002, Whitewater, Green Bay, 6:50:00 PM, 9:40:00 PM
-Sun, 05/02/2021, Minibus, Lisandro Alaniz, MB001, Oshkosh, Green Bay, 12:40:00 PM, 1:50:00 PM
-Mon, 05/03/2021, Lux Bus, Gabriel Shwetz, LB001, Green Bay, Milwaukee, 12:00:00 PM, 2:10:00 PM
-Mon, 05/03/2021, Minivan, Brigitta Raskopf, MV001, Green Bay, Eau Claire, 12:45:00 PM, 3:55:00 PM
-Mon, 05/03/2021, Minivan, Sadiq Mifsud, MV002, Green Bay, Madison, 2:30:00 PM, 5:05:00 PM
-Mon, 05/03/2021, Minibus, Ramesh Amble, MB001, Green Bay, Oshkosh, 3:00:00 PM, 4:00:00 PM
-Mon, 05/03/2021, Lux Bus, Gabriel Shwetz, LB001, Milwaukee, Green Bay, 2:20:00 PM, 4:40:00 PM
-Mon, 05/03/2021, Minivan, Brigitta Raskopf, MV001, Eau Claire, Green Bay, 4:05:00 PM, 7:25:00 PM
-Mon, 05/03/2021, Minivan, Sadiq Mifsud, MV002, Madison, Green Bay, 5:15:00 PM, 8:00:00 PM
-Mon, 05/03/2021, Minibus, Ramesh Amble, MB001, Oshkosh, Green Bay, 4:10:00 PM, 5:20:00 PM
-Tues, 05/04/2021, Minibus, Jana Neumann, MB002, Green Bay, Eau Claire, 9:30:00 AM, 12:40:00 PM
-Tues, 05/04/2021, Minivan, Curtis Ewell, MV001, Green Bay, Madison, 9:30:00 AM, 12:05:00 PM
-Tues, 05/04/2021, Minibus, Jana Neumann, MB002, Eau Claire, Green Bay, 12:50:00 PM, 4:10:00 PM
-Tues, 05/04/2021, Minivan, Curtis Ewell, MV001, Madison, Green Bay, 12:15:00 PM, 3:00:00 PM
-Wed, 05/05/2021, Lux Bus, Kajus Althaus, LB001, Green Bay, Milwaukee, 9:00:00 AM, 11:10:00 AM
-Wed, 05/05/2021, Minivan, Carletta Rosenbalm, MV001, Green Bay, Whitewater, 2:30:00 PM, 5:10:00 PM
-Wed, 05/05/2021, Minibus, Ulrich Fleischer, MB001, Green Bay, Oshkosh, 11:00:00 AM, 12:00:00 PM
-Wed, 05/05/2021, Lux Bus, Kajus Althaus, LB001, Milwaukee, Green Bay, 11:20:00 AM, 1:40:00 PM
-Wed, 05/05/2021, Minivan, Carletta Rosenbalm, MV001, Whitewater, Green Bay, 5:20:00 PM, 8:10:00 PM
-Wed, 05/05/2021, Minibus, Ulrich Fleischer, MB001, Oshkosh, Green Bay, 12:10:00 PM, 1:20:00 PM
-Thurs, 05/06/2021, Minivan, Venessa Freiberg, MV002, Green Bay, Milwaukee, 2:30:00 PM, 4:40:00 PM
-Thurs, 05/06/2021, Minibus, Isolde Holzmann, MB002, Green Bay, Eau Claire, 11:00:00 AM, 2:10:00 PM
-Thurs, 05/06/2021, Minivan, Rosemarie Schroeder, MV001, Green Bay, Madison, 1:00:00 PM, 3:35:00 PM
-Thurs, 05/06/2021, Lux Bus, Hasib Kathia, LB002, Green Bay, Whitewater, 6:30:00 AM, 9:10:00 AM
-Thurs, 05/06/2021, Minivan, Venessa Freiberg, MV002, Milwaukee, Green Bay, 4:50:00 PM, 7:10:00 PM
-Thurs, 05/06/2021, Minibus, Isolde Holzmann, MB002, Eau Claire, Green Bay, 2:20:00 PM, 5:40:00 PM
-Thurs, 05/06/2021, Minivan, Rosemarie Schroeder, MV001, Madison, Green Bay, 3:45:00 PM, 6:30:00 PM
-Thurs, 05/06/2021, Lux Bus, Hasib Kathia, LB002, Whitewater, Green Bay, 9:20:00 AM, 12:10:00 PM
-Fri, 05/07/2021, Lux Bus, Brigitta Raskopf, LB002, Green Bay, Whitewater, 11:40:00 AM, 2:20:00 PM
-Fri, 05/07/2021, Minivan, Jana Neumann, MV001, Green Bay, Oshkosh, 12:30:00 PM, 1:30:00 PM
-Fri, 05/07/2021, Lux Bus, Brigitta Raskopf, LB002, Whitewater, Green Bay, 2:30:00 PM, 5:20:00 PM
-Fri, 05/07/2021, Minivan, Jana Neumann, MV001, Oshkosh, Green Bay, 1:40:00 PM, 2:50:00 PM
-Sat, 05/08/2021, Minibus, Sadiq Mifsud, MB003, Green Bay, Milwaukee, 7:00:00 AM, 9:10:00 AM
-Sat, 05/08/2021, Minivan, Curtis Ewell, MV001, Green Bay, Eau Claire, 11:30:00 AM, 2:40:00 PM
-Sat, 05/08/2021, Lux Bus, Gabriel Shwetz, LB003, Green Bay, Madison, 12:30:00 PM, 3:05:00 PM
-Sat, 05/08/2021, Minibus, Sadiq Mifsud, MB003, Milwaukee, Green Bay, 9:20:00 AM, 11:40:00 AM
-Sat, 05/08/2021, Minivan, Curtis Ewell, MV001, Eau Claire, Green Bay, 2:50:00 PM, 6:10:00 PM
-Sat, 05/08/2021, Lux Bus, Gabriel Shwetz, LB003, Madison, Green Bay, 3:15:00 PM, 6:00:00 PM
+Day Of Week,Date,Bus Type,Driver,Bus ID,Source,Destination,Leaving,Est Arrival
+Sun,05/02/2021,Lux Bus,Korina Drivas,LB002,Green Bay,Whitewater,4:00:00 PM,6:40:00 PM
+Sun,05/02/2021,Minibus,Lisandro Alaniz,MB001,Green Bay,Oshkosh,11:30:00 AM,12:30:00 PM
+Sun,05/02/2021,Lux Bus,Korina Drivas,LB002,Whitewater,Green Bay,6:50:00 PM,9:40:00 PM
+Sun,05/02/2021,Minibus,Lisandro Alaniz,MB001,Oshkosh,Green Bay,12:40:00 PM,1:50:00 PM
+Mon,05/03/2021,Lux Bus,Gabriel Shwetz,LB001,Green Bay,Milwaukee,12:00:00 PM,2:10:00 PM
+Mon,05/03/2021,Minivan,Brigitta Raskopf,MV001,Green Bay,Eau Claire,12:45:00 PM,3:55:00 PM
+Mon,05/03/2021,Minivan,Sadiq Mifsud,MV002,Green Bay,Madison,2:30:00 PM,5:05:00 PM
+Mon,05/03/2021,Minibus,Ramesh Amble,MB001,Green Bay,Oshkosh,3:00:00 PM,4:00:00 PM
+Mon,05/03/2021,Lux Bus,Gabriel Shwetz,LB001,Milwaukee,Green Bay,2:20:00 PM,4:40:00 PM
+Mon,05/03/2021,Minivan,Brigitta Raskopf,MV001,Eau Claire,Green Bay,4:05:00 PM,7:25:00 PM
+Mon,05/03/2021,Minivan,Sadiq Mifsud,MV002,Madison,Green Bay,5:15:00 PM,8:00:00 PM
+Mon,05/03/2021,Minibus,Ramesh Amble,MB001,Oshkosh,Green Bay,4:10:00 PM,5:20:00 PM
+Tues,05/04/2021,Minibus,Jana Neumann,MB002,Green Bay,Eau Claire,9:30:00 AM,12:40:00 PM
+Tues,05/04/2021,Minivan,Curtis Ewell,MV001,Green Bay,Madison,9:30:00 AM,12:05:00 PM
+Tues,05/04/2021,Minibus,Jana Neumann,MB002,Eau Claire,Green Bay,12:50:00 PM,4:10:00 PM
+Tues,05/04/2021,Minivan,Curtis Ewell,MV001,Madison,Green Bay,12:15:00 PM,3:00:00 PM
+Wed,05/05/2021,Lux Bus,Kajus Althaus,LB001,Green Bay,Milwaukee,9:00:00 AM,11:10:00 AM
+Wed,05/05/2021,Minivan,Carletta Rosenbalm,MV001,Green Bay,Whitewater,2:30:00 PM,5:10:00 PM
+Wed,05/05/2021,Minibus,Ulrich Fleischer,MB001,Green Bay,Oshkosh,11:00:00 AM,12:00:00 PM
+Wed,05/05/2021,Lux Bus,Kajus Althaus,LB001,Milwaukee,Green Bay,11:20:00 AM,1:40:00 PM
+Wed,05/05/2021,Minivan,Carletta Rosenbalm,MV001,Whitewater,Green Bay,5:20:00 PM,8:10:00 PM
+Wed,05/05/2021,Minibus,Ulrich Fleischer,MB001,Oshkosh,Green Bay,12:10:00 PM,1:20:00 PM
+Thurs,05/06/2021,Minivan,Venessa Freiberg,MV002,Green Bay,Milwaukee,2:30:00 PM,4:40:00 PM
+Thurs,05/06/2021,Minibus,Isolde Holzmann,MB002,Green Bay,Eau Claire,11:00:00 AM,2:10:00 PM
+Thurs,05/06/2021,Minivan,Rosemarie Schroeder,MV001,Green Bay,Madison,1:00:00 PM,3:35:00 PM
+Thurs,05/06/2021,Lux Bus,Hasib Kathia,LB002,Green Bay,Whitewater,6:30:00 AM,9:10:00 AM
+Thurs,05/06/2021,Minivan,Venessa Freiberg,MV002,Milwaukee,Green Bay,4:50:00 PM,7:10:00 PM
+Thurs,05/06/2021,Minibus,Isolde Holzmann,MB002,Eau Claire,Green Bay,2:20:00 PM,5:40:00 PM
+Thurs,05/06/2021,Minivan,Rosemarie Schroeder,MV001,Madison,Green Bay,3:45:00 PM,6:30:00 PM
+Thurs,05/06/2021,Lux Bus,Hasib Kathia,LB002,Whitewater,Green Bay,9:20:00 AM,12:10:00 PM
+Fri,05/07/2021,Lux Bus,Brigitta Raskopf,LB002,Green Bay,Whitewater,11:40:00 AM,2:20:00 PM
+Fri,05/07/2021,Minivan,Jana Neumann,MV001,Green Bay,Oshkosh,12:30:00 PM,1:30:00 PM
+Fri,05/07/2021,Lux Bus,Brigitta Raskopf,LB002,Whitewater,Green Bay,2:30:00 PM,5:20:00 PM
+Fri,05/07/2021,Minivan,Jana Neumann,MV001,Oshkosh,Green Bay,1:40:00 PM,2:50:00 PM
+Sat,05/08/2021,Minibus,Sadiq Mifsud,MB003,Green Bay,Milwaukee,7:00:00 AM,9:10:00 AM
+Sat,05/08/2021,Minivan,Curtis Ewell,MV001,Green Bay,Eau Claire,11:30:00 AM,2:40:00 PM
+Sat,05/08/2021,Lux Bus,Gabriel Shwetz,LB003,Green Bay,Madison,12:30:00 PM,3:05:00 PM
+Sat,05/08/2021,Minibus,Sadiq Mifsud,MB003,Milwaukee,Green Bay,9:20:00 AM,11:40:00 AM
+Sat,05/08/2021,Minivan,Curtis Ewell,MV001,Eau Claire,Green Bay,2:50:00 PM,6:10:00 PM
+Sat,05/08/2021,Lux Bus,Gabriel Shwetz,LB003,Madison,Green Bay,3:15:00 PM,6:00:00 PM
