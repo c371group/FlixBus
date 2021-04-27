@@ -7,6 +7,7 @@ registration::registration(accountRepo& acctRepo)
 	};
 	std::vector<std::vector<std::string>> temp = {promptSet1};
 	set_vecStr(temp);
+	system("CLS");
 	acctData();
 	humanData();
 	finalCreation(acctRepo);
