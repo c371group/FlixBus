@@ -185,5 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Trips502508.csv" />
+    <None Include="AccountsDB.csv" />
+    <None Include="RoutesDB.csv" />
   </ItemGroup>
 </Project>

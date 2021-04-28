@@ -4,12 +4,12 @@
 vehicle::vehicle()
 = default;
 
-vehicle::vehicle(int val1)
+vehicle::vehicle(std::string val1)
 {
 	this->id_no = val1;
 }
 
-void vehicle::set_id_no(int val)
+void vehicle::set_id_no(std::string val)
 {
 	this->id_no = val;
 }
@@ -19,7 +19,37 @@ void vehicle::set_capacity(int val)
 	this->capacity = val;
 }
 
-int vehicle::get_id_no()
+std::string vehicle::get_id_no()
+=======
+/*
+void vehicle::set_rate_per_mile(int val)
+{
+	this->rate_per_mile = val;
+}
+*/
+
+/*int vehicle::set_values_from_type(std::string val) //TODO: go back and make this an enum
+{
+	std::string types[] = {"Luxury Bus", "Mini Bus", "MiniVan"};
+	int capacities[] = {52, 36, 12}; // we'll have to figure out stuff with the seats later
+	int rates_per_mile_regular[] = {75, 65, 50}; // this is just an array for the regular travel, NOT RENTAL,
+	//we'll have to create something for the luxury bus (remember that window and aisle seats are
+	//different prices) but this is just for testing
+
+	for (auto i = 0; i < 3; i++)
+	{
+		if (val == types[i])
+		{
+			set_rate_per_mile(rates_per_mile_regular[i]);
+			set_capacity(capacities[i]);
+			return 0;
+		}
+	}
+
+	std::cout << "WARNING: BUS TYPE COULD NOT BE FOUND" << std::endl;
+	return 0;
+}
+*/
 {
 	return this->id_no;
 }
@@ -28,7 +58,6 @@ int vehicle::get_capacity()
 {
 	return this->capacity;
 }
-
 
 std::string vehicle::get_type()
 {
@@ -39,7 +68,7 @@ std::string vehicle::get_type()
 void vehicle::displaySeats()
 {
 	auto seats = *get_seats();
-	std::pair<int, char> seat{1, 'E'};
+	std::pair<int, char> seat{ 1, 'E' };
 	int columns = seats.count(seat) > 0 ? 5 : 3;
 
 	int displayRow = 0;
@@ -60,7 +89,7 @@ void vehicle::displaySeats()
 void vehicle::displayFreeSeats()
 {
 	auto seats = *get_seats();
-	std::pair<int, char> seat{1, 'E'};
+	std::pair<int, char> seat{ 1, 'E' };
 	int columns = seats.count(seat) > 0 ? 5 : 3;
 	int displayRow = 0;
 	for (const auto& p : seats)
@@ -204,7 +233,6 @@ int vehicle::get_free_seats_count()
 	int seatsCount = 0;
 	for (const auto& p : seats)
 	{
-
 		if (p.second.first == 0)
 		{
 			seatsCount++;
@@ -213,7 +241,7 @@ int vehicle::get_free_seats_count()
 	return seatsCount;
 }
 
-// Returns a refrence of the seats map
+// Returns a reference of the seats map
 std::map<std::pair<int, char>, std::pair<int, double>>* luxuryBus::get_seats()
 {
 	return &this->seats;
@@ -222,7 +250,7 @@ std::map<std::pair<int, char>, std::pair<int, double>>* luxuryBus::get_seats()
 luxuryBus::luxuryBus()
 = default;
 
-luxuryBus::luxuryBus(int id)
+luxuryBus::luxuryBus(std::string id)
 {
 	this->id_no = id;
 }
@@ -231,8 +259,7 @@ std::string luxuryBus::get_type()
 {
 	return this->type;
 }
-
-int luxuryBus::get_id_no()
+std::string luxuryBus::get_id_no()
 {
 	return this->id_no;
 }
@@ -261,7 +288,11 @@ std::map<std::pair<int, char>, std::pair<int, double>>* miniBus::get_seats()
 miniBus::miniBus()
 = default;
 
-miniBus::miniBus(int id)
+/*miniBus::miniBus(const miniBus& mb)
+{	x = sam.x;
+	y = sam.y;
+}*/
+miniBus::miniBus(std::string id)
 {
 	this->id_no = id;
 }
@@ -271,7 +302,7 @@ std::string miniBus::get_type()
 	return this->type;
 }
 
-int miniBus::get_id_no()
+std::string miniBus::get_id_no()
 {
 	return this->id_no;
 }
@@ -297,20 +328,28 @@ std::map<std::pair<int, char>, std::pair<int, double>>* miniVan::get_seats()
 	return &this->seats;
 }
 
+//for use by copies of the object, NOT original
+void miniVan::set_seats(std::map<std::pair<int, char>, std::pair<int, double>> temp) {
+	this->seats = temp;
+}
 miniVan::miniVan()
 = default;
 
-miniVan::miniVan(int id)
+miniVan::miniVan(const miniVan & mv) //copy constructor for minivan
 {
-	this->id_no = id;
+	id_no = mv.id_no;
+	seats = mv.seats;
 }
-
 std::string miniVan::get_type()
 {
 	return this->type;
 }
+miniVan::miniVan(std::string id)
+{
+	this->id_no = id;
+}
 
-int miniVan::get_id_no()
+std::string miniVan::get_id_no()
 {
 	return this->id_no;
 }

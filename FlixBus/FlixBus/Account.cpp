@@ -13,15 +13,6 @@ Account::Account(Customer cust) //Testing purposes
 	this->customer = cust;
 }
 
-Account::Account(Customer cust, int person) //Testing purposes, DELETE LATER
-{
-	std::vector<std::string> usernames = { "Sam1", "Abubakr2", "Charlotte3", "Tori4", "Rhodri5", "Kelsea6" };
-	std::vector<std::string> passwords = { "Parry1", "Harper2", "Thornton3", "Mathews4", "Davey5", "Bonilla6" };
-	this->customer = cust;
-	this->username_ = usernames[person];
-	this->password_ = passwords[person];
-}
-
 Account::Account(Customer cust, std::string username, std::string password)
 {
 	this->customer = cust;
