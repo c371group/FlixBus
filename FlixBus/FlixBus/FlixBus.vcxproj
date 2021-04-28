@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AccountsDB.csv" />
+    <None Include="busdetails.csv" />
     <None Include="RoutesDB.csv" />
     <None Include="Trips502508.csv" />
   </ItemGroup>
