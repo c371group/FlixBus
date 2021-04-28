@@ -20,36 +20,6 @@ void vehicle::set_capacity(int val)
 }
 
 std::string vehicle::get_id_no()
-=======
-/*
-void vehicle::set_rate_per_mile(int val)
-{
-	this->rate_per_mile = val;
-}
-*/
-
-/*int vehicle::set_values_from_type(std::string val) //TODO: go back and make this an enum
-{
-	std::string types[] = {"Luxury Bus", "Mini Bus", "MiniVan"};
-	int capacities[] = {52, 36, 12}; // we'll have to figure out stuff with the seats later
-	int rates_per_mile_regular[] = {75, 65, 50}; // this is just an array for the regular travel, NOT RENTAL,
-	//we'll have to create something for the luxury bus (remember that window and aisle seats are
-	//different prices) but this is just for testing
-
-	for (auto i = 0; i < 3; i++)
-	{
-		if (val == types[i])
-		{
-			set_rate_per_mile(rates_per_mile_regular[i]);
-			set_capacity(capacities[i]);
-			return 0;
-		}
-	}
-
-	std::cout << "WARNING: BUS TYPE COULD NOT BE FOUND" << std::endl;
-	return 0;
-}
-*/
 {
 	return this->id_no;
 }
