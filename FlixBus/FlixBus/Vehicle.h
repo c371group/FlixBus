@@ -19,7 +19,7 @@ public:
 
 	virtual std::string get_id_no();
 	virtual std::string get_type();
-	int get_capacity();
+	virtual int get_capacity();
 	int get_all_seats_count();
 	int get_free_seats_count();
 
@@ -27,8 +27,12 @@ public:
 	void displaySeats();
 	// Displaying taken seats as 'X'.
 	void displayFreeSeats();
+	// Reserve all seats
+	void reserveAllSeats();
 	// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
 	bool reserveSeat(int row, char column);
+	// Check if available for hire.
+	virtual bool can_hire();
 	// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
 	bool cancelSeat(int row, char column);
 	double getSeatRate(int row, char column);
@@ -44,6 +48,7 @@ private:
 	const double aisleSeatRate = 0.75;
 	const double busHireRate = 1500;
 	const double busHireRatePerMile = 0.25;
+	const int capacity = 52;
 public:
 	luxuryBus();
 	explicit luxuryBus(std::string);
@@ -77,6 +82,7 @@ public:
 	std::string get_id_no() override;
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
+	int get_capacity() override;
 };
 
 class miniBus : public vehicle
@@ -88,6 +94,7 @@ private:
 	const double aisleSeatPrice = 0.65;
 	const double busHireRate = 1300;
 	const double busHireRatePerMile = 0.2;
+	const int capacity = 36;
 public:
 	miniBus();
 	miniBus(std::string);
@@ -106,12 +113,12 @@ public:
 		{{11, 'A'}, {0, windowSeatPrice}}, {{11, 'B'}, {0, aisleSeatPrice}}, {{11, 'C'}, {0, windowSeatPrice}},
 		{{12, 'A'}, {0, windowSeatPrice}}, {{12, 'B'}, {0, aisleSeatPrice}}, {{12, 'C'}, {0, windowSeatPrice}}
 	};
-
-	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
-	std::string get_type();
-	std::string get_id_no();
+	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() override;
+	std::string get_type() override;
+	std::string get_id_no() override;
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
+	int get_capacity() override;
 };
 
 class miniVan : public vehicle
@@ -123,6 +130,7 @@ private:
 	const double aisleSeatPrice = 0.5;
 	const double busHireRate = 1000;
 	const double busHireRatePerMile = 0.15;
+	const int capacity = 12;
 public:
 
 	miniVan();
@@ -136,9 +144,10 @@ public:
 		{{4, 'A'}, {0, windowSeatPrice}}, {{4, 'B'}, {0, aisleSeatPrice}}, {{4, 'C'}, {0, windowSeatPrice}}
 	};
 	void set_seats(std::map<std::pair<int, char>, std::pair<int, double>> temp);
-	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats();
-	std::string get_type();
-	std::string get_id_no();
+	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() override;
+	std::string get_type() override;
+	std::string get_id_no() override;
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
+	int get_capacity() override;
 };
