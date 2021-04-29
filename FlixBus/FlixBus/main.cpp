@@ -484,23 +484,24 @@ void manage_customer_trips(Account* account)
         cout << " - ";
         item.get_trip()->getEstArrivalDT().displayDate();
         cout << "\nTotal of " << item.get_route()->get_distance() << " miles." << endl;
-        cout << "\tPrice: $" << item.get_cost() << endl;
-        cout << "\tBus type: " << item.get_trip()->get_bus()->get_type() << endl;
-        cout << "\tSeat number: " << item.get_seat_number() << endl;
-        cout << "\tTicket cost: " << item.get_cost() << endl;
+        cout << "Price: $" << item.get_cost() << endl;
+        cout << "Bus type: " << item.get_trip()->get_bus()->get_type() << endl;
+        cout << "Seat number: " << item.get_seat_number() << endl;
+        cout << "Ticket cost: " << item.get_cost() << endl;
         cout << "******************************************************" << endl;
     }
 }
 
 int reserve_customer_ticket(Account* account, routeRepo* route_repo)
 {
-    route selected_route;
+    route * selected_route;
+    ticket new_ticket;
     cout << "AVAILABLE ROUTES: " << endl;
     int route_choice = 0;
     int route_index = 0;
     for (auto item : route_repo->getRoutes())
     {
-        cout << route_index + 1 << ". " << item.get_source() << " - " << item.get_destination() << endl;
+        cout << route_index + 1 << ". " << item->get_source() << " - " << item->get_destination() << endl;
         route_index++;
     }
     cout << "\nPlease select a route for your trip (or enter 0 to exit): ";
@@ -514,18 +515,20 @@ int reserve_customer_ticket(Account* account, routeRepo* route_repo)
     {
         return 0;
     }
-    selected_route = route_repo->getRoutes()[route_choice - 1];
+    int test_index = route_choice - 1;
+    selected_route = route_repo->getRoutes().at(test_index);
+    new_ticket.set_route(route_repo->getRoutes()[test_index]);
     cout << "DEPARTURE\t\t" << "ARRIVAL\t\t\t" << "SOURCE\t\t" << "DESTINATION" << endl;
     int trip_choice = 0;
     int index = 0;
-    for (auto item : selected_route.get_trip_repo()->getAllTrips())
+    for (auto item : selected_route->get_trip_repo()->getAllTrips())
     {
         cout << index + 1 << ". ";
         item->getDepartureDT().displayDate();
         cout << "\t";
         item->getEstArrivalDT().displayDate();
         cout << "\t";
-        cout << selected_route.get_source() << "\t" << selected_route.get_destination() << "\t" << endl;
+        cout << selected_route->get_source() << "\t" << selected_route->get_destination() << "\t" << endl;
         index++;
     }
     cout << "\n\nPlease select a trip (or enter 0 to exit): ";
@@ -541,22 +544,11 @@ int reserve_customer_ticket(Account* account, routeRepo* route_repo)
     }
     else
     {
-	    Trip * selected_trip = selected_route.get_trip_repo()->getAllTrips()[trip_choice-1];
+	    Trip * selected_trip = selected_route->get_trip_repo()->getAllTrips()[trip_choice-1];
+        new_ticket.set_trip(route_repo->getRoutes()[route_choice - 1]->get_trip_repo()->getAllTrips()[trip_choice - 1]);
         cout << "\nAvailable bus seats." << endl;
         selected_trip->get_bus()->displayFreeSeats();
-    	
-        //vector<route>::iterator it;
-        //it = std::find(route_repo->getRoutes().begin(), route_repo->getRoutes().end(), selected_route);
 
-        //tripRepo* test_ = route_repo->getRoutes()[it - route_repo->getRoutes().begin()].get_trip_repo();
-    	
-        //vector<Trip*>::iterator it_;
-        //it_ = std::find(test_->getAllTrips().begin(), test_->getAllTrips().end(), selected_trip);
-        //route_repo->getRoutes()[it - route_repo->getRoutes().begin()].get_trip_repo()->getAllTrips()[it_ - test_->getAllTrips().end()];
-        //
-    	
-        //ticket new_ticket(&route_repo->getRoutes()[it - route_repo->getRoutes().begin()], route_repo->getRoutes()[it - route_repo->getRoutes().begin()].get_trip_repo()->getAllTrips()[it_ - test_->getAllTrips().end()]);
-        ticket new_ticket(&selected_route, selected_trip);
     	int seat_row;
         char seat_column;
         cout << "\nPlease select a seat: " << endl;
@@ -572,6 +564,7 @@ int reserve_customer_ticket(Account* account, routeRepo* route_repo)
         {
             cout << "We couldn't reserve this seat." << endl;
         }
+        new_ticket.set_cost(new_ticket.get_trip()->get_bus()->getSeatRate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
         account->addTicket(new_ticket);
 
     }
@@ -713,11 +706,11 @@ void customerMenuTest()
     route GreenBayEauClaire("Green Bay", "Eau Claire", 194.4, &bus_fleet, &trip_repoGBEc);
 
     routeRepo route_repo;
-    route_repo.add_route(GreenBayMadison);
-    route_repo.add_route(GreenBayMilwaukee);
-    route_repo.add_route(GreenBayWhitewater);
-    route_repo.add_route(GreenBayOshkosh);
-    route_repo.add_route(GreenBayEauClaire);
+    route_repo.add_route(&GreenBayMadison);
+    route_repo.add_route(&GreenBayMilwaukee);
+    route_repo.add_route(&GreenBayWhitewater);
+    route_repo.add_route(&GreenBayOshkosh);
+    route_repo.add_route(&GreenBayEauClaire);
 
     
     Customer customer_("Jon", "Doe", "123 Road St", "JD@uwgb.edu", "(435) 534-2345");

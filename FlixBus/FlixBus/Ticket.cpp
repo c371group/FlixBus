@@ -86,10 +86,7 @@ bool ticket::reserve_seat(int row, char column)
 		if (this->trip_->get_bus()->reserveSeat(row, column)) {
 			seatRate = this->trip_->get_bus()->getSeatRate(row, column);
 			this->set_cost(this->route_->get_distance() * seatRate);
-			std::pair<int, char> seat;
-			seat.first = row;
-			seat.second = column;
-			this->seat_number_ = seat;
+			this->set_seat(row, column);
 			this->active_ = true;
 			return true;
 		}
