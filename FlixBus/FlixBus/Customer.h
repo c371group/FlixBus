@@ -10,7 +10,7 @@ class Customer
 private:
 	std::string f_name_, l_name_, address_, email_;
 	std::string contact_number_;
-	ticket* ticket_;
+	//ticket* ticket_;
 	
 public:
 	Customer();
@@ -23,7 +23,7 @@ public:
 	void setAddress(std::string address);
 	void setEmail(std::string email);
 	void setContactNumber(std::string contact_number);
-	void setTicket(ticket*);
+	//void setTicket(ticket*);
 	
 
 	std::string getFirstName() const;
@@ -31,6 +31,6 @@ public:
 	std::string getAddress() const;
 	std::string getEmail() const;
 	std::string getContactNumber() const;
-	ticket* get_ticket();
+	//ticket* get_ticket();
 	
 };

@@ -2,7 +2,7 @@
 
 routeRepo::routeRepo()
 {
-	readRoutesDB();
+	//readRoutesDB();
 }
 
 std::vector<route> routeRepo::getRoutes()
