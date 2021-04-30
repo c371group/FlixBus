@@ -1,7 +1,10 @@
 #include "Route.h"
 
 route::route()
-= default;
+{
+	this->busFleet = nullptr;
+	this->trip_repo_ = nullptr;
+}
 
 route::route(std::string source, std::string destination)
 {
@@ -64,12 +67,22 @@ route::route(std::string source, std::string destination, fleet * busFleet)
 	this->destination_ = destination;
 	this->busFleet = busFleet;
 }
+
 route::route(std::string source, std::string destination, double distance, fleet * busFleet)
 {
 	this->source_ = source;
 	this->destination_ = destination;
 	this->distance_ = distance;
 	this->busFleet = busFleet;
+}
+
+route::route(std::string source, std::string destination, double distance, fleet* busFleet, tripRepo* trip_repo)
+{
+	this->source_ = source;
+	this->destination_ = destination;
+	this->distance_ = distance;
+	this->busFleet = busFleet;
+	this->trip_repo_ = trip_repo;
 }
 
 
@@ -111,4 +124,9 @@ double route::get_distance()
 fleet* route::get_fleet()
 {
 	return this->busFleet;
+}
+
+tripRepo* route::get_trip_repo()
+{
+	return this->trip_repo_;
 }

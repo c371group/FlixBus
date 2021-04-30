@@ -1,6 +1,7 @@
 #include "DateTime.h"
 #include <ctime>
 #include <iostream>
+#include <string>
 
 DateTime::DateTime()
 {
@@ -95,8 +96,14 @@ int DateTime::differenceDays(DateTime dt)
 
 void DateTime::displayDate()
 {
-	std::cout << "Date: " << this->year << "/" << this->month << "/" << this->day << " ";
-	std::cout << this->hours << ":" << this->minutes << ":"  << this->seconds;
+	std::string month_ = this->month < 10 ? "0" + std::to_string(this->month) : std::to_string(this->month);
+	std::string day_ = this->day < 10 ? "0" + std::to_string(this->day) : std::to_string(this->day);
+	std::string hour_ = this->hours < 10 ? "0" + std::to_string(this->hours) : std::to_string(this->hours);
+	std::string minute_ = this->minutes < 10 ? "0" + std::to_string(this->minutes) : std::to_string(this->minutes);
+	std::string second_ = this->seconds < 10 ? "0" + std::to_string(this->seconds) : std::to_string(this->seconds);
+
+	std::cout << this->year << "/" << month_ << "/" << day_ << " ";
+	std::cout << hour_ << ":" << minute_ << ":" << second_;
 }
 
 void DateTime::getCurrentTime()

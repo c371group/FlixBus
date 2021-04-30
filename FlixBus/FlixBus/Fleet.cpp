@@ -20,33 +20,36 @@ void fleet::addMiniVan(miniVan mini)
 }
 luxuryBus* fleet::getLuxuryBus(std::string id)
 {
+	int index = 0;
 	for (auto item : this->luxury_buses) {
 		if (item.get_id_no() == id) {
-			luxuryBus* itemptr = &item;
-			return itemptr;
+			return &this->luxury_buses.at(index);
 		}
+		index++;
 	}
 	return nullptr;
 }
 
 miniBus* fleet::getMiniBus(std::string id)
 {
+	int index = 0;
 	for (auto item : this->mini_buses) {
 		if (item.get_id_no() == id) {
-			miniBus* itemptr = &item;
-			return itemptr;
+			return &this->mini_buses.at(index);
 		}
+		index++;
 	}
 	return nullptr;
 }
 
 miniVan* fleet::getMiniVan(std::string id)
 {
+	int index = 0;
 	for (auto item : this->mini_vans) {
 		if (item.get_id_no() == id) {
-			miniVan* itemptr = &item;
-			return itemptr;
+			return &this->mini_vans.at(index);
 		}
+		index++;
 	}
 	return nullptr;
 }
@@ -60,7 +63,7 @@ void fleet::displayLuxuryBusFleet()
 		for (auto& elem : this->luxury_buses)
 		{
 			index++;
-			std::cout << index << ". " << elem.get_id_no() << std::endl;
+			std::cout << index << ". " << elem.get_id_no() << " " << elem.get_type() << std::endl;
 		}
 	}
 	else
@@ -78,7 +81,7 @@ void fleet::displayMiniBusFleet()
 		for (auto& elem : this->mini_buses)
 		{
 			index++;
-			std::cout << index << ". " << elem.get_id_no() << std::endl;
+			std::cout << index << ". " << elem.get_id_no() << " " << elem.get_type() << std::endl;
 		}
 	}
 	else
@@ -96,7 +99,7 @@ void fleet::displayMiniVanFleet()
 		for (auto& elem : this->mini_vans)
 		{
 			index++;
-			std::cout << index << ". " << elem.get_id_no() << std::endl;
+			std::cout << index << ". " << elem.get_id_no() << " " << elem.get_type() << std::endl;
 		}
 	}
 	else
