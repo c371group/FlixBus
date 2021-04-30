@@ -6,15 +6,18 @@
 #include "accountRepo.h"
 #include "interfaceView.h"
 #include "loggedInInterface.h"
+
 class login :
     public interfaceView
 {
 private:
 	accountRepo acctRep;
+	routeRepo* routeRep;
 	std::string allegedUsername;
 	std::string allegedPassword;
 public:
 	login(accountRepo& acctRepo);
+	login(accountRepo& acctRepo, routeRepo* routeRepo);
 	int enter_username();
 	void enter_password(int);
 	void set_Alleged_Username(std::string);

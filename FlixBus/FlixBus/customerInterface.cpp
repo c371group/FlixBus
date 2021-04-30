@@ -13,6 +13,13 @@ customerInterface::customerInterface(accountRepo& acctRep)
 	menuLogic();
 }
 
+customerInterface::customerInterface(accountRepo& acctRep, routeRepo* routeRepo)
+{
+	this->routeRep = routeRepo;
+	preLoad(acctRep);
+	menuLogic();
+}
+
 void customerInterface::preLoad(accountRepo& acctRep)
 {
 	
@@ -45,7 +52,7 @@ int customerInterface::menuLogic()
 		{
 			if (choice_int == 1)
 			{
-				login log = login(acctRep);
+				login log = login(acctRep, this->routeRep);
 			}
 			else
 			{

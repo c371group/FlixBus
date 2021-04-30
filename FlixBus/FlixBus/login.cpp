@@ -9,6 +9,16 @@ login::login(accountRepo& acctRepo)
 	loggedInInterface lif = loggedInInterface(acctRep.getAccts()[index]); //TODO: probably have to modify this down the line
 }
 
+login::login(accountRepo& acctRepo, routeRepo* routeRepo)
+{
+	int index;
+	this->acctRep = acctRepo;
+	this->routeRep = routeRepo;
+	index = enter_username();
+	enter_password(index);
+	loggedInInterface lif = loggedInInterface(acctRep.getAccts()[index], routeRepo);
+}
+
 int login::enter_username()
 {
 	int ind = 0;
