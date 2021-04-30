@@ -159,6 +159,96 @@ void dateTesting() {
 	currentDate.getCurrentTime();
 }
 
+int admin_menu(Account account)
+{
+    int adminPrivlages = 0;
+    int sentinel = -1;
+    int orderReservation = 0;
+    fleet busFleet;
+    luxuryBus luxBus;
+    miniVan miniVan;
+    luxuryBus luxBus1;
+    miniBus miniBus;
+
+    while (adminPrivlages != sentinel) {
+        //Showing the code for ordering each item possible. All 3 possible busses. 
+        cout << "1. Add a vehicle \n2. View reservations \n3. Edit passenger information \n4. Change reservation charges \n5. View income \n0. Exit\n";
+        cout << "Enter your choice: ";
+
+        cin >> orderReservation;
+        string nameEdit;
+        Customer customer;
+        switch (orderReservation) {
+
+            //Add a vehicle case 1
+        case 1:
+            cout << "Add a vehicle to the fleet:\n";
+            while (adminPrivlages != sentinel) {
+                cout << "1. Luxary Bus \n2. Mini Bus \n3. Minivan\n-1. Exit\n";
+                cout << "Enter your choice: ";
+
+                cin >> adminPrivlages;
+                switch (adminPrivlages) {
+
+                case 1:
+                    busFleet.addLuxuryBus(luxBus);
+                    cout << "Bus added successfully.\n";
+                    break;
+                case 2:
+                    busFleet.addMiniBus(miniBus);
+                    cout << "Bus added successfully.\n";
+                    break;
+                case 3:
+                    busFleet.addMiniVan(miniVan);
+                    cout << "Bus added successfully.\n";
+                    break;
+                }
+            }
+            cout << "Current busses\n";
+            busFleet.displayLuxuryBusFleet();
+            busFleet.displayMiniBusFleet();
+            busFleet.displayMiniVanFleet();
+            break;
+
+        case 2:
+            cout << "View reservation by bus and date:\n";
+            //****Insert Code Here****//
+            break;
+
+            //Edit Passenger Information****//
+        case 3:
+            cout << "Edit passenger's name and charges:\n";
+            customer = account.get_customer();
+            cout << "Change first name.\n";
+            cin >> nameEdit;
+            customer.setFirstName(nameEdit);
+            cout << "Change last name.\n";
+            cin >> nameEdit;
+            customer.setLastName(nameEdit);
+            account.set_customer(customer);
+            //****Add Charges****//
+            break;
+
+        case 4:
+            cout << "Change reservation charges:\n";
+            //****Insert Code Here****//
+            break;
+
+        case 5:
+            cout << "View income:\n";
+            //****Insert Code Here****//
+            break;
+        case 0:
+            sentinel = 0;
+            break;
+        default:
+            cout << "Please enter a valid option. \n";
+        }
+    }
+    return 0;
+}
+
+
 int mainMenu()
 {
 
@@ -172,6 +262,7 @@ int mainMenu()
     int adminPrivileges = 0;
     int sentinel = -1;
 
+    Account account;
     while (mainMenu != sentinel) {
         //Creating the choice options of Order, Pay, Exit.
         cout << "1. Are you a customer? \n2. Are you an admin? \n3. Would you like to exit? \n";
@@ -292,40 +383,7 @@ int mainMenu()
 
             //Menu for Admin 
         case 2:
-
-            while (adminPrivileges != sentinel) {
-                //Showing the code for ordering each item possible. All 3 possible busses. 
-                cout << "1. Add a vehicle \n2. View reservations \n3. Edit passenger information \n4. Change reservation charges \n5. View income \n";
-
-                cin >> orderReservation;
-                switch (orderReservation) {
-
-                case 1:
-                    cout << "Add a vehicle to the fleet:\n";
-                    //****Insert Code Here****//
-                    break;
-
-                case 2:
-                    cout << "View reservation by bus and date:\n";
-                    //****Insert Code Here****//
-                    break;
-
-                case 3:
-                    cout << "Edit passenger's name and charges:\n";
-                    //****Insert Code Here****//
-                    break;
-
-                case 4:
-                    cout << "Change reservation charges:\n";
-                    //****Insert Code Here****//
-                    break;
-
-                case 5:
-                    cout << "View income:\n";
-                    //****Insert Code Here****//
-                    break;
-                }
-            }
+            admin_menu(account);
         case 3:
             exit(0);
         }
@@ -435,13 +493,14 @@ int main()
 {
 	accountRepo acctRepo = accountRepo();
     routeRepo rteRepo = routeRepo();
+    mainMenu();
     //busSeatTesting();
     //fleetTesting();
 	//dateTesting();
     //functionalityTesting();
     //busHireTesting();
 
-    try
+    /*try
 	{
 		userTypeMenuView usertypemenuview = userTypeMenuView(acctRepo);
 	}
@@ -449,5 +508,5 @@ int main()
 	{
 		std::cout << "ERROR: COULD NOT LOAD PROGRAM." << std::endl;
         exit(0);
-	}
+	}*/
 }
