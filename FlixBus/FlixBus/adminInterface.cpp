@@ -13,6 +13,13 @@ adminInterface::adminInterface(accountRepo& acctRep)
 	menuLogic();
 }
 
+adminInterface::adminInterface(accountRepo& acctRep, routeRepo* routeRepo)
+{
+	this->routeRep = routeRepo;
+	preLoad(acctRep);
+	menuLogic();
+}
+
 void adminInterface::preLoad(accountRepo& acctRep)
 {
 	this->acctRep = acctRep;
@@ -41,6 +48,59 @@ int adminInterface::menuLogic()
 		//TODO: Change to allow going back to menu
 		if (choice_int == 1)
 		{
+			std::cout << "AVAILABLE ROUTES: " << std::endl;
+			int route_choice = 0;
+			int route_index = 0;
+			for (auto item : this->routeRep->getRoutes())
+			{
+				std::cout << route_index + 1 << ". " << item.get_source() << " - " << item.get_destination() << std::endl;
+				route_index++;
+			}
+			std::cout << "\nPlease select a route for your trip (or enter 0 to exit): ";
+			std::cin >> route_choice;
+			while (route_choice < 0 || route_choice > route_index)
+			{
+				std::cout << "\nWrong choice! Please select a route for your trip (or enter 0 to exit): ";
+				std::cin >> route_choice;
+			}
+			if (route_choice == 0)
+			{
+				return 0;
+			}
+			int choice_index = route_choice - 1;
+			route* currentRoute = &this->routeRep->getRoutes()[choice_index];
+			int adminChoice;
+			std::cout << "Add a vehicle to the fleet:\n";
+			std::cout << "1. Luxary Bus \n2. Mini Bus \n3. Minivan\n-1. Exit\n";
+			std::cout << "Enter your choice: ";
+
+			std::cin >> adminChoice;
+			fleet* test = currentRoute->get_fleet();
+			switch (adminChoice) {
+
+			case 1:
+			{luxuryBus luxBus;
+			test->addLuxuryBus(luxBus);
+			std::cout << "Bus added successfully.\n";
+			break; 
+			}
+			case 2:
+			{miniBus miniBus;
+			test->addMiniBus(miniBus);
+			std::cout << "Bus added successfully.\n";
+			break;
+			}
+			case 3:
+			{miniVan miniVan;
+			test->addMiniVan(miniVan);
+			std::cout << "Bus added successfully.\n";
+			break;
+			}
+			}
+			std::cout << "Current busses\n";
+			test->displayLuxuryBusFleet();
+			test->displayMiniBusFleet();
+			test->displayMiniVanFleet();
 			return 0;
 		}
 		if (choice_int == 2)

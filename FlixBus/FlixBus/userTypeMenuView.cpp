@@ -48,7 +48,7 @@ int userTypeMenuView::menuLogic()
 			}
 			if (choice_int == 2) //ADMIN INTERFACE
 			{
-				adminInterface admininterface = adminInterface(acctRep);
+				adminInterface admininterface = adminInterface(this->acctRep, this->routeRep);
 				return 0;
 			}
 			if (choice_int == 3)
