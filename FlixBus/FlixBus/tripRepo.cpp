@@ -4,9 +4,9 @@
 tripRepo::tripRepo()
 = default;
 
-std::vector<Trip> tripRepo::getAllTrips()
+std::vector<Trip>* tripRepo::getAllTrips()
 {
-	return this->trips;
+	return &this->trips;
 }
 
 std::vector<Trip> tripRepo::getBookableTrips(DateTime currentTime)

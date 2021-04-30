@@ -71,12 +71,12 @@ int loggedInInterface::menuLogic()
 				fTLV = fullTripListView(true); //this currently shows all trips, regardless of if they can book them right now or not
 				break;
 			case 4: 
-			/*{
+			{
 				ticket new_ticket;
 				std::cout << "AVAILABLE ROUTES: " << std::endl;
 				int route_choice = 0;
 				int route_index = 0;
-				for (auto item : this->routeRep->getRoutes())
+				for (auto item : *this->routeRep->getRoutes())
 				{
 					std::cout << route_index + 1 << ". " << item.get_source() << " - " << item.get_destination() << std::endl;
 					route_index++;
@@ -93,13 +93,13 @@ int loggedInInterface::menuLogic()
 					break;
 				}
 				int choice_index = route_choice - 1;
-				std::vector<route> test = this->routeRep->getRoutes();
-				route* selected_route = &(test[choice_index]);
-				new_ticket.set_route(&this->routeRep->getRoutes()[choice_index]);
+				std::vector<route>* selected_vector = this->routeRep->getRoutes();
+				route* selected_route = &selected_vector->at(choice_index);
+				new_ticket.set_route(&selected_vector->at(choice_index));
 				std::cout << "DEPARTURE\t\t" << "ARRIVAL\t\t\t" << "SOURCE\t\t" << "DESTINATION" << std::endl;
 				int trip_choice = 0;
 				int index = 0;
-				for (auto item : selected_route->get_trip_repo()->getAllTrips())
+				for (auto item : *selected_route->get_trip_repo()->getAllTrips())
 				{
 					std::cout << index + 1 << ". ";
 					item.getDepartureDT().displayDate();
@@ -122,8 +122,9 @@ int loggedInInterface::menuLogic()
 				}
 				else
 				{
-					Trip* selected_trip = &selected_route->get_trip_repo()->getAllTrips()[trip_choice - 1];
-					new_ticket.set_trip(&this->routeRep->getRoutes()[route_choice - 1].get_trip_repo()->getAllTrips()[trip_choice - 1]);
+					std::vector<Trip>* list_of_trips = selected_route->get_trip_repo()->getAllTrips();
+					Trip* selected_trip = &list_of_trips->at(trip_choice - 1); //&selected_route->get_trip_repo()->getAllTrips()[trip_choice - 1];
+					new_ticket.set_trip(&list_of_trips->at(trip_choice - 1));
 					std::cout << "\nAvailable bus seats." << std::endl;
 					selected_trip->get_bus()->displayFreeSeats();
 
@@ -147,7 +148,7 @@ int loggedInInterface::menuLogic()
 					break;
 				}
 				
-			}*/
+			}
 			case 5:
 				/*see history for account, including cancelled tickets and prior trips or rentals*/
 				break;
