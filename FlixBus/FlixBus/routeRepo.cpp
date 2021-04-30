@@ -5,9 +5,9 @@ routeRepo::routeRepo()
 	//readRoutesDB();
 }
 
-std::vector<route> routeRepo::getRoutes()
+std::vector<route>* routeRepo::getRoutes()
 {
-	return this->routes;
+	return &this->routes;
 }
 
 void routeRepo::add_route(route rt)

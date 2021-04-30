@@ -51,7 +51,7 @@ int adminInterface::menuLogic()
 			std::cout << "AVAILABLE ROUTES: " << std::endl;
 			int route_choice = 0;
 			int route_index = 0;
-			for (auto item : this->routeRep->getRoutes())
+			for (auto item : *this->routeRep->getRoutes())
 			{
 				std::cout << route_index + 1 << ". " << item.get_source() << " - " << item.get_destination() << std::endl;
 				route_index++;
@@ -68,40 +68,46 @@ int adminInterface::menuLogic()
 				return 0;
 			}
 			int choice_index = route_choice - 1;
-			route* currentRoute = &this->routeRep->getRoutes()[choice_index];
+			std::vector<route>* selected_vector = this->routeRep->getRoutes();
+			route* current_route = &selected_vector->at(choice_index);
 			int adminChoice;
-			std::cout << "Add a vehicle to the fleet:\n";
-			std::cout << "1. Luxary Bus \n2. Mini Bus \n3. Minivan\n-1. Exit\n";
+			std::cout << "\nAdd a vehicle to the fleet:\n";
+			std::cout << "1. Luxury Bus \n2. Mini Bus \n3. Minivan\n-1. Exit\n";
 			std::cout << "Enter your choice: ";
 
 			std::cin >> adminChoice;
-			fleet* test = currentRoute->get_fleet();
+			fleet* current_fleet = current_route->get_fleet();
 			switch (adminChoice) {
 
-			case 1:
-			{luxuryBus luxBus;
-			test->addLuxuryBus(luxBus);
-			std::cout << "Bus added successfully.\n";
-			break; 
+				case 1:
+				{
+					luxuryBus luxBus;
+					current_fleet->addLuxuryBus(luxBus);
+					std::cout << "Bus added successfully.\n";
+					break; 
+				}
+				case 2:
+				{
+					miniBus miniBus;
+					current_fleet->addMiniBus(miniBus);
+					std::cout << "Bus added successfully.\n";
+					break;
+				}
+				case 3:
+				{
+					miniVan miniVan;
+					current_fleet->addMiniVan(miniVan);
+					std::cout << "Bus added successfully.\n";
+					break;
+				}
+				default:
+					std::cout << "Please select correct choice!";
 			}
-			case 2:
-			{miniBus miniBus;
-			test->addMiniBus(miniBus);
-			std::cout << "Bus added successfully.\n";
-			break;
-			}
-			case 3:
-			{miniVan miniVan;
-			test->addMiniVan(miniVan);
-			std::cout << "Bus added successfully.\n";
-			break;
-			}
-			}
-			std::cout << "Current busses\n";
-			test->displayLuxuryBusFleet();
-			test->displayMiniBusFleet();
-			test->displayMiniVanFleet();
-			return 0;
+			std::cout << "\nCurrent buses for route:" << current_route->get_source() <<" - " << current_route->get_destination() << std::endl;
+			current_fleet->displayLuxuryBusFleet();
+			current_fleet->displayMiniBusFleet();
+			current_fleet->displayMiniVanFleet();
+			system("PAUSE");
 		}
 		if (choice_int == 2)
 		{
