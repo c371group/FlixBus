@@ -244,6 +244,11 @@ double luxuryBus::getBusHireRatePerMile() const
 	return this->busHireRatePerMile;
 }
 
+double luxuryBus::getSecurityDeposit() const
+{
+	return this->securityDeposit;
+}
+
 int luxuryBus::get_capacity()
 {
 	return this->capacity;
@@ -285,6 +290,11 @@ double miniBus::getBusHireRate() const
 double miniBus::getBusHireRatePerMile() const
 {
 	return this->busHireRatePerMile;
+}
+
+double miniBus::getSecurityDeposit() const
+{
+	return this->securityDeposit;
 }
 
 int miniBus::get_capacity()
@@ -332,6 +342,11 @@ double miniVan::getBusHireRate() const
 double miniVan::getBusHireRatePerMile() const
 {
 	return this->busHireRatePerMile;
+}
+
+double miniVan::getSecurityDeposit() const
+{
+	return this->securityDeposit;
 }
 
 int miniVan::get_capacity()

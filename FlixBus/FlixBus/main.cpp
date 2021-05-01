@@ -819,7 +819,99 @@ int main()
 {
 	accountRepo acctRepo = accountRepo();
     //routeRepo rteRepo = routeRepo();
-    routeRepo rteRepo = build_test_data();
+    routeRepo rteRepo;
+
+    fleet bus_fleet;
+    luxuryBus lux_bus_1("LB201");
+    luxuryBus lux_bus_2("LB202");
+    luxuryBus lux_bus_3("LB203");
+    luxuryBus lux_bus_4("LB204");
+    luxuryBus lux_bus_5("LB205");
+    luxuryBus lux_bus_6("LB206");
+    miniVan mini_van_1("MV401");
+    miniVan mini_van_2("MV402");
+    miniVan mini_van_3("MV403");
+    miniVan mini_van_4("MV404");
+    miniBus mini_bus_1("MB301");
+    miniBus mini_bus_2("MB302");
+    miniBus mini_bus_3("MB303");
+    miniBus mini_bus_4("MB304");
+
+    // Add them in a loop.
+    bus_fleet.addLuxuryBus(lux_bus_1);
+    bus_fleet.addLuxuryBus(lux_bus_2);
+    bus_fleet.addLuxuryBus(lux_bus_3);
+    bus_fleet.addLuxuryBus(lux_bus_4);
+    bus_fleet.addLuxuryBus(lux_bus_5);
+    bus_fleet.addLuxuryBus(lux_bus_6);
+
+    bus_fleet.addMiniVan(mini_van_1);
+    bus_fleet.addMiniVan(mini_van_2);
+    bus_fleet.addMiniVan(mini_van_3);
+    bus_fleet.addMiniVan(mini_van_4);
+
+    bus_fleet.addMiniBus(mini_bus_1);
+    bus_fleet.addMiniBus(mini_bus_2);
+    bus_fleet.addMiniBus(mini_bus_3);
+    bus_fleet.addMiniBus(mini_bus_4);
+
+    // Adding trips
+    Trip GBToMadisonTrip_1(DateTime(2021, 5, 1, 12, 00, 00), DateTime(2021, 5, 1, 15, 00, 00), &lux_bus_1);
+    Trip GBToMadisonTrip_2(DateTime(2021, 5, 2, 12, 00, 00), DateTime(2021, 5, 2, 15, 00, 00), &lux_bus_2);
+    Trip GBToMadisonTrip_3(DateTime(2021, 5, 3, 12, 00, 00), DateTime(2021, 5, 3, 15, 00, 00), &lux_bus_3);
+    Trip GBToMadisonTrip_4(DateTime(2021, 5, 4, 12, 00, 00), DateTime(2021, 5, 4, 15, 00, 00), &lux_bus_4);
+
+    Trip GBToMilwaukeeTrip_1(DateTime(2021, 5, 1, 18, 30, 00), DateTime(2021, 5, 1, 22, 00, 00), &lux_bus_5);
+    Trip GBToMilwaukeeTrip_2(DateTime(2021, 5, 4, 18, 30, 00), DateTime(2021, 5, 4, 22, 00, 00), &lux_bus_6);
+    Trip GBToMilwaukeeTrip_3(DateTime(2021, 5, 7, 18, 30, 00), DateTime(2021, 5, 7, 22, 00, 00), &mini_van_1);
+
+    Trip GBToWhitewaterTrip_1(DateTime(2021, 5, 1, 10, 45, 00), DateTime(2021, 5, 1, 12, 45, 00), &mini_van_2);
+    Trip GBToWhitewaterTrip_2(DateTime(2021, 5, 2, 10, 45, 00), DateTime(2021, 5, 2, 12, 45, 00), &mini_van_3);
+
+    Trip GBToOshkoshTrip_1(DateTime(2021, 5, 1, 9, 00, 00), DateTime(2021, 5, 1, 9, 45, 00), &mini_van_4);
+    Trip GBToOshkoshTrip_2(DateTime(2021, 5, 1, 12, 00, 00), DateTime(2021, 5, 1, 12, 45, 00), &mini_bus_1);
+    Trip GBToOshkoshTrip_3(DateTime(2021, 5, 1, 15, 00, 00), DateTime(2021, 5, 1, 15, 45, 00), &mini_bus_2);
+    Trip GBToOshkoshTrip_4(DateTime(2021, 5, 1, 18, 00, 00), DateTime(2021, 5, 1, 18, 45, 00), &mini_bus_3);
+
+    Trip GBToEauClairTrip_1(DateTime(2021, 5, 1, 10, 00, 00), DateTime(2021, 5, 1, 13, 00, 00), &mini_bus_4);
+
+    tripRepo trip_repoGBMs;
+    trip_repoGBMs.add_trip(GBToMadisonTrip_1);
+    trip_repoGBMs.add_trip(GBToMadisonTrip_2);
+    trip_repoGBMs.add_trip(GBToMadisonTrip_3);
+    trip_repoGBMs.add_trip(GBToMadisonTrip_4);
+
+    tripRepo trip_repoGBMl;
+    trip_repoGBMl.add_trip(GBToMilwaukeeTrip_1);
+    trip_repoGBMl.add_trip(GBToMilwaukeeTrip_2);
+    trip_repoGBMl.add_trip(GBToMilwaukeeTrip_3);
+
+    tripRepo trip_repoGBWw;
+    trip_repoGBWw.add_trip(GBToWhitewaterTrip_1);
+    trip_repoGBWw.add_trip(GBToWhitewaterTrip_2);
+
+    tripRepo trip_repoGBOs;
+    trip_repoGBOs.add_trip(GBToOshkoshTrip_1);
+    trip_repoGBOs.add_trip(GBToOshkoshTrip_2);
+    trip_repoGBOs.add_trip(GBToOshkoshTrip_3);
+    trip_repoGBOs.add_trip(GBToOshkoshTrip_4);
+
+    tripRepo trip_repoGBEc;
+    trip_repoGBEc.add_trip(GBToEauClairTrip_1);
+
+    // Adding routes
+    route GreenBayMadison("Green Bay", "Madison", 135.6, &bus_fleet, &trip_repoGBMs);
+    route GreenBayMilwaukee("Green Bay", "Milwaukee", 118.7, &bus_fleet, &trip_repoGBMl);
+    route GreenBayWhitewater("Green Bay", "Whitewater", 142.2, &bus_fleet, &trip_repoGBWw);
+    route GreenBayOshkosh("Green Bay", "Oshkosh", 50.4, &bus_fleet, &trip_repoGBOs);
+    route GreenBayEauClaire("Green Bay", "Eau Claire", 194.4, &bus_fleet, &trip_repoGBEc);
+
+    rteRepo.add_route(GreenBayMadison);
+    rteRepo.add_route(GreenBayMilwaukee);
+    rteRepo.add_route(GreenBayWhitewater);
+    rteRepo.add_route(GreenBayOshkosh);
+    rteRepo.add_route(GreenBayEauClaire);
+
 	
 	//test_basic();
     //busSeatTesting();
