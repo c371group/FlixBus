@@ -13,6 +13,12 @@ std::vector<Account> accountRepo::getAccts()
 	return this->accts;
 }
 
+Account* accountRepo::get_acc_by_index(int indx)
+{
+	return &this->accts[indx];
+}
+
+
 void accountRepo::add_acct(Account acct)
 {
 	accts.push_back(acct);

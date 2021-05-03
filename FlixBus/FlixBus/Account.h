@@ -26,6 +26,7 @@ public:
 	std::string get_username() const;
 	std::string get_password() const;
 	Customer get_customer() const;
+	Customer* get_customer_reference();
 	std::vector<ticket> getTickets();
 	ticket* get_ticket_by_id(std::string ticket_id);
 };

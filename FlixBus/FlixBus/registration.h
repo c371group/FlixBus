@@ -18,12 +18,12 @@ private:
 	Customer finalCustomer;
 	Account finalAccount;
 public:
-	registration(accountRepo& acctRepo);
+	registration(accountRepo* acctRepo);
 	void humanData();
 	void populate();
 	void createAcct();
-	void addToRepo(accountRepo&);
-	void finalCreation(accountRepo&);
+	void addToRepo(accountRepo*);
+	void finalCreation(accountRepo*);
 	void acctData();
 	void createCustomer();
 	void set_username(std::string);

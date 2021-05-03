@@ -6,30 +6,30 @@
  */
 
 customerInterface::customerInterface() = default;
-customerInterface::customerInterface(accountRepo& acctRep)
+customerInterface::customerInterface(accountRepo* acctRep)
 {
 	
 	preLoad(acctRep);
 	menuLogic();
 }
 
-customerInterface::customerInterface(accountRepo& acctRep, routeRepo* routeRepo)
+customerInterface::customerInterface(accountRepo* acctRep, routeRepo* routeRepo)
 {
 	this->routeRep = routeRepo;
 	preLoad(acctRep);
 	menuLogic();
 }
 
-void customerInterface::preLoad(accountRepo& acctRep)
+void customerInterface::preLoad(accountRepo* acctRep)
 {
 	
 	this->acctRep = acctRep;
-	std::vector<std::string> menu1 = { "Login", "Register" };
+	std::vector<std::string> menu1 = { "Login", "Register", "Exit" };
 	std::vector<std::vector<std::string>> temp = { menu1 };
 	set_vecMen(temp);
 }
 
-accountRepo customerInterface::getAcctRep()
+accountRepo* customerInterface::getAcctRep()
 {
 	return this->acctRep;
 }
@@ -52,11 +52,15 @@ int customerInterface::menuLogic()
 		{
 			if (choice_int == 1)
 			{
-				login log = login(acctRep, this->routeRep);
+				login log = login(this->acctRep, this->routeRep);
+			}
+			else if (choice_int == 2)
+			{
+				registration reg = registration(this->acctRep);
 			}
 			else
 			{
-				registration reg = registration(acctRep);
+				return 0;
 			}
 		}
 	}

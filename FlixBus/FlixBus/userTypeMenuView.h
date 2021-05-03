@@ -9,14 +9,14 @@ class userTypeMenuView :
 	public interfaceView
 {
 private:
-	accountRepo acctRep;
+	accountRepo* acctRep;
 	routeRepo* routeRep;
 public:
-	userTypeMenuView(accountRepo&);
-	userTypeMenuView(accountRepo&, routeRepo*);
-	void preLoad(accountRepo&);
+	userTypeMenuView(accountRepo*);
+	userTypeMenuView(accountRepo*, routeRepo*);
+	void preLoad(accountRepo*);
 	int menuLogic();
-	accountRepo getAcctRep();
+	accountRepo* getAcctRep();
 };
 
 

@@ -1,19 +1,19 @@
 #include "userTypeMenuView.h"
 
-userTypeMenuView::userTypeMenuView(accountRepo& acctRep)
+userTypeMenuView::userTypeMenuView(accountRepo* acctRep)
 {
 	preLoad(acctRep);
 	menuLogic();
 }
 
-userTypeMenuView::userTypeMenuView(accountRepo& acctRep, routeRepo* routeRepo)
+userTypeMenuView::userTypeMenuView(accountRepo* acctRep, routeRepo* routeRepo)
 {
 	this->routeRep = routeRepo;
 	preLoad(acctRep);
 	menuLogic();
 }
 
-void userTypeMenuView::preLoad(accountRepo& acctRep)
+void userTypeMenuView::preLoad(accountRepo* acctRep)
 {
 	this->acctRep = acctRep;
 	std::vector<std::string> menu1 = { "User", "Admin", "Exit" };
@@ -21,7 +21,7 @@ void userTypeMenuView::preLoad(accountRepo& acctRep)
 	set_vecMen(temp);
 }
 
-accountRepo userTypeMenuView::getAcctRep()
+accountRepo* userTypeMenuView::getAcctRep()
 {
 	return this->acctRep;
 }

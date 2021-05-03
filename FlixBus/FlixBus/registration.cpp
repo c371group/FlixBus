@@ -1,6 +1,6 @@
 #include "registration.h"
 
-registration::registration(accountRepo& acctRepo)
+registration::registration(accountRepo* acctRepo)
 {
 	std::vector<std::string> promptSet1 = {
 "Enter first name", "Enter last name", "Enter email", "Enter address", "Enter contact number"
@@ -177,13 +177,13 @@ void registration::createAcct()
 	set_final_account(acnt);
 }
 
-void registration::addToRepo(accountRepo& acctRep)
+void registration::addToRepo(accountRepo* acctRep)
 {
-	acctRep.add_acct(finalAccount);
-	acctRep.add_account_to_db(finalAccount);
+	acctRep->add_acct(finalAccount);
+	acctRep->add_account_to_db(finalAccount);
 }
 
-void registration::finalCreation(accountRepo& acctRep)
+void registration::finalCreation(accountRepo* acctRep)
 {
 	createCustomer();
 	createAcct();

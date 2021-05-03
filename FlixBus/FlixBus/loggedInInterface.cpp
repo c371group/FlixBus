@@ -1,13 +1,13 @@
 #include "loggedInInterface.h"
 
-loggedInInterface::loggedInInterface(Account& account)
+loggedInInterface::loggedInInterface(Account* account)
 {
 	this->acct = account;
 	preLoad();
 	menuLogic();
 }
 
-loggedInInterface::loggedInInterface(Account& account, routeRepo* routeRepo)
+loggedInInterface::loggedInInterface(Account* account, routeRepo* routeRepo)
 {
 	this->acct = account;
 	this->routeRep = routeRepo;
@@ -29,7 +29,7 @@ int loggedInInterface::menuLogic()
 	int choice_int = 0;
 	while (choice_int != 7) {
 		system("CLS");
-		std::cout << "Welcome, " << acct.get_customer().getFirstName() << std::endl;
+		std::cout << "Welcome, " << acct->get_customer().getFirstName() << std::endl;
 		int max = display_menu_items(0);
 		choice_int = enterChoice(max);
 		bool confirm = confirm_Menu_Choice(0, choice_int - 1);
@@ -44,11 +44,11 @@ int loggedInInterface::menuLogic()
 			switch (choice_int)
 			{
 			case 1: //acct info
-				aIV = accountInfoView(acct);
+				aIV = accountInfoView(*acct);
 				break;
 			case 2: //upcoming trips the customer is scheduled to take/has ticket(s) for
 			{
-				if(this->acct.getTickets().empty())
+				if(this->acct->getTickets().empty())
 				{
 					std::cout <<"No trips scheduled!" << std::endl;
 					system("PAUSE");
@@ -59,7 +59,7 @@ int loggedInInterface::menuLogic()
 					std::cout << "Travel Date\t\tSource\tDestination\tCost" << std::endl;
 					int ticket_number = 1;
 					int edit_ticket_choice;
-					for (auto& item : this->acct.getTickets())
+					for (auto& item : this->acct->getTickets())
 					{
 						std::cout << "******************************************************" << std::endl;
 						std::cout << "*************** Ticket: " << ticket_number << " *****************************" << std::endl;
@@ -89,9 +89,9 @@ int loggedInInterface::menuLogic()
 						}
 					}
 					
-					while(edit_ticket_choice < 0 || edit_ticket_choice > static_cast<int>(this->acct.getTickets().size()))
+					while(edit_ticket_choice < 0 || edit_ticket_choice > static_cast<int>(this->acct->getTickets().size()))
 					{
-						std::cout << "Wrong choice! Please try again! Choose between 0 and " << static_cast<int>(this->acct.getTickets().size()) << std::endl;
+						std::cout << "Wrong choice! Please try again! Choose between 0 and " << static_cast<int>(this->acct->getTickets().size()) << std::endl;
 						while (true) {
 							std::cout << "Enter ticket number to edit it or 0 for exit: ";
 							if (std::cin >> edit_ticket_choice) {
@@ -109,7 +109,7 @@ int loggedInInterface::menuLogic()
 						break;
 					}
 					int ticket_edit_choice=0;
-					std::vector<ticket> tickets_edit = this->acct.getTickets();
+					std::vector<ticket> tickets_edit = this->acct->getTickets();
 					ticket edit_ticket = tickets_edit.at(edit_ticket_choice-1);
 					std::cout << "" << std::endl;
 					std::cout << "** From " << edit_ticket.get_route()->get_source() << " To " << edit_ticket.get_route()->get_destination() << std::endl;
@@ -165,20 +165,20 @@ int loggedInInterface::menuLogic()
 					if (ticket_edit_choice == 1)
 					{
 						DateTime current_date;
-						DateTime ticket_date = this->acct.getTickets().at(edit_ticket_choice - 1).get_travel_date();
+						DateTime ticket_date = this->acct->getTickets().at(edit_ticket_choice - 1).get_travel_date();
 						int days_difference = current_date.differenceDays(ticket_date);
 						if(days_difference < 7)
 						{
 							std::cout << "Any cancellation shorter than a week will require 30%!" << std::endl;
-							std::cout << this->acct.getTickets().at(edit_ticket_choice - 1).get_cost() * 0.3<< " will be hold from your account." << std::endl;
+							std::cout << this->acct->getTickets().at(edit_ticket_choice - 1).get_cost() * 0.3<< " will be hold from your account." << std::endl;
 						}
 						if (days_difference < 2)
 						{
 							std::cout << "Reservation cancellation one day before the travel including one minute before the travel will forfeit the entire cost of the ticket.!" << std::endl;
-							std::cout << this->acct.getTickets().at(edit_ticket_choice - 1).get_cost() << " will be hold from your account." << std::endl;
+							std::cout << this->acct->getTickets().at(edit_ticket_choice - 1).get_cost() << " will be hold from your account." << std::endl;
 						}
-						this->acct.getTickets().at(edit_ticket_choice - 1).cancel_seat();
-						this->acct.removeTicket(edit_ticket.get_ticket_id());
+						this->acct->getTickets().at(edit_ticket_choice - 1).cancel_seat();
+						this->acct->removeTicket(edit_ticket.get_ticket_id());
 						if(edit_ticket.get_bus_hire_status())
 						{
 							//TODO: if bus is hired, we need to go and delete the trip from the trip repo.
@@ -187,7 +187,7 @@ int loggedInInterface::menuLogic()
 					}
 					if (ticket_edit_choice == 2 && !edit_ticket.get_bus_hire_status())
 					{
-						ticket* reference_to_edit_ticket = this->acct.get_ticket_by_id(edit_ticket.get_ticket_id());
+						ticket* reference_to_edit_ticket = this->acct->get_ticket_by_id(edit_ticket.get_ticket_id());
 						std::cout << "Free seats for ";
 						edit_ticket.get_trip()->getDepartureDT();
 						std::cout << " - ";
@@ -392,7 +392,7 @@ int loggedInInterface::menuLogic()
 						std::cin >> seat_column;
 					}
 					int count_attempts = 0;
-					while (new_ticket.reserve_seat(seat_row, seat_column))
+					while (!new_ticket.reserve_seat(seat_row, seat_column))
 					{
 						count_attempts++;
 						std::cout << "\nAttempt: " << count_attempts << ". After 5 attempts seat change will be canceled." << std::endl;
@@ -425,9 +425,9 @@ int loggedInInterface::menuLogic()
 					}
 
 					new_ticket.set_cost(new_ticket.get_trip()->get_bus()->getSeatRate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
-					std::string compiled_id = this->acct.get_customer().getLastName() + "_" + new_ticket.get_route()->get_source() + "_" + new_ticket.get_route()->get_destination() + "_" + new_ticket.get_trip()->get_bus()->get_id_no();
+					std::string compiled_id = this->acct->get_customer().getLastName() + "_" + new_ticket.get_route()->get_source() + "_" + new_ticket.get_route()->get_destination() + "_" + new_ticket.get_trip()->get_bus()->get_id_no();
 					new_ticket.set_ticket_id(compiled_id);
-					this->acct.addTicket(new_ticket);
+					this->acct->addTicket(new_ticket);
 					system("PAUSE");
 					break;
 				}
@@ -581,7 +581,7 @@ int loggedInInterface::menuLogic()
 							std::cout << "Adding security deposit.." << std::endl;
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_luxury_bus->getSecurityDeposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
-							this->acct.addTicket(bus_hire_ticket);
+							this->acct->addTicket(bus_hire_ticket);
 							system("PAUSE");
 							break;
 						}
@@ -642,7 +642,7 @@ int loggedInInterface::menuLogic()
 							std::cout << "Adding security deposit.." << std::endl;
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_bus->getSecurityDeposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
-							this->acct.addTicket(bus_hire_ticket);
+							this->acct->addTicket(bus_hire_ticket);
 							system("PAUSE");
 							break;
 						}
@@ -705,7 +705,7 @@ int loggedInInterface::menuLogic()
 							std::cout << "Adding security deposit.." << std::endl;
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_van->getSecurityDeposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
-							this->acct.addTicket(bus_hire_ticket);
+							this->acct->addTicket(bus_hire_ticket);
 							system("PAUSE");
 							break;
 						}
@@ -714,7 +714,7 @@ int loggedInInterface::menuLogic()
 				}
 			default:
 				//log out
-				std::cout << "Goodbye, " << acct.get_customer().getFirstName() << std::endl;
+				std::cout << "Goodbye, " << acct->get_customer().getFirstName() << std::endl;
 				break;
 			}
 		}

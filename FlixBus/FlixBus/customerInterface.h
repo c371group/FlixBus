@@ -9,14 +9,14 @@ class customerInterface :
     public interfaceView
 {
 private:
-	accountRepo acctRep;
+	accountRepo* acctRep;
 	routeRepo* routeRep;
 public:
 	customerInterface();
-	customerInterface(accountRepo&);
-	customerInterface(accountRepo&, routeRepo*);
-	void preLoad(accountRepo&); //might need to put reference here too
+	customerInterface(accountRepo*);
+	customerInterface(accountRepo*, routeRepo*);
+	void preLoad(accountRepo*); //might need to put reference here too
 	int menuLogic();
-	accountRepo getAcctRep();
+	accountRepo* getAcctRep();
 };
 

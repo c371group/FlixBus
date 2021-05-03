@@ -61,6 +61,11 @@ Customer Account::get_customer() const
 	return this->customer;
 }
 
+Customer* Account::get_customer_reference()
+{
+	return &this->customer;
+}
+
 std::vector<ticket> Account::getTickets()
 {
 	return this->tickets_;

@@ -8,12 +8,12 @@ class loggedInInterface :
     public interfaceView
 {
 private:
-	accountRepo acctRep;
+	accountRepo* acctRep;
 	routeRepo* routeRep;
-	Account acct;
+	Account* acct;
 public:
-	loggedInInterface(Account& account);
-	loggedInInterface(Account& account, routeRepo* routeRepo);
+	loggedInInterface(Account* account);
+	loggedInInterface(Account* account, routeRepo* routeRepo);
 	void preLoad();
 	int menuLogic();
 };
