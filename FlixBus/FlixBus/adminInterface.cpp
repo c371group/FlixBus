@@ -10,14 +10,14 @@ adminInterface::adminInterface()
 adminInterface::adminInterface(accountRepo& acctRep)
 {
 	preLoad(acctRep);
-	menuLogic();
+	menuLogic(acctRep);
 }
 
 adminInterface::adminInterface(accountRepo& acctRep, routeRepo* routeRepo)
 {
 	this->routeRep = routeRepo;
 	preLoad(acctRep);
-	menuLogic();
+	menuLogic(acctRep);
 }
 
 void adminInterface::preLoad(accountRepo& acctRep)
@@ -33,15 +33,19 @@ accountRepo adminInterface::getAcctRep()
 	return acctRep;
 }
 
-int adminInterface::menuLogic()
+int adminInterface::menuLogic(accountRepo &AcctRep)
 {
 	int max = display_menu_items(0);
 	int choice_int = enterChoice(max);
+	int accountID = -1;
 	bool confirm = confirm_Menu_Choice(0, choice_int - 1);
+	Customer customer;
+	std::string nameEdit;
+	Account account;
 
 	if (!confirm)
 	{
-		menuLogic();
+		menuLogic(AcctRep);
 	}
 	else
 	{
@@ -115,7 +119,24 @@ int adminInterface::menuLogic()
 		}
 		if (choice_int == 3)
 		{
-			
+			std::cout << "Choose an account number.\n";
+			std::cin >> accountID;
+			if (accountID < 0 || accountID >= acctRep.getAccts().size()) {
+				std::cout << "The account does not exist.\n";
+				return 0;
+			}
+			account = acctRep.getAccts().at(accountID);
+			std::cout << "Edit passenger's name and charges:\n";
+			customer = account.get_customer();
+			std::cout << "Change first name.\n";
+			std::cin >> nameEdit;
+			customer.setFirstName(nameEdit);
+			std::cout << "Change last name.\n";
+			std::cin >> nameEdit;
+			customer.setLastName(nameEdit);
+			account.set_customer(customer);
+			//****Add Charges****//
+
 			return 0;
 		}
 		if (choice_int == 4)

@@ -44,21 +44,18 @@ int userTypeMenuView::menuLogic()
 			if (choice_int == 1) //This shouldn't impact performance at all, we just run into problems when we do switch statement here
 			{
 				customerInterface custInterface = customerInterface(this->acctRep, this->routeRep);
-				return 0;
 			}
-			if (choice_int == 2) //ADMIN INTERFACE
+			else if (choice_int == 2) //ADMIN INTERFACE
 			{
 				adminInterface admininterface = adminInterface(this->acctRep, this->routeRep);
-				return 0;
 			}
-			if (choice_int == 3)
+			else if (choice_int == 3)
 			{
 				std::cout << "Goodbye!" << std::endl;
 				return 0;
 			}
 			else
 			{
-				return 0;
 			}
 		}
 	}
