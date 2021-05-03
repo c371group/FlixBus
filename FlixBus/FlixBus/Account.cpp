@@ -103,6 +103,3 @@ void Account::removeTicket(std::string ticket_id)
 	}
 	this->tickets_.erase(this->tickets_.begin() + index);
 }
-
-
-

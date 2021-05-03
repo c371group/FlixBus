@@ -10,10 +10,11 @@ class loggedInInterface :
 private:
 	accountRepo* acctRep;
 	routeRepo* routeRep;
+	revenue* revenue_;
 	Account* acct;
 public:
 	loggedInInterface(Account* account);
-	loggedInInterface(Account* account, routeRepo* routeRepo);
+	loggedInInterface(Account* account, routeRepo* routeRepo, revenue* revenue);
 	void preLoad();
 	int menuLogic();
 };

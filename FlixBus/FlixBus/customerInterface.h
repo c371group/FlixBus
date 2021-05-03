@@ -11,10 +11,11 @@ class customerInterface :
 private:
 	accountRepo* acctRep;
 	routeRepo* routeRep;
+	revenue* revenue_;
 public:
 	customerInterface();
 	customerInterface(accountRepo*);
-	customerInterface(accountRepo*, routeRepo*);
+	customerInterface(accountRepo*, routeRepo*, revenue*);
 	void preLoad(accountRepo*); //might need to put reference here too
 	int menuLogic();
 	accountRepo* getAcctRep();

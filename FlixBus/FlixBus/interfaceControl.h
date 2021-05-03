@@ -21,6 +21,6 @@ public:
 	bool notMixtureUpperLower(std::string input);
 	std::string lower_string(std::string str);
 	bool affirm(std::string input);
-	bool checkUsernameExistence(accountRepo acctRep, std::string, int&);
-	bool checkPassword(accountRepo acctRep, std::string, int);
+	bool checkUsernameExistence(accountRepo* acctRep, std::string, int&);
+	bool checkPassword(accountRepo* acctRep, std::string, int);
 };

@@ -124,3 +124,24 @@ void DateTime::getCurrentTime()
 	this->seconds = newtime.tm_sec;
 	this->displayDate();
 }
+
+std::string DateTime::to_string(bool include_time)
+{
+	std::string string_date;
+	std::string month_ = this->month < 10 ? "0" + std::to_string(this->month) : std::to_string(this->month);
+	std::string day_ = this->day < 10 ? "0" + std::to_string(this->day) : std::to_string(this->day);
+	std::string hour_ = this->hours < 10 ? "0" + std::to_string(this->hours) : std::to_string(this->hours);
+	std::string minute_ = this->minutes < 10 ? "0" + std::to_string(this->minutes) : std::to_string(this->minutes);
+	std::string second_ = this->seconds < 10 ? "0" + std::to_string(this->seconds) : std::to_string(this->seconds);
+	
+	if(include_time)
+	{
+		string_date = std::to_string(this->year) + "/" + month_ + "/" + day_ + " " + hour_ + ":" + minute_ + ":" + second_;
+	}
+	else
+	{
+		string_date = std::to_string(this->year) + "/" + month_ + "/" + day_;
+	}
+	
+	return string_date;
+}

@@ -8,6 +8,12 @@ accountRepo::accountRepo()
 	read_acct_db();
 }
 
+accountRepo::accountRepo(revenue revenue)
+{
+	this->revenue_ = revenue;
+	read_acct_db();
+}
+
 std::vector<Account> accountRepo::getAccts()
 {
 	return this->accts;
@@ -18,10 +24,20 @@ Account* accountRepo::get_acc_by_index(int indx)
 	return &this->accts[indx];
 }
 
+revenue* accountRepo::get_revenue()
+{
+	return &this->revenue_;
+}
+
 
 void accountRepo::add_acct(Account acct)
 {
 	accts.push_back(acct);
+}
+
+void accountRepo::set_revenue(revenue revenue)
+{
+	this->revenue_ = revenue;
 }
 
 int accountRepo::read_acct_db() {

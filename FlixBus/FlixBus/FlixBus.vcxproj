@@ -34,6 +34,7 @@
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="registration.cpp" />
+    <ClCompile Include="Revenue.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="routeRepo.cpp" />
     <ClCompile Include="Ticket.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="loggedInInterface.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="registration.h" />
+    <ClInclude Include="Revenue.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="routeRepo.h" />
     <ClInclude Include="Ticket.h" />

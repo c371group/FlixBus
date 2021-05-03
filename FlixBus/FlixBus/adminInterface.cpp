@@ -15,9 +15,10 @@ adminInterface::adminInterface(accountRepo* acctRep)
 	menuLogic(acctRep);
 }
 
-adminInterface::adminInterface(accountRepo* acctRep, routeRepo* routeRepo)
+adminInterface::adminInterface(accountRepo* acctRep, routeRepo* routeRepo, revenue* revenue)
 {
 	this->routeRep = routeRepo;
+	this->revenue_ = revenue;
 	preLoad(acctRep);
 	menuLogic(acctRep);
 }
@@ -146,22 +147,26 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 		{
 			for(auto & acc: AcctRep->getAccts())
 			{
-				std::cout << "******************************************************" << std::endl;
-				std::cout << "Customer: " << acc.get_customer().getFirstName() << " " << acc.get_customer().getLastName()<<  std::endl;
-				std::cout << "******************************************************" << std::endl;
-				for(auto & item: acc.getTickets())
+				if(acc.getTickets().size() > 0 )
 				{
-					std::cout << "** From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() << std::endl;
-					item.get_trip()->getDepartureDT().displayDate();
-					std::cout << " - ";
-					item.get_trip()->getEstArrivalDT().displayDate();
-					std::cout << "\n** Total of " << item.get_route()->get_distance() << " miles." << std::endl;
-					std::cout << "** Price: $" << item.get_cost() << std::endl;
-					std::cout << "** Bus type: " << item.get_trip()->get_bus()->get_type() << std::endl;
-					std::cout << "** Bus Id: " << item.get_trip()->get_bus()->get_id_no() << std::endl;
-					std::cout << "** Bus Hire: " << item.get_bus_hire_status() << std::endl;
-					std::cout << "** Seat number: " << item.get_seat_number() << std::endl;
-					std::cout << "** Ticket cost: $" << item.get_cost() << std::endl;
+					std::cout << "******************************************************" << std::endl;
+					std::cout << "Customer: " << acc.get_customer().getFirstName() << " " << acc.get_customer().getLastName() << std::endl;
+					std::cout << "******************************************************" << std::endl;
+					for (auto& item : acc.getTickets())
+					{
+						std::cout << "** From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() << std::endl;
+						item.get_trip()->getDepartureDT().displayDate();
+						std::cout << " - ";
+						item.get_trip()->getEstArrivalDT().displayDate();
+						std::cout << "\n** Total of " << item.get_route()->get_distance() << " miles." << std::endl;
+						std::cout << "** Price: $" << item.get_cost() << std::endl;
+						std::cout << "** Bus type: " << item.get_trip()->get_bus()->get_type() << std::endl;
+						std::cout << "** Bus Id: " << item.get_trip()->get_bus()->get_id_no() << std::endl;
+						std::cout << "** Bus Hire: " << item.get_bus_hire_status() << std::endl;
+						std::cout << "** Seat number: " << item.get_seat_number() << std::endl;
+						std::cout << "** Ticket cost: $" << item.get_cost() << std::endl;
+						std::cout << "******************************************************" << std::endl;
+					}
 				}
 			}
 		}
@@ -274,7 +279,23 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 					}
 				}
+				double old_cost = selected_ticket->get_cost();
 				selected_ticket->set_cost(new_ticket_cost);
+				double difference_cost = old_cost - new_ticket_cost;
+				if (old_cost > new_ticket_cost)
+				{
+					this->revenue_->withdrawal_income_by_date(selected_ticket->get_trip()->getDepartureDT().to_string(false), difference_cost);
+					this->revenue_->withdrawal_income_by_vehicle(selected_ticket->get_trip()->get_bus()->get_id_no(), difference_cost);
+					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + difference_cost);
+				}
+				if (old_cost < new_ticket_cost)
+				{
+					difference_cost = new_ticket_cost - old_cost;
+					this->revenue_->add_income_by_date(selected_ticket->get_trip()->getDepartureDT().to_string(false), difference_cost);
+					this->revenue_->add_income_by_vehicle(selected_ticket->get_trip()->get_bus()->get_id_no(), difference_cost);
+					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + difference_cost);
+				}
+				
 				std::cout << "New ticket cost of $" << new_ticket_cost << " was set." << std::endl;
 			}
 		}
@@ -285,7 +306,21 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 		}
 		if (choice_int == 5)
 		{
-			return 0;
+			std::cout << "*************************" << std::endl;
+			std::cout << "****** INCOME PAGE ******" << std::endl;
+			std::cout << "*************************" << std::endl;
+			std::cout << "\nTotal income: $" << this->revenue_->get_total_amount() << std::endl;
+			std::cout << "\nIncome by date:" << std::endl;
+			for(auto &item: this->revenue_->get_income_by_date())
+			{
+				std::cout << "Date: " <<item.first << " : $" << item.second << std::endl;
+			}
+			std::cout << "\nIncome by vehicle:" << std::endl;
+			for (auto& item : this->revenue_->get_income_by_vehicle())
+			{
+				std::cout << "Bus: " << item.first << " : $" << item.second << std::endl;
+			}
+			system("PAUSE");
 		}
 		else //exit
 		{

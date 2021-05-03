@@ -11,9 +11,10 @@ class userTypeMenuView :
 private:
 	accountRepo* acctRep;
 	routeRepo* routeRep;
+	revenue* revenue_;
 public:
 	userTypeMenuView(accountRepo*);
-	userTypeMenuView(accountRepo*, routeRepo*);
+	userTypeMenuView(accountRepo*, routeRepo*, revenue*);
 	void preLoad(accountRepo*);
 	int menuLogic();
 	accountRepo* getAcctRep();

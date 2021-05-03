@@ -7,10 +7,11 @@ loggedInInterface::loggedInInterface(Account* account)
 	menuLogic();
 }
 
-loggedInInterface::loggedInInterface(Account* account, routeRepo* routeRepo)
+loggedInInterface::loggedInInterface(Account* account, routeRepo* routeRepo, revenue* revenue)
 {
 	this->acct = account;
 	this->routeRep = routeRepo;
+	this->revenue_ = revenue;
 	preLoad();
 	menuLogic();
 }
@@ -167,10 +168,15 @@ int loggedInInterface::menuLogic()
 						DateTime current_date;
 						DateTime ticket_date = this->acct->getTickets().at(edit_ticket_choice - 1).get_travel_date();
 						int days_difference = current_date.differenceDays(ticket_date);
-						if(days_difference < 7)
+						if(days_difference < 7 && days_difference > 2)
 						{
+							double cost_ = this->acct->getTickets().at(edit_ticket_choice - 1).get_cost();
+							double amount_ = this->acct->getTickets().at(edit_ticket_choice - 1).get_cost() * 0.3;
 							std::cout << "Any cancellation shorter than a week will require 30%!" << std::endl;
-							std::cout << this->acct->getTickets().at(edit_ticket_choice - 1).get_cost() * 0.3<< " will be hold from your account." << std::endl;
+							std::cout << amount_ << " will be hold from your account." << std::endl;
+							this->revenue_->withdrawal_income_by_date(edit_ticket.get_trip()->getDepartureDT().to_string(false), cost_);
+							this->revenue_->withdrawal_income_by_vehicle(edit_ticket.get_trip()->get_bus()->get_id_no(), cost_);
+							this->revenue_->set_total_amount(this->revenue_->get_total_amount() - (cost_ + amount_));
 						}
 						if (days_difference < 2)
 						{
@@ -221,6 +227,7 @@ int loggedInInterface::menuLogic()
 						
 						int old_seat_row = edit_ticket.get_seat_pair().first;
 						char old_seat_column = edit_ticket.get_seat_pair().second;
+						double old_cost_of_seat = edit_ticket.get_cost();
 						reference_to_edit_ticket->cancel_seat();
 						int count_attempts = 0;
 						while(!reference_to_edit_ticket->reserve_seat(seat_row, seat_column))
@@ -256,6 +263,17 @@ int loggedInInterface::menuLogic()
 								break;
 							}
 						}
+						
+						double cost_of_new_seat = reference_to_edit_ticket->get_cost();
+						if(old_cost_of_seat < cost_of_new_seat)
+						{
+							double difference = cost_of_new_seat - old_cost_of_seat;
+							std::cout << "Your new seat is more expensive than your last one." << std::endl;
+							this->revenue_->add_income_by_date(reference_to_edit_ticket->get_trip()->getDepartureDT().to_string(false), difference);
+							this->revenue_->add_income_by_vehicle(reference_to_edit_ticket->get_trip()->get_bus()->get_id_no(), difference);
+							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + (difference + difference));
+						}
+						
 					}
 					system("PAUSE");
 					break;
@@ -423,10 +441,12 @@ int loggedInInterface::menuLogic()
 							break;
 						}
 					}
-
 					new_ticket.set_cost(new_ticket.get_trip()->get_bus()->getSeatRate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
 					std::string compiled_id = this->acct->get_customer().getLastName() + "_" + new_ticket.get_route()->get_source() + "_" + new_ticket.get_route()->get_destination() + "_" + new_ticket.get_trip()->get_bus()->get_id_no();
 					new_ticket.set_ticket_id(compiled_id);
+					this->revenue_->add_income_by_date(new_ticket.get_trip()->getDepartureDT().to_string(false), new_ticket.get_cost());
+					this->revenue_->add_income_by_vehicle(new_ticket.get_trip()->get_bus()->get_id_no(), new_ticket.get_cost());
+					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + new_ticket.get_cost());
 					this->acct->addTicket(new_ticket);
 					system("PAUSE");
 					break;
@@ -581,6 +601,9 @@ int loggedInInterface::menuLogic()
 							std::cout << "Adding security deposit.." << std::endl;
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_luxury_bus->getSecurityDeposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
+							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->getDepartureDT().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
+							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->addTicket(bus_hire_ticket);
 							system("PAUSE");
 							break;
@@ -642,6 +665,9 @@ int loggedInInterface::menuLogic()
 							std::cout << "Adding security deposit.." << std::endl;
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_bus->getSecurityDeposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
+							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->getDepartureDT().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
+							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->addTicket(bus_hire_ticket);
 							system("PAUSE");
 							break;
@@ -705,6 +731,9 @@ int loggedInInterface::menuLogic()
 							std::cout << "Adding security deposit.." << std::endl;
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_van->getSecurityDeposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
+							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->getDepartureDT().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
+							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->addTicket(bus_hire_ticket);
 							system("PAUSE");
 							break;

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class DateTime
 {
@@ -15,5 +16,6 @@ public:
 	int differenceDays(DateTime dt);
 	void displayDate();
 	void getCurrentTime();
+	std::string to_string(bool include_time);
 };
 
