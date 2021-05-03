@@ -6,6 +6,13 @@ userTypeMenuView::userTypeMenuView(accountRepo& acctRep)
 	menuLogic();
 }
 
+userTypeMenuView::userTypeMenuView(accountRepo& acctRep, routeRepo* routeRepo)
+{
+	this->routeRep = routeRepo;
+	preLoad(acctRep);
+	menuLogic();
+}
+
 void userTypeMenuView::preLoad(accountRepo& acctRep)
 {
 	this->acctRep = acctRep;
@@ -36,22 +43,19 @@ int userTypeMenuView::menuLogic()
 			//TODO: Change to allow going back to menu
 			if (choice_int == 1) //This shouldn't impact performance at all, we just run into problems when we do switch statement here
 			{
-				customerInterface custInterface = customerInterface(acctRep);
-				return 0;
+				customerInterface custInterface = customerInterface(this->acctRep, this->routeRep);
 			}
-			if (choice_int == 2) //ADMIN INTERFACE
+			else if (choice_int == 2) //ADMIN INTERFACE
 			{
-				adminInterface admininterface = adminInterface(acctRep);
-				return 0;
+				adminInterface admininterface = adminInterface(this->acctRep, this->routeRep);
 			}
-			if (choice_int == 3)
+			else if (choice_int == 3)
 			{
 				std::cout << "Goodbye!" << std::endl;
 				return 0;
 			}
 			else
 			{
-				return 0;
 			}
 		}
 	}

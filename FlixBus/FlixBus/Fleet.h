@@ -23,6 +23,9 @@ public:
 	luxuryBus* getLuxuryBus(std::string);
 	miniBus* getMiniBus(std::string);
 	miniVan* getMiniVan(std::string);
+	size_t get_luxury_bus_count();
+	size_t get_mini_bus_count();
+	size_t get_minivan_count();
 	void displayLuxuryBusFleet();
 	void displayMiniBusFleet();
 	void displayMiniVanFleet();

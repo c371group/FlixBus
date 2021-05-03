@@ -54,6 +54,21 @@ miniVan* fleet::getMiniVan(std::string id)
 	return nullptr;
 }
 
+size_t fleet::get_luxury_bus_count()
+{
+	return this->luxury_buses.size();
+}
+
+size_t fleet::get_mini_bus_count()
+{
+	return this->mini_buses.size();
+}
+
+size_t fleet::get_minivan_count()
+{
+	return this->mini_vans.size();
+}
+
 void fleet::displayLuxuryBusFleet()
 {
 	if (!this->luxury_buses.empty())

@@ -8,10 +8,10 @@
 class routeRepo
 {
 private:
-	std::vector<route*> routes;
+	std::vector<route> routes;
 public:
 	routeRepo();
-	std::vector<route*> getRoutes();
-	void add_route(route* rt);
+	std::vector<route>* getRoutes();
+	void add_route(route rt);
 	void readRoutesDB();
 };

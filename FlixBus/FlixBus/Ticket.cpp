@@ -78,6 +78,11 @@ void ticket::set_seat(int row, char column)
 	this->seat_number_ = seat;
 }
 
+void ticket::set_bus_hire(bool hire)
+{
+	this->bus_hire_ = hire;
+}
+
 bool ticket::reserve_seat(int row, char column)
 {
 	double seatRate;
@@ -133,6 +138,11 @@ bool ticket::get_active()
 	return this->active_;
 }
 
+bool ticket::get_bus_hire_status()
+{
+	return this->bus_hire_;
+}
+
 route* ticket::get_route()
 {
 	return this->route_;
@@ -166,4 +176,9 @@ DateTime ticket::get_travel_date()
 std::string ticket::get_seat_number()
 {
 	return std::to_string(this->seat_number_.first) + this->seat_number_.second;
+}
+
+std::pair<int, char> ticket::get_seat_pair()
+{
+	return this->seat_number_;
 }

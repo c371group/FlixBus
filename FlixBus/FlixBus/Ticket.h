@@ -11,6 +11,7 @@ private:
 	std::string ticket_id_ = "DEFAULT";
 	std::pair<int, char> seat_number_;
 	bool active_ = false; //active or cancelled ticket
+	bool bus_hire_ = false;
 	route* route_;
 	//vehicle* bus_;
 	Trip * trip_;
@@ -28,10 +29,12 @@ public:
 	void set_ticket_id(std::string);
 	void set_travel_date(DateTime);
 	void set_seat(int row, char column);
+	void set_bus_hire(bool);
 	bool reserve_seat(int row, char column);
 	bool cancel_seat();
 	//void set_bus(vehicle*);
 	bool get_active();
+	bool get_bus_hire_status();
 	route* get_route();
 	double get_cost();
 	Trip* get_trip();
@@ -39,4 +42,5 @@ public:
 	//vehicle* get_bus();
 	DateTime get_travel_date();
 	std::string get_seat_number();
+	std::pair<int, char> get_seat_pair();
 };

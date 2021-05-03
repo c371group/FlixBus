@@ -66,14 +66,37 @@ std::vector<ticket> Account::getTickets()
 	return this->tickets_;
 }
 
+ticket* Account::get_ticket_by_id(std::string ticket_id)
+{
+	int index = 0;
+	for (auto& item : this->tickets_)
+	{
+		if (item.get_ticket_id() == ticket_id)
+		{
+			break;
+		}
+		index++;
+	}
+	return &this->tickets_.at(index);
+}
+
 void Account::addTicket(ticket ticket)
 {
 	tickets_.push_back(ticket);
 }
 
-void Account::removeTicket(int ticket_id)
+void Account::removeTicket(std::string ticket_id)
 {
-	//TODO: come back to this
+	int index = 0;
+	for(auto &item: this->tickets_)
+	{
+		if(item.get_ticket_id() == ticket_id)
+		{
+			break;
+		}
+		index++;
+	}
+	this->tickets_.erase(this->tickets_.begin() + index);
 }
 
 

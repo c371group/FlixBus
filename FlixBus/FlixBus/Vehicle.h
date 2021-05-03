@@ -48,6 +48,7 @@ private:
 	const double aisleSeatRate = 0.75;
 	const double busHireRate = 1500;
 	const double busHireRatePerMile = 0.25;
+	const double securityDeposit = 5000;
 	const int capacity = 52;
 public:
 	luxuryBus();
@@ -82,6 +83,7 @@ public:
 	std::string get_id_no() override;
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
+	double getSecurityDeposit() const;
 	int get_capacity() override;
 };
 
@@ -94,6 +96,7 @@ private:
 	const double aisleSeatPrice = 0.65;
 	const double busHireRate = 1300;
 	const double busHireRatePerMile = 0.2;
+	const double securityDeposit = 3000;
 	const int capacity = 36;
 public:
 	miniBus();
@@ -118,6 +121,7 @@ public:
 	std::string get_id_no() override;
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
+	double getSecurityDeposit() const;
 	int get_capacity() override;
 };
 
@@ -130,6 +134,7 @@ private:
 	const double aisleSeatPrice = 0.5;
 	const double busHireRate = 1000;
 	const double busHireRatePerMile = 0.15;
+	const double securityDeposit = 1500;
 	const int capacity = 12;
 public:
 
@@ -149,5 +154,6 @@ public:
 	std::string get_id_no() override;
 	double getBusHireRate() const;
 	double getBusHireRatePerMile() const;
+	double getSecurityDeposit() const;
 	int get_capacity() override;
 };
