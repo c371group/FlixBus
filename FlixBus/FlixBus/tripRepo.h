@@ -1,14 +1,21 @@
 #pragma once
 #include <vector>
-#include "trip.h"
+#include "Trip.h"
 
-class tripRepo
+
+/**
+ * \brief Repository class that contains vector of Trips classes.
+ */
+class trip_repo
 {
 private:
-	std::vector<Trip> trips;
+	// Vector of Trip objects.
+	std::vector<trip> trips_;
 public:
-	tripRepo();
-	std::vector<Trip>* getAllTrips();
-	std::vector<Trip> getBookableTrips(DateTime); //returns all Trips that are able to be booked at the time specified by the DateTime parameter passed (ideally current time at time of calling)-- ie, within two weeks of the parameter
-	void add_trip(Trip);
+	// Base constructor.
+	trip_repo();
+	// Returns a reference to trips_ attribute.
+	std::vector<trip>* get_all_trips();
+	// Takes Trip object and adds it to trips_ attribute (vector of Trips).
+	void add_trip(trip);
 };

@@ -1,75 +1,59 @@
 #include "Ticket.h"
 #include "DateTime.h"
-#include "trip.h"
+#include "Trip.h"
 #include <string>
 
+
+// Base constructor.
 ticket::ticket()
 {
 	this->trip_ = nullptr;
 }
 
-ticket::ticket(route* route, Trip* trip)
+// Constructor that takes references to a trip and route object. Assigns them to trip_ and route_.
+ticket::ticket(route* route, trip* trip)
 {
 	this->route_ = route;
 	this->trip_ = trip;
 }
 
-
-//ticket::ticket()
-//{
-//	this->route_ = nullptr;
-//	this->bus_ = nullptr;
-//}
-//
-//ticket::ticket(route* route, luxuryBus* bus)
-//{
-//	this->route_ = route;
-//	this->bus_ = bus;
-//}
-//
-//ticket::ticket(route* route, miniBus* bus)
-//{
-//	this->route_ = route;
-//	this->bus_ = bus;
-//}
-//
-//ticket::ticket(route* route, miniVan* bus)
-//{
-//	this->route_ = route;
-//	this->bus_ = bus;
-//}
-
+// Takes boolean value and assigns it to active_ attribute.
 void ticket::set_active(bool val)
 {
 	this->active_ = val;
 }
 
+// Takes reference to a route object and assigns it to route_ attribute.
 void ticket::set_route(route* val)
 {
 	this->route_ = val;
 }
 
+// Takes double value and assigns it to cost_ attribute.
 void ticket::set_cost(double val)
 {
 	this->cost_ = val;
 }
 
-void ticket::set_trip(Trip* trip)
+// Takes reference to a trip object and assigns it to trip_ attribute.
+void ticket::set_trip(trip* trip)
 {
 	this->trip_ = trip;
 }
 
+// Takes string value and assigns it to ticket_id attribute.
 void ticket::set_ticket_id(std::string val)
 {
 	this->ticket_id_ = val;
 }
 
-
-void ticket::set_travel_date(DateTime date)
+// Takes date time object and assigns it to travel_date attribute.
+void ticket::set_travel_date(date_time date)
 {
 	this->travel_date = date;
 }
 
+// Takes int and char values, creates pair structure and assigns it to seat_ attribute.
 void ticket::set_seat(int row, char column)
 {
 	std::pair<int, char> seat;
@@ -78,19 +62,22 @@ void ticket::set_seat(int row, char column)
 	this->seat_number_ = seat;
 }
 
+// Takes boolean value and assigns it to bus_hire attribute.
 void ticket::set_bus_hire(bool hire)
 {
 	this->bus_hire_ = hire;
 }
 
+// Takes int and char values, creates pair structure and reserves a seat on a given bus.
 bool ticket::reserve_seat(int row, char column)
 {
-	double seatRate;
+	// Checks if trip_ is not a nullptr
 	if(this->trip_)
 	{
-		if (this->trip_->get_bus()->reserveSeat(row, column)) {
-			seatRate = this->trip_->get_bus()->getSeatRate(row, column);
-			this->set_cost(this->route_->get_distance() * seatRate);
+		// Tries to reserve a seat on a given vehicle. Returns true or false.
+		if (this->trip_->get_bus()->reserve_seat(row, column)) {
+			const double seat_rate = this->trip_->get_bus()->get_seat_rate(row, column);
+			this->set_cost(this->route_->get_distance() * seat_rate);
 			this->set_seat(row, column);
 			this->active_ = true;
 			return true;
@@ -103,82 +90,67 @@ bool ticket::reserve_seat(int row, char column)
 	return false;
 }
 
-bool ticket::cancel_seat()
+// Cancels a seat reservation on a given bus.
+bool ticket::cancel_seat() const
 {
 	// Checks if the ticket is active. In other words if we have a confirmed reservation in a bus.
 	if(this->active_)
 	{
-		return this->trip_->get_bus()->cancelSeat(this->seat_number_.first, this->seat_number_.second);
+		return this->trip_->get_bus()->cancel_seat(this->seat_number_.first, this->seat_number_.second);
 	}
 	return false;
 }
 
-// Reserves a seat on a bus. If the seat is successfully reserved, reserveSeat() returns true, 
-// Then we calculate the cost, based on the seat. Else we print message.
-//void ticket::add_seat(int row, char column)
-//{	
-//	double seatRate;
-//	if (this->bus_->reserveSeat(row, column)) {
-//		seatRate = this->bus_->getSeatRate(row, column);
-//		this->set_cost(this->route_->get_distance() * seatRate);
-//		this->seat_number_ = std::to_string(row) + column;
-//	}
-//	else {
-//		std::cout << "Seat can't be reserved. Try again!" << std::endl;
-//	}
-//}
-
-//void ticket::set_bus(vehicle* bus)
-//{
-//	this->bus_ = bus;
-//}
-
-bool ticket::get_active()
+// Returns active_ attribute.
+bool ticket::get_active() const
 {
 	return this->active_;
 }
 
-bool ticket::get_bus_hire_status()
+// Returns bus_hire attribute.
+bool ticket::get_bus_hire_status() const
 {
 	return this->bus_hire_;
 }
 
-route* ticket::get_route()
+// Returns reference to a route object.
+route* ticket::get_route() const
 {
 	return this->route_;
 }
 
-double ticket::get_cost()
+// Returns ticket cost.
+double ticket::get_cost() const
 {
 	return this->cost_;
 }
 
-Trip* ticket::get_trip()
+// Returns reference to a trip object.
+trip* ticket::get_trip() const
 {
 	return this->trip_;
 }
 
-std::string ticket::get_ticket_id()
+// Returns ticket_id attribute.
+std::string ticket::get_ticket_id() const
 {
 	return this->ticket_id_;
 }
 
-//vehicle* ticket::get_bus()
-//{
-//	return this->bus_;
-//}
-
-DateTime ticket::get_travel_date()
+// Returns travel date attribute.
+date_time ticket::get_travel_date() const
 {
 	return this->travel_date;
 }
 
-std::string ticket::get_seat_number()
+// Returns string representation of the seat number.
+std::string ticket::get_seat_number() const
 {
 	return std::to_string(this->seat_number_.first) + this->seat_number_.second;
 }
 
-std::pair<int, char> ticket::get_seat_pair()
+// Returns seat_number_ attribute.
+std::pair<int, char> ticket::get_seat_pair() const
 {
 	return this->seat_number_;
 }

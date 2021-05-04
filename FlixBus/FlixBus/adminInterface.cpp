@@ -6,15 +6,19 @@
  * send them to either register or login interface
  */
 
+// Base constructor.
 adminInterface::adminInterface()
 {
 }
+
+// Constructor, takes account repository reference and assigns it to routeRep attribute.
 adminInterface::adminInterface(accountRepo* acctRep)
 {
 	preLoad(acctRep);
 	menuLogic(acctRep);
 }
 
+// Constructor, takes account repository, route repository and revenue references. Assign them to their corresponding attributes.
 adminInterface::adminInterface(accountRepo* acctRep, routeRepo* routeRepo, revenue* revenue)
 {
 	this->routeRep = routeRepo;
@@ -23,6 +27,7 @@ adminInterface::adminInterface(accountRepo* acctRep, routeRepo* routeRepo, reven
 	menuLogic(acctRep);
 }
 
+// Pre loading attributes and generates menu options.
 void adminInterface::preLoad(accountRepo* acctRep)
 {
 	this->acctRep = acctRep;
@@ -31,11 +36,13 @@ void adminInterface::preLoad(accountRepo* acctRep)
 	set_vecMen(temp);
 }
 
+// Returns a reference to an account repository object.
 accountRepo* adminInterface::getAcctRep()
 {
 	return this->acctRep;
 }
 
+// Menu logic
 int adminInterface::menuLogic(accountRepo *AcctRep)
 {
 	int max = display_menu_items(0);
@@ -52,9 +59,10 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 	}
 	else
 	{
-		//TODO: Change to allow going back to menu
+		// Add vehicle to the fleet
 		if (choice_int == 1)
 		{
+			// Displays all available routes.
 			std::cout << "AVAILABLE ROUTES: " << std::endl;
 			int route_choice = 0;
 			int route_index = 0;
@@ -63,6 +71,7 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 				std::cout << route_index + 1 << ". " << item.get_source() << " - " << item.get_destination() << std::endl;
 				route_index++;
 			}
+			// Validates choice input
 			while (true) {
 				std::cout << "\nPlease select a route for your trip (or enter 0 to exit): ";
 				if (std::cin >> route_choice) {
@@ -93,6 +102,7 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 				return 0;
 			}
 			int choice_index = route_choice - 1;
+			// Takes reference to a vector.
 			std::vector<route>* selected_vector = this->routeRep->getRoutes();
 			route* current_route = &selected_vector->at(choice_index);
 			int adminChoice;
@@ -103,34 +113,36 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 			std::cin >> adminChoice;
 			fleet* current_fleet = current_route->get_fleet();
 			switch (adminChoice) {
-
+				//  Adding luxury bus
 				case 1:
 				{
 					std::string bus_id_;
 					std::cout << "Please enter bus id: ";
 					std::cin >> bus_id_;
-					luxuryBus luxBus(bus_id_);
-					current_fleet->addLuxuryBus(luxBus);
+					luxury_bus luxBus(bus_id_);
+					current_fleet->add_luxury_bus(luxBus);
 					std::cout << "Bus added successfully.\n";
 					break; 
 				}
+				// Adding mini bus
 				case 2:
 				{
 					std::string bus_id_;
 					std::cout << "Please enter bus id: ";
 					std::cin >> bus_id_;
-					miniBus miniBus(bus_id_);
-					current_fleet->addMiniBus(miniBus);
+					mini_bus miniBus(bus_id_);
+					current_fleet->add_mini_bus(miniBus);
 					std::cout << "Bus added successfully.\n";
 					break;
 				}
+				// Adding mini van
 				case 3:
 				{
 					std::string bus_id_;
 					std::cout << "Please enter bus id: ";
 					std::cin >> bus_id_;
-					miniVan miniVan(bus_id_);
-					current_fleet->addMiniVan(miniVan);
+					mini_van miniVan(bus_id_);
+					current_fleet->add_mini_van(miniVan);
 					std::cout << "Bus added successfully.\n";
 					break;
 				}
@@ -138,15 +150,19 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 					std::cout << "Please select correct choice!";
 			}
 			std::cout << "\nCurrent buses for route:" << current_route->get_source() <<" - " << current_route->get_destination() << std::endl;
-			current_fleet->displayLuxuryBusFleet();
-			current_fleet->displayMiniBusFleet();
-			current_fleet->displayMiniVanFleet();
+			// Displaying all buses from the current fleet.
+			current_fleet->display_luxury_bus_fleet();
+			current_fleet->display_mini_bus_fleet();
+			current_fleet->display_mini_van_fleet();
 			system("PAUSE");
 		}
+		// View reservations.
 		if (choice_int == 2)
 		{
+			// Goes through all accounts.
 			for(auto & acc: AcctRep->getAccts())
 			{
+				// Checks size of tickets for each accoun. If there are not tickets, account is skipped.
 				if(acc.getTickets().size() > 0 )
 				{
 					std::cout << "******************************************************" << std::endl;
@@ -155,9 +171,9 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 					for (auto& item : acc.getTickets())
 					{
 						std::cout << "** From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() << std::endl;
-						item.get_trip()->getDepartureDT().displayDate();
+						item.get_trip()->get_departure_dt().display_date();
 						std::cout << " - ";
-						item.get_trip()->getEstArrivalDT().displayDate();
+						item.get_trip()->get_est_arrival_dt().display_date();
 						std::cout << "\n** Total of " << item.get_route()->get_distance() << " miles." << std::endl;
 						std::cout << "** Price: $" << item.get_cost() << std::endl;
 						std::cout << "** Bus type: " << item.get_trip()->get_bus()->get_type() << std::endl;
@@ -170,17 +186,30 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 				}
 			}
 		}
+		// Edit reservation (change passenger’s name, modify charge)
 		if (choice_int == 3)
 		{
 			int index = 1;
 			std::cout << "Current users: " << std::endl;
+			// Displays all users.
 			for (auto& acc : AcctRep->getAccts())
 			{
 				std::cout << "Number: " << index << " " << acc.get_customer().getFirstName() << " " << acc.get_customer().getLastName() << std::endl;
 				index++;
 			}
-			std::cout << "Choose an account number. Enter 0 to exit.\n";
-			std::cin >> accountID;
+			// Proms the user to select which user to edit.
+			while (true) {
+				std::cout << "Choose an account number. Enter 0 to exit.\n";
+				if (std::cin >> accountID) {
+					break;
+				}
+				else {
+					std::cout << "Enter a valid integer value!\n";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				}
+			}
+			
 			if (accountID < 0 || accountID >= acctRep->getAccts().size()) {
 				std::cout << "The account does not exist.\n";
 				return 0;
@@ -189,6 +218,7 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 			{
 				return 0;
 			}
+			// Asking user what he/she wants to do with the selected user.
 			int edit_customer_choice;
 			account = acctRep->get_acc_by_index(accountID - 1);
 			std::cout << "************************" << std::endl;
@@ -220,6 +250,7 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 					}
 				}
 			}
+			// Edits customer.
 			if (edit_customer_choice == 1) {
 				std::cout << "Edit passenger's name and charges:\n";
 				std::cout << "Change first name.\n";
@@ -229,6 +260,7 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 				std::cin >> nameEdit;
 				account->get_customer_reference()->setLastName(nameEdit);
 			}
+			// Edits the customer ticket cost.
 			if (edit_customer_choice == 2) {
 				int ticket_choice;
 				int ticket_index = 1;
@@ -251,7 +283,7 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 					}
 				}
-				while (ticket_choice < 0 || ticket_choice > ticket_index) {
+				while (ticket_choice < 0 || ticket_choice > ticket_index-1) {
 					while (true) {
 						std::cout << "Wrong choice!\nPlease select your choice: ";
 						if (std::cin >> ticket_choice) {
@@ -279,19 +311,20 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 					}
 				}
+				// Calculates what to be added to the company revenue.
 				double old_cost = selected_ticket->get_cost();
 				selected_ticket->set_cost(new_ticket_cost);
 				double difference_cost = old_cost - new_ticket_cost;
 				if (old_cost > new_ticket_cost)
 				{
-					this->revenue_->withdrawal_income_by_date(selected_ticket->get_trip()->getDepartureDT().to_string(false), difference_cost);
+					this->revenue_->withdrawal_income_by_date(selected_ticket->get_trip()->get_departure_dt().to_string(false), difference_cost);
 					this->revenue_->withdrawal_income_by_vehicle(selected_ticket->get_trip()->get_bus()->get_id_no(), difference_cost);
 					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + difference_cost);
 				}
 				if (old_cost < new_ticket_cost)
 				{
 					difference_cost = new_ticket_cost - old_cost;
-					this->revenue_->add_income_by_date(selected_ticket->get_trip()->getDepartureDT().to_string(false), difference_cost);
+					this->revenue_->add_income_by_date(selected_ticket->get_trip()->get_departure_dt().to_string(false), difference_cost);
 					this->revenue_->add_income_by_vehicle(selected_ticket->get_trip()->get_bus()->get_id_no(), difference_cost);
 					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + difference_cost);
 				}
@@ -299,11 +332,13 @@ int adminInterface::menuLogic(accountRepo *AcctRep)
 				std::cout << "New ticket cost of $" << new_ticket_cost << " was set." << std::endl;
 			}
 		}
+		// Change reservation charge, hire charge.
 		if (choice_int == 4)
 		{
 			
 			return 0;
 		}
+		// View income by date and by vehicle.
 		if (choice_int == 5)
 		{
 			std::cout << "*************************" << std::endl;

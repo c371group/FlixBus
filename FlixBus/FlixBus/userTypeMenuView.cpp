@@ -1,11 +1,14 @@
 #include "userTypeMenuView.h"
 
+
+// Constructor that assigns account repository reference.
 userTypeMenuView::userTypeMenuView(accountRepo* acctRep)
 {
 	preLoad(acctRep);
 	menuLogic();
 }
 
+// Constructor takes account repository, route repository and revenue references.
 userTypeMenuView::userTypeMenuView(accountRepo* acctRep, routeRepo* routeRepo, revenue* revenue)
 {
 	this->routeRep = routeRepo;
@@ -14,6 +17,7 @@ userTypeMenuView::userTypeMenuView(accountRepo* acctRep, routeRepo* routeRepo, r
 	menuLogic();
 }
 
+// Prepares menu options.
 void userTypeMenuView::preLoad(accountRepo* acctRep)
 {
 	this->acctRep = acctRep;
@@ -22,11 +26,13 @@ void userTypeMenuView::preLoad(accountRepo* acctRep)
 	set_vecMen(temp);
 }
 
+// Returns reference of an account repository.
 accountRepo* userTypeMenuView::getAcctRep()
 {
 	return this->acctRep;
 }
 
+// Sets up menu logic. Gives the users two options. Customer and Admin interface are called.
 int userTypeMenuView::menuLogic()
 {
 	int choice_int = 0;

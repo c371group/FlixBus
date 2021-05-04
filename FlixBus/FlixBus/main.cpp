@@ -33,7 +33,7 @@ using namespace std;
 //	trip_repo_test.add_trip(&test_trip);
 //	ticket testTicket(&testRout, &test_trip);
 //    testTicket.reserve_seat(1, 'C');
-//	testTicket.set_cost(testTicket.get_trip()->get_bus()->getSeatRate(1, 'A') * testRout.get_distance());
+//	testTicket.set_cost(testTicket.get_trip()->get_bus()->get_seat_rate(1, 'A') * testRout.get_distance());
 //	acct.addTicket(testTicket);
 //	
 //	
@@ -50,7 +50,7 @@ using namespace std;
 //	trip_repo_test.add_trip(&test_trip_2);
 //	ticket testTicket2(&test_route, &test_trip_2);
 //    testTicket2.reserve_seat(3, 'C');
-//	testTicket2.set_cost(testTicket2.get_trip()->get_bus()->getSeatRate(3, 'C') * testRout.get_distance());
+//	testTicket2.set_cost(testTicket2.get_trip()->get_bus()->get_seat_rate(3, 'C') * testRout.get_distance());
 //	acct.addTicket(testTicket2);
 //
 //	//testCustomer.getTickets().at(1).set_travel_date("1/1/2021 12:00:00PM");
@@ -76,38 +76,38 @@ using namespace std;
 //	////////////////////////
 //	// TESTING BUS SEATS //
 //	/////////////////////// */
-//	// Testing luxury bus seats
-//	cout << "\nTesting luxury bus seats" << endl;
+//	// Testing luxury bus seats_
+//	cout << "\nTesting luxury bus seats_" << endl;
 //	luxuryBus testLuxBus;
-//	testLuxBus.displaySeats();
-//	testLuxBus.reserveSeat(1, 'B');
-//	testLuxBus.reserveSeat(11, 'B');
-//	testLuxBus.reserveSeat(33, 'B');
-//	testLuxBus.displayFreeSeats();
-//	testLuxBus.cancelSeat(11, 'B');
-//	testLuxBus.displayFreeSeats();
+//	testLuxBus.display_seats();
+//	testLuxBus.reserve_seat(1, 'B');
+//	testLuxBus.reserve_seat(11, 'B');
+//	testLuxBus.reserve_seat(33, 'B');
+//	testLuxBus.display_free_seats();
+//	testLuxBus.cancel_seat(11, 'B');
+//	testLuxBus.display_free_seats();
 //
-//	// Testing small bus seats
-//	cout << "\nTesting mini bus seats" << endl;
+//	// Testing small bus seats_
+//	cout << "\nTesting mini bus seats_" << endl;
 //	miniBus testMiniBus;
-//	testMiniBus.displaySeats();
-//	testMiniBus.reserveSeat(1, 'A');
-//	testMiniBus.reserveSeat(11, 'A');
-//	testMiniBus.reserveSeat(42, 'A');
-//	testMiniBus.displayFreeSeats();
-//	testMiniBus.cancelSeat(1, 'A');
-//	testMiniBus.displayFreeSeats();
+//	testMiniBus.display_seats();
+//	testMiniBus.reserve_seat(1, 'A');
+//	testMiniBus.reserve_seat(11, 'A');
+//	testMiniBus.reserve_seat(42, 'A');
+//	testMiniBus.display_free_seats();
+//	testMiniBus.cancel_seat(1, 'A');
+//	testMiniBus.display_free_seats();
 //
-//	// Testing mini bus seats
-//	cout << "\nTesting minivan seats" << endl;
+//	// Testing mini bus seats_
+//	cout << "\nTesting minivan seats_" << endl;
 //	miniVan testMiniVan;
-//	testMiniVan.displaySeats();
-//	testMiniVan.reserveSeat(1, 'C');
-//	testMiniVan.reserveSeat(3, 'C');
-//	testMiniVan.reserveSeat(12, 'B');
-//	testMiniVan.displayFreeSeats();
-//	testMiniVan.cancelSeat(1, 'C');
-//	testMiniVan.displayFreeSeats();
+//	testMiniVan.display_seats();
+//	testMiniVan.reserve_seat(1, 'C');
+//	testMiniVan.reserve_seat(3, 'C');
+//	testMiniVan.reserve_seat(12, 'B');
+//	testMiniVan.display_free_seats();
+//	testMiniVan.cancel_seat(1, 'C');
+//	testMiniVan.display_free_seats();
 //}
 //
 //void fleetTesting()
@@ -141,12 +141,12 @@ using namespace std;
 //	busFleet.displayMiniVanFleet();
 //
 //	vehicle* testSeats = busFleet.getLuxuryBus("0");
-//	cout << "\nTesting accessing seats from the fleet class:" << endl;
-//	testSeats->displaySeats();
+//	cout << "\nTesting accessing seats_ from the fleet class:" << endl;
+//	testSeats->display_seats();
 //	cout << "\nTesting reserving a seat from the fleet class:" << endl;
-//	testSeats->reserveSeat(1, 'A');
-//	testSeats->reserveSeat(1, 'B');
-//	testSeats->displayFreeSeats();
+//	testSeats->reserve_seat(1, 'A');
+//	testSeats->reserve_seat(1, 'B');
+//	testSeats->display_free_seats();
 //}
 //
 //void dateTesting() {
@@ -198,7 +198,7 @@ using namespace std;
 //
 //                    while (orderReservation != sentinel) {
 //                        //Showing the code for ordering each item possible. All 3 possible busses. 
-//                        cout << "Reserve your seats from the list of options:\n";
+//                        cout << "Reserve your seats_ from the list of options:\n";
 //                        cout << "1. Luxary Bus \n2. Mini Bus \n3. Minivan \n";
 //
 //                        cin >> orderReservation;
@@ -207,24 +207,24 @@ using namespace std;
 //                        case 1:
 //
 //                            while (luxarySeating != sentinel) {
-//                                //Showing the code for ordering each item possible. All 3 possible seats. 
+//                                //Showing the code for ordering each item possible. All 3 possible seats_. 
 //                                cout << "Seats for Luxary Bus Include: \n1. Aisle Seats \n2. Window Seats \n3. Other Seats \n";
 //
 //                                cin >> luxarySeating;
 //                                switch (luxarySeating) {
 //
 //                                case 1:
-//                                    cout << "How many Aisle seats would you like to order?\n";
+//                                    cout << "How many Aisle seats_ would you like to order?\n";
 //                                    //****Insert Code Here****//
 //                                    break;
 //
 //                                case 2:
-//                                    cout << "How many Window seats would you like to order?\n";
+//                                    cout << "How many Window seats_ would you like to order?\n";
 //                                    //****Insert Code Here****//
 //                                    break;
 //
 //                                case 3:
-//                                    cout << "How many Other seats would you like to order?\n";
+//                                    cout << "How many Other seats_ would you like to order?\n";
 //                                    //****Insert Code Here****//
 //                                    break;
 //
@@ -244,12 +244,12 @@ using namespace std;
 //                                switch (miniBusSeating) {
 //
 //                                case 1:
-//                                    cout << "How many Aisle seats would you like to order?\n";
+//                                    cout << "How many Aisle seats_ would you like to order?\n";
 //                                    //****Insert Code Here****//
 //                                    break;
 //
 //                                case 2:
-//                                    cout << "How many Window seats would you like to order?\n";
+//                                    cout << "How many Window seats_ would you like to order?\n";
 //                                    //****Insert Code Here****//
 //                                    break;
 //
@@ -385,8 +385,8 @@ using namespace std;
 //        cout << "\tBus type: " << item.get_trip()->get_bus()->get_type() << endl;
 //        cout << "\tSeat number: " << item.get_seat_number() << endl;
 //        cout << "\tTicket cost: " << item.get_cost() << endl;
-//        cout << "\tAll seats count on the bus: " << item.get_trip()->get_bus()->get_all_seats_count() << endl;
-//        cout << "\tAll free seats count on the bus: " << item.get_trip()->get_bus()->get_free_seats_count() << endl;
+//        cout << "\tAll seats_ count on the bus: " << item.get_trip()->get_bus()->get_all_seats_count() << endl;
+//        cout << "\tAll free seats_ count on the bus: " << item.get_trip()->get_bus()->get_free_seats_count() << endl;
 //    }
 //	
 //
@@ -414,8 +414,8 @@ using namespace std;
 //        cout << "\tBus type: " << item.get_trip()->get_bus()->get_type() << endl;
 //        cout << "\tSeat number: " << item.get_seat_number() << endl;
 //        cout << "\tTicket cost: " << item.get_cost() << endl;
-//        cout << "\tAll seats count on the bus: " << item.get_trip()->get_bus()->get_all_seats_count() << endl;
-//        cout << "\tAll free seats count on the bus: " << item.get_trip()->get_bus()->get_free_seats_count() << endl;
+//        cout << "\tAll seats_ count on the bus: " << item.get_trip()->get_bus()->get_all_seats_count() << endl;
+//        cout << "\tAll free seats_ count on the bus: " << item.get_trip()->get_bus()->get_free_seats_count() << endl;
 //    }
 //
 //}
@@ -423,37 +423,37 @@ using namespace std;
 //void busHireTesting()
 //{
 //    cout << "\nTesting luxury bus hire:" << endl;
-//    cout << "Creating luxury bus object and reserving seats." << endl;
+//    cout << "Creating luxury bus object and reserving seats_." << endl;
 //    luxuryBus lux_bus;
-//    lux_bus.reserveSeat(1, 'A');
-//    lux_bus.reserveSeat(2, 'A');
-//    lux_bus.reserveSeat(3, 'A');
-//    lux_bus.reserveSeat(4, 'A');
-//    lux_bus.reserveSeat(5, 'A');
-//    lux_bus.reserveSeat(6, 'A');
-//    cout << "Check bus seats:" << endl;
-//    lux_bus.displayFreeSeats();
+//    lux_bus.reserve_seat(1, 'A');
+//    lux_bus.reserve_seat(2, 'A');
+//    lux_bus.reserve_seat(3, 'A');
+//    lux_bus.reserve_seat(4, 'A');
+//    lux_bus.reserve_seat(5, 'A');
+//    lux_bus.reserve_seat(6, 'A');
+//    cout << "Check bus seats_:" << endl;
+//    lux_bus.display_free_seats();
 //    cout << "\nTrying to hire bus." << endl;
 //    std::cout << std::boolalpha;
 //    cout << "Bus hire status: " << lux_bus.can_hire() << endl;
 //    cout << "Hire the bus." << endl;
-//    lux_bus.reserveAllSeats();
-//    lux_bus.displayFreeSeats();
+//    lux_bus.reserve_all_seats();
+//    lux_bus.display_free_seats();
 //    cout << "\nFlat fee for " << lux_bus.get_type() << " hire is: " << lux_bus.getBusHireRate() << endl;
 //    cout << "Additionally there is a fee of " << lux_bus.getBusHireRatePerMile() << " per mile." << endl;
 //	
 //    cout << "\nTesting minivan hire:" << endl;
 //    miniVan mini_van;
-//    mini_van.reserveSeat(1, 'A');
-//    mini_van.reserveSeat(2, 'A');
-//    mini_van.reserveSeat(3, 'A');
-//    mini_van.reserveSeat(4, 'A');
-//    mini_van.reserveSeat(1, 'B');
-//    mini_van.reserveSeat(2, 'B');
-//    mini_van.reserveSeat(3, 'B');
-//    mini_van.reserveSeat(4, 'B');
-//    cout << "Check bus seats:" << endl;
-//    mini_van.displayFreeSeats();
+//    mini_van.reserve_seat(1, 'A');
+//    mini_van.reserve_seat(2, 'A');
+//    mini_van.reserve_seat(3, 'A');
+//    mini_van.reserve_seat(4, 'A');
+//    mini_van.reserve_seat(1, 'B');
+//    mini_van.reserve_seat(2, 'B');
+//    mini_van.reserve_seat(3, 'B');
+//    mini_van.reserve_seat(4, 'B');
+//    cout << "Check bus seats_:" << endl;
+//    mini_van.display_free_seats();
 //    cout << "\nTrying to hire minivan." << endl;
 //    std::cout << std::boolalpha;
 //    cout << "Minivan hire status: " << mini_van.can_hire() << endl;
@@ -546,8 +546,8 @@ using namespace std;
 //    {
 //	    Trip * selected_trip = selected_route->get_trip_repo()->getAllTrips()[trip_choice-1];
 //        new_ticket.set_trip(route_repo->getRoutes()[route_choice - 1]->get_trip_repo()->getAllTrips()[trip_choice - 1]);
-//        cout << "\nAvailable bus seats." << endl;
-//        selected_trip->get_bus()->displayFreeSeats();
+//        cout << "\nAvailable bus seats_." << endl;
+//        selected_trip->get_bus()->display_free_seats();
 //
 //    	int seat_row;
 //        char seat_column;
@@ -564,7 +564,7 @@ using namespace std;
 //        {
 //            cout << "We couldn't reserve this seat." << endl;
 //        }
-//        new_ticket.set_cost(new_ticket.get_trip()->get_bus()->getSeatRate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
+//        new_ticket.set_cost(new_ticket.get_trip()->get_bus()->get_seat_rate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
 //        account->addTicket(new_ticket);
 //
 //    }
@@ -728,81 +728,81 @@ int main()
     routeRepo rteRepo;
 
     fleet bus_fleet;
-    luxuryBus lux_bus_1("LB201");
-    luxuryBus lux_bus_2("LB202");
-    luxuryBus lux_bus_3("LB203");
-    luxuryBus lux_bus_4("LB204");
-    luxuryBus lux_bus_5("LB205");
-    luxuryBus lux_bus_6("LB206");
-    miniVan mini_van_1("MV401");
-    miniVan mini_van_2("MV402");
-    miniVan mini_van_3("MV403");
-    miniVan mini_van_4("MV404");
-    miniBus mini_bus_1("MB301");
-    miniBus mini_bus_2("MB302");
-    miniBus mini_bus_3("MB303");
-    miniBus mini_bus_4("MB304");
+    luxury_bus lux_bus_1("LB201");
+    luxury_bus lux_bus_2("LB202");
+    luxury_bus lux_bus_3("LB203");
+    luxury_bus lux_bus_4("LB204");
+    luxury_bus lux_bus_5("LB205");
+    luxury_bus lux_bus_6("LB206");
+    mini_van mini_van_1("MV401");
+    mini_van mini_van_2("MV402");
+    mini_van mini_van_3("MV403");
+    mini_van mini_van_4("MV404");
+    mini_bus mini_bus_1("MB301");
+    mini_bus mini_bus_2("MB302");
+    mini_bus mini_bus_3("MB303");
+    mini_bus mini_bus_4("MB304");
 
     // Add them in a loop.
-    bus_fleet.addLuxuryBus(lux_bus_1);
-    bus_fleet.addLuxuryBus(lux_bus_2);
-    bus_fleet.addLuxuryBus(lux_bus_3);
-    bus_fleet.addLuxuryBus(lux_bus_4);
-    bus_fleet.addLuxuryBus(lux_bus_5);
-    bus_fleet.addLuxuryBus(lux_bus_6);
+    bus_fleet.add_luxury_bus(lux_bus_1);
+    bus_fleet.add_luxury_bus(lux_bus_2);
+    bus_fleet.add_luxury_bus(lux_bus_3);
+    bus_fleet.add_luxury_bus(lux_bus_4);
+    bus_fleet.add_luxury_bus(lux_bus_5);
+    bus_fleet.add_luxury_bus(lux_bus_6);
 
-    bus_fleet.addMiniVan(mini_van_1);
-    bus_fleet.addMiniVan(mini_van_2);
-    bus_fleet.addMiniVan(mini_van_3);
-    bus_fleet.addMiniVan(mini_van_4);
+    bus_fleet.add_mini_van(mini_van_1);
+    bus_fleet.add_mini_van(mini_van_2);
+    bus_fleet.add_mini_van(mini_van_3);
+    bus_fleet.add_mini_van(mini_van_4);
 
-    bus_fleet.addMiniBus(mini_bus_1);
-    bus_fleet.addMiniBus(mini_bus_2);
-    bus_fleet.addMiniBus(mini_bus_3);
-    bus_fleet.addMiniBus(mini_bus_4);
+    bus_fleet.add_mini_bus(mini_bus_1);
+    bus_fleet.add_mini_bus(mini_bus_2);
+    bus_fleet.add_mini_bus(mini_bus_3);
+    bus_fleet.add_mini_bus(mini_bus_4);
 
     // Adding trips
-    Trip GBToMadisonTrip_1(DateTime(2021, 5, 1, 12, 00, 00), DateTime(2021, 5, 1, 15, 00, 00), &lux_bus_1);
-    Trip GBToMadisonTrip_2(DateTime(2021, 5, 2, 12, 00, 00), DateTime(2021, 5, 2, 15, 00, 00), &lux_bus_2);
-    Trip GBToMadisonTrip_3(DateTime(2021, 5, 3, 12, 00, 00), DateTime(2021, 5, 3, 15, 00, 00), &lux_bus_3);
-    Trip GBToMadisonTrip_4(DateTime(2021, 5, 4, 12, 00, 00), DateTime(2021, 5, 4, 15, 00, 00), &lux_bus_4);
+    trip GBToMadisonTrip_1(date_time(2021, 5, 1, 12, 00, 00), date_time(2021, 5, 1, 15, 00, 00), &lux_bus_1);
+    trip GBToMadisonTrip_2(date_time(2021, 5, 2, 12, 00, 00), date_time(2021, 5, 2, 15, 00, 00), &lux_bus_2);
+    trip GBToMadisonTrip_3(date_time(2021, 5, 3, 12, 00, 00), date_time(2021, 5, 3, 15, 00, 00), &lux_bus_3);
+    trip GBToMadisonTrip_4(date_time(2021, 5, 4, 12, 00, 00), date_time(2021, 5, 4, 15, 00, 00), &lux_bus_4);
 
-    Trip GBToMilwaukeeTrip_1(DateTime(2021, 5, 1, 18, 30, 00), DateTime(2021, 5, 1, 22, 00, 00), &lux_bus_5);
-    Trip GBToMilwaukeeTrip_2(DateTime(2021, 5, 4, 18, 30, 00), DateTime(2021, 5, 4, 22, 00, 00), &lux_bus_6);
-    Trip GBToMilwaukeeTrip_3(DateTime(2021, 5, 7, 18, 30, 00), DateTime(2021, 5, 7, 22, 00, 00), &mini_van_1);
+    trip GBToMilwaukeeTrip_1(date_time(2021, 5, 1, 18, 30, 00), date_time(2021, 5, 1, 22, 00, 00), &lux_bus_5);
+    trip GBToMilwaukeeTrip_2(date_time(2021, 5, 4, 18, 30, 00), date_time(2021, 5, 4, 22, 00, 00), &lux_bus_6);
+    trip GBToMilwaukeeTrip_3(date_time(2021, 5, 7, 18, 30, 00), date_time(2021, 5, 7, 22, 00, 00), &mini_van_1);
 
-    Trip GBToWhitewaterTrip_1(DateTime(2021, 5, 1, 10, 45, 00), DateTime(2021, 5, 1, 12, 45, 00), &mini_van_2);
-    Trip GBToWhitewaterTrip_2(DateTime(2021, 5, 2, 10, 45, 00), DateTime(2021, 5, 2, 12, 45, 00), &mini_van_3);
+    trip GBToWhitewaterTrip_1(date_time(2021, 5, 1, 10, 45, 00), date_time(2021, 5, 1, 12, 45, 00), &mini_van_2);
+    trip GBToWhitewaterTrip_2(date_time(2021, 5, 2, 10, 45, 00), date_time(2021, 5, 2, 12, 45, 00), &mini_van_3);
 
-    Trip GBToOshkoshTrip_1(DateTime(2021, 5, 1, 9, 00, 00), DateTime(2021, 5, 1, 9, 45, 00), &mini_van_4);
-    Trip GBToOshkoshTrip_2(DateTime(2021, 5, 1, 12, 00, 00), DateTime(2021, 5, 1, 12, 45, 00), &mini_bus_1);
-    Trip GBToOshkoshTrip_3(DateTime(2021, 5, 1, 15, 00, 00), DateTime(2021, 5, 1, 15, 45, 00), &mini_bus_2);
-    Trip GBToOshkoshTrip_4(DateTime(2021, 5, 1, 18, 00, 00), DateTime(2021, 5, 1, 18, 45, 00), &mini_bus_3);
+    trip GBToOshkoshTrip_1(date_time(2021, 5, 1, 9, 00, 00), date_time(2021, 5, 1, 9, 45, 00), &mini_van_4);
+    trip GBToOshkoshTrip_2(date_time(2021, 5, 1, 12, 00, 00), date_time(2021, 5, 1, 12, 45, 00), &mini_bus_1);
+    trip GBToOshkoshTrip_3(date_time(2021, 5, 1, 15, 00, 00), date_time(2021, 5, 1, 15, 45, 00), &mini_bus_2);
+    trip GBToOshkoshTrip_4(date_time(2021, 5, 1, 18, 00, 00), date_time(2021, 5, 1, 18, 45, 00), &mini_bus_3);
 
-    Trip GBToEauClairTrip_1(DateTime(2021, 5, 1, 10, 00, 00), DateTime(2021, 5, 1, 13, 00, 00), &mini_bus_4);
+    trip GBToEauClairTrip_1(date_time(2021, 5, 1, 10, 00, 00), date_time(2021, 5, 1, 13, 00, 00), &mini_bus_4);
 
-    tripRepo trip_repoGBMs;
+    trip_repo trip_repoGBMs;
     trip_repoGBMs.add_trip(GBToMadisonTrip_1);
     trip_repoGBMs.add_trip(GBToMadisonTrip_2);
     trip_repoGBMs.add_trip(GBToMadisonTrip_3);
     trip_repoGBMs.add_trip(GBToMadisonTrip_4);
 
-    tripRepo trip_repoGBMl;
+    trip_repo trip_repoGBMl;
     trip_repoGBMl.add_trip(GBToMilwaukeeTrip_1);
     trip_repoGBMl.add_trip(GBToMilwaukeeTrip_2);
     trip_repoGBMl.add_trip(GBToMilwaukeeTrip_3);
 
-    tripRepo trip_repoGBWw;
+    trip_repo trip_repoGBWw;
     trip_repoGBWw.add_trip(GBToWhitewaterTrip_1);
     trip_repoGBWw.add_trip(GBToWhitewaterTrip_2);
 
-    tripRepo trip_repoGBOs;
+    trip_repo trip_repoGBOs;
     trip_repoGBOs.add_trip(GBToOshkoshTrip_1);
     trip_repoGBOs.add_trip(GBToOshkoshTrip_2);
     trip_repoGBOs.add_trip(GBToOshkoshTrip_3);
     trip_repoGBOs.add_trip(GBToOshkoshTrip_4);
 
-    tripRepo trip_repoGBEc;
+    trip_repo trip_repoGBEc;
     trip_repoGBEc.add_trip(GBToEauClairTrip_1);
 
     // Adding routes

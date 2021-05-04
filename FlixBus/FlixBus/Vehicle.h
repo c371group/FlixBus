@@ -3,157 +3,231 @@
 #include <map>
 #include <iostream>
 
+
+/**
+ * \brief vehicle class is base class for all types of vehicles used in our bus company.
+ */
 class vehicle
 {
 private:
-	std::string id_no;
-	const std::string type = "Base";
-	int capacity = 0; //how many seats-- this is implicitly linked to type.
+	// Unique id to be assigned to every vehicle object.
+	std::string id_no_;
+	// Type of vehicle
+	const std::string type_ = "Base";
+	// Seat capacity of the vehicle
+	int capacity_ = 0;
+	/**
+	 * \brief map<std::pair<int, char>, std::pair<int, double>> seats representation.
+	 * pair<int, char> represents int - row, char - column.
+	 * pair<int, double> represents int - seat occupation (0-free, 1-taken), double - rate for the seat.
+	 */
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{};
 public:
-	virtual ~vehicle() = default;
+	// Vehicle destructor
+	virtual ~vehicle();
+	// Base vehicle constructor
 	vehicle();
+	// Constructor that takes string and assigns it as id_no attribute.
 	explicit vehicle(std::string);
+	// Sets string value to id_no attribute.
 	void set_id_no(std::string);
+	// Sets int value to capacity attribute.
 	void set_capacity(int);
-
+	// Returns string id_no value
 	virtual std::string get_id_no();
+	// Returns type value
 	virtual std::string get_type();
+	// Returns capacity value
 	virtual int get_capacity();
+	// Returns seat count
 	int get_all_seats_count();
+	// Returns count of seats_ that are not reserved.
 	int get_free_seats_count();
-
-	// Displaying all seats
-	void displaySeats();
-	// Displaying taken seats as 'X'.
-	void displayFreeSeats();
-	// Reserve all seats
-	void reserveAllSeats();
+	// Displaying all seats_
+	void display_seats();
+	// Displaying taken seats_ as 'X'.
+	void display_free_seats();
+	// Reserve all seats_
+	void reserve_all_seats();
 	// Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
-	bool reserveSeat(int row, char column);
+	bool reserve_seat(int row, char column);
 	// Check if available for hire.
 	virtual bool can_hire();
 	// Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
-	bool cancelSeat(int row, char column);
-	double getSeatRate(int row, char column);
+	bool cancel_seat(int row, char column);
+	// Returns rate for a given seat (pair<int,chat>)
+	double get_seat_rate(int row, char column);
+	// Returns seat map.
 	virtual std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() = 0;
 };
 
-class luxuryBus : public vehicle
+// Derived class, used for representing Luxury bus type.
+class luxury_bus : public vehicle
 {
 private:
-	const std::string type = "Luxury Bus";
-	std::string id_no = "0"; //unique identifier for bus
-	const double windowSeatRate = 0.95;
-	const double aisleSeatRate = 0.75;
-	const double busHireRate = 1500;
-	const double busHireRatePerMile = 0.25;
-	const double securityDeposit = 5000;
-	const int capacity = 52;
+	// Bus type
+	const std::string type_ = "Luxury Bus";
+	// Identification number for the bus
+	std::string id_no_ = "0"; //unique identifier for bus
+	// Constant rate for window seats_.
+	const double window_seat_rate_ = 0.95;
+	// Constant rate for isle seats_.
+	const double aisle_seat_rate_ = 0.75;
+	// Constant rate for bus hire.
+	const double bus_hire_rate_ = 1500;
+	// Constant rate for bus hire per mile.
+	const double bus_hire_rate_per_mile_ = 0.25;
+	// Constant rate for security deposit.
+	const double security_deposit_ = 5000;
+	// Constant capacity for a luxury bus.
+	const int capacity_ = 52;
 public:
-	luxuryBus();
-	explicit luxuryBus(std::string);
-	// Seats map. <int, char> represents seats id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
+	// Base luxury bus constructor.
+	luxury_bus();
+	// Base constructor that assigns id_no.
+	explicit luxury_bus(std::string);
+	// Seats map. <int, char> represents seats_ id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{
-		{{1, 'A'}, {0, windowSeatRate}}, {{1, 'B'}, {0, aisleSeatRate}}, {{1, 'C'}, {0, aisleSeatRate}},
-		{{1, 'D'}, {0, aisleSeatRate}}, {{1, 'E'}, {0, windowSeatRate}},
-		{{2, 'A'}, {0, windowSeatRate}}, {{2, 'B'}, {0, aisleSeatRate}}, {{2, 'C'}, {0, aisleSeatRate}},
-		{{2, 'D'}, {0, aisleSeatRate}}, {{2, 'E'}, {0, windowSeatRate}},
-		{{3, 'A'}, {0, windowSeatRate}}, {{3, 'B'}, {0, aisleSeatRate}}, {{3, 'C'}, {0, aisleSeatRate}},
-		{{3, 'D'}, {0, aisleSeatRate}}, {{3, 'E'}, {0, windowSeatRate}},
-		{{4, 'A'}, {0, windowSeatRate}}, {{4, 'B'}, {0, aisleSeatRate}}, {{4, 'C'}, {0, aisleSeatRate}},
-		{{4, 'D'}, {0, aisleSeatRate}}, {{4, 'E'}, {0, windowSeatRate}},
-		{{5, 'A'}, {0, windowSeatRate}}, {{5, 'B'}, {0, aisleSeatRate}}, {{5, 'C'}, {0, aisleSeatRate}},
-		{{5, 'D'}, {0, aisleSeatRate}}, {{5, 'E'}, {0, windowSeatRate}},
-		{{6, 'A'}, {0, windowSeatRate}}, {{6, 'B'}, {0, aisleSeatRate}}, {{6, 'C'}, {0, aisleSeatRate}},
-		{{6, 'D'}, {0, aisleSeatRate}}, {{6, 'E'}, {0, windowSeatRate}},
-		{{7, 'A'}, {0, windowSeatRate}}, {{7, 'B'}, {0, aisleSeatRate}}, {{7, 'C'}, {0, aisleSeatRate}},
-		{{7, 'D'}, {0, aisleSeatRate}}, {{7, 'E'}, {0, windowSeatRate}},
-		{{8, 'A'}, {0, windowSeatRate}}, {{8, 'B'}, {0, aisleSeatRate}}, {{8, 'C'}, {0, aisleSeatRate}},
-		{{8, 'D'}, {0, aisleSeatRate}}, {{8, 'E'}, {0, windowSeatRate}},
-		{{9, 'A'}, {0, windowSeatRate}}, {{9, 'B'}, {0, aisleSeatRate}}, {{9, 'C'}, {0, aisleSeatRate}},
-		{{9, 'D'}, {0, aisleSeatRate}}, {{9, 'E'}, {0, windowSeatRate}},
-		{{10, 'A'}, {0, windowSeatRate}}, {{10, 'B'}, {0, aisleSeatRate}}, {{10, 'C'}, {0, aisleSeatRate}},
-		{{10, 'D'}, {0, aisleSeatRate}}, {{10, 'E'}, {0, windowSeatRate}},
-		{{11, 'A'}, {0, windowSeatRate}}, {{11, 'B'}, {0, aisleSeatRate}}
+		{{1, 'A'}, {0, window_seat_rate_}}, {{1, 'B'}, {0, aisle_seat_rate_}}, {{1, 'C'}, {0, aisle_seat_rate_}},
+		{{1, 'D'}, {0, aisle_seat_rate_}}, {{1, 'E'}, {0, window_seat_rate_}},
+		{{2, 'A'}, {0, window_seat_rate_}}, {{2, 'B'}, {0, aisle_seat_rate_}}, {{2, 'C'}, {0, aisle_seat_rate_}},
+		{{2, 'D'}, {0, aisle_seat_rate_}}, {{2, 'E'}, {0, window_seat_rate_}},
+		{{3, 'A'}, {0, window_seat_rate_}}, {{3, 'B'}, {0, aisle_seat_rate_}}, {{3, 'C'}, {0, aisle_seat_rate_}},
+		{{3, 'D'}, {0, aisle_seat_rate_}}, {{3, 'E'}, {0, window_seat_rate_}},
+		{{4, 'A'}, {0, window_seat_rate_}}, {{4, 'B'}, {0, aisle_seat_rate_}}, {{4, 'C'}, {0, aisle_seat_rate_}},
+		{{4, 'D'}, {0, aisle_seat_rate_}}, {{4, 'E'}, {0, window_seat_rate_}},
+		{{5, 'A'}, {0, window_seat_rate_}}, {{5, 'B'}, {0, aisle_seat_rate_}}, {{5, 'C'}, {0, aisle_seat_rate_}},
+		{{5, 'D'}, {0, aisle_seat_rate_}}, {{5, 'E'}, {0, window_seat_rate_}},
+		{{6, 'A'}, {0, window_seat_rate_}}, {{6, 'B'}, {0, aisle_seat_rate_}}, {{6, 'C'}, {0, aisle_seat_rate_}},
+		{{6, 'D'}, {0, aisle_seat_rate_}}, {{6, 'E'}, {0, window_seat_rate_}},
+		{{7, 'A'}, {0, window_seat_rate_}}, {{7, 'B'}, {0, aisle_seat_rate_}}, {{7, 'C'}, {0, aisle_seat_rate_}},
+		{{7, 'D'}, {0, aisle_seat_rate_}}, {{7, 'E'}, {0, window_seat_rate_}},
+		{{8, 'A'}, {0, window_seat_rate_}}, {{8, 'B'}, {0, aisle_seat_rate_}}, {{8, 'C'}, {0, aisle_seat_rate_}},
+		{{8, 'D'}, {0, aisle_seat_rate_}}, {{8, 'E'}, {0, window_seat_rate_}},
+		{{9, 'A'}, {0, window_seat_rate_}}, {{9, 'B'}, {0, aisle_seat_rate_}}, {{9, 'C'}, {0, aisle_seat_rate_}},
+		{{9, 'D'}, {0, aisle_seat_rate_}}, {{9, 'E'}, {0, window_seat_rate_}},
+		{{10, 'A'}, {0, window_seat_rate_}}, {{10, 'B'}, {0, aisle_seat_rate_}}, {{10, 'C'}, {0, aisle_seat_rate_}},
+		{{10, 'D'}, {0, aisle_seat_rate_}}, {{10, 'E'}, {0, window_seat_rate_}},
+		{{11, 'A'}, {0, window_seat_rate_}}, {{11, 'B'}, {0, aisle_seat_rate_}}
 	};
-
+	// Overrides base class virtual function, returns pointer to seats_ attribute.
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() override;
+	// Returns type attribute.
 	std::string get_type() override;
+	// Returns id_no attribute.
 	std::string get_id_no() override;
-	double getBusHireRate() const;
-	double getBusHireRatePerMile() const;
-	double getSecurityDeposit() const;
+	// Returns bus_hire_rate attribute.
+	double get_bus_hire_rate() const;
+	// Returns bus_hire_rate_per_mile attribute.
+	double get_bus_hire_rate_per_mile() const;
+	// Returns security_deposit.
+	double get_security_deposit() const;
+	// Returns capacity.
 	int get_capacity() override;
 };
 
-class miniBus : public vehicle
+class mini_bus : public vehicle
 {
 private:
-	const std::string type = "Mini Bus";
-	std::string id_no = "0"; //unique identifier for bus
-	const double windowSeatPrice = 0.65;
-	const double aisleSeatPrice = 0.65;
-	const double busHireRate = 1300;
-	const double busHireRatePerMile = 0.2;
-	const double securityDeposit = 3000;
-	const int capacity = 36;
+	// Bus type
+	const std::string type_ = "Mini Bus";
+	// Identification number for the bus
+	std::string id_no_ = "0";
+	// Constant rate for window seats_.
+	const double window_seat_price_ = 0.65;
+	// Constant rate for isle seats_.
+	const double aisle_seat_price_ = 0.65;
+	// Constant rate for bus hire.
+	const double bus_hire_rate_ = 1300;
+	// Constant rate for bus hire per mile.
+	const double bus_hire_rate_per_mile_ = 0.2;
+	// Constant rate for security deposit.
+	const double security_deposit_ = 3000;
+	// Constant capacity for a luxury bus.
+	const int capacity_ = 36;
 public:
-	miniBus();
-	miniBus(std::string);
-	// Seats map. <int, char> represents seats id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
+	// Base mini bus constructor.
+	mini_bus();
+	// Base constructor that assigns id_no.
+	mini_bus(std::string);
+	// Seats map. <int, char> represents seats_ id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{
-		{{1, 'A'}, {0, windowSeatPrice}}, {{1, 'B'}, {0, aisleSeatPrice}}, {{1, 'C'}, {0, windowSeatPrice}},
-		{{2, 'A'}, {0, windowSeatPrice}}, {{2, 'B'}, {0, aisleSeatPrice}}, {{2, 'C'}, {0, windowSeatPrice}},
-		{{3, 'A'}, {0, windowSeatPrice}}, {{3, 'B'}, {0, aisleSeatPrice}}, {{3, 'C'}, {0, windowSeatPrice}},
-		{{4, 'A'}, {0, windowSeatPrice}}, {{4, 'B'}, {0, aisleSeatPrice}}, {{4, 'C'}, {0, windowSeatPrice}},
-		{{5, 'A'}, {0, windowSeatPrice}}, {{5, 'B'}, {0, aisleSeatPrice}}, {{5, 'C'}, {0, windowSeatPrice}},
-		{{6, 'A'}, {0, windowSeatPrice}}, {{6, 'B'}, {0, aisleSeatPrice}}, {{6, 'C'}, {0, windowSeatPrice}},
-		{{7, 'A'}, {0, windowSeatPrice}}, {{7, 'B'}, {0, aisleSeatPrice}}, {{7, 'C'}, {0, windowSeatPrice}},
-		{{8, 'A'}, {0, windowSeatPrice}}, {{8, 'B'}, {0, aisleSeatPrice}}, {{8, 'C'}, {0, windowSeatPrice}},
-		{{9, 'A'}, {0, windowSeatPrice}}, {{9, 'B'}, {0, aisleSeatPrice}}, {{9, 'C'}, {0, windowSeatPrice}},
-		{{10, 'A'}, {0, windowSeatPrice}}, {{10, 'B'}, {0, aisleSeatPrice}}, {{10, 'C'}, {0, windowSeatPrice}},
-		{{11, 'A'}, {0, windowSeatPrice}}, {{11, 'B'}, {0, aisleSeatPrice}}, {{11, 'C'}, {0, windowSeatPrice}},
-		{{12, 'A'}, {0, windowSeatPrice}}, {{12, 'B'}, {0, aisleSeatPrice}}, {{12, 'C'}, {0, windowSeatPrice}}
+		{{1, 'A'}, {0, window_seat_price_}}, {{1, 'B'}, {0, aisle_seat_price_}}, {{1, 'C'}, {0, window_seat_price_}},
+		{{2, 'A'}, {0, window_seat_price_}}, {{2, 'B'}, {0, aisle_seat_price_}}, {{2, 'C'}, {0, window_seat_price_}},
+		{{3, 'A'}, {0, window_seat_price_}}, {{3, 'B'}, {0, aisle_seat_price_}}, {{3, 'C'}, {0, window_seat_price_}},
+		{{4, 'A'}, {0, window_seat_price_}}, {{4, 'B'}, {0, aisle_seat_price_}}, {{4, 'C'}, {0, window_seat_price_}},
+		{{5, 'A'}, {0, window_seat_price_}}, {{5, 'B'}, {0, aisle_seat_price_}}, {{5, 'C'}, {0, window_seat_price_}},
+		{{6, 'A'}, {0, window_seat_price_}}, {{6, 'B'}, {0, aisle_seat_price_}}, {{6, 'C'}, {0, window_seat_price_}},
+		{{7, 'A'}, {0, window_seat_price_}}, {{7, 'B'}, {0, aisle_seat_price_}}, {{7, 'C'}, {0, window_seat_price_}},
+		{{8, 'A'}, {0, window_seat_price_}}, {{8, 'B'}, {0, aisle_seat_price_}}, {{8, 'C'}, {0, window_seat_price_}},
+		{{9, 'A'}, {0, window_seat_price_}}, {{9, 'B'}, {0, aisle_seat_price_}}, {{9, 'C'}, {0, window_seat_price_}},
+		{{10, 'A'}, {0, window_seat_price_}}, {{10, 'B'}, {0, aisle_seat_price_}}, {{10, 'C'}, {0, window_seat_price_}},
+		{{11, 'A'}, {0, window_seat_price_}}, {{11, 'B'}, {0, aisle_seat_price_}}, {{11, 'C'}, {0, window_seat_price_}},
+		{{12, 'A'}, {0, window_seat_price_}}, {{12, 'B'}, {0, aisle_seat_price_}}, {{12, 'C'}, {0, window_seat_price_}}
 	};
+	// Overrides base class virtual function, returns pointer to seats_ attribute.
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() override;
+	// Returns type attribute.
 	std::string get_type() override;
+	// Returns id_no attribute.
 	std::string get_id_no() override;
-	double getBusHireRate() const;
-	double getBusHireRatePerMile() const;
-	double getSecurityDeposit() const;
+	// Returns bus_hire_rate attribute.
+	double get_bus_hire_rate() const;
+	// Returns bus_hire_rate_per_mile attribute.
+	double get_bus_hire_rate_per_mile() const;
+	// Returns security_deposit attribute.
+	double get_security_deposit() const;
+	// Returns capacity attribute.
 	int get_capacity() override;
 };
 
-class miniVan : public vehicle
+class mini_van : public vehicle
 {
 private:
-	const std::string type = "MiniVan";
-	std::string id_no = "0"; //unique identifier for bus -- ex. MV002
-	const double windowSeatPrice = 0.5;
-	const double aisleSeatPrice = 0.5;
-	const double busHireRate = 1000;
-	const double busHireRatePerMile = 0.15;
-	const double securityDeposit = 1500;
-	const int capacity = 12;
+	// Bus type
+	const std::string type_ = "MiniVan";
+	// Identification number for the bus
+	std::string id_no_ = "0";
+	// Constant rate for window seats_.
+	const double window_seat_price_ = 0.5;
+	// Constant rate for isle seats_.
+	const double aisle_seat_price_ = 0.5;
+	// Constant rate for bus hire.
+	const double bus_hire_rate_ = 1000;
+	// Constant rate for bus hire per mile.
+	const double bus_hire_rate_per_mile_ = 0.15;
+	// Constant rate for security deposit.
+	const double security_deposit_ = 1500;
+	// Constant capacity for a luxury bus.
+	const int capacity_ = 12;
 public:
-
-	miniVan();
-	miniVan(const miniVan& mv);
-	miniVan(std::string);
-	// Seats map. <int, char> represents seats id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
+	// Base mini van constructor.
+	mini_van();
+	// Copy constructor for mini_van
+	mini_van(const mini_van& mv);
+	// Base constructor that assigns id_no.
+	mini_van(std::string);
+	// Seats map. <int, char> represents seats_ id(1A 1B 1C) the <int> will be either 0 or 1, representing if the seat is taken(1) or free(0).
 	std::map<std::pair<int, char>, std::pair<int, double>> seats{
-		{{1, 'A'}, {0, windowSeatPrice}}, {{1, 'B'}, {0, aisleSeatPrice}}, {{1, 'C'}, {0, windowSeatPrice}},
-		{{2, 'A'}, {0, windowSeatPrice}}, {{2, 'B'}, {0, aisleSeatPrice}}, {{2, 'C'}, {0, windowSeatPrice}},
-		{{3, 'A'}, {0, windowSeatPrice}}, {{3, 'B'}, {0, aisleSeatPrice}}, {{3, 'C'}, {0, windowSeatPrice}},
-		{{4, 'A'}, {0, windowSeatPrice}}, {{4, 'B'}, {0, aisleSeatPrice}}, {{4, 'C'}, {0, windowSeatPrice}}
+		{{1, 'A'}, {0, window_seat_price_}}, {{1, 'B'}, {0, aisle_seat_price_}}, {{1, 'C'}, {0, window_seat_price_}},
+		{{2, 'A'}, {0, window_seat_price_}}, {{2, 'B'}, {0, aisle_seat_price_}}, {{2, 'C'}, {0, window_seat_price_}},
+		{{3, 'A'}, {0, window_seat_price_}}, {{3, 'B'}, {0, aisle_seat_price_}}, {{3, 'C'}, {0, window_seat_price_}},
+		{{4, 'A'}, {0, window_seat_price_}}, {{4, 'B'}, {0, aisle_seat_price_}}, {{4, 'C'}, {0, window_seat_price_}}
 	};
+	// For use by copies of the object, NOT original
 	void set_seats(std::map<std::pair<int, char>, std::pair<int, double>> temp);
+	// Overrides base class virtual function, returns pointer to seats_ attribute.
 	std::map<std::pair<int, char>, std::pair<int, double>>* get_seats() override;
+	// Returns type attribute.
 	std::string get_type() override;
+	// Returns id_no attribute.
 	std::string get_id_no() override;
-	double getBusHireRate() const;
-	double getBusHireRatePerMile() const;
-	double getSecurityDeposit() const;
+	// Returns bus_hire_rate attribute.
+	double get_bus_hire_rate() const;
+	// Returns bus_hire_rate_per_mile attribute.
+	double get_bus_hire_rate_per_mile() const;
+	// Returns deposit attribute.
+	double get_security_deposit() const;
+	// Returns capacity attribute.
 	int get_capacity() override;
 };

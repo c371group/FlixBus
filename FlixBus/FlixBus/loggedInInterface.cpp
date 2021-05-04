@@ -66,9 +66,9 @@ int loggedInInterface::menuLogic()
 						std::cout << "*************** Ticket: " << ticket_number << " *****************************" << std::endl;
 						std::cout << "******************************************************" << std::endl;
 						std::cout << "** From " << item.get_route()->get_source() << " To " << item.get_route()->get_destination() << std::endl;
-						item.get_trip()->getDepartureDT().displayDate();
+						item.get_trip()->get_departure_dt().display_date();
 						std::cout << " - ";
-						item.get_trip()->getEstArrivalDT().displayDate();
+						item.get_trip()->get_est_arrival_dt().display_date();
 						std::cout << "\n** Total of " << item.get_route()->get_distance() << " miles." << std::endl;
 						std::cout << "** Price: $" << item.get_cost() << std::endl;
 						std::cout << "** Bus type: " << item.get_trip()->get_bus()->get_type() << std::endl;
@@ -114,9 +114,9 @@ int loggedInInterface::menuLogic()
 					ticket edit_ticket = tickets_edit.at(edit_ticket_choice-1);
 					std::cout << "" << std::endl;
 					std::cout << "** From " << edit_ticket.get_route()->get_source() << " To " << edit_ticket.get_route()->get_destination() << std::endl;
-					edit_ticket.get_trip()->getDepartureDT().displayDate();
+					edit_ticket.get_trip()->get_departure_dt().display_date();
 					std::cout << " - ";
-					edit_ticket.get_trip()->getEstArrivalDT().displayDate();
+					edit_ticket.get_trip()->get_est_arrival_dt().display_date();
 					std::cout << "\n** Total of " << edit_ticket.get_route()->get_distance() << " miles." << std::endl;
 					std::cout << "** Price: $" << edit_ticket.get_cost() << std::endl;
 					std::cout << "** Bus type: " << edit_ticket.get_trip()->get_bus()->get_type() << std::endl;
@@ -165,16 +165,16 @@ int loggedInInterface::menuLogic()
 					}
 					if (ticket_edit_choice == 1)
 					{
-						DateTime current_date;
-						DateTime ticket_date = this->acct->getTickets().at(edit_ticket_choice - 1).get_travel_date();
-						int days_difference = current_date.differenceDays(ticket_date);
+						date_time current_date;
+						date_time ticket_date = this->acct->getTickets().at(edit_ticket_choice - 1).get_travel_date();
+						int days_difference = current_date.difference_days(ticket_date);
 						if(days_difference < 7 && days_difference > 2)
 						{
 							double cost_ = this->acct->getTickets().at(edit_ticket_choice - 1).get_cost();
 							double amount_ = this->acct->getTickets().at(edit_ticket_choice - 1).get_cost() * 0.3;
 							std::cout << "Any cancellation shorter than a week will require 30%!" << std::endl;
 							std::cout << amount_ << " will be hold from your account." << std::endl;
-							this->revenue_->withdrawal_income_by_date(edit_ticket.get_trip()->getDepartureDT().to_string(false), cost_);
+							this->revenue_->withdrawal_income_by_date(edit_ticket.get_trip()->get_departure_dt().to_string(false), cost_);
 							this->revenue_->withdrawal_income_by_vehicle(edit_ticket.get_trip()->get_bus()->get_id_no(), cost_);
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() - (cost_ + amount_));
 						}
@@ -195,11 +195,11 @@ int loggedInInterface::menuLogic()
 					{
 						ticket* reference_to_edit_ticket = this->acct->get_ticket_by_id(edit_ticket.get_ticket_id());
 						std::cout << "Free seats for ";
-						edit_ticket.get_trip()->getDepartureDT();
+						edit_ticket.get_trip()->get_departure_dt();
 						std::cout << " - ";
-						edit_ticket.get_trip()->getEstArrivalDT();
+						edit_ticket.get_trip()->get_est_arrival_dt();
 						std::cout << " from " << edit_ticket.get_route()->get_source() << " to " << edit_ticket.get_route()->get_destination() << std::endl;
-						edit_ticket.get_trip()->get_bus()->displayFreeSeats();
+						edit_ticket.get_trip()->get_bus()->display_free_seats();
 						int seat_row;
 						char seat_column;
 						std::cout << "\nPlease select a seat: " << std::endl;
@@ -269,7 +269,7 @@ int loggedInInterface::menuLogic()
 						{
 							double difference = cost_of_new_seat - old_cost_of_seat;
 							std::cout << "Your new seat is more expensive than your last one." << std::endl;
-							this->revenue_->add_income_by_date(reference_to_edit_ticket->get_trip()->getDepartureDT().to_string(false), difference);
+							this->revenue_->add_income_by_date(reference_to_edit_ticket->get_trip()->get_departure_dt().to_string(false), difference);
 							this->revenue_->add_income_by_vehicle(reference_to_edit_ticket->get_trip()->get_bus()->get_id_no(), difference);
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + (difference + difference));
 						}
@@ -335,12 +335,12 @@ int loggedInInterface::menuLogic()
 				std::cout << "DEPARTURE\t\t" << "ARRIVAL\t\t\t" << "SOURCE\t\t" << "DESTINATION" << std::endl;
 				int trip_choice = 0;
 				int index = 0;
-				for (auto item : *selected_route->get_trip_repo()->getAllTrips())
+				for (auto item : *selected_route->get_trip_repo()->get_all_trips())
 				{
 					std::cout << index + 1 << ". ";
-					item.getDepartureDT().displayDate();
+					item.get_departure_dt().display_date();
 					std::cout << "\t";
-					item.getEstArrivalDT().displayDate();
+					item.get_est_arrival_dt().display_date();
 					std::cout << "\t";
 					std::cout << selected_route->get_source() << "\t" << selected_route->get_destination() << "\t" << std::endl;
 					index++;
@@ -379,11 +379,11 @@ int loggedInInterface::menuLogic()
 				}
 				else
 				{
-					std::vector<Trip>* list_of_trips = selected_route->get_trip_repo()->getAllTrips();
-					Trip* selected_trip = &list_of_trips->at(trip_choice - 1); //&selected_route->get_trip_repo()->getAllTrips()[trip_choice - 1];
+					std::vector<trip>* list_of_trips = selected_route->get_trip_repo()->get_all_trips();
+					trip* selected_trip = &list_of_trips->at(trip_choice - 1); //&selected_route->get_trip_repo()->getAllTrips()[trip_choice - 1];
 					new_ticket.set_trip(&list_of_trips->at(trip_choice - 1));
 					std::cout << "\nAvailable bus seats." << std::endl;
-					selected_trip->get_bus()->displayFreeSeats();
+					selected_trip->get_bus()->display_free_seats();
 
 					int seat_row;
 					char seat_column;
@@ -441,10 +441,10 @@ int loggedInInterface::menuLogic()
 							break;
 						}
 					}
-					new_ticket.set_cost(new_ticket.get_trip()->get_bus()->getSeatRate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
+					new_ticket.set_cost(new_ticket.get_trip()->get_bus()->get_seat_rate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
 					std::string compiled_id = this->acct->get_customer().getLastName() + "_" + new_ticket.get_route()->get_source() + "_" + new_ticket.get_route()->get_destination() + "_" + new_ticket.get_trip()->get_bus()->get_id_no();
 					new_ticket.set_ticket_id(compiled_id);
-					this->revenue_->add_income_by_date(new_ticket.get_trip()->getDepartureDT().to_string(false), new_ticket.get_cost());
+					this->revenue_->add_income_by_date(new_ticket.get_trip()->get_departure_dt().to_string(false), new_ticket.get_cost());
 					this->revenue_->add_income_by_vehicle(new_ticket.get_trip()->get_bus()->get_id_no(), new_ticket.get_cost());
 					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + new_ticket.get_cost());
 					this->acct->addTicket(new_ticket);
@@ -504,9 +504,9 @@ int loggedInInterface::menuLogic()
 					route* selected_route = &selected_vector->at(choice_index);
 
 					std::cout << "Currently we have:" << std::endl;
-					selected_route->get_fleet()->displayLuxuryBusFleet();
-					selected_route->get_fleet()->displayMiniBusFleet();
-					selected_route->get_fleet()->displayMiniVanFleet();
+					selected_route->get_fleet()->display_luxury_bus_fleet();
+					selected_route->get_fleet()->display_mini_bus_fleet();
+					selected_route->get_fleet()->display_mini_van_fleet();
 					std::cout << "\n********************************\n";
 					if(selected_route->get_fleet()->get_luxury_bus_count() > 0)
 					{
@@ -549,7 +549,7 @@ int loggedInInterface::menuLogic()
 					std::string bus_id;
 					if(choice_bus_hire == 1)
 					{
-						selected_route->get_fleet()->displayLuxuryBusFleet();
+						selected_route->get_fleet()->display_luxury_bus_fleet();
 						while (true) {
 							std::cout << "Enter luxury bus id to hire it: ";
 							if (std::cin >> bus_id) {
@@ -561,12 +561,12 @@ int loggedInInterface::menuLogic()
 								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 							}
 						}
-						luxuryBus* hire_luxury_bus = selected_route->get_fleet()->getLuxuryBus(bus_id);
+						luxury_bus* hire_luxury_bus = selected_route->get_fleet()->get_luxury_bus(bus_id);
 						if(!hire_luxury_bus)
 						{
 							std::cout << "The bus id you entered was not found. Please try again!";
 							std::cout << "Here are the options: " << std::endl;
-							selected_route->get_fleet()->displayLuxuryBusFleet();
+							selected_route->get_fleet()->display_luxury_bus_fleet();
 							while (true) {
 								std::cout << "\nEnter luxury bus id to hire it: ";
 								if (std::cin >> bus_id) {
@@ -578,30 +578,30 @@ int loggedInInterface::menuLogic()
 									std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 								}
 							}
-							hire_luxury_bus = selected_route->get_fleet()->getLuxuryBus(bus_id);
+							hire_luxury_bus = selected_route->get_fleet()->get_luxury_bus(bus_id);
 						}
 						if(hire_luxury_bus->can_hire())
 						{
-							hire_luxury_bus->reserveAllSeats();
+							hire_luxury_bus->reserve_all_seats();
 							ticket bus_hire_ticket;
 							
 							//TODO: Ask the user to enter date and time. Currently takes current date and time.
-							DateTime bus_hire_dep(2021, 5, 1, 12, 0,0);
-							DateTime bus_hire_arr(2021, 5,1,15,30,0);
-							Trip bus_hire_trip(bus_hire_dep, bus_hire_arr, hire_luxury_bus);
+							date_time bus_hire_dep(2021, 5, 1, 12, 0,0);
+							date_time bus_hire_arr(2021, 5,1,15,30,0);
+							trip bus_hire_trip(bus_hire_dep, bus_hire_arr, hire_luxury_bus);
 							selected_route->get_trip_repo()->add_trip(bus_hire_trip);
-							std::vector<Trip>* trip_repo = selected_route->get_trip_repo()->getAllTrips();
+							std::vector<trip>* trip_repo = selected_route->get_trip_repo()->get_all_trips();
 							bus_hire_ticket.set_trip(&trip_repo->back());
 							bus_hire_ticket.set_route(selected_route);
 							
 							bus_hire_ticket.set_bus_hire(true);
-							bus_hire_ticket.set_cost(hire_luxury_bus->getBusHireRate() + (hire_luxury_bus->getBusHireRatePerMile() * selected_route->get_distance()));
-							std::cout << "There is a security deposit for the luxury bus hire: " << hire_luxury_bus->getSecurityDeposit() << std::endl;
+							bus_hire_ticket.set_cost(hire_luxury_bus->get_bus_hire_rate() + (hire_luxury_bus->get_bus_hire_rate_per_mile() * selected_route->get_distance()));
+							std::cout << "There is a security deposit for the luxury bus hire: " << hire_luxury_bus->get_security_deposit() << std::endl;
 							std::cout << "Current cost is: " << bus_hire_ticket.get_cost() << std::endl;
 							std::cout << "Adding security deposit.." << std::endl;
-							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_luxury_bus->getSecurityDeposit());
+							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_luxury_bus->get_security_deposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
-							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->getDepartureDT().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
 							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->addTicket(bus_hire_ticket);
@@ -612,7 +612,7 @@ int loggedInInterface::menuLogic()
 					}
 					else if(choice_bus_hire == 3)
 					{
-						selected_route->get_fleet()->displayMiniBusFleet();
+						selected_route->get_fleet()->display_mini_bus_fleet();
 						while (true) {
 							std::cout << "Enter mini bus id to hire it: ";
 							if (std::cin >> bus_id) {
@@ -624,12 +624,12 @@ int loggedInInterface::menuLogic()
 								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 							}
 						}
-						miniBus* hire_mini_bus = selected_route->get_fleet()->getMiniBus(bus_id);
+						mini_bus* hire_mini_bus = selected_route->get_fleet()->get_mini_bus(bus_id);
 						if (!hire_mini_bus)
 						{
 							std::cout << "The bus id you entered was not found. Please try again!";
 							std::cout << "Here are the options: " << std::endl;
-							selected_route->get_fleet()->displayMiniBusFleet();
+							selected_route->get_fleet()->display_mini_bus_fleet();
 							while (true) {
 								std::cout << "\nEnter mini bus id to hire it: ";
 								if (std::cin >> bus_id) {
@@ -641,31 +641,31 @@ int loggedInInterface::menuLogic()
 									std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 								}
 							}
-							hire_mini_bus = selected_route->get_fleet()->getMiniBus(bus_id);
+							hire_mini_bus = selected_route->get_fleet()->get_mini_bus(bus_id);
 						}
 						if (hire_mini_bus->can_hire())
 						{
-							hire_mini_bus->reserveAllSeats();
+							hire_mini_bus->reserve_all_seats();
 							ticket bus_hire_ticket;
 							
 							//TODO: Ask the user to enter date and time. Currently takes current date and time.
-							DateTime bus_hire_dep(2021, 5, 1, 12, 0, 0);
-							DateTime bus_hire_arr(2021, 5, 1, 15, 30, 0);
-							Trip bus_hire_trip(bus_hire_dep, bus_hire_arr, hire_mini_bus);
+							date_time bus_hire_dep(2021, 5, 1, 12, 0, 0);
+							date_time bus_hire_arr(2021, 5, 1, 15, 30, 0);
+							trip bus_hire_trip(bus_hire_dep, bus_hire_arr, hire_mini_bus);
 							selected_route->get_trip_repo()->add_trip(bus_hire_trip);
-							std::vector<Trip>* trip_repo = selected_route->get_trip_repo()->getAllTrips();
+							std::vector<trip>* trip_repo = selected_route->get_trip_repo()->get_all_trips();
 							bus_hire_ticket.set_trip(&trip_repo->back());
 							bus_hire_ticket.set_route(selected_route);
 							
 							bus_hire_ticket.set_route(selected_route);
 							bus_hire_ticket.set_bus_hire(true);
-							bus_hire_ticket.set_cost(hire_mini_bus->getBusHireRate() + (hire_mini_bus->getBusHireRatePerMile() * selected_route->get_distance()));
-							std::cout << "There is a security deposit for the luxury bus hire: " << hire_mini_bus->getSecurityDeposit() << std::endl;
+							bus_hire_ticket.set_cost(hire_mini_bus->get_bus_hire_rate() + (hire_mini_bus->get_bus_hire_rate_per_mile() * selected_route->get_distance()));
+							std::cout << "There is a security deposit for the luxury bus hire: " << hire_mini_bus->get_security_deposit() << std::endl;
 							std::cout << "Current cost is: " << bus_hire_ticket.get_cost() << std::endl;
 							std::cout << "Adding security deposit.." << std::endl;
-							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_bus->getSecurityDeposit());
+							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_bus->get_security_deposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
-							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->getDepartureDT().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
 							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->addTicket(bus_hire_ticket);
@@ -675,7 +675,7 @@ int loggedInInterface::menuLogic()
 					}
 					else
 					{
-						selected_route->get_fleet()->displayMiniVanFleet();
+						selected_route->get_fleet()->display_mini_van_fleet();
 						while (true) {
 							std::cout << "Enter minivan id to hire it: ";
 							if (std::cin >> bus_id) {
@@ -689,12 +689,12 @@ int loggedInInterface::menuLogic()
 						}
 						
 
-						miniVan* hire_mini_van = selected_route->get_fleet()->getMiniVan(bus_id);
+						mini_van* hire_mini_van = selected_route->get_fleet()->get_mini_van(bus_id);
 						if (!hire_mini_van)
 						{
 							std::cout << "The bus id you entered was not found. Please try again!";
 							std::cout << "Here are the options: " << std::endl;
-							selected_route->get_fleet()->displayMiniVanFleet();
+							selected_route->get_fleet()->display_mini_van_fleet();
 							while (true) {
 								std::cout << "\nEnter minivan id to hire it: ";
 								if (std::cin >> bus_id) {
@@ -706,32 +706,32 @@ int loggedInInterface::menuLogic()
 									std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 								}
 							}
-							hire_mini_van = selected_route->get_fleet()->getMiniVan(bus_id);
+							hire_mini_van = selected_route->get_fleet()->get_mini_van(bus_id);
 						}
 						
 						if (hire_mini_van->can_hire())
 						{
-							hire_mini_van->reserveAllSeats();
+							hire_mini_van->reserve_all_seats();
 							ticket bus_hire_ticket;
 
 							//TODO: Ask the user to enter date and time. Currently takes current date and time.
-							DateTime bus_hire_dep(2021, 5, 1, 12, 0, 0);
-							DateTime bus_hire_arr(2021, 5, 1, 15, 30, 0);
-							Trip bus_hire_trip(bus_hire_dep, bus_hire_arr, hire_mini_van);
+							date_time bus_hire_dep(2021, 5, 1, 12, 0, 0);
+							date_time bus_hire_arr(2021, 5, 1, 15, 30, 0);
+							trip bus_hire_trip(bus_hire_dep, bus_hire_arr, hire_mini_van);
 							selected_route->get_trip_repo()->add_trip(bus_hire_trip);
-							std::vector<Trip>* trip_repo = selected_route->get_trip_repo()->getAllTrips();
+							std::vector<trip>* trip_repo = selected_route->get_trip_repo()->get_all_trips();
 							bus_hire_ticket.set_trip(&trip_repo->back());
 							bus_hire_ticket.set_route(selected_route);
 							
 							bus_hire_ticket.set_route(selected_route);
 							bus_hire_ticket.set_bus_hire(true);
-							bus_hire_ticket.set_cost(hire_mini_van->getBusHireRate() + (hire_mini_van->getBusHireRatePerMile() * selected_route->get_distance()));
-							std::cout << "There is a security deposit for the luxury bus hire: " << hire_mini_van->getSecurityDeposit() << std::endl;
+							bus_hire_ticket.set_cost(hire_mini_van->get_bus_hire_rate() + (hire_mini_van->get_bus_hire_rate_per_mile() * selected_route->get_distance()));
+							std::cout << "There is a security deposit for the luxury bus hire: " << hire_mini_van->get_security_deposit() << std::endl;
 							std::cout << "Current cost is: " << bus_hire_ticket.get_cost() << std::endl;
 							std::cout << "Adding security deposit.." << std::endl;
-							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_van->getSecurityDeposit());
+							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_van->get_security_deposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
-							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->getDepartureDT().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
 							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->addTicket(bus_hire_ticket);
