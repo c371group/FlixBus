@@ -3,12 +3,12 @@
 accountInfoView::accountInfoView()
 = default;
 
-accountInfoView::accountInfoView(Account acct)
+accountInfoView::accountInfoView(account acct)
 {
 	std::vector<std::string> infoSet1 = {
 "Username", "First Name", "Last Name", "Email", "Address", "Phone Number"
 	};
-	std::vector<std::string> acctInfo = {acct.get_username(), acct.get_customer().getFirstName(), acct.get_customer().getLastName(), acct.get_customer().getEmail(), acct.get_customer().getAddress(), acct.get_customer().getContactNumber()};
+	std::vector<std::string> acctInfo = {acct.get_username(), acct.get_customer().get_first_name(), acct.get_customer().get_last_name(), acct.get_customer().get_email(), acct.get_customer().get_address(), acct.get_customer().get_contact_number()};
 	std::vector<std::vector<std::string>> temp = {infoSet1, acctInfo};
 	set_vecStr(temp);
 	display(0);

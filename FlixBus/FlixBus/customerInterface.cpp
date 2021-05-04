@@ -6,14 +6,14 @@
  */
 
 customerInterface::customerInterface() = default;
-customerInterface::customerInterface(accountRepo* acctRep)
+customerInterface::customerInterface(account_repo* acctRep)
 {
 	
 	preLoad(acctRep);
 	menuLogic();
 }
 
-customerInterface::customerInterface(accountRepo* acctRep, routeRepo* routeRepo, revenue* revenue)
+customerInterface::customerInterface(account_repo* acctRep, route_repo* routeRepo, revenue* revenue)
 {
 	this->routeRep = routeRepo;
 	this->revenue_ = revenue;
@@ -21,7 +21,7 @@ customerInterface::customerInterface(accountRepo* acctRep, routeRepo* routeRepo,
 	menuLogic();
 }
 
-void customerInterface::preLoad(accountRepo* acctRep)
+void customerInterface::preLoad(account_repo* acctRep)
 {
 	
 	this->acctRep = acctRep;
@@ -30,7 +30,7 @@ void customerInterface::preLoad(accountRepo* acctRep)
 	set_vecMen(temp);
 }
 
-accountRepo* customerInterface::getAcctRep()
+account_repo* customerInterface::getAcctRep()
 {
 	return this->acctRep;
 }

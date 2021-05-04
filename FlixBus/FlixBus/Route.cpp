@@ -1,11 +1,14 @@
 #include "Route.h"
 
+
+// Basic constructor.
 route::route()
 {
-	this->busFleet = nullptr;
+	this->bus_fleet_ = nullptr;
 	this->trip_repo_ = nullptr;
 }
 
+// Constructor takes source city and destination city.
 route::route(std::string source, std::string destination)
 {
 	//I feel like there's a better way to do this, I'm open to any suggestions
@@ -37,8 +40,10 @@ route::route(std::string source, std::string destination)
 	
 	this->source_ = source;
 	this->destination_ = destination;
-	this->busFleet = busFleet;
+	this->bus_fleet_ = bus_fleet_;
 }
+
+// Constructor takes source city and destination city and bus fleet.
 route::route(std::string source, std::string destination, fleet * busFleet)
 {
 
@@ -65,67 +70,77 @@ route::route(std::string source, std::string destination, fleet * busFleet)
 
 	this->source_ = source;
 	this->destination_ = destination;
-	this->busFleet = busFleet;
+	this->bus_fleet_ = busFleet;
 }
 
+// Constructor takes source city and destination city, distance and bus fleet.
 route::route(std::string source, std::string destination, double distance, fleet * busFleet)
 {
 	this->source_ = source;
 	this->destination_ = destination;
 	this->distance_ = distance;
-	this->busFleet = busFleet;
+	this->bus_fleet_ = busFleet;
 }
 
+// Constructor takes source city and destination city, distance, bus fleet. and reference to a trip repo object.
 route::route(std::string source, std::string destination, double distance, fleet* busFleet, trip_repo* trip_repo)
 {
 	this->source_ = source;
 	this->destination_ = destination;
 	this->distance_ = distance;
-	this->busFleet = busFleet;
+	this->bus_fleet_ = busFleet;
 	this->trip_repo_ = trip_repo;
 }
 
-
+// Takes string and assigns it to source_ attribute.
 void route::set_source(std::string val)
 {
 	this->source_ = val;
 }
 
+// Takes string and assigns it to destination_ attribute.
 void route::set_destination(std::string val)
 {
 	this->destination_ = val;
 }
 
+// Takes string and assigns it to distance_ attribute.
 void route::set_distance(int val)
 {
 	this->distance_ = val;
 }
 
+// Takes fleet and assigns it to distance_ bus_fleet_.
 void route::set_fleet(fleet* busFleet)
 {
-	this->busFleet = busFleet;
+	this->bus_fleet_ = busFleet;
 }
 
+// Returns source_ attribute.
 std::string route::get_source()
 {
 	return this->source_;
 }
 
+// Returns destination_ attribute.
 std::string route::get_destination()
 {
 	return this->destination_;
 }
 
+// Returns distance_ attribute.
 double route::get_distance()
 {
 	return this->distance_;
 }
 
+// Returns reference to a fleet object.
 fleet* route::get_fleet()
 {
-	return this->busFleet;
+	return this->bus_fleet_;
 }
 
+// Returns reference to a trip_repo object.
 trip_repo* route::get_trip_repo()
 {
 	return this->trip_repo_;

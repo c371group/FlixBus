@@ -2,14 +2,14 @@
 
 
 // Constructor that assigns account repository reference.
-userTypeMenuView::userTypeMenuView(accountRepo* acctRep)
+userTypeMenuView::userTypeMenuView(account_repo* acctRep)
 {
 	preLoad(acctRep);
 	menuLogic();
 }
 
 // Constructor takes account repository, route repository and revenue references.
-userTypeMenuView::userTypeMenuView(accountRepo* acctRep, routeRepo* routeRepo, revenue* revenue)
+userTypeMenuView::userTypeMenuView(account_repo* acctRep, route_repo* routeRepo, revenue* revenue)
 {
 	this->routeRep = routeRepo;
 	this->revenue_ = revenue;
@@ -18,7 +18,7 @@ userTypeMenuView::userTypeMenuView(accountRepo* acctRep, routeRepo* routeRepo, r
 }
 
 // Prepares menu options.
-void userTypeMenuView::preLoad(accountRepo* acctRep)
+void userTypeMenuView::preLoad(account_repo* acctRep)
 {
 	this->acctRep = acctRep;
 	std::vector<std::string> menu1 = { "User", "Admin", "Exit" };
@@ -27,7 +27,7 @@ void userTypeMenuView::preLoad(accountRepo* acctRep)
 }
 
 // Returns reference of an account repository.
-accountRepo* userTypeMenuView::getAcctRep()
+account_repo* userTypeMenuView::getAcctRep()
 {
 	return this->acctRep;
 }

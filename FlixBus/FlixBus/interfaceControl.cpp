@@ -178,9 +178,9 @@ bool interfaceControl::affirm(std::string input)
  * to that index (passed by reference) and return true because a match WAS found. if not,
  * return false
  */
-bool interfaceControl::checkUsernameExistence(accountRepo* acctRep, std::string claimedUsername, int& index){
-	for (int i = 0; i < acctRep->getAccts().size(); i++) {
-		if (acctRep->getAccts()[i].get_username() == claimedUsername)
+bool interfaceControl::checkUsernameExistence(account_repo* acctRep, std::string claimedUsername, int& index){
+	for (int i = 0; i < acctRep->get_accts().size(); i++) {
+		if (acctRep->get_accts()[i].get_username() == claimedUsername)
 		{
 			index = i;
 			//DEBUGGING
@@ -192,9 +192,9 @@ bool interfaceControl::checkUsernameExistence(accountRepo* acctRep, std::string 
 }
 
 // Checks if the password is correct.
-bool interfaceControl::checkPassword(accountRepo* acctRep, std::string claimedPassword, int index)
+bool interfaceControl::checkPassword(account_repo* acctRep, std::string claimedPassword, int index)
 {
-	if (acctRep->getAccts()[index].get_password() == claimedPassword)
+	if (acctRep->get_accts()[index].get_password() == claimedPassword)
 	{
 		return true;
 	}

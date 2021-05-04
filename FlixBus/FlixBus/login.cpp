@@ -2,16 +2,16 @@
 
 #include "routeRepo.h"
 
-login::login(accountRepo* acctRepo)
+login::login(account_repo* acctRepo)
 {
 	int index;
 	this->acctRep = acctRepo;
 	index = enter_username();
 	enter_password(index);
-	loggedInInterface lif = loggedInInterface(&acctRep->getAccts()[index]); //TODO: probably have to modify this down the line
+	loggedInInterface lif = loggedInInterface(&acctRep->get_accts()[index]); //TODO: probably have to modify this down the line
 }
 
-login::login(accountRepo* acctRepo, routeRepo* routeRepo, revenue* revenue)
+login::login(account_repo* acctRepo, route_repo* routeRepo, revenue* revenue)
 {
 	int index;
 	this->acctRep = acctRepo;
@@ -19,7 +19,7 @@ login::login(accountRepo* acctRepo, routeRepo* routeRepo, revenue* revenue)
 	this->revenue_ = revenue;
 	index = enter_username();
 	enter_password(index);
-	//loggedInInterface lif = loggedInInterface(acctRep->getAccts()[index], routeRepo);
+	//loggedInInterface lif = loggedInInterface(acctRep->get_accts()[index], routeRepo);
 	loggedInInterface lif = loggedInInterface(acctRep->get_acc_by_index(index), this->routeRep, this->revenue_);
 	
 }

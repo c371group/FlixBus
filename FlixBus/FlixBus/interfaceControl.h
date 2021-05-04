@@ -36,7 +36,7 @@ public:
 	// Asks the user to choose yes or no.
 	bool affirm(std::string input);
 	// Checks if the user exists.
-	bool checkUsernameExistence(accountRepo* acctRep, std::string, int&);
+	bool checkUsernameExistence(account_repo* acctRep, std::string, int&);
 	// Checks if the password is correct.
-	bool checkPassword(accountRepo* acctRep, std::string, int);
+	bool checkPassword(account_repo* acctRep, std::string, int);
 };

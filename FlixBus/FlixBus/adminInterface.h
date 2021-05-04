@@ -12,23 +12,23 @@ class adminInterface : public interfaceView
 {
 private:
 	// Reference to account repository.
-	accountRepo* acctRep;
+	account_repo* acctRep;
 	// Reference to route repository.
-	routeRepo* routeRep;
+	route_repo* routeRep;
 	// Reference to revenue repository.
 	revenue* revenue_;
 public:
 	// Base constructor.
 	adminInterface();
 	// Constructor, takes account repository reference and assigns it to routeRep attribute.
-	adminInterface(accountRepo*);
+	adminInterface(account_repo*);
 	// Constructor, takes account repository, route repository and revenue references. Assign them to their corresponding attributes.
-	adminInterface(accountRepo*, routeRepo*, revenue*);
+	adminInterface(account_repo*, route_repo*, revenue*);
 	// Pre loading attributes and generates menu options.
-	void preLoad(accountRepo*);
+	void preLoad(account_repo*);
 	// Generates menu logic.
-	int menuLogic(accountRepo*);
+	int menuLogic(account_repo*);
 	// Returns a reference to an account repository object.
-	accountRepo* getAcctRep();
+	account_repo* getAcctRep();
 };
 

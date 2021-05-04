@@ -11,14 +11,14 @@ class login :
     public interfaceView
 {
 private:
-	accountRepo* acctRep;
-	routeRepo* routeRep;
+	account_repo* acctRep;
+	route_repo* routeRep;
 	revenue* revenue_;
 	std::string allegedUsername;
 	std::string allegedPassword;
 public:
-	login(accountRepo* acctRepo);
-	login(accountRepo* acctRepo, routeRepo* routeRepo, revenue* revenue);
+	login(account_repo* acctRepo);
+	login(account_repo* acctRepo, route_repo* routeRepo, revenue* revenue);
 	int enter_username();
 	void enter_password(int);
 	void set_Alleged_Username(std::string);

@@ -14,22 +14,22 @@ class userTypeMenuView :
 {
 private:
 	// Reference to account repository object.
-	accountRepo* acctRep;
+	account_repo* acctRep;
 	// Reference to route repository object.
-	routeRepo* routeRep;
+	route_repo* routeRep;
 	// Reference to revenue object.
 	revenue* revenue_;
 public:
 	// Constructor that assigns account repository reference.
-	userTypeMenuView(accountRepo*);
+	userTypeMenuView(account_repo*);
 	// Constructor takes account repository, route repository and revenue references.
-	userTypeMenuView(accountRepo*, routeRepo*, revenue*);
+	userTypeMenuView(account_repo*, route_repo*, revenue*);
 	// Prepared the menu
-	void preLoad(accountRepo*);
+	void preLoad(account_repo*);
 	// Menu logic is located here.
 	int menuLogic();
 	// Returns reference of an account repository.
-	accountRepo* getAcctRep();
+	account_repo* getAcctRep();
 };
 
 

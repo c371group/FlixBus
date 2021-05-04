@@ -5,13 +5,22 @@
 #include <iomanip>
 #include "Route.h"
 
-class routeRepo
+
+/**
+ * \brief Repository class, contains vector of route objects.
+ */
+class route_repo
 {
 private:
-	std::vector<route> routes;
+	// Vector of routes.
+	std::vector<route> routes_;
 public:
-	routeRepo();
-	std::vector<route>* getRoutes();
+	// Base constructor.
+	route_repo();
+	// Returns vector of references of route objects.
+	std::vector<route>* get_routes();
+	// Takes route object and adds it to vector.
 	void add_route(route rt);
-	void readRoutesDB();
+	// Reads data from csv.
+	void read_routes_db();
 };
