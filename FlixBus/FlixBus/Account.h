@@ -3,30 +3,55 @@
 #include "Customer.h"
 #include "uniqueID.h"
 
-class Account
+
+/**
+ * \brief account object, holds customer object and vector of ticket objects.
+ */
+class account
 {
 private:
-	uniqueID acctID;
+	// uniqueID account ID
+	uniqueID acct_id_;
+	// Username and password attributes.
 	std::string username_, password_;
-	Customer customer;
+	// Customer object attribute.
+	customer customer_;
+	// Vector of ticket objects attribute.
 	std::vector<ticket> tickets_;
 public:
-	Account();
-	Account(Customer);
-	Account(Customer cust, int person); //TESTING ONLY
-	Account(Customer, std::string, std::string);
+	// Base constructor.
+	account();
+	// Base constructor takes Customer object.
+	account(customer);
+	// Base constructor takes Customer object and int.
+	account(customer cust, int person);
+	// Base constructor takes Customer object, username and password.
+	account(customer, std::string, std::string);
+	// Takes uniqueID object and assigns it to acct_id.
 	void set_acct_id(uniqueID acctID);
+	// Takes string and assigns it to username_ attribute.
 	void set_username(std::string);
+	// Takes string and assigns it to password_ attribute.
 	void set_password(std::string);
-	void set_customer(Customer);
-	void addTicket(ticket ticket);
-	void removeTicket(std::string ticket_id);
-	
+	// Takes customer object and assigns it to customer_ attribute.
+	void set_customer(customer);
+	// Takes ticket object and adds it to a vector of ticket objects.
+	void add_ticket(ticket ticket);
+	// Takes string id, searches for it in a vector and removes it.
+	void remove_ticket(std::string ticket_id);
+	// Returns acct_id_ attribute.
 	uniqueID get_acct_id();
+	// Returns username_ attribute.
 	std::string get_username() const;
+	// Returns password_ attribute.
 	std::string get_password() const;
-	Customer get_customer() const;
-	std::vector<ticket> getTickets();
+	// Returns customer object.
+	customer get_customer() const;
+	// Returns reference of a customer object.
+	customer* get_customer_reference();
+	// Returns vector of ticket objects.
+	std::vector<ticket> get_tickets();
+	// Returns reference to a ticket from a vector that matches the ticket_id.
 	ticket* get_ticket_by_id(std::string ticket_id);
 };
 

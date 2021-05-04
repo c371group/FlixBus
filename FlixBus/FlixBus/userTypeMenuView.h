@@ -5,18 +5,31 @@
 #include "adminInterface.h"
 #include "routeRepo.h"
 
+
+/**
+ * \brief userTypeMenuView gives control over user menu. Inherits from interfaceView.
+ */
 class userTypeMenuView :
 	public interfaceView
 {
 private:
-	accountRepo acctRep;
-	routeRepo* routeRep;
+	// Reference to account repository object.
+	account_repo* acctRep;
+	// Reference to route repository object.
+	route_repo* routeRep;
+	// Reference to revenue object.
+	revenue* revenue_;
 public:
-	userTypeMenuView(accountRepo&);
-	userTypeMenuView(accountRepo&, routeRepo*);
-	void preLoad(accountRepo&);
+	// Constructor that assigns account repository reference.
+	userTypeMenuView(account_repo*);
+	// Constructor takes account repository, route repository and revenue references.
+	userTypeMenuView(account_repo*, route_repo*, revenue*);
+	// Prepared the menu
+	void preLoad(account_repo*);
+	// Menu logic is located here.
 	int menuLogic();
-	accountRepo getAcctRep();
+	// Returns reference of an account repository.
+	account_repo* getAcctRep();
 };
 
 

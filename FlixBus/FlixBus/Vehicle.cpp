@@ -1,42 +1,52 @@
 //implementation file
 #include "Vehicle.h"
 
-vehicle::vehicle()
-= default;
 
-vehicle::vehicle(std::string val1)
+// Destructor
+vehicle::~vehicle() = default;
+// Base constructor
+vehicle::vehicle() = default;
+
+// Constructor, takes string and assigns it as id_no_ attribute.
+vehicle::vehicle(std::string val)
 {
-	this->id_no = val1;
+	this->id_no_ = val;
 }
 
+// Sets string value to id_no_ attribute.
 void vehicle::set_id_no(std::string val)
 {
-	this->id_no = val;
+	this->id_no_ = val;
 }
 
+// Sets int value to capacity attribute.
 void vehicle::set_capacity(int val)
 {
-	this->capacity = val;
+	this->capacity_ = val;
 }
 
+// Returns id_no_ attribute.
 std::string vehicle::get_id_no()
 {
-	return this->id_no;
+	return this->id_no_;
 }
 
+// Returns capacity_ attribute.
 int vehicle::get_capacity()
 {
-	return this->capacity;
+	return this->capacity_;
 }
 
+// Returns type_ attribute.
 std::string vehicle::get_type()
 {
-	return this->type;
+	return this->type_;
 }
 
-// Loops through seats map and displays all seats.
-void vehicle::displaySeats()
+// Loops through seats_ map and displays all seats_.
+void vehicle::display_seats()
 {
+	// Returns seats attribute for derived classes.
 	auto seats = *get_seats();
 	std::pair<int, char> seat{ 1, 'E' };
 	int columns = seats.count(seat) > 0 ? 5 : 3;
@@ -44,7 +54,7 @@ void vehicle::displaySeats()
 	int displayRow = 0;
 	for (const auto& p : seats)
 	{
-		// This is done so we  can see only 5 columns for luxary bus.
+		// This is done so we  can see only 5 columns for luxury bus.
 		if (displayRow == columns)
 		{
 			std::cout << std::endl;
@@ -55,16 +65,17 @@ void vehicle::displaySeats()
 	}
 }
 
-// Loops through seats map and displays reserved seats as 'X'.
-void vehicle::displayFreeSeats()
+// Loops through seats_ map and displays reserved seats_ as 'X'.
+void vehicle::display_free_seats()
 {
+	// Returns seats attribute for derived classes.
 	auto seats = *get_seats();
 	std::pair<int, char> seat{ 1, 'E' };
 	int columns = seats.count(seat) > 0 ? 5 : 3;
 	int displayRow = 0;
 	for (const auto& p : seats)
 	{
-		// This is done so we  can see only 5 columns for luxary bus.
+		// This is done so we  can see only 5 columns for luxury bus.
 		if (displayRow == columns)
 		{
 			std::cout << std::endl;
@@ -82,8 +93,8 @@ void vehicle::displayFreeSeats()
 	}
 }
 
-// Reserve all seats when the bus is hired.
-void vehicle::reserveAllSeats()
+// Reserve all seats_ when the bus is hired.
+void vehicle::reserve_all_seats()
 {
 	const auto seats = get_seats();
 	for (auto& p : *seats)
@@ -95,9 +106,10 @@ void vehicle::reserveAllSeats()
 
 // Takes Int and Char, combines them to a seat id and reserves that seat. ( sets the second <int> to 1).
 // Returns True only if the seat was reserved and not taken before. Else it will return False.
-bool vehicle::reserveSeat(int row, char column)
+bool vehicle::reserve_seat(int row, char column)
 {
 	bool validate = false;
+	// Returns seats attribute for derived classes.
 	auto seats = get_seats();
 	std::pair<int, char> seat{ row, column };
 	if ((*seats).count(seat) > 0)
@@ -126,7 +138,7 @@ bool vehicle::reserveSeat(int row, char column)
 	return validate;
 }
 
-// Checks if half of the capacity is > than the free seats.
+// Checks if half of the capacity is > than the free seats_.
 bool vehicle::can_hire()
 {
 	if(this->get_capacity()/2 > this->get_free_seats_count())
@@ -138,7 +150,7 @@ bool vehicle::can_hire()
 
 // Takes Int and Char, combines them to a seat id and cancels the reservation (sets the second <int> to 0).
 // Returns True only if the seat was cancelled. Else it will return False.
-bool vehicle::cancelSeat(int row, char column)
+bool vehicle::cancel_seat(int row, char column)
 {
 	bool validate = false;
 	auto seats = get_seats();
@@ -169,7 +181,7 @@ bool vehicle::cancelSeat(int row, char column)
 }
 
 // Returns seat's rate, if it doesn't find the seat, returns 0
-double vehicle::getSeatRate(int row, char column)
+double vehicle::get_seat_rate(int row, char column)
 {
 	auto seats = get_seats();
 	std::pair<int, char> seat{ row, column };
@@ -186,6 +198,7 @@ double vehicle::getSeatRate(int row, char column)
 	return 0;
 }
 
+// Counts how many seats there are and returns the value.
 int vehicle::get_all_seats_count()
 {
 	auto seats = *get_seats();
@@ -197,6 +210,7 @@ int vehicle::get_all_seats_count()
 	return seatsCount;
 }
 
+// Counts how many free (not reserved) seats there are and returns the value.
 int vehicle::get_free_seats_count()
 {
 	auto seats = *get_seats();
@@ -211,145 +225,223 @@ int vehicle::get_free_seats_count()
 	return seatsCount;
 }
 
-// Returns a reference of the seats map
-std::map<std::pair<int, char>, std::pair<int, double>>* luxuryBus::get_seats()
+// Returns a reference of the seats_ map
+std::map<std::pair<int, char>, std::pair<int, double>>* luxury_bus::get_seats()
 {
 	return &this->seats;
 }
 
-luxuryBus::luxuryBus()
+// Luxury bus default constructor.
+luxury_bus::luxury_bus()
 = default;
 
-luxuryBus::luxuryBus(std::string id)
+// Constructor that takes string and assigns it to id_no_ attribute.
+luxury_bus::luxury_bus(std::string id)
 {
-	this->id_no = id;
+	this->id_no_ = id;
 }
 
-std::string luxuryBus::get_type()
+// Returns type_ attribute.
+std::string luxury_bus::get_type()
 {
-	return this->type;
-}
-std::string luxuryBus::get_id_no()
-{
-	return this->id_no;
+	return this->type_;
 }
 
-double luxuryBus::getBusHireRate() const
+// Returns id_no_ attribute.
+std::string luxury_bus::get_id_no()
 {
-	return this->busHireRate;
+	return this->id_no_;
 }
 
-double luxuryBus::getBusHireRatePerMile() const
+// Takes double and assigns it to bus_hire_rate attribute.
+void luxury_bus::set_bus_hire_rate(double value)
 {
-	return this->busHireRatePerMile;
+	this->bus_hire_rate_ = value;
 }
 
-double luxuryBus::getSecurityDeposit() const
+// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+void luxury_bus::set_bus_hire_rate_per_mile(double value)
 {
-	return this->securityDeposit;
+	this->bus_hire_rate_per_mile_ = value;
 }
 
-int luxuryBus::get_capacity()
+// Takes double and assigns it to security_deposit.
+void luxury_bus::set_security_deposit(double value)
 {
-	return this->capacity;
+	this->security_deposit_ = value;
 }
 
-// Returns a reference of the seats map
-std::map<std::pair<int, char>, std::pair<int, double>>* miniBus::get_seats()
+// Returns bus_hire_rate attribute.
+double luxury_bus::get_bus_hire_rate() const
+{
+	return this->bus_hire_rate_;
+}
+
+// Returns bus_hire_rate_per_mile attribute.
+double luxury_bus::get_bus_hire_rate_per_mile() const
+{
+	return this->bus_hire_rate_per_mile_;
+}
+
+// Returns security deposit attribute.
+double luxury_bus::get_security_deposit() const
+{
+	return this->security_deposit_;
+}
+
+// Returns capacity attribute.
+int luxury_bus::get_capacity()
+{
+	return this->capacity_;
+}
+
+// Returns a reference of the seats_ map
+std::map<std::pair<int, char>, std::pair<int, double>>* mini_bus::get_seats()
 {
 	return &this->seats;
 }
 
-miniBus::miniBus()
+mini_bus::mini_bus()
 = default;
 
-/*miniBus::miniBus(const miniBus& mb)
-{	x = sam.x;
-	y = sam.y;
-}*/
-miniBus::miniBus(std::string id)
+// Constructor takes string and sets its value to id_no_ attribute.
+mini_bus::mini_bus(std::string id)
 {
-	this->id_no = id;
+	this->id_no_ = id;
 }
 
-std::string miniBus::get_type()
+// Returns type_ attribute.
+std::string mini_bus::get_type()
 {
-	return this->type;
+	return this->type_;
 }
 
-std::string miniBus::get_id_no()
+// Returns id_no_ attribute.
+std::string mini_bus::get_id_no()
 {
-	return this->id_no;
+	return this->id_no_;
 }
 
-double miniBus::getBusHireRate() const
+// Takes double and assigns it to bus_hire_rate attribute.
+void mini_bus::set_bus_hire_rate(double value)
 {
-	return this->busHireRate;
+	this->bus_hire_rate_ = value;
 }
 
-double miniBus::getBusHireRatePerMile() const
+// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+void mini_bus::set_bus_hire_rate_per_mile(double value)
 {
-	return this->busHireRatePerMile;
+	this->bus_hire_rate_per_mile_ = value;
 }
 
-double miniBus::getSecurityDeposit() const
+// Takes double and assigns it to security_deposit.
+void mini_bus::set_security_deposit(double value)
 {
-	return this->securityDeposit;
+	this->security_deposit_ = value;
 }
 
-int miniBus::get_capacity()
+// Returns bus_hire_rate attribute.
+double mini_bus::get_bus_hire_rate() const
 {
-	return this->capacity;
+	return this->bus_hire_rate_;
 }
 
-// Returns a reference of the seats map
-std::map<std::pair<int, char>, std::pair<int, double>>* miniVan::get_seats()
+// Returns bus_hire_rate_per_mile attribute.
+double mini_bus::get_bus_hire_rate_per_mile() const
+{
+	return this->bus_hire_rate_per_mile_;
+}
+
+// Returns security deposit attribute.
+double mini_bus::get_security_deposit() const
+{
+	return this->security_deposit_;
+}
+
+// Returns capacity.
+int mini_bus::get_capacity()
+{
+	return this->capacity_;
+}
+
+// Returns a reference of the seats_ map
+std::map<std::pair<int, char>, std::pair<int, double>>* mini_van::get_seats()
 {
 	return &this->seats;
 }
 
-//for use by copies of the object, NOT original
-void miniVan::set_seats(std::map<std::pair<int, char>, std::pair<int, double>> temp) {
+// Used by copies of the object, NOT original
+void mini_van::set_seats(std::map<std::pair<int, char>, std::pair<int, double>> temp) {
 	this->seats = temp;
 }
-miniVan::miniVan()
+
+// Base mini van constructor.
+mini_van::mini_van()
 = default;
 
-miniVan::miniVan(const miniVan & mv) //copy constructor for minivan
+// Copy constructor for minivan
+mini_van::mini_van(const mini_van & mv)
 {
-	id_no = mv.id_no;
+	id_no_ = mv.id_no_;
 	seats = mv.seats;
 }
-std::string miniVan::get_type()
+
+// Returns type_ attribute.
+std::string mini_van::get_type()
 {
-	return this->type;
-}
-miniVan::miniVan(std::string id)
-{
-	this->id_no = id;
+	return this->type_;
 }
 
-std::string miniVan::get_id_no()
+// Constructor that takes string value and assigns it to id_no_ attribute.
+mini_van::mini_van(std::string id)
 {
-	return this->id_no;
+	this->id_no_ = id;
 }
 
-double miniVan::getBusHireRate() const
+// returns id_no_ attribute.
+std::string mini_van::get_id_no()
 {
-	return this->busHireRate;
+	return this->id_no_;
 }
 
-double miniVan::getBusHireRatePerMile() const
+// Takes double and assigns it to bus_hire_rate attribute.
+void mini_van::set_bus_hire_rate(double value)
 {
-	return this->busHireRatePerMile;
+	this->bus_hire_rate_ = value;
 }
 
-double miniVan::getSecurityDeposit() const
+// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+void mini_van::set_bus_hire_rate_per_mile(double value)
 {
-	return this->securityDeposit;
+	this->bus_hire_rate_per_mile_ = value;
 }
 
-int miniVan::get_capacity()
+// Takes double and assigns it to security_deposit.
+void mini_van::set_security_deposit(double value)
 {
-	return this->capacity;
+	this->security_deposit_ = value;
+}
+
+// Returns bus_hire_rate attribute.
+double mini_van::get_bus_hire_rate() const
+{
+	return this->bus_hire_rate_;
+}
+
+// Returns bus_hire_rate_per_mile attribute.
+double mini_van::get_bus_hire_rate_per_mile() const
+{
+	return this->bus_hire_rate_per_mile_;
+}
+
+// Returns security_deposit attribute.
+double mini_van::get_security_deposit() const
+{
+	return this->security_deposit_;
+}
+
+// Returns capacity attribute.
+int mini_van::get_capacity()
+{
+	return this->capacity_;
 }

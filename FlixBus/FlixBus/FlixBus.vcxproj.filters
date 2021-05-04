@@ -114,6 +114,9 @@
     <ClCompile Include="fullTripListView.cpp">
       <Filter>Source Files\views</Filter>
     </ClCompile>
+    <ClCompile Include="Revenue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ticket.h">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="fullTripListView.h">
       <Filter>Header Files\views</Filter>
+    </ClInclude>
+    <ClInclude Include="Revenue.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

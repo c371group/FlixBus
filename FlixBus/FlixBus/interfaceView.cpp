@@ -1,40 +1,49 @@
 #include "interfaceView.h"
-//OUR ABSTRACT CLASS
+
+
+// Interface control
 interfaceView::interfaceView()
 {
 	this->intcon = interfaceControl();
 }
 
+// Returns intcon attribute.
 interfaceControl interfaceView::get_intcon()
 {
 	return this->intcon;
 }
 
+// Takes vector<std::vector<std::string>> and assigns it to an attribute.
 void interfaceView::set_vecMen(std::vector<std::vector<std::string>> vecMen)
 {
 	this->vecMen = vecMen;
 }
 
+// Takes vector<std::vector<std::string>> and assigns it to an attribute.
 void interfaceView::set_vecStr(std::vector<std::vector<std::string>> vecStr)
 {
 	this->vecStr = vecStr;
 }
 
+// Returns vecMen attribute.
 std::vector<std::vector<std::string>> interfaceView::getVecMen()
 {
 	return this->vecMen;
 }
 
+// Returns vecStr attributes.
 std::vector<std::vector<std::string>> interfaceView::get_strs()
 { //returns the vector of different vectors/sets of strings
 	return this->vecStr;
 }
 
+// Takes interfaceControl and assigns it.
 void interfaceView::set_intcon(interfaceControl intcon)
 {
 	this->intcon = intcon;
 }
 
+// Displaying menu items.
 int interfaceView::display_menu_items(int i)
 {
 	int k = 0;
@@ -47,13 +56,15 @@ int interfaceView::display_menu_items(int i)
 	return k;
 }
 
+// Returns the vector of different vectors/menus
 std::vector<std::vector<std::string>> interfaceView::get_menu_items()
-{ //returns the vector of different vectors/menus
+{ 
 	return this->vecMen;
 }
 
+// Int i refers to the index of a set of prompts/strings in vecStr
 std::vector<std::string> interfaceView::prompt_strs(int i)
-//i refers to the index of a set of prompts/strings in vecStr
+
 {
 	//keeps a set of answers to the prompts
 	std::vector<std::string> promptAns;
@@ -71,6 +82,7 @@ std::vector<std::string> interfaceView::prompt_strs(int i)
 	return promptAns;
 }
 
+// Adds menu items.
 void interfaceView::set_menu_items(std::vector<std::vector<std::string>> full_menus)
 {
 	vecMen = full_menus;
@@ -88,6 +100,7 @@ void interfaceView::add_choice(int i, int j, std::string choice)
 {
 }
 
+// Entering a choice.
 int interfaceView::enterChoice(int max)
 {
 	std::string user_input_string;
@@ -103,6 +116,7 @@ int interfaceView::enterChoice(int max)
 	return choice_int;
 }
 
+// Confirming menu choice.
 bool interfaceView::confirm_Menu_Choice(int i, int j)
 {
 	std::string user_input_string;
@@ -112,6 +126,7 @@ bool interfaceView::confirm_Menu_Choice(int i, int j)
 	return get_intcon().affirm(user_input_string);
 }
 
+// Asking the user to confirm thier choice.
 bool interfaceView::confirm_Prompt_Choices(int i, std::vector<std::string> choices)
 {
 	std::string user_input_string;

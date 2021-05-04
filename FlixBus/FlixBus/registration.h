@@ -15,15 +15,15 @@ private:
 	std::vector<std::string> responses_;
 	std::string username_, password_;
 	std::string user_id_, f_name_, l_name_, address_, email_, contact_number_;
-	Customer finalCustomer;
-	Account finalAccount;
+	customer finalCustomer;
+	account finalAccount;
 public:
-	registration(accountRepo& acctRepo);
+	registration(account_repo* acctRepo);
 	void humanData();
 	void populate();
 	void createAcct();
-	void addToRepo(accountRepo&);
-	void finalCreation(accountRepo&);
+	void addToRepo(account_repo*);
+	void finalCreation(account_repo*);
 	void acctData();
 	void createCustomer();
 	void set_username(std::string);
@@ -36,8 +36,8 @@ public:
 	void set_address(std::string);
 	void set_email(std::string);
 	void set_contact_number(std::string);
-	void set_final_customer(Customer);
-	void set_final_account(Account);
+	void set_final_customer(customer);
+	void set_final_account(account);
 
 	std::string get_username() const;
 	std::string get_password() const;
@@ -46,6 +46,6 @@ public:
 	std::string get_address() const;
 	std::string get_email() const;
 	std::string get_contact_number() const;
-	Customer get_final_customer();
-	Account get_final_account();
+	customer get_final_customer();
+	account get_final_account();
 };

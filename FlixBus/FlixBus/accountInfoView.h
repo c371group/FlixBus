@@ -6,7 +6,7 @@ class accountInfoView :
 {
 public:
 	accountInfoView();
-	accountInfoView(Account);
+	accountInfoView(account);
 	void display(int);
 };
 

@@ -1,5 +1,6 @@
 #include "fullTripListView.h"
 
+// Base constructor.
 fullTripListView::fullTripListView() = default;
 
 fullTripListView::fullTripListView(bool voided) //it could be that I'm tired but this is a workaround to a weird problem that loggedInInterface presents where it doesn't like me declaring a new fullTripListView object in the switch case statement

@@ -1,87 +1,68 @@
 #include "Trip.h"
 
-Trip::Trip()
+
+// Default constructor. Sets bookable to true and bus_ to nullptr.
+trip::trip()
 {
-	this->bookable = true;
+	this->bookable_ = true;
 	this->bus_ = nullptr;
 }
 
-Trip::Trip(DateTime leave, DateTime arrive, vehicle* fleet)
+// Constructor that takes two date time objects and assigns them for departure and arrival attributes.
+// Also takes vehicle reference and assigns it to bus_ attribute.
+trip::trip(date_time leave, date_time arrive, vehicle* fleet)
 {
-	//set_route_(rt);
-	//this->route_ = route;
-	this->bookable = true;
-	this->departure = leave;
-	this->estimatedArrival = arrive;
+	this->bookable_ = true;
+	this->departure_ = leave;
+	this->estimated_arrival_ = arrive;
 	this->bus_ = fleet;
-	set_Bookable(false);
+	set_bookable(false);
 }
 
-void Trip::set_Bookable(bool bookable)
+// Sets bookable_ to be equal to a given boolean value.
+void trip::set_bookable(bool bookable)
 {
-	this->bookable = bookable;
+	this->bookable_ = bookable;
 }
 
-//void Trip::set_route_(route* route_)
-//{
-//	this->route_ = route_;
-//}
-
-void Trip::set_departureDT(DateTime dt)
+// Takes date time objects and assigns it to departure attribute.
+void trip::set_departure_dt(date_time dt)
 {
-	this->departure = dt;
+	this->departure_ = dt;
 }
 
-void Trip::set_estArrivalDT(DateTime dt)
+// Takes date time object and assigns it to arrival attribute.
+void trip::set_est_arrival_dt(date_time dt)
 {
-	this->estimatedArrival = dt;
+	this->estimated_arrival_ = dt;
 }
 
-void Trip::set_bus(vehicle* bus)
+// Takes reference to a vehicle object and assigns it to bus_ attribute.
+void trip::set_bus(vehicle* bus)
 {
 	this->bus_ = bus;
 }
 
-//void Trip::set_fleet(fleet* busFleet) //not sure if we need the pointer for this or not here, as a singular trip would only use one bus
-//{
-//	this->busFleet = busFleet;
-//}
-
-void Trip::set_busType(std::string type)
+// Returns boolean value of bookable_ attribute.
+bool trip::get_bookable()
 {
-	this->busType = type;
+	return this->bookable_;
 }
 
-bool Trip::getBookable()
-{
-	return this->bookable;
-}
-
-vehicle* Trip::get_bus()
+// Returns reference to a vehicle object.
+vehicle* trip::get_bus()
 {
 	return this->bus_;
 }
 
-//route* Trip::getRoute()
-//{
-//	return this->route_;
-//}
-
-DateTime Trip::getDepartureDT()
+// Returns departure_ attribute.
+date_time trip::get_departure_dt()
 {
-	return this->departure;
+	return this->departure_;
 }
 
-DateTime Trip::getEstArrivalDT()
+// Returns arrival_ attribute.
+date_time trip::get_est_arrival_dt()
 {
-	return this->estimatedArrival;
-}
-//fleet* Trip::get_fleet()
-//{
-//	return this->busFleet;
-//}
-
-std::string Trip::get_type()
-{
-	return this->busType;
+	return this->estimated_arrival_;
 }

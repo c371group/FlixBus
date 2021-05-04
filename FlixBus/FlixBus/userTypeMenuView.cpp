@@ -1,19 +1,24 @@
 #include "userTypeMenuView.h"
 
-userTypeMenuView::userTypeMenuView(accountRepo& acctRep)
+
+// Constructor that assigns account repository reference.
+userTypeMenuView::userTypeMenuView(account_repo* acctRep)
 {
 	preLoad(acctRep);
 	menuLogic();
 }
 
-userTypeMenuView::userTypeMenuView(accountRepo& acctRep, routeRepo* routeRepo)
+// Constructor takes account repository, route repository and revenue references.
+userTypeMenuView::userTypeMenuView(account_repo* acctRep, route_repo* routeRepo, revenue* revenue)
 {
 	this->routeRep = routeRepo;
+	this->revenue_ = revenue;
 	preLoad(acctRep);
 	menuLogic();
 }
 
-void userTypeMenuView::preLoad(accountRepo& acctRep)
+// Prepares menu options.
+void userTypeMenuView::preLoad(account_repo* acctRep)
 {
 	this->acctRep = acctRep;
 	std::vector<std::string> menu1 = { "User", "Admin", "Exit" };
@@ -21,11 +26,13 @@ void userTypeMenuView::preLoad(accountRepo& acctRep)
 	set_vecMen(temp);
 }
 
-accountRepo userTypeMenuView::getAcctRep()
+// Returns reference of an account repository.
+account_repo* userTypeMenuView::getAcctRep()
 {
 	return this->acctRep;
 }
 
+// Sets up menu logic. Gives the users two options. Customer and Admin interface are called.
 int userTypeMenuView::menuLogic()
 {
 	int choice_int = 0;
@@ -43,11 +50,11 @@ int userTypeMenuView::menuLogic()
 			//TODO: Change to allow going back to menu
 			if (choice_int == 1) //This shouldn't impact performance at all, we just run into problems when we do switch statement here
 			{
-				customerInterface custInterface = customerInterface(this->acctRep, this->routeRep);
+				customerInterface custInterface = customerInterface(this->acctRep, this->routeRep, this->revenue_);
 			}
 			else if (choice_int == 2) //ADMIN INTERFACE
 			{
-				adminInterface admininterface = adminInterface(this->acctRep, this->routeRep);
+				adminInterface admininterface = adminInterface(this->acctRep, this->routeRep, this->revenue_);
 			}
 			else if (choice_int == 3)
 			{

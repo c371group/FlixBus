@@ -1,21 +1,19 @@
 #include "tripRepo.h"
-#include "trip.h"
+#include "Trip.h"
 
-tripRepo::tripRepo()
+
+// Base trip_repo constructor.
+trip_repo::trip_repo()
 = default;
 
-std::vector<Trip>* tripRepo::getAllTrips()
+// Returns the memory address of trips_ attribute.
+std::vector<trip>* trip_repo::get_all_trips()
 {
-	return &this->trips;
+	return &this->trips_;
 }
 
-std::vector<Trip> tripRepo::getBookableTrips(DateTime currentTime)
+// Takes Trip object and adds it to trips_ attribute (vector of Trips).
+void trip_repo::add_trip(trip tp)
 {
-	//TODO: modify and make this work
-	return this->trips;
-}
-
-void tripRepo::add_trip(Trip tp)
-{
-	trips.push_back(tp);
+	trips_.push_back(tp);
 }

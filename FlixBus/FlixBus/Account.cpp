@@ -1,6 +1,8 @@
 #include "Account.h"
 
-Account::Account()
+
+// Base constructor.
+account::account()
 {
 	uniqueID acctID; //TODO: this might give us difficulty once we do the permanent file storage, but don't worry about it for now
 	set_acct_id(acctID);
@@ -8,65 +10,82 @@ Account::Account()
 	this->password_ = "Provid3nce";
 }
 
-Account::Account(Customer cust) //Testing purposes
-{;
-	this->customer = cust;
+// Base constructor takes Customer object.
+account::account(customer cust) //Testing purposes
+{
+	this->customer_ = cust;
 }
 
-Account::Account(Customer cust, std::string username, std::string password)
+// Base constructor takes Customer object, username and password.
+account::account(customer cust, std::string username, std::string password)
 {
-	this->customer = cust;
+	this->customer_ = cust;
 	this->username_ = username;
 	this->password_ = password;
 }
 
-
-void Account::set_acct_id(uniqueID acctID)
+// Takes uniqueID object and assigns it to acct_id.
+void account::set_acct_id(uniqueID acctID)
 {
-	this->acctID= acctID;
+	this->acct_id_= acctID;
 }
 
-void Account::set_username(std::string username)
+// Takes string and assigns it to username_ attribute.
+void account::set_username(std::string username)
 {
 	username_ = username;
 }
 
-void Account::set_password(std::string password)
+// Takes string and assigns it to password_ attribute.
+void account::set_password(std::string password)
 {
 	password_ = password;
 }
 
-void Account::set_customer(Customer cust)
+// Takes customer object and assigns it to customer_ attribute.
+void account::set_customer(customer cust)
 {
-	customer = cust;
+	customer_ = cust;
 }
 
-uniqueID Account::get_acct_id()
+// Returns acct_id_ attribute.
+uniqueID account::get_acct_id()
 {
-	return this->acctID;
+	return this->acct_id_;
 }
 
-std::string Account::get_username() const
+// Returns username_ attribute.
+std::string account::get_username() const
 {
 	return this->username_;
 }
 
-std::string Account::get_password() const
+// Returns password_ attribute.
+std::string account::get_password() const
 {
 	return this->password_;
 }
 
-Customer Account::get_customer() const
+// Returns customer object.
+customer account::get_customer() const
 {
-	return this->customer;
+	return this->customer_;
 }
 
-std::vector<ticket> Account::getTickets()
+// Returns reference of a customer object.
+customer* account::get_customer_reference()
+{
+	return &this->customer_;
+}
+
+// Returns vector of ticket objects.
+std::vector<ticket> account::get_tickets()
 {
 	return this->tickets_;
 }
 
-ticket* Account::get_ticket_by_id(std::string ticket_id)
+// Returns reference to a ticket from a vector that matches the ticket_id.
+ticket* account::get_ticket_by_id(std::string ticket_id)
 {
 	int index = 0;
 	for (auto& item : this->tickets_)
@@ -80,12 +99,14 @@ ticket* Account::get_ticket_by_id(std::string ticket_id)
 	return &this->tickets_.at(index);
 }
 
-void Account::addTicket(ticket ticket)
+// Takes string id, searches for it in a vector and removes it.
+void account::add_ticket(ticket ticket)
 {
 	tickets_.push_back(ticket);
 }
 
-void Account::removeTicket(std::string ticket_id)
+// Takes string id, searches for it in a vector and removes it.
+void account::remove_ticket(std::string ticket_id)
 {
 	int index = 0;
 	for(auto &item: this->tickets_)
@@ -98,6 +119,3 @@ void Account::removeTicket(std::string ticket_id)
 	}
 	this->tickets_.erase(this->tickets_.begin() + index);
 }
-
-
-

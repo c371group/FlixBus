@@ -3,7 +3,9 @@
 #include <iostream>
 #include <string>
 
-DateTime::DateTime()
+
+// Base constructor.
+date_time::date_time()
 {
 	// current date/time based on current system
 	struct tm newtime;
@@ -13,15 +15,16 @@ DateTime::DateTime()
 	// Convert to local time.
 	_localtime64_s(&newtime, &long_time);	
 
-	this->year = 1900 + newtime.tm_year;
-	this->month = 1 + newtime.tm_mon;
-	this->day = newtime.tm_mday;
-	this->hours = newtime.tm_hour;
-	this->minutes = newtime.tm_min;
-	this->seconds = newtime.tm_sec;
+	this->year_ = 1900 + newtime.tm_year;
+	this->month_ = 1 + newtime.tm_mon;
+	this->day_ = newtime.tm_mday;
+	this->hours_ = newtime.tm_hour;
+	this->minutes_ = newtime.tm_min;
+	this->seconds_ = newtime.tm_sec;
 }
 
-DateTime::DateTime(int year, int month, int day, int hours, int minutes, int seconds)
+// Constructor, takes six integer values and assigns them as year, month, day, hours, minutes, seconds
+date_time::date_time(int year, int month, int day, int hours, int minutes, int seconds)
 {
 	if (year > 1000 && year < 3000)
 	{
@@ -30,7 +33,7 @@ DateTime::DateTime(int year, int month, int day, int hours, int minutes, int sec
 			std::cout << month << "/" << day << "/" << year << ": is not valid date!" << std::endl;
 
 		}
-		if (this->day == 31 && (this->month == 4 || this->month == 6 || this->month == 9 || this->month == 11))
+		if (day == 31 && (month == 4 || month == 6 || month == 9 || month == 11))
 		{
 			std::cout << month << "/" << day << "/" << year << ": Feb, April, June, Sep and Nov do not have 31 days!" << std::endl;
 			return;
@@ -51,12 +54,12 @@ DateTime::DateTime(int year, int month, int day, int hours, int minutes, int sec
 				return;
 			}
 		}
-		this->year = year;
-		this->month = month;
-		this->day = day;
-		this->hours = hours;
-		this->minutes = minutes;
-		this->seconds = seconds;
+		this->year_ = year;
+		this->month_ = month;
+		this->day_ = day;
+		this->hours_ = hours;
+		this->minutes_ = minutes;
+		this->seconds_ = seconds;
 	}
 	else {
 		std::cout << "It is Invalid";
@@ -88,25 +91,29 @@ template <class Int> constexpr Int days_from_civil(Int y, unsigned m, unsigned d
 	return era * 146097 + static_cast<Int>(doe) - 719468;
 }
 
-int DateTime::differenceDays(DateTime dt)
+// Compares current object with a given date_time object. Returns difference in dates as integer.
+int date_time::difference_days(date_time dt) const
 {
-	int differenceInDays = (days_from_civil(this->year, this->month, this->day) - days_from_civil(dt.year, dt.month, dt.day));
-	return abs(differenceInDays);
+	const int difference_in_days = (days_from_civil(this->year_, this->month_, this->day_) - days_from_civil(dt.year_, dt.month_, dt.day_));
+	return abs(difference_in_days);
 }
 
-void DateTime::displayDate()
+// Displaying date
+void date_time::display_date()
 {
-	std::string month_ = this->month < 10 ? "0" + std::to_string(this->month) : std::to_string(this->month);
-	std::string day_ = this->day < 10 ? "0" + std::to_string(this->day) : std::to_string(this->day);
-	std::string hour_ = this->hours < 10 ? "0" + std::to_string(this->hours) : std::to_string(this->hours);
-	std::string minute_ = this->minutes < 10 ? "0" + std::to_string(this->minutes) : std::to_string(this->minutes);
-	std::string second_ = this->seconds < 10 ? "0" + std::to_string(this->seconds) : std::to_string(this->seconds);
+	// If the month, day, hour, minute or second is single digit, it adds 0 in front of it.
+	std::string month_ = this->month_ < 10 ? "0" + std::to_string(this->month_) : std::to_string(this->month_);
+	std::string day_ = this->day_ < 10 ? "0" + std::to_string(this->day_) : std::to_string(this->day_);
+	std::string hour_ = this->hours_ < 10 ? "0" + std::to_string(this->hours_) : std::to_string(this->hours_);
+	std::string minute_ = this->minutes_ < 10 ? "0" + std::to_string(this->minutes_) : std::to_string(this->minutes_);
+	std::string second_ = this->seconds_ < 10 ? "0" + std::to_string(this->seconds_) : std::to_string(this->seconds_);
 
-	std::cout << this->year << "/" << month_ << "/" << day_ << " ";
+	std::cout << this->year_ << "/" << month_ << "/" << day_ << " ";
 	std::cout << hour_ << ":" << minute_ << ":" << second_;
 }
 
-void DateTime::getCurrentTime()
+// Updates all attributes, assign them to current time and displays the time.
+void date_time::get_current_time()
 {
 	// current date/time based on current system
 	struct tm newtime;
@@ -116,11 +123,33 @@ void DateTime::getCurrentTime()
 	// Convert to local time.
 	_localtime64_s(&newtime, &long_time);
 
-	this->year = 1900 + newtime.tm_year;
-	this->month = 1 + newtime.tm_mon;
-	this->day = newtime.tm_mday;
-	this->hours = newtime.tm_hour;
-	this->minutes = newtime.tm_min;
-	this->seconds = newtime.tm_sec;
-	this->displayDate();
+	this->year_ = 1900 + newtime.tm_year;
+	this->month_ = 1 + newtime.tm_mon;
+	this->day_ = newtime.tm_mday;
+	this->hours_ = newtime.tm_hour;
+	this->minutes_ = newtime.tm_min;
+	this->seconds_ = newtime.tm_sec;
+	this->display_date();
+}
+
+// Returns string representation of the date. Takes boolean, if set to false it will only display the date, without the time.
+std::string date_time::to_string(bool include_time) const
+{
+	std::string string_date;
+	std::string month_ = this->month_ < 10 ? "0" + std::to_string(this->month_) : std::to_string(this->month_);
+	std::string day_ = this->day_ < 10 ? "0" + std::to_string(this->day_) : std::to_string(this->day_);
+	std::string hour_ = this->hours_ < 10 ? "0" + std::to_string(this->hours_) : std::to_string(this->hours_);
+	std::string minute_ = this->minutes_ < 10 ? "0" + std::to_string(this->minutes_) : std::to_string(this->minutes_);
+	std::string second_ = this->seconds_ < 10 ? "0" + std::to_string(this->seconds_) : std::to_string(this->seconds_);
+	
+	if(include_time)
+	{
+		string_date = std::to_string(this->year_) + "/" + month_ + "/" + day_ + " " + hour_ + ":" + minute_ + ":" + second_;
+	}
+	else
+	{
+		string_date = std::to_string(this->year_) + "/" + month_ + "/" + day_;
+	}
+	
+	return string_date;
 }
