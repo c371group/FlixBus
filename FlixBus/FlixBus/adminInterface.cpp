@@ -73,7 +73,7 @@ int adminInterface::menuLogic(account_repo *AcctRep)
 			}
 			// Validates choice input
 			while (true) {
-				std::cout << "\nPlease select a route for your trip (or enter 0 to exit): ";
+				std::cout << "\nPlease select a route (or enter 0 to exit): ";
 				if (std::cin >> route_choice) {
 					break;
 				}
@@ -86,7 +86,7 @@ int adminInterface::menuLogic(account_repo *AcctRep)
 			while (route_choice < 0 || route_choice > route_index)
 			{
 				while (true) {
-					std::cout << "\nWrong choice\nPlease select a route for your trip (or enter 0 to exit): ";
+					std::cout << "\nWrong choice\nPlease select a route (or enter 0 to exit): ";
 					if (std::cin >> route_choice) {
 						break;
 					}
@@ -335,8 +335,357 @@ int adminInterface::menuLogic(account_repo *AcctRep)
 		// Change reservation charge, hire charge.
 		if (choice_int == 4)
 		{
-			
-			return 0;
+			// Displays all available routes.
+			std::cout << "AVAILABLE ROUTES: " << std::endl;
+			int route_choice = 0;
+			int route_index = 0;
+			for (auto item : *this->routeRep->get_routes())
+			{
+				std::cout << route_index + 1 << ". " << item.get_source() << " - " << item.get_destination() << std::endl;
+				route_index++;
+			}
+			// Validates choice input
+			while (true) {
+				std::cout << "\nPlease select a route (or enter 0 to exit): ";
+				if (std::cin >> route_choice) {
+					break;
+				}
+				else {
+					std::cout << "Enter a valid integer value!\n";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				}
+			}
+			while (route_choice < 0 || route_choice > route_index)
+			{
+				while (true) {
+					std::cout << "\nWrong choice\nPlease select a route (or enter 0 to exit): ";
+					if (std::cin >> route_choice) {
+						break;
+					}
+					else {
+						std::cout << "Enter a valid integer value!\n";
+						std::cin.clear();
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					}
+				}
+			}
+			if (route_choice == 0)
+			{
+				return 0;
+			}
+			int choice_index = route_choice - 1;
+			// Takes reference to a vector.
+			std::vector<route>* selected_vector = this->routeRep->get_routes();
+			route* current_route = &selected_vector->at(choice_index);
+
+			int edit_bus_choice;
+			std::cout << "\nEdit vehicle from our fleet:\n";
+			std::cout << "1. Luxury Bus \n2. Mini Bus \n3. Minivan\n0. Exit\n";
+			while (true) {
+				std::cout << "Enter your choice: ";
+				if (std::cin >> edit_bus_choice) {
+					break;
+				}
+				else {
+					std::cout << "Enter a valid integer value!\n";
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				}
+			}
+			while (edit_bus_choice < 0 || edit_bus_choice > 3)
+			{
+				while (true) {
+					std::cout << "\nWrong choice\nPlease select a bus (or enter 0 to exit): ";
+					if (std::cin >> route_choice) {
+						break;
+					}
+					else {
+						std::cout << "Enter a valid integer value!\n";
+						std::cin.clear();
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					}
+				}
+			}
+			if(edit_bus_choice == 0)
+			{
+				return 0;
+			}
+			else if(edit_bus_choice == 1)
+			{
+				current_route->get_fleet()->display_luxury_bus_fleet();
+				std::string bus_id;
+				while (true) {
+					std::cout << "Please enter the ID of the luxury bus you want to edit:";
+					if (std::cin >> bus_id) {
+						break;
+					}
+					else {
+						std::cout << "Enter a valid string value!\n";
+						std::cin.clear();
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					}
+				}
+				luxury_bus* luxury_bus = current_route->get_fleet()->get_luxury_bus(bus_id);
+				if(luxury_bus != nullptr)
+				{
+					int change_choice;
+					std::cout << "\n1. Change reservation charge\n2. Change bus hire charge.\n0. Exit";
+					while (true) {
+						std::cout << "Please enter your choice:";
+						if (std::cin >> change_choice) {
+							break;
+						}
+						else {
+							std::cout << "Enter a valid integer value!\n";
+							std::cin.clear();
+							std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+						}
+					}
+					while (change_choice < 0 || change_choice > 2)
+					{
+						while (true) {
+							std::cout << "Please enter your choice:";
+							if (std::cin >> change_choice) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid integer value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+					}
+					if(change_choice == 0)
+					{
+						return 0;
+					}
+					else if(change_choice == 1)
+					{
+						double new_value;
+						std::cout << "Current reservation charge: $" << luxury_bus->get_bus_hire_rate_per_mile() << std::endl;
+						while (true) {
+							std::cout << "\nPlease enter new value: $";
+							if (std::cin >> new_value) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid double value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+						luxury_bus->set_bus_hire_rate_per_mile(new_value);
+						std::cout << "\nReservation charge changed. New charge is: $" << luxury_bus->get_bus_hire_rate_per_mile() << std::endl;
+					}
+					else
+					{
+						double new_value;
+						std::cout << "Current bus hire charge: " << luxury_bus->get_bus_hire_rate() << std::endl;
+						while (true) {
+							std::cout << "\nPlease enter new value: $";
+							if (std::cin >> new_value) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid double value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+						luxury_bus->set_bus_hire_rate(new_value);
+						std::cout << "\nBus hire charge changed. New charge is: $" << luxury_bus->get_bus_hire_rate() << std::endl;
+					}
+					
+				}else
+				{
+					std::cout << "Wrong bus ID, please try again later." << std::endl;
+				}
+			}
+			else if(edit_bus_choice == 2)
+			{
+				current_route->get_fleet()->display_mini_bus_fleet();
+				std::string bus_id;
+				while (true) {
+					std::cout << "Please enter the ID of the mini bus you want to edit:";
+					if (std::cin >> bus_id) {
+						break;
+					}
+					else {
+						std::cout << "Enter a valid string value!\n";
+						std::cin.clear();
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					}
+				}
+				mini_bus* mini_bus = current_route->get_fleet()->get_mini_bus(bus_id);
+				if (mini_bus != nullptr)
+				{
+					int change_choice;
+					std::cout << "\n1. Change reservation charge\n2. Change bus hire charge.\n0. Exit";
+					while (true) {
+						std::cout << "Please enter your choice:";
+						if (std::cin >> change_choice) {
+							break;
+						}
+						else {
+							std::cout << "Enter a valid integer value!\n";
+							std::cin.clear();
+							std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+						}
+					}
+					while (change_choice < 0 || change_choice > 2)
+					{
+						while (true) {
+							std::cout << "Please enter your choice:";
+							if (std::cin >> change_choice) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid integer value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+					}
+					if (change_choice == 0)
+					{
+						return 0;
+					}
+					else if (change_choice == 1)
+					{
+						double new_value;
+						std::cout << "Current reservation charge: $" << mini_bus->get_bus_hire_rate_per_mile() << std::endl;
+						while (true) {
+							std::cout << "\nPlease enter new value: $";
+							if (std::cin >> new_value) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid double value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+						mini_bus->set_bus_hire_rate_per_mile(new_value);
+						std::cout << "\nReservation charge changed. New charge is: $" << mini_bus->get_bus_hire_rate_per_mile() << std::endl;
+					}
+					else
+					{
+						double new_value;
+						std::cout << "Current bus hire charge: " << mini_bus->get_bus_hire_rate() << std::endl;
+						while (true) {
+							std::cout << "\nPlease enter new value: $";
+							if (std::cin >> new_value) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid double value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+						mini_bus->set_bus_hire_rate(new_value);
+						std::cout << "\nBus hire charge changed. New charge is: $" << mini_bus->get_bus_hire_rate() << std::endl;
+					}
+
+				}
+				else
+				{
+					std::cout << "Wrong bus ID, please try again later." << std::endl;
+				}
+			}
+			else
+			{
+				current_route->get_fleet()->display_mini_van_fleet();
+				std::string bus_id;
+				while (true) {
+					std::cout << "Please enter the ID of the mini vn you want to edit:";
+					if (std::cin >> bus_id) {
+						break;
+					}
+					else {
+						std::cout << "Enter a valid string value!\n";
+						std::cin.clear();
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					}
+				}
+				mini_van* mini_van = current_route->get_fleet()->get_mini_van(bus_id);
+				if (mini_van != nullptr)
+				{
+					int change_choice;
+					std::cout << "\n1. Change reservation charge\n2. Change bus hire charge.\n0. Exit";
+					while (true) {
+						std::cout << "Please enter your choice:";
+						if (std::cin >> change_choice) {
+							break;
+						}
+						else {
+							std::cout << "Enter a valid integer value!\n";
+							std::cin.clear();
+							std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+						}
+					}
+					while (change_choice < 0 || change_choice > 2)
+					{
+						while (true) {
+							std::cout << "Please enter your choice:";
+							if (std::cin >> change_choice) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid integer value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+					}
+					if (change_choice == 0)
+					{
+						return 0;
+					}
+					else if (change_choice == 1)
+					{
+						double new_value;
+						std::cout << "Current reservation charge: $" << mini_van->get_bus_hire_rate_per_mile() << std::endl;
+						while (true) {
+							std::cout << "\nPlease enter new value: $";
+							if (std::cin >> new_value) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid double value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+						mini_van->set_bus_hire_rate_per_mile(new_value);
+						std::cout << "\nReservation charge changed. New charge is: $" << mini_van->get_bus_hire_rate_per_mile() << std::endl;
+					}
+					else
+					{
+						double new_value;
+						std::cout << "Current bus hire charge: " << mini_van->get_bus_hire_rate() << std::endl;
+						while (true) {
+							std::cout << "\nPlease enter new value: $";
+							if (std::cin >> new_value) {
+								break;
+							}
+							else {
+								std::cout << "Enter a valid double value!\n";
+								std::cin.clear();
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+							}
+						}
+						mini_van->set_bus_hire_rate(new_value);
+						std::cout << "\nBus hire charge changed. New charge is: $" << mini_van->get_bus_hire_rate() << std::endl;
+					}
+
+				}
+				else
+				{
+					std::cout << "Wrong bus ID, please try again later." << std::endl;
+				}
+			}
 		}
 		// View income by date and by vehicle.
 		if (choice_int == 5)

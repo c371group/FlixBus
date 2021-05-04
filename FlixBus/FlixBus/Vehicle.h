@@ -69,16 +69,16 @@ private:
 	const std::string type_ = "Luxury Bus";
 	// Identification number for the bus
 	std::string id_no_ = "0"; //unique identifier for bus
-	// Constant rate for window seats_.
-	const double window_seat_rate_ = 0.95;
-	// Constant rate for isle seats_.
-	const double aisle_seat_rate_ = 0.75;
-	// Constant rate for bus hire.
-	const double bus_hire_rate_ = 1500;
-	// Constant rate for bus hire per mile.
-	const double bus_hire_rate_per_mile_ = 0.25;
-	// Constant rate for security deposit.
-	const double security_deposit_ = 5000;
+	// Rate for window seats_.
+	double window_seat_rate_ = 0.95;
+	// Rate for isle seats_.
+	double aisle_seat_rate_ = 0.75;
+	// Rate for bus hire.
+	double bus_hire_rate_ = 1500;
+	// Rate for bus hire per mile.
+	double bus_hire_rate_per_mile_ = 0.25;
+	// Rate for security deposit.
+	double security_deposit_ = 5000;
 	// Constant capacity for a luxury bus.
 	const int capacity_ = 52;
 public:
@@ -116,6 +116,12 @@ public:
 	std::string get_type() override;
 	// Returns id_no attribute.
 	std::string get_id_no() override;
+	// Takes double and assigns it to bus_hire_rate attribute.
+	void set_bus_hire_rate(double);
+	// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+	void set_bus_hire_rate_per_mile(double);
+	// Takes double and assigns it to security_deposit.
+	void set_security_deposit(double);
 	// Returns bus_hire_rate attribute.
 	double get_bus_hire_rate() const;
 	// Returns bus_hire_rate_per_mile attribute.
@@ -133,16 +139,16 @@ private:
 	const std::string type_ = "Mini Bus";
 	// Identification number for the bus
 	std::string id_no_ = "0";
-	// Constant rate for window seats_.
-	const double window_seat_price_ = 0.65;
-	// Constant rate for isle seats_.
-	const double aisle_seat_price_ = 0.65;
-	// Constant rate for bus hire.
-	const double bus_hire_rate_ = 1300;
-	// Constant rate for bus hire per mile.
-	const double bus_hire_rate_per_mile_ = 0.2;
-	// Constant rate for security deposit.
-	const double security_deposit_ = 3000;
+	// Rate for window seats_.
+	double window_seat_price_ = 0.65;
+	// Rate for isle seats_.
+	double aisle_seat_price_ = 0.65;
+	// Rate for bus hire.
+	double bus_hire_rate_ = 1300;
+	// Rate for bus hire per mile.
+	double bus_hire_rate_per_mile_ = 0.2;
+	// Rate for security deposit.
+	double security_deposit_ = 3000;
 	// Constant capacity for a luxury bus.
 	const int capacity_ = 36;
 public:
@@ -171,6 +177,12 @@ public:
 	std::string get_type() override;
 	// Returns id_no attribute.
 	std::string get_id_no() override;
+	// Takes double and assigns it to bus_hire_rate attribute.
+	void set_bus_hire_rate(double);
+	// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+	void set_bus_hire_rate_per_mile(double);
+	// Takes double and assigns it to security_deposit.
+	void set_security_deposit(double);
 	// Returns bus_hire_rate attribute.
 	double get_bus_hire_rate() const;
 	// Returns bus_hire_rate_per_mile attribute.
@@ -188,16 +200,16 @@ private:
 	const std::string type_ = "MiniVan";
 	// Identification number for the bus
 	std::string id_no_ = "0";
-	// Constant rate for window seats_.
-	const double window_seat_price_ = 0.5;
-	// Constant rate for isle seats_.
-	const double aisle_seat_price_ = 0.5;
-	// Constant rate for bus hire.
-	const double bus_hire_rate_ = 1000;
-	// Constant rate for bus hire per mile.
-	const double bus_hire_rate_per_mile_ = 0.15;
-	// Constant rate for security deposit.
-	const double security_deposit_ = 1500;
+	// Rate for window seats_.
+	double window_seat_price_ = 0.5;
+	// Rate for isle seats_.
+	double aisle_seat_price_ = 0.5;
+	// Rate for bus hire.
+	double bus_hire_rate_ = 1000;
+	// Rate for bus hire per mile.
+	double bus_hire_rate_per_mile_ = 0.15;
+	// Rate for security deposit.
+	double security_deposit_ = 1500;
 	// Constant capacity for a luxury bus.
 	const int capacity_ = 12;
 public:
@@ -222,6 +234,12 @@ public:
 	std::string get_type() override;
 	// Returns id_no attribute.
 	std::string get_id_no() override;
+	// Takes double and assigns it to bus_hire_rate attribute.
+	void set_bus_hire_rate(double);
+	// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+	void set_bus_hire_rate_per_mile(double);
+	// Takes double and assigns it to security_deposit.
+	void set_security_deposit(double);
 	// Returns bus_hire_rate attribute.
 	double get_bus_hire_rate() const;
 	// Returns bus_hire_rate_per_mile attribute.

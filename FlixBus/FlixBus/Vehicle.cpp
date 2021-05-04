@@ -253,6 +253,24 @@ std::string luxury_bus::get_id_no()
 	return this->id_no_;
 }
 
+// Takes double and assigns it to bus_hire_rate attribute.
+void luxury_bus::set_bus_hire_rate(double value)
+{
+	this->bus_hire_rate_ = value;
+}
+
+// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+void luxury_bus::set_bus_hire_rate_per_mile(double value)
+{
+	this->bus_hire_rate_per_mile_ = value;
+}
+
+// Takes double and assigns it to security_deposit.
+void luxury_bus::set_security_deposit(double value)
+{
+	this->security_deposit_ = value;
+}
+
 // Returns bus_hire_rate attribute.
 double luxury_bus::get_bus_hire_rate() const
 {
@@ -302,6 +320,24 @@ std::string mini_bus::get_type()
 std::string mini_bus::get_id_no()
 {
 	return this->id_no_;
+}
+
+// Takes double and assigns it to bus_hire_rate attribute.
+void mini_bus::set_bus_hire_rate(double value)
+{
+	this->bus_hire_rate_ = value;
+}
+
+// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+void mini_bus::set_bus_hire_rate_per_mile(double value)
+{
+	this->bus_hire_rate_per_mile_ = value;
+}
+
+// Takes double and assigns it to security_deposit.
+void mini_bus::set_security_deposit(double value)
+{
+	this->security_deposit_ = value;
 }
 
 // Returns bus_hire_rate attribute.
@@ -366,6 +402,24 @@ mini_van::mini_van(std::string id)
 std::string mini_van::get_id_no()
 {
 	return this->id_no_;
+}
+
+// Takes double and assigns it to bus_hire_rate attribute.
+void mini_van::set_bus_hire_rate(double value)
+{
+	this->bus_hire_rate_ = value;
+}
+
+// Takes double and assigns it to bus_hire_rate_per_mile attribute.
+void mini_van::set_bus_hire_rate_per_mile(double value)
+{
+	this->bus_hire_rate_per_mile_ = value;
+}
+
+// Takes double and assigns it to security_deposit.
+void mini_van::set_security_deposit(double value)
+{
+	this->security_deposit_ = value;
 }
 
 // Returns bus_hire_rate attribute.
