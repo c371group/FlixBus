@@ -24,6 +24,8 @@ public:
 	std::vector<account> get_accts() const;
 	// Returns reference of an account object  from a vector.
 	account* get_acc_by_index(int);
+	// Returns reference to an account object from a vector by account_id
+	account* get_acc_by_id(int);
 	// Takes account object and adds it to a vector.
 	void add_acct(account acct);
 	// Loads data from csv.

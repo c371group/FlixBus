@@ -1,10 +1,11 @@
 #include "Account.h"
+#include <fstream>
 
 
 // Base constructor.
 account::account()
 {
-	uniqueID acctID; //TODO: this might give us difficulty once we do the permanent file storage, but don't worry about it for now
+	UniqueID acctID; //TODO: this might give us difficulty once we do the permanent file storage, but don't worry about it for now
 	set_acct_id(acctID);
 	this->username_ = "Providence";
 	this->password_ = "Provid3nce";
@@ -25,7 +26,7 @@ account::account(customer cust, std::string username, std::string password)
 }
 
 // Takes uniqueID object and assigns it to acct_id.
-void account::set_acct_id(uniqueID acctID)
+void account::set_acct_id(UniqueID acctID)
 {
 	this->acct_id_= acctID;
 }
@@ -49,7 +50,7 @@ void account::set_customer(customer cust)
 }
 
 // Returns acct_id_ attribute.
-uniqueID account::get_acct_id()
+UniqueID account::get_acct_id()
 {
 	return this->acct_id_;
 }
@@ -118,4 +119,16 @@ void account::remove_ticket(std::string ticket_id)
 		index++;
 	}
 	this->tickets_.erase(this->tickets_.begin() + index);
+}
+
+void account::save_ticket_to_db(ticket ticket_)
+{
+	std::ofstream fout;
+	fout.open("tickets.csv", std::ios::app);
+	fout << this->get_acct_id().toString() << "," << ticket_.get_ticket_id() << ",";
+	fout << std::to_string(ticket_.get_seat_pair().first) << "," << ticket_.get_seat_pair().second << ",";
+	fout << ticket_.get_route()->get_source() << "," << ticket_.get_route()->get_destination() << ",";
+	fout << ticket_.get_trip()->get_departure_dt().to_string(true) << "," << ticket_.get_trip()->get_est_arrival_dt().to_string(true) << ",";
+	fout << std::to_string(ticket_.get_cost()) << "," << ticket_.get_trip()->get_bus()->get_id_no() << std::endl;
+	fout.close();
 }

@@ -21,6 +21,20 @@ account* account_repo::get_acc_by_index(int indx)
 	return &this->accts[indx];
 }
 
+// Returns reference to an account object from a vector by account_id
+account* account_repo::get_acc_by_id(int id)
+{
+	int index = 0;
+	for(auto & acc: this->accts)
+	{
+		if(acc.get_acct_id().id == id)
+		{
+			return &this->accts[index];
+		}
+		index++;
+	}
+}
+
 // Takes account object and adds it to a vector.
 void account_repo::add_acct(account acct)
 {
@@ -42,8 +56,8 @@ int account_repo::read_acct_db() {
 
 		while (getline(ss, word, ','))
 			words.push_back(word);
-		customer cust = customer(words[2], words[3], words[4], words[5], words[6]);
-		account acct = account(cust, words[0], words[1]);
+		customer cust = customer(words[3], words[4], words[5], words[6], words[7]);
+		account acct = account(cust, words[1], words[2]);
 		add_acct(acct);
 	}
 	return 0;

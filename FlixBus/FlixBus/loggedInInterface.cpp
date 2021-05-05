@@ -448,6 +448,7 @@ int loggedInInterface::menuLogic()
 					this->revenue_->add_income_by_vehicle(new_ticket.get_trip()->get_bus()->get_id_no(), new_ticket.get_cost());
 					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + new_ticket.get_cost());
 					this->acct->add_ticket(new_ticket);
+					this->acct->save_ticket_to_db(new_ticket);
 					system("PAUSE");
 					break;
 				}

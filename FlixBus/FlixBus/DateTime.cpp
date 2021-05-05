@@ -108,8 +108,9 @@ void date_time::display_date()
 	std::string minute_ = this->minutes_ < 10 ? "0" + std::to_string(this->minutes_) : std::to_string(this->minutes_);
 	std::string second_ = this->seconds_ < 10 ? "0" + std::to_string(this->seconds_) : std::to_string(this->seconds_);
 
-	std::cout << this->year_ << "/" << month_ << "/" << day_ << " ";
-	std::cout << hour_ << ":" << minute_ << ":" << second_;
+	
+	std::cout << hour_ << ":" << minute_ << ":" << second_ << " ";
+	std::cout << month_ << "/" << day_ <<"/" <<  this->year_ ;
 }
 
 // Updates all attributes, assign them to current time and displays the time.
@@ -132,6 +133,42 @@ void date_time::get_current_time()
 	this->display_date();
 }
 
+// Returns year attribute.
+int date_time::get_year()
+{
+	return this->year_;
+}
+
+// Returns month attribute.
+int date_time::get_month()
+{
+	return this->month_;
+}
+
+// Returns day attribute.
+int date_time::get_day()
+{
+	return this->day_;
+}
+
+// Returns hours attribute.
+int date_time::get_hour()
+{
+	return this->hours_;
+}
+
+// Returns minutes attribute.
+int date_time::get_minute()
+{
+	return this->minutes_;
+}
+
+// Returns seconds attribute.
+int date_time::get_seconds()
+{
+	return this->seconds_;
+}
+
 // Returns string representation of the date. Takes boolean, if set to false it will only display the date, without the time.
 std::string date_time::to_string(bool include_time) const
 {
@@ -144,12 +181,23 @@ std::string date_time::to_string(bool include_time) const
 	
 	if(include_time)
 	{
-		string_date = std::to_string(this->year_) + "/" + month_ + "/" + day_ + " " + hour_ + ":" + minute_ + ":" + second_;
+		string_date = hour_ + ":" + minute_ + ":" + second_ + " " + month_ + "/" + day_ + "/" + std::to_string(this->year_);
 	}
 	else
 	{
-		string_date = std::to_string(this->year_) + "/" + month_ + "/" + day_;
+		string_date = month_ + "/" + day_ + "/" + std::to_string(this->year_);
 	}
 	
 	return string_date;
+}
+
+// Comares given date_time object to the current one.
+bool date_time::compare_to_date(date_time dt)
+{
+	if (this->year_ == dt.get_year() && this->month_ == dt.get_month() && this->day_ == dt.get_day() && this->hours_ ==
+		dt.get_hour() && this->minutes_ == dt.get_minute() && this->seconds_ == dt.get_seconds())
+	{
+		return true;
+	}
+	return false;
 }

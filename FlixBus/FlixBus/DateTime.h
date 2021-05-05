@@ -31,7 +31,21 @@ public:
 	void display_date();
 	// Updates all attributes, assign them to current time and displays the time.
 	void get_current_time();
+	// Returns year attribute.
+	int get_year();
+	// Returns month attribute.
+	int get_month();
+	// Returns day attribute.
+	int get_day();
+	// Returns hours attribute.
+	int get_hour();
+	// Returns minutes attribute.
+	int get_minute();
+	// Returns seconds attribute.
+	int get_seconds();
 	// Returns string representation of the date. Takes boolean, if set to false it will only display the date, without the time.
 	std::string to_string(bool include_time) const;
+	// Compare two dates and returns true or false if they are the same date.
+	bool compare_to_date(date_time);
 };
 
