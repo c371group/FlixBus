@@ -270,7 +270,9 @@ int loggedInInterface::menuLogic()
 							double difference = cost_of_new_seat - old_cost_of_seat;
 							std::cout << "Your new seat is more expensive than your last one." << std::endl;
 							this->revenue_->add_income_by_date(reference_to_edit_ticket->get_trip()->get_departure_dt().to_string(false), difference);
+							this->revenue_->add_income_by_date_to_db(reference_to_edit_ticket->get_trip()->get_departure_dt().to_string(false), difference);
 							this->revenue_->add_income_by_vehicle(reference_to_edit_ticket->get_trip()->get_bus()->get_id_no(), difference);
+							this->revenue_->add_income_by_vehicle_to_db(reference_to_edit_ticket->get_trip()->get_bus()->get_id_no(), difference);
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + (difference + difference));
 						}
 						
@@ -445,7 +447,9 @@ int loggedInInterface::menuLogic()
 					std::string compiled_id = this->acct->get_customer().get_last_name() + "_" + new_ticket.get_route()->get_source() + "_" + new_ticket.get_route()->get_destination() + "_" + new_ticket.get_trip()->get_bus()->get_id_no();
 					new_ticket.set_ticket_id(compiled_id);
 					this->revenue_->add_income_by_date(new_ticket.get_trip()->get_departure_dt().to_string(false), new_ticket.get_cost());
+					this->revenue_->add_income_by_date_to_db(new_ticket.get_trip()->get_departure_dt().to_string(false), new_ticket.get_cost());
 					this->revenue_->add_income_by_vehicle(new_ticket.get_trip()->get_bus()->get_id_no(), new_ticket.get_cost());
+					this->revenue_->add_income_by_vehicle_to_db(new_ticket.get_trip()->get_bus()->get_id_no(), new_ticket.get_cost());
 					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + new_ticket.get_cost());
 					this->acct->add_ticket(new_ticket);
 					this->acct->save_ticket_to_db(new_ticket);
@@ -603,7 +607,9 @@ int loggedInInterface::menuLogic()
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_luxury_bus->get_security_deposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
 							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_date_to_db(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
 							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_vehicle_to_db(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->add_ticket(bus_hire_ticket);
 							system("PAUSE");
@@ -648,10 +654,51 @@ int loggedInInterface::menuLogic()
 						{
 							hire_mini_bus->reserve_all_seats();
 							ticket bus_hire_ticket;
+
+							int choice_year;
+							int choice_month;
+							int choice_day;
+
+							while (true) {
+								std::cout << "Enter year for your bus hire: ";
+								if (std::cin >> choice_year) {
+									break;
+								}
+								else {
+									std::cout << "Enter a valid id value!\n";
+									std::cin.clear();
+									std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+								}
+							}
+
+							while (true) {
+								std::cout << "Enter moth for your bus hire: ";
+								if (std::cin >> choice_month) {
+									break;
+								}
+								else {
+									std::cout << "Enter a valid id value!\n";
+									std::cin.clear();
+									std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+								}
+							}
+
+							while (true) {
+								std::cout << "Enter day for your bus hire: ";
+								if (std::cin >> choice_day) {
+									break;
+								}
+								else {
+									std::cout << "Enter a valid id value!\n";
+									std::cin.clear();
+									std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+								}
+							}
+
+							date_time bus_hire_dep(choice_year, choice_month, choice_day, 9, 0, 0);
+							date_time bus_hire_arr(choice_year, choice_month, choice_day, 15, 30, 0);
 							
-							//TODO: Ask the user to enter date and time. Currently takes current date and time.
-							date_time bus_hire_dep(2021, 5, 1, 12, 0, 0);
-							date_time bus_hire_arr(2021, 5, 1, 15, 30, 0);
+							
 							trip bus_hire_trip(bus_hire_dep, bus_hire_arr, hire_mini_bus);
 							selected_route->get_trip_repo()->add_trip(bus_hire_trip);
 							std::vector<trip>* trip_repo = selected_route->get_trip_repo()->get_all_trips();
@@ -667,7 +714,9 @@ int loggedInInterface::menuLogic()
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_bus->get_security_deposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
 							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_date_to_db(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
 							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_vehicle_to_db(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->add_ticket(bus_hire_ticket);
 							system("PAUSE");
@@ -733,7 +782,9 @@ int loggedInInterface::menuLogic()
 							bus_hire_ticket.set_cost(bus_hire_ticket.get_cost() + hire_mini_van->get_security_deposit());
 							std::cout << "Total cost for bus hire is: " << bus_hire_ticket.get_cost() << std::endl;
 							this->revenue_->add_income_by_date(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_date_to_db(bus_hire_ticket.get_trip()->get_departure_dt().to_string(false), bus_hire_ticket.get_cost());
 							this->revenue_->add_income_by_vehicle(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
+							this->revenue_->add_income_by_vehicle_to_db(bus_hire_ticket.get_trip()->get_bus()->get_id_no(), bus_hire_ticket.get_cost());
 							this->revenue_->set_total_amount(this->revenue_->get_total_amount() + bus_hire_ticket.get_cost());
 							this->acct->add_ticket(bus_hire_ticket);
 							system("PAUSE");

@@ -325,7 +325,9 @@ int adminInterface::menuLogic(account_repo *AcctRep)
 				{
 					difference_cost = new_ticket_cost - old_cost;
 					this->revenue_->add_income_by_date(selected_ticket->get_trip()->get_departure_dt().to_string(false), difference_cost);
+					this->revenue_->add_income_by_date_to_db(selected_ticket->get_trip()->get_departure_dt().to_string(false), difference_cost);
 					this->revenue_->add_income_by_vehicle(selected_ticket->get_trip()->get_bus()->get_id_no(), difference_cost);
+					this->revenue_->add_income_by_vehicle_to_db(selected_ticket->get_trip()->get_bus()->get_id_no(), difference_cost);
 					this->revenue_->set_total_amount(this->revenue_->get_total_amount() + difference_cost);
 				}
 				

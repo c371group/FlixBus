@@ -195,5 +195,7 @@
     <None Include="RoutesDB.csv" />
     <None Include="busdetails.csv" />
     <None Include="tickets.csv" />
+    <None Include="revenueDate.csv" />
+    <None Include="revenueVehicle.csv" />
   </ItemGroup>
 </Project>

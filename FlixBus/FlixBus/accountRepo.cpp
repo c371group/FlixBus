@@ -33,6 +33,7 @@ account* account_repo::get_acc_by_id(int id)
 		}
 		index++;
 	}
+	return nullptr;
 }
 
 // Takes account object and adds it to a vector.

@@ -35,5 +35,10 @@ public:
 	std::map<std::string, double> get_income_by_date() const;
 	// Returns map<std::string, double> income by vehicle attribute.
 	std::map<std::string, double> get_income_by_vehicle() const;
+	int read_income_by_date();
+	int read_income_by_vehicle();
+	void calculate_income_from_map();
+	void add_income_by_date_to_db(std::string, double);
+	void add_income_by_vehicle_to_db(std::string, double);
 };
 

@@ -72,6 +72,8 @@
   <ItemGroup>
     <None Include="AccountsDB.csv" />
     <None Include="busdetails.csv" />
+    <None Include="revenueDate.csv" />
+    <None Include="revenueVehicle.csv" />
     <None Include="RoutesDB.csv" />
     <None Include="tickets.csv" />
     <None Include="Trips502508.csv" />
