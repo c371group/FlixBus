@@ -7,7 +7,7 @@
 route_repo::route_repo()
 {
 	// TODO: routes lack fleet and trip reference.
-	//this->read_routes_db();
+	this->read_routes_db();
 }
 
 // Returns vector of references of route objects.

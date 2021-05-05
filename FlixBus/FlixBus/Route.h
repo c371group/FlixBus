@@ -27,8 +27,8 @@ public:
 	route();
 	// Constructor takes source city and destination city.
 	route(std::string source, std::string destination);
-	// Constructor takes source city and destination city and bus fleet.
-	route(std::string source, std::string destination, fleet* bus_fleet);
+	// Constructor takes source city and destination city and distance.
+	route(std::string source, std::string destination, double distance);
 	// Constructor takes source city and destination city, distance and bus fleet.
 	route(std::string source, std::string destination, double distance, fleet* busFleet);
 	// Constructor takes source city and destination city, distance, bus fleet. and reference to a trip repo object.
@@ -41,6 +41,8 @@ public:
 	void set_distance(int);
 	// Takes fleet and assigns it to distance_ bus_fleet_.
 	void set_fleet(fleet*);
+	// Takes trip repo and assigns it to trip_repo_ attribute.
+	void set_trip_repo(trip_repo*);
 	// Returns source_ attribute.
 	std::string get_source();
 	// Returns destination_ attribute.

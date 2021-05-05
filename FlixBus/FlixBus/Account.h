@@ -11,7 +11,7 @@ class account
 {
 private:
 	// uniqueID account ID
-	uniqueID acct_id_;
+	UniqueID acct_id_;
 	// Username and password attributes.
 	std::string username_, password_;
 	// Customer object attribute.
@@ -28,7 +28,7 @@ public:
 	// Base constructor takes Customer object, username and password.
 	account(customer, std::string, std::string);
 	// Takes uniqueID object and assigns it to acct_id.
-	void set_acct_id(uniqueID acctID);
+	void set_acct_id(UniqueID acctID);
 	// Takes string and assigns it to username_ attribute.
 	void set_username(std::string);
 	// Takes string and assigns it to password_ attribute.
@@ -39,8 +39,10 @@ public:
 	void add_ticket(ticket ticket);
 	// Takes string id, searches for it in a vector and removes it.
 	void remove_ticket(std::string ticket_id);
+	// Saves ticket record to db.
+	void save_ticket_to_db(ticket);
 	// Returns acct_id_ attribute.
-	uniqueID get_acct_id();
+	UniqueID get_acct_id();
 	// Returns username_ attribute.
 	std::string get_username() const;
 	// Returns password_ attribute.

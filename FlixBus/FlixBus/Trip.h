@@ -18,6 +18,12 @@ private:
 	date_time departure_;
 	// DateTime object representing arrival time.
 	date_time estimated_arrival_;
+	// Bus id
+	std::string bus_id_;
+	// Source city.
+	std::string source_;
+	// Destination city.
+	std::string destination_;
 public:
 	// Base constructor.
 	trip();
@@ -32,12 +38,24 @@ public:
 	void set_est_arrival_dt(date_time);
 	// Takes reference to a vehicle object and assigns it to bus_ attribute.
 	void set_bus(vehicle*);
+	// Takes string and assigns it to source_ attribute.
+	void set_source(std::string);
+	// Takes string and assigns it to destination_ attribute.
+	void set_destination(std::string);
 	// Returns boolean value of bookable_ attribute.
 	bool get_bookable();
+	// Takes strings and assigns it to bus_id_ attribute
+	void set_bus_id(std::string);
 	// Returns reference to a vehicle object.
 	vehicle* get_bus();
 	// Returns departure_ attribute.
 	date_time get_departure_dt();
 	// Returns arrival_ attribute.
 	date_time get_est_arrival_dt();
+	// Returns bus_id attribute
+	std::string get_bus_id();
+	// Returns source_ attribute.
+	std::string get_source();
+	// Returns destination_ attribute.
+	std::string get_destination();
 };

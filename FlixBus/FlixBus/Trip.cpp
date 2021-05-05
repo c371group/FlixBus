@@ -43,10 +43,28 @@ void trip::set_bus(vehicle* bus)
 	this->bus_ = bus;
 }
 
+// Takes string and assigns it to source_ attribute.
+void trip::set_source(std::string source)
+{
+	this->source_ = source;
+}
+
+// Takes string and assigns it to destination_ attribute.
+void trip::set_destination(std::string dest)
+{
+	this->destination_ = dest;
+}
+
 // Returns boolean value of bookable_ attribute.
 bool trip::get_bookable()
 {
 	return this->bookable_;
+}
+
+// Takes strings and assigns it to bus_id_ attribute
+void trip::set_bus_id(std::string id)
+{
+	this->bus_id_ = id;
 }
 
 // Returns reference to a vehicle object.
@@ -65,4 +83,22 @@ date_time trip::get_departure_dt()
 date_time trip::get_est_arrival_dt()
 {
 	return this->estimated_arrival_;
+}
+
+// Returns bus_id attribute
+std::string trip::get_bus_id()
+{
+	return this->bus_id_;
+}
+
+// Returns source_ attribute.
+std::string trip::get_source()
+{
+	return this->source_;
+}
+
+// Returns destination_ attribute.
+std::string trip::get_destination()
+{
+	return this->destination_;
 }
