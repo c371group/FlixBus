@@ -151,7 +151,7 @@ void fleet::read_bus_details() {
 	std::ifstream input_from_file("busdetails.csv");
 	std::string line;
 	int lineno = 0;
-
+	std::cout << "Loading vehicle data from file...." << std::endl;
 	while (std::getline(input_from_file, line)) {
 		lineno++;
 		line += ",";

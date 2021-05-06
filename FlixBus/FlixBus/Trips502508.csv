@@ -1,42 +1,641 @@
 Day Of Week,Date,Bus Type,Driver,Bus ID,Source,Destination,Leaving,Est Arrival
-Sun,05/09/2021,Lux Bus,Korina Drivas,LB002,Green Bay,Whitewater,16:00:00,18:40:00
-Sun,05/09/2021,Minibus,Lisandro Alaniz,MB001,Green Bay,Oshkosh,11:30:00,12:30:00
-Sun,05/09/2021,Lux Bus,Korina Drivas,LB012,Whitewater,Green Bay,18:50:00,21:40:00
-Sun,05/09/2021,Minibus,Lisandro Alaniz,MB004,Oshkosh,Green Bay,12:40:00,13:50:00
-Mon,05/10/2021,Lux Bus,Gabriel Shwetz,LB011,Green Bay,Milwaukee,12:00:00,14:10:00
-Mon,05/10/2021,Minivan,Brigitta Raskopf,MV001,Green Bay,Eau Claire,12:45:00,15:55:00
-Mon,05/10/2021,Minivan,Sadiq Mifsud,MV002,Green Bay,Madison,14:30:00,17:05:00
-Mon,05/10/2021,Minibus,Ramesh Amble,MB021,Green Bay,Oshkosh,15:00:00,16:00:00
-Mon,05/10/2021,Lux Bus,Gabriel Shwetz,LB021,Milwaukee,Green Bay,14:20:00,16:40:00
-Mon,05/10/2021,Minivan,Brigitta Raskopf,MV011,Eau Claire,Green Bay,16:05:00,19:25:00
-Mon,05/10/2021,Minivan,Sadiq Mifsud,MV012,Madison,Green Bay,17:15:00,20:00:00
-Mon,05/10/2021,Minibus,Ramesh Amble,MB031,Oshkosh,Green Bay,16:10:00,17:20:00
-Tues,05/11/2021,Minibus,Jana Neumann,MB002,Green Bay,Eau Claire,9:30:00,12:40:00
-Tues,05/11/2021,Minivan,Curtis Ewell,MV021,Green Bay,Madison,9:30:00,12:05:00
-Tues,05/11/2021,Minibus,Jana Neumann,MB012,Eau Claire,Green Bay,12:50:00,16:10:00
-Tues,05/11/2021,Minivan,Curtis Ewell,MV031,Madison,Green Bay,12:15:00,15:00:00
-Wed,05/12/2021,Lux Bus,Kajus Althaus,LB031,Green Bay,Milwaukee,9:00:00,11:10:00
-Wed,05/12/2021,Minivan,Carletta Rosenbalm,MV041,Green Bay,Whitewater,14:30:00,17:10:00
-Wed,05/12/2021,Minibus,Ulrich Fleischer,MB041,Green Bay,Oshkosh,11:00:00,12:00:00
-Wed,05/12/2021,Lux Bus,Kajus Althaus,LB041,Milwaukee,Green Bay,11:20:00,13:40:00
-Wed,05/12/2021,Minivan,Carletta Rosenbalm,MV051,Whitewater,Green Bay,17:20:00,20:10:00
-Wed,05/12/2021,Minibus,Ulrich Fleischer,MB051,Oshkosh,Green Bay,12:10:00,13:20:00
-Thurs,05/13/2021,Minivan,Venessa Freiberg,MV022,Green Bay,Milwaukee,14:30:00,16:40:00
-Thurs,05/13/2021,Minibus,Isolde Holzmann,MB022,Green Bay,Eau Claire,11:00:00,14:10:00
-Thurs,05/13/2021,Minivan,Rosemarie Schroeder,MV061,Green Bay,Madison,13:00:00,15:35:00
-Thurs,05/13/2021,Lux Bus,Hasib Kathia,LB022,Green Bay,Whitewater,6:30:00,9:10:00
-Thurs,05/13/2021,Minivan,Venessa Freiberg,MV032,Milwaukee,Green Bay,16:50:00,19:10:00
-Thurs,05/13/2021,Minibus,Isolde Holzmann,MB032,Eau Claire,Green Bay,14:20:00,17:40:00
-Thurs,05/13/2021,Minivan,Rosemarie Schroeder,MV071,Madison,Green Bay,15:45:00,18:30:00
-Thurs,05/13/2021,Lux Bus,Hasib Kathia,LB032,Whitewater,Green Bay,9:20:00,12:10:00
-Fri,05/14/2021,Lux Bus,Brigitta Raskopf,LB042,Green Bay,Whitewater,11:40:00,14:20:00
-Fri,05/14/2021,Minivan,Jana Neumann,MV081,Green Bay,Oshkosh,12:30:00,13:30:00
-Fri,05/14/2021,Lux Bus,Brigitta Raskopf,LB052,Whitewater,Green Bay,14:30:00,17:20:00
-Fri,05/14/2021,Minivan,Jana Neumann,MV091,Oshkosh,Green Bay,13:40:00,14:50:00
-Sat,05/15/2021,Minibus,Sadiq Mifsud,MB003,Green Bay,Milwaukee,7:00:00,9:10:00
-Sat,05/15/2021,Minivan,Curtis Ewell,MV003,Green Bay,Eau Claire,11:30:00,14:40:00
-Sat,05/15/2021,Lux Bus,Gabriel Shwetz,LB003,Green Bay,Madison,12:30:00,15:05:00
-Sat,05/15/2021,Minibus,Sadiq Mifsud,MB013,Milwaukee,Green Bay,9:20:00,11:40:00
-Sat,05/15/2021,Minivan,Curtis Ewell,MV013,Eau Claire,Green Bay,14:50:00,18:10:00
-Sat,05/15/2021,Lux Bus,Gabriel Shwetz,LB003,Madison,Green Bay,15:15:00,18:00:00
-Sat,05/16/2021,Minivan,Curtis Ewell,MV004,Eau Claire,Green Bay,13:50:00,17:10:00
+FRI,5/14/2021,Luxury Bus,Korina Drivas,LB245,Green Bay,Madison,9:00:00,12:00:00
+FRI,5/14/2021,Luxury Bus,Lisandro Alaniz,LB127,Green Bay,Madison,15:00:00,18:30:00
+FRI,5/14/2021,Mini Bus,Korina Drivas,MB967,Madison,Green Bay,12:30:00,15:45:00
+FRI,5/14/2021,Mini Bus,Lisandro Alaniz,MB676,Madison,Green Bay,16:00:00,19:30:00
+FRI,5/14/2021,Mini van,Gabriel Shwetz,MV433,Green Bay,Milwaukee,7:45:00,9:15:00
+FRI,5/14/2021,Mini van,Brigitta Raskopf,MV122,Green Bay,Milwaukee,16:00:00,17:30:00
+FRI,5/14/2021,Luxury Bus,Sadiq Mifsud,LB972,Milwaukee,Green Bay,10:00:00,11:45:00
+FRI,5/14/2021,Mini Bus,Ramesh Amble,MB787,Milwaukee,Green Bay,18:00:00,19:15:00
+FRI,5/14/2021,Mini Bus,Gabriel Shwetz,MB659,Green Bay,Whitewater,14:30:00,17:10:00
+FRI,5/14/2021,Mini van,Brigitta Raskopf,MV297,Green Bay,Whitewater,18:00:00,21:15:00
+FRI,5/14/2021,Mini Bus,Sadiq Mifsud,MB752,Whitewater,Green Bay,6:30:00,9:30:00
+FRI,5/14/2021,Mini Bus,Ramesh Amble,MB846,Whitewater,Green Bay,18:00:00,21:15:00
+FRI,5/14/2021,Luxury Bus,Jana Neumann,LB979,Green Bay,Oshkosh,10:15:00,10:50:00
+FRI,5/14/2021,Mini Bus,Curtis Ewell,MB335,Green Bay,Oshkosh,18:30:00,19:10:00
+FRI,5/14/2021,Mini van,Jana Neumann,MV479,Oshkosh,Green Bay,9:30:00,10:00:00
+FRI,5/14/2021,Mini Bus,Curtis Ewell,MB990,Oshkosh,Green Bay,17:00:00,17:45:00
+FRI,5/14/2021,Luxury Bus,Kajus Althaus,LB883,Green Bay,Eau Claire,8:00:00,11:10:00
+FRI,5/14/2021,Mini Bus,Carletta Rosenbalm,MB352,Green Bay,Eau Claire,12:00:00,15:10:00
+FRI,5/14/2021,Mini van,Ulrich Fleischer,MV326,Eau Claire,Green Bay,9:30:00,12:30:00
+FRI,5/14/2021,Mini Bus,Kajus Althaus,MB881,Eau Claire,Green Bay,15:00:00,18:10:00
+SAT,5/15/2021,Mini van,Carletta Rosenbalm,MV762,Green Bay,Madison,9:00:00,12:00:00
+SAT,5/15/2021,Mini Bus,Ulrich Fleischer,MB621,Green Bay,Madison,15:00:00,18:30:00
+SAT,5/15/2021,Luxury Bus,Venessa Freiberg,LB403,Madison,Green Bay,12:30:00,15:45:00
+SAT,5/15/2021,Mini Bus,Isolde Holzmann,MB871,Madison,Green Bay,16:00:00,19:30:00
+SAT,5/15/2021,Mini Bus,Rosemarie Schroeder,MB794,Green Bay,Milwaukee,7:45:00,9:15:00
+SAT,5/15/2021,Mini van,Hasib Kathia,MV738,Green Bay,Milwaukee,16:00:00,17:30:00
+SAT,5/15/2021,Mini Bus,Venessa Freiberg,MB112,Milwaukee,Green Bay,10:00:00,11:45:00
+SAT,5/15/2021,Luxury Bus,Isolde Holzmann,LB320,Milwaukee,Green Bay,18:00:00,19:15:00
+SAT,5/15/2021,Mini van,Rosemarie Schroeder,MV197,Green Bay,Whitewater,14:30:00,17:10:00
+SAT,5/15/2021,Mini van,Hasib Kathia,MV129,Green Bay,Whitewater,18:00:00,21:15:00
+SAT,5/15/2021,Mini van,Brigitta Raskopf,MV620,Whitewater,Green Bay,6:30:00,9:30:00
+SAT,5/15/2021,Mini Bus,Jana Neumann,MB531,Whitewater,Green Bay,18:00:00,21:15:00
+SAT,5/15/2021,Mini van,Brigitta Raskopf,MV228,Green Bay,Oshkosh,10:15:00,10:50:00
+SAT,5/15/2021,Mini Bus,Jana Neumann,MB225,Green Bay,Oshkosh,18:30:00,19:10:00
+SAT,5/15/2021,Mini van,Sadiq Mifsud,MV984,Oshkosh,Green Bay,9:30:00,10:00:00
+SAT,5/15/2021,Mini Bus,Curtis Ewell,MB736,Oshkosh,Green Bay,17:00:00,17:45:00
+SAT,5/15/2021,Mini van,Gabriel Shwetz,MV382,Green Bay,Eau Claire,8:00:00,11:10:00
+SAT,5/15/2021,Mini Bus,Sadiq Mifsud,MB647,Green Bay,Eau Claire,12:00:00,15:10:00
+SAT,5/15/2021,Luxury Bus,Curtis Ewell,LB235,Eau Claire,Green Bay,9:30:00,12:30:00
+SAT,5/15/2021,Mini van,Gabriel Shwetz,MV357,Eau Claire,Green Bay,15:00:00,18:10:00
+SUN,5/16/2021,Mini van,Curtis Ewell,MV537,Green Bay,Madison,9:00:00,12:00:00
+SUN,5/16/2021,Mini Bus,Korina Drivas,MB465,Green Bay,Madison,15:00:00,18:30:00
+SUN,5/16/2021,Luxury Bus,Lisandro Alaniz,LB485,Madison,Green Bay,12:30:00,15:45:00
+SUN,5/16/2021,Mini van,Korina Drivas,MV133,Madison,Green Bay,16:00:00,19:30:00
+SUN,5/16/2021,Luxury Bus,Lisandro Alaniz,LB371,Green Bay,Milwaukee,7:45:00,9:15:00
+SUN,5/16/2021,Luxury Bus,Gabriel Shwetz,LB182,Green Bay,Milwaukee,16:00:00,17:30:00
+SUN,5/16/2021,Mini Bus,Brigitta Raskopf,MB134,Milwaukee,Green Bay,10:00:00,11:45:00
+SUN,5/16/2021,Luxury Bus,Sadiq Mifsud,LB731,Milwaukee,Green Bay,18:00:00,19:15:00
+SUN,5/16/2021,Luxury Bus,Ramesh Amble,LB865,Green Bay,Whitewater,14:30:00,17:10:00
+SUN,5/16/2021,Mini van,Gabriel Shwetz,MV332,Green Bay,Whitewater,18:00:00,21:15:00
+SUN,5/16/2021,Luxury Bus,Brigitta Raskopf,LB950,Whitewater,Green Bay,6:30:00,9:30:00
+SUN,5/16/2021,Mini Bus,Sadiq Mifsud,MB648,Whitewater,Green Bay,18:00:00,21:15:00
+SUN,5/16/2021,Mini van,Ramesh Amble,MV372,Green Bay,Oshkosh,10:15:00,10:50:00
+SUN,5/16/2021,Mini Bus,Jana Neumann,MB313,Green Bay,Oshkosh,18:30:00,19:10:00
+SUN,5/16/2021,Mini Bus,Curtis Ewell,MB302,Oshkosh,Green Bay,9:30:00,10:00:00
+SUN,5/16/2021,Mini van,Jana Neumann,MV658,Oshkosh,Green Bay,17:00:00,17:45:00
+SUN,5/16/2021,Mini van,Curtis Ewell,MV845,Green Bay,Eau Claire,8:00:00,11:10:00
+SUN,5/16/2021,Luxury Bus,Kajus Althaus,LB892,Green Bay,Eau Claire,12:00:00,15:10:00
+SUN,5/16/2021,Mini van,Carletta Rosenbalm,MV173,Eau Claire,Green Bay,9:30:00,12:30:00
+SUN,5/16/2021,Mini van,Ulrich Fleischer,MV882,Eau Claire,Green Bay,15:00:00,18:10:00
+MON,5/17/2021,Luxury Bus,Kajus Althaus,LB405,Green Bay,Madison,9:00:00,12:00:00
+MON,5/17/2021,Mini Bus,Carletta Rosenbalm,MB805,Green Bay,Madison,15:00:00,18:30:00
+MON,5/17/2021,Luxury Bus,Ulrich Fleischer,LB521,Madison,Green Bay,12:30:00,15:45:00
+MON,5/17/2021,Luxury Bus,Venessa Freiberg,LB728,Madison,Green Bay,16:00:00,19:30:00
+MON,5/17/2021,Mini van,Isolde Holzmann,MV606,Green Bay,Milwaukee,7:45:00,9:15:00
+MON,5/17/2021,Mini van,Rosemarie Schroeder,MV474,Green Bay,Milwaukee,16:00:00,17:30:00
+MON,5/17/2021,Luxury Bus,Hasib Kathia,LB518,Milwaukee,Green Bay,10:00:00,11:45:00
+MON,5/17/2021,Luxury Bus,Venessa Freiberg,LB594,Milwaukee,Green Bay,18:00:00,19:15:00
+MON,5/17/2021,Luxury Bus,Isolde Holzmann,LB423,Green Bay,Whitewater,14:30:00,17:10:00
+MON,5/17/2021,Mini Bus,Rosemarie Schroeder,MB231,Green Bay,Whitewater,18:00:00,21:15:00
+MON,5/17/2021,Mini van,Hasib Kathia,MV515,Whitewater,Green Bay,6:30:00,9:30:00
+MON,5/17/2021,Mini van,Brigitta Raskopf,MV381,Whitewater,Green Bay,18:00:00,21:15:00
+MON,5/17/2021,Mini Bus,Jana Neumann,MB568,Green Bay,Oshkosh,10:15:00,10:50:00
+MON,5/17/2021,Mini van,Brigitta Raskopf,MV119,Green Bay,Oshkosh,18:30:00,19:10:00
+MON,5/17/2021,Mini Bus,Jana Neumann,MB207,Oshkosh,Green Bay,9:30:00,10:00:00
+MON,5/17/2021,Mini Bus,Sadiq Mifsud,MB746,Oshkosh,Green Bay,17:00:00,17:45:00
+MON,5/17/2021,Mini van,Curtis Ewell,MV590,Green Bay,Eau Claire,8:00:00,11:10:00
+MON,5/17/2021,Mini van,Gabriel Shwetz,MV585,Green Bay,Eau Claire,12:00:00,15:10:00
+MON,5/17/2021,Mini Bus,Sadiq Mifsud,MB296,Eau Claire,Green Bay,9:30:00,12:30:00
+MON,5/17/2021,Luxury Bus,Curtis Ewell,LB448,Eau Claire,Green Bay,15:00:00,18:10:00
+TUE,5/18/2021,Mini Bus,Gabriel Shwetz,MB546,Green Bay,Madison,9:00:00,12:00:00
+TUE,5/18/2021,Mini Bus,Curtis Ewell,MB186,Green Bay,Madison,15:00:00,18:30:00
+TUE,5/18/2021,Mini van,Korina Drivas,MV561,Madison,Green Bay,12:30:00,15:45:00
+TUE,5/18/2021,Mini van,Lisandro Alaniz,MV991,Madison,Green Bay,16:00:00,19:30:00
+TUE,5/18/2021,Mini Bus,Korina Drivas,MB783,Green Bay,Milwaukee,7:45:00,9:15:00
+TUE,5/18/2021,Mini van,Lisandro Alaniz,MV641,Green Bay,Milwaukee,16:00:00,17:30:00
+TUE,5/18/2021,Luxury Bus,Gabriel Shwetz,LB473,Milwaukee,Green Bay,10:00:00,11:45:00
+TUE,5/18/2021,Luxury Bus,Brigitta Raskopf,LB415,Milwaukee,Green Bay,18:00:00,19:15:00
+TUE,5/18/2021,Mini van,Sadiq Mifsud,MV875,Green Bay,Whitewater,14:30:00,17:10:00
+TUE,5/18/2021,Luxury Bus,Ramesh Amble,LB249,Green Bay,Whitewater,18:00:00,21:15:00
+TUE,5/18/2021,Luxury Bus,Gabriel Shwetz,LB389,Whitewater,Green Bay,6:30:00,9:30:00
+TUE,5/18/2021,Luxury Bus,Brigitta Raskopf,LB632,Whitewater,Green Bay,18:00:00,21:15:00
+TUE,5/18/2021,Luxury Bus,Sadiq Mifsud,LB605,Green Bay,Oshkosh,10:15:00,10:50:00
+TUE,5/18/2021,Mini van,Ramesh Amble,MV321,Green Bay,Oshkosh,18:30:00,19:10:00
+TUE,5/18/2021,Mini Bus,Jana Neumann,MB347,Oshkosh,Green Bay,9:30:00,10:00:00
+TUE,5/18/2021,Mini van,Curtis Ewell,MV563,Oshkosh,Green Bay,17:00:00,17:45:00
+TUE,5/18/2021,Luxury Bus,Jana Neumann,LB143,Green Bay,Eau Claire,8:00:00,11:10:00
+TUE,5/18/2021,Mini van,Curtis Ewell,MV612,Green Bay,Eau Claire,12:00:00,15:10:00
+TUE,5/18/2021,Luxury Bus,Kajus Althaus,LB937,Eau Claire,Green Bay,9:30:00,12:30:00
+TUE,5/18/2021,Luxury Bus,Carletta Rosenbalm,LB138,Eau Claire,Green Bay,15:00:00,18:10:00
+WEN,5/19/2021,Mini Bus,Ulrich Fleischer,MB532,Green Bay,Madison,9:00:00,12:00:00
+WEN,5/19/2021,Mini Bus,Kajus Althaus,MB940,Green Bay,Madison,15:00:00,18:30:00
+WEN,5/19/2021,Mini van,Carletta Rosenbalm,MV451,Madison,Green Bay,12:30:00,15:45:00
+WEN,5/19/2021,Luxury Bus,Ulrich Fleischer,LB969,Madison,Green Bay,16:00:00,19:30:00
+WEN,5/19/2021,Mini van,Venessa Freiberg,MV277,Green Bay,Milwaukee,7:45:00,9:15:00
+WEN,5/19/2021,Mini van,Isolde Holzmann,MV699,Green Bay,Milwaukee,16:00:00,17:30:00
+WEN,5/19/2021,Luxury Bus,Rosemarie Schroeder,LB931,Milwaukee,Green Bay,10:00:00,11:45:00
+WEN,5/19/2021,Mini van,Hasib Kathia,MV801,Milwaukee,Green Bay,18:00:00,19:15:00
+WEN,5/19/2021,Mini van,Venessa Freiberg,MV350,Green Bay,Whitewater,14:30:00,17:10:00
+WEN,5/19/2021,Luxury Bus,Isolde Holzmann,LB816,Green Bay,Whitewater,18:00:00,21:15:00
+WEN,5/19/2021,Mini van,Rosemarie Schroeder,MV215,Whitewater,Green Bay,6:30:00,9:30:00
+WEN,5/19/2021,Mini Bus,Hasib Kathia,MB974,Whitewater,Green Bay,18:00:00,21:15:00
+WEN,5/19/2021,Luxury Bus,Brigitta Raskopf,LB928,Green Bay,Oshkosh,10:15:00,10:50:00
+WEN,5/19/2021,Mini van,Jana Neumann,MV669,Green Bay,Oshkosh,18:30:00,19:10:00
+WEN,5/19/2021,Mini van,Brigitta Raskopf,MV949,Oshkosh,Green Bay,9:30:00,10:00:00
+WEN,5/19/2021,Mini Bus,Jana Neumann,MB108,Oshkosh,Green Bay,17:00:00,17:45:00
+WEN,5/19/2021,Mini van,Sadiq Mifsud,MV223,Green Bay,Eau Claire,8:00:00,11:10:00
+WEN,5/19/2021,Mini van,Curtis Ewell,MV817,Green Bay,Eau Claire,12:00:00,15:10:00
+WEN,5/19/2021,Luxury Bus,Gabriel Shwetz,LB905,Eau Claire,Green Bay,9:30:00,12:30:00
+WEN,5/19/2021,Mini Bus,Sadiq Mifsud,MB220,Eau Claire,Green Bay,15:00:00,18:10:00
+THU,5/20/2021,Mini van,Curtis Ewell,MV317,Green Bay,Madison,9:00:00,12:00:00
+THU,5/20/2021,Luxury Bus,Gabriel Shwetz,LB634,Green Bay,Madison,15:00:00,18:30:00
+THU,5/20/2021,Luxury Bus,Curtis Ewell,LB493,Madison,Green Bay,12:30:00,15:45:00
+THU,5/20/2021,Luxury Bus,Korina Drivas,LB163,Madison,Green Bay,16:00:00,19:30:00
+THU,5/20/2021,Mini Bus,Lisandro Alaniz,MB774,Green Bay,Milwaukee,7:45:00,9:15:00
+THU,5/20/2021,Mini van,Korina Drivas,MV829,Green Bay,Milwaukee,16:00:00,17:30:00
+THU,5/20/2021,Mini Bus,Lisandro Alaniz,MB724,Milwaukee,Green Bay,10:00:00,11:45:00
+THU,5/20/2021,Mini van,Gabriel Shwetz,MV517,Milwaukee,Green Bay,18:00:00,19:15:00
+THU,5/20/2021,Mini van,Brigitta Raskopf,MV985,Green Bay,Whitewater,14:30:00,17:10:00
+THU,5/20/2021,Luxury Bus,Sadiq Mifsud,LB689,Green Bay,Whitewater,18:00:00,21:15:00
+THU,5/20/2021,Mini van,Ramesh Amble,MV323,Whitewater,Green Bay,6:30:00,9:30:00
+THU,5/20/2021,Luxury Bus,Gabriel Shwetz,LB727,Whitewater,Green Bay,18:00:00,21:15:00
+THU,5/20/2021,Mini Bus,Brigitta Raskopf,MB863,Green Bay,Oshkosh,10:15:00,10:50:00
+THU,5/20/2021,Mini Bus,Sadiq Mifsud,MB957,Green Bay,Oshkosh,18:30:00,19:10:00
+THU,5/20/2021,Luxury Bus,Ramesh Amble,LB691,Oshkosh,Green Bay,9:30:00,10:00:00
+THU,5/20/2021,Mini van,Jana Neumann,MV506,Oshkosh,Green Bay,17:00:00,17:45:00
+THU,5/20/2021,Mini Bus,Curtis Ewell,MB369,Green Bay,Eau Claire,8:00:00,11:10:00
+THU,5/20/2021,Mini Bus,Jana Neumann,MB784,Green Bay,Eau Claire,12:00:00,15:10:00
+THU,5/20/2021,Luxury Bus,Curtis Ewell,LB876,Eau Claire,Green Bay,9:30:00,12:30:00
+THU,5/20/2021,Mini van,Kajus Althaus,MV650,Eau Claire,Green Bay,15:00:00,18:10:00
+FRI,5/21/2021,Mini Bus,Carletta Rosenbalm,MB310,Green Bay,Madison,9:00:00,12:00:00
+FRI,5/21/2021,Mini van,Ulrich Fleischer,MV785,Green Bay,Madison,15:00:00,18:30:00
+FRI,5/21/2021,Luxury Bus,Kajus Althaus,LB564,Madison,Green Bay,12:30:00,15:45:00
+FRI,5/21/2021,Luxury Bus,Carletta Rosenbalm,LB550,Madison,Green Bay,16:00:00,19:30:00
+FRI,5/21/2021,Luxury Bus,Ulrich Fleischer,LB742,Green Bay,Milwaukee,7:45:00,9:15:00
+FRI,5/21/2021,Luxury Bus,Venessa Freiberg,LB311,Green Bay,Milwaukee,16:00:00,17:30:00
+FRI,5/21/2021,Mini van,Isolde Holzmann,MV880,Milwaukee,Green Bay,10:00:00,11:45:00
+FRI,5/21/2021,Mini Bus,Rosemarie Schroeder,MB807,Milwaukee,Green Bay,18:00:00,19:15:00
+FRI,5/21/2021,Mini Bus,Hasib Kathia,MB466,Green Bay,Whitewater,14:30:00,17:10:00
+FRI,5/21/2021,Mini Bus,Venessa Freiberg,MB538,Green Bay,Whitewater,18:00:00,21:15:00
+FRI,5/21/2021,Mini Bus,Isolde Holzmann,MB701,Whitewater,Green Bay,6:30:00,9:30:00
+FRI,5/21/2021,Mini Bus,Rosemarie Schroeder,MB948,Whitewater,Green Bay,18:00:00,21:15:00
+FRI,5/21/2021,Mini Bus,Hasib Kathia,MB975,Green Bay,Oshkosh,10:15:00,10:50:00
+FRI,5/21/2021,Luxury Bus,Brigitta Raskopf,LB614,Green Bay,Oshkosh,18:30:00,19:10:00
+FRI,5/21/2021,Mini van,Jana Neumann,MV169,Oshkosh,Green Bay,9:30:00,10:00:00
+FRI,5/21/2021,Mini Bus,Brigitta Raskopf,MB459,Oshkosh,Green Bay,17:00:00,17:45:00
+FRI,5/21/2021,Luxury Bus,Jana Neumann,LB674,Green Bay,Eau Claire,8:00:00,11:10:00
+FRI,5/21/2021,Luxury Bus,Sadiq Mifsud,LB487,Green Bay,Eau Claire,12:00:00,15:10:00
+FRI,5/21/2021,Luxury Bus,Curtis Ewell,LB316,Eau Claire,Green Bay,9:30:00,12:30:00
+FRI,5/21/2021,Mini Bus,Gabriel Shwetz,MB570,Eau Claire,Green Bay,15:00:00,18:10:00
+SAT,5/22/2021,Mini van,Sadiq Mifsud,MV440,Green Bay,Madison,9:00:00,12:00:00
+SAT,5/22/2021,Mini Bus,Curtis Ewell,MB554,Green Bay,Madison,15:00:00,18:30:00
+SAT,5/22/2021,Mini Bus,Gabriel Shwetz,MB255,Madison,Green Bay,12:30:00,15:45:00
+SAT,5/22/2021,Mini Bus,Curtis Ewell,MB124,Madison,Green Bay,16:00:00,19:30:00
+SAT,5/22/2021,Mini van,Korina Drivas,MV212,Green Bay,Milwaukee,7:45:00,9:15:00
+SAT,5/22/2021,Mini Bus,Lisandro Alaniz,MB851,Green Bay,Milwaukee,16:00:00,17:30:00
+SAT,5/22/2021,Mini Bus,Korina Drivas,MB920,Milwaukee,Green Bay,10:00:00,11:45:00
+SAT,5/22/2021,Mini Bus,Lisandro Alaniz,MB135,Milwaukee,Green Bay,18:00:00,19:15:00
+SAT,5/22/2021,Mini Bus,Gabriel Shwetz,MB704,Green Bay,Whitewater,14:30:00,17:10:00
+SAT,5/22/2021,Mini Bus,Brigitta Raskopf,MB800,Green Bay,Whitewater,18:00:00,21:15:00
+SAT,5/22/2021,Mini van,Sadiq Mifsud,MV941,Whitewater,Green Bay,6:30:00,9:30:00
+SAT,5/22/2021,Mini Bus,Ramesh Amble,MB740,Whitewater,Green Bay,18:00:00,21:15:00
+SAT,5/22/2021,Mini Bus,Gabriel Shwetz,MB761,Green Bay,Oshkosh,10:15:00,10:50:00
+SAT,5/22/2021,Mini van,Brigitta Raskopf,MV377,Green Bay,Oshkosh,18:30:00,19:10:00
+SAT,5/22/2021,Luxury Bus,Sadiq Mifsud,LB208,Oshkosh,Green Bay,9:30:00,10:00:00
+SAT,5/22/2021,Luxury Bus,Ramesh Amble,LB339,Oshkosh,Green Bay,17:00:00,17:45:00
+SAT,5/22/2021,Mini Bus,Jana Neumann,MB309,Green Bay,Eau Claire,8:00:00,11:10:00
+SAT,5/22/2021,Mini Bus,Curtis Ewell,MB755,Green Bay,Eau Claire,12:00:00,15:10:00
+SAT,5/22/2021,Mini van,Jana Neumann,MV732,Eau Claire,Green Bay,9:30:00,12:30:00
+SAT,5/22/2021,Mini Bus,Curtis Ewell,MB429,Eau Claire,Green Bay,15:00:00,18:10:00
+SUN,5/23/2021,Mini Bus,Kajus Althaus,MB852,Green Bay,Madison,9:00:00,12:00:00
+SUN,5/23/2021,Mini Bus,Carletta Rosenbalm,MB353,Green Bay,Madison,15:00:00,18:30:00
+SUN,5/23/2021,Luxury Bus,Ulrich Fleischer,LB864,Madison,Green Bay,12:30:00,15:45:00
+SUN,5/23/2021,Mini van,Kajus Althaus,MV218,Madison,Green Bay,16:00:00,19:30:00
+SUN,5/23/2021,Mini Bus,Carletta Rosenbalm,MB402,Green Bay,Milwaukee,7:45:00,9:15:00
+SUN,5/23/2021,Mini Bus,Ulrich Fleischer,MB525,Green Bay,Milwaukee,16:00:00,17:30:00
+SUN,5/23/2021,Luxury Bus,Venessa Freiberg,LB716,Milwaukee,Green Bay,10:00:00,11:45:00
+SUN,5/23/2021,Mini van,Isolde Holzmann,MV125,Milwaukee,Green Bay,18:00:00,19:15:00
+SUN,5/23/2021,Luxury Bus,Rosemarie Schroeder,LB227,Green Bay,Whitewater,14:30:00,17:10:00
+SUN,5/23/2021,Mini van,Hasib Kathia,MV322,Green Bay,Whitewater,18:00:00,21:15:00
+SUN,5/23/2021,Luxury Bus,Venessa Freiberg,LB640,Whitewater,Green Bay,6:30:00,9:30:00
+SUN,5/23/2021,Luxury Bus,Isolde Holzmann,LB221,Whitewater,Green Bay,18:00:00,21:15:00
+SUN,5/23/2021,Luxury Bus,Rosemarie Schroeder,LB630,Green Bay,Oshkosh,10:15:00,10:50:00
+SUN,5/23/2021,Mini Bus,Hasib Kathia,MB773,Green Bay,Oshkosh,18:30:00,19:10:00
+SUN,5/23/2021,Mini van,Brigitta Raskopf,MV494,Oshkosh,Green Bay,9:30:00,10:00:00
+SUN,5/23/2021,Mini van,Jana Neumann,MV696,Oshkosh,Green Bay,17:00:00,17:45:00
+SUN,5/23/2021,Luxury Bus,Brigitta Raskopf,LB824,Green Bay,Eau Claire,8:00:00,11:10:00
+SUN,5/23/2021,Luxury Bus,Jana Neumann,LB183,Green Bay,Eau Claire,12:00:00,15:10:00
+SUN,5/23/2021,Mini van,Sadiq Mifsud,MV170,Eau Claire,Green Bay,9:30:00,12:30:00
+SUN,5/23/2021,Mini Bus,Curtis Ewell,MB379,Eau Claire,Green Bay,15:00:00,18:10:00
+MON,5/24/2021,Luxury Bus,Gabriel Shwetz,LB107,Green Bay,Madison,9:00:00,12:00:00
+MON,5/24/2021,Mini Bus,Sadiq Mifsud,MB340,Green Bay,Madison,15:00:00,18:30:00
+MON,5/24/2021,Luxury Bus,Curtis Ewell,LB420,Madison,Green Bay,12:30:00,15:45:00
+MON,5/24/2021,Luxury Bus,Gabriel Shwetz,LB199,Madison,Green Bay,16:00:00,19:30:00
+MON,5/24/2021,Mini Bus,Curtis Ewell,MB888,Green Bay,Milwaukee,7:45:00,9:15:00
+MON,5/24/2021,Mini van,Korina Drivas,MV190,Green Bay,Milwaukee,16:00:00,17:30:00
+MON,5/24/2021,Mini Bus,Lisandro Alaniz,MB938,Milwaukee,Green Bay,10:00:00,11:45:00
+MON,5/24/2021,Mini Bus,Korina Drivas,MB909,Milwaukee,Green Bay,18:00:00,19:15:00
+MON,5/24/2021,Mini van,Lisandro Alaniz,MV677,Green Bay,Whitewater,14:30:00,17:10:00
+MON,5/24/2021,Mini Bus,Gabriel Shwetz,MB484,Green Bay,Whitewater,18:00:00,21:15:00
+MON,5/24/2021,Mini van,Brigitta Raskopf,MV769,Whitewater,Green Bay,6:30:00,9:30:00
+MON,5/24/2021,Mini van,Sadiq Mifsud,MV649,Whitewater,Green Bay,18:00:00,21:15:00
+MON,5/24/2021,Luxury Bus,Ramesh Amble,LB575,Green Bay,Oshkosh,10:15:00,10:50:00
+MON,5/24/2021,Mini van,Gabriel Shwetz,MV992,Green Bay,Oshkosh,18:30:00,19:10:00
+MON,5/24/2021,Mini van,Brigitta Raskopf,MV789,Oshkosh,Green Bay,9:30:00,10:00:00
+MON,5/24/2021,Mini van,Sadiq Mifsud,MV358,Oshkosh,Green Bay,17:00:00,17:45:00
+MON,5/24/2021,Luxury Bus,Ramesh Amble,LB602,Green Bay,Eau Claire,8:00:00,11:10:00
+MON,5/24/2021,Luxury Bus,Jana Neumann,LB686,Green Bay,Eau Claire,12:00:00,15:10:00
+MON,5/24/2021,Mini van,Curtis Ewell,MV498,Eau Claire,Green Bay,9:30:00,12:30:00
+MON,5/24/2021,Mini Bus,Jana Neumann,MB840,Eau Claire,Green Bay,15:00:00,18:10:00
+TUE,5/25/2021,Mini van,Curtis Ewell,MV997,Green Bay,Madison,9:00:00,12:00:00
+TUE,5/25/2021,Mini van,Kajus Althaus,MV354,Green Bay,Madison,15:00:00,18:30:00
+TUE,5/25/2021,Luxury Bus,Carletta Rosenbalm,LB734,Madison,Green Bay,12:30:00,15:45:00
+TUE,5/25/2021,Mini Bus,Ulrich Fleischer,MB956,Madison,Green Bay,16:00:00,19:30:00
+TUE,5/25/2021,Mini Bus,Kajus Althaus,MB251,Green Bay,Milwaukee,7:45:00,9:15:00
+TUE,5/25/2021,Mini Bus,Carletta Rosenbalm,MB158,Green Bay,Milwaukee,16:00:00,17:30:00
+TUE,5/25/2021,Luxury Bus,Ulrich Fleischer,LB244,Milwaukee,Green Bay,10:00:00,11:45:00
+TUE,5/25/2021,Luxury Bus,Venessa Freiberg,LB743,Milwaukee,Green Bay,18:00:00,19:15:00
+TUE,5/25/2021,Mini van,Isolde Holzmann,MV729,Green Bay,Whitewater,14:30:00,17:10:00
+TUE,5/25/2021,Luxury Bus,Rosemarie Schroeder,LB747,Green Bay,Whitewater,18:00:00,21:15:00
+TUE,5/25/2021,Luxury Bus,Hasib Kathia,LB595,Whitewater,Green Bay,6:30:00,9:30:00
+TUE,5/25/2021,Mini van,Venessa Freiberg,MV581,Whitewater,Green Bay,18:00:00,21:15:00
+TUE,5/25/2021,Mini Bus,Isolde Holzmann,MB529,Green Bay,Oshkosh,10:15:00,10:50:00
+TUE,5/25/2021,Luxury Bus,Rosemarie Schroeder,LB682,Green Bay,Oshkosh,18:30:00,19:10:00
+TUE,5/25/2021,Mini Bus,Hasib Kathia,MB342,Oshkosh,Green Bay,9:30:00,10:00:00
+TUE,5/25/2021,Mini van,Brigitta Raskopf,MV492,Oshkosh,Green Bay,17:00:00,17:45:00
+TUE,5/25/2021,Mini van,Jana Neumann,MV288,Green Bay,Eau Claire,8:00:00,11:10:00
+TUE,5/25/2021,Mini Bus,Brigitta Raskopf,MB832,Green Bay,Eau Claire,12:00:00,15:10:00
+TUE,5/25/2021,Mini Bus,Jana Neumann,MB301,Eau Claire,Green Bay,9:30:00,12:30:00
+TUE,5/25/2021,Mini Bus,Sadiq Mifsud,MB977,Eau Claire,Green Bay,15:00:00,18:10:00
+WEN,5/26/2021,Mini Bus,Curtis Ewell,MB408,Green Bay,Madison,9:00:00,12:00:00
+WEN,5/26/2021,Mini Bus,Gabriel Shwetz,MB692,Green Bay,Madison,15:00:00,18:30:00
+WEN,5/26/2021,Mini Bus,Sadiq Mifsud,MB416,Madison,Green Bay,12:30:00,15:45:00
+WEN,5/26/2021,Mini Bus,Curtis Ewell,MB285,Madison,Green Bay,16:00:00,19:30:00
+WEN,5/26/2021,Luxury Bus,Gabriel Shwetz,LB780,Green Bay,Milwaukee,7:45:00,9:15:00
+WEN,5/26/2021,Luxury Bus,Curtis Ewell,LB397,Green Bay,Milwaukee,16:00:00,17:30:00
+WEN,5/26/2021,Luxury Bus,Korina Drivas,LB273,Milwaukee,Green Bay,10:00:00,11:45:00
+WEN,5/26/2021,Mini Bus,Lisandro Alaniz,MB859,Milwaukee,Green Bay,18:00:00,19:15:00
+WEN,5/26/2021,Luxury Bus,Korina Drivas,LB970,Green Bay,Whitewater,14:30:00,17:10:00
+WEN,5/26/2021,Luxury Bus,Lisandro Alaniz,LB286,Green Bay,Whitewater,18:00:00,21:15:00
+WEN,5/26/2021,Luxury Bus,Gabriel Shwetz,LB944,Whitewater,Green Bay,6:30:00,9:30:00
+WEN,5/26/2021,Mini Bus,Brigitta Raskopf,MB147,Whitewater,Green Bay,18:00:00,21:15:00
+WEN,5/26/2021,Mini Bus,Sadiq Mifsud,MB925,Green Bay,Oshkosh,10:15:00,10:50:00
+WEN,5/26/2021,Mini van,Ramesh Amble,MV259,Green Bay,Oshkosh,18:30:00,19:10:00
+WEN,5/26/2021,Mini Bus,Gabriel Shwetz,MB708,Oshkosh,Green Bay,9:30:00,10:00:00
+WEN,5/26/2021,Luxury Bus,Brigitta Raskopf,LB294,Oshkosh,Green Bay,17:00:00,17:45:00
+WEN,5/26/2021,Luxury Bus,Sadiq Mifsud,LB618,Green Bay,Eau Claire,8:00:00,11:10:00
+WEN,5/26/2021,Luxury Bus,Ramesh Amble,LB477,Green Bay,Eau Claire,12:00:00,15:10:00
+WEN,5/26/2021,Mini van,Jana Neumann,MV250,Eau Claire,Green Bay,9:30:00,12:30:00
+WEN,5/26/2021,Mini Bus,Curtis Ewell,MB955,Eau Claire,Green Bay,15:00:00,18:10:00
+THU,5/27/2021,Luxury Bus,Jana Neumann,LB760,Green Bay,Madison,9:00:00,12:00:00
+THU,5/27/2021,Luxury Bus,Curtis Ewell,LB584,Green Bay,Madison,15:00:00,18:30:00
+THU,5/27/2021,Mini van,Kajus Althaus,MV776,Madison,Green Bay,12:30:00,15:45:00
+THU,5/27/2021,Mini Bus,Carletta Rosenbalm,MB180,Madison,Green Bay,16:00:00,19:30:00
+THU,5/27/2021,Mini Bus,Ulrich Fleischer,MB684,Green Bay,Milwaukee,7:45:00,9:15:00
+THU,5/27/2021,Mini Bus,Kajus Althaus,MB391,Green Bay,Milwaukee,16:00:00,17:30:00
+THU,5/27/2021,Mini van,Carletta Rosenbalm,MV203,Milwaukee,Green Bay,10:00:00,11:45:00
+THU,5/27/2021,Luxury Bus,Ulrich Fleischer,LB476,Milwaukee,Green Bay,18:00:00,19:15:00
+THU,5/27/2021,Mini van,Venessa Freiberg,MV818,Green Bay,Whitewater,14:30:00,17:10:00
+THU,5/27/2021,Mini Bus,Isolde Holzmann,MB932,Green Bay,Whitewater,18:00:00,21:15:00
+THU,5/27/2021,Luxury Bus,Rosemarie Schroeder,LB413,Whitewater,Green Bay,6:30:00,9:30:00
+THU,5/27/2021,Mini Bus,Hasib Kathia,MB100,Whitewater,Green Bay,18:00:00,21:15:00
+THU,5/27/2021,Mini Bus,Venessa Freiberg,MB717,Green Bay,Oshkosh,10:15:00,10:50:00
+THU,5/27/2021,Mini van,Isolde Holzmann,MV370,Green Bay,Oshkosh,18:30:00,19:10:00
+THU,5/27/2021,Luxury Bus,Rosemarie Schroeder,LB530,Oshkosh,Green Bay,9:30:00,10:00:00
+THU,5/27/2021,Mini Bus,Hasib Kathia,MB866,Oshkosh,Green Bay,17:00:00,17:45:00
+THU,5/27/2021,Luxury Bus,Brigitta Raskopf,LB934,Green Bay,Eau Claire,8:00:00,11:10:00
+THU,5/27/2021,Mini Bus,Jana Neumann,MB714,Green Bay,Eau Claire,12:00:00,15:10:00
+THU,5/27/2021,Luxury Bus,Brigitta Raskopf,LB201,Eau Claire,Green Bay,9:30:00,12:30:00
+THU,5/27/2021,Luxury Bus,Jana Neumann,LB673,Eau Claire,Green Bay,15:00:00,18:10:00
+FRI,5/28/2021,Luxury Bus,Sadiq Mifsud,LB456,Green Bay,Madison,9:00:00,12:00:00
+FRI,5/28/2021,Mini van,Curtis Ewell,MV973,Green Bay,Madison,15:00:00,18:30:00
+FRI,5/28/2021,Mini Bus,Gabriel Shwetz,MB978,Madison,Green Bay,12:30:00,15:45:00
+FRI,5/28/2021,Mini van,Sadiq Mifsud,MV291,Madison,Green Bay,16:00:00,19:30:00
+FRI,5/28/2021,Luxury Bus,Curtis Ewell,LB809,Green Bay,Milwaukee,7:45:00,9:15:00
+FRI,5/28/2021,Mini Bus,Gabriel Shwetz,MB105,Green Bay,Milwaukee,16:00:00,17:30:00
+FRI,5/28/2021,Mini Bus,Curtis Ewell,MB758,Milwaukee,Green Bay,10:00:00,11:45:00
+FRI,5/28/2021,Mini van,Korina Drivas,MV524,Milwaukee,Green Bay,18:00:00,19:15:00
+FRI,5/28/2021,Mini Bus,Lisandro Alaniz,MB754,Green Bay,Whitewater,14:30:00,17:10:00
+FRI,5/28/2021,Luxury Bus,Korina Drivas,LB981,Green Bay,Whitewater,18:00:00,21:15:00
+FRI,5/28/2021,Mini van,Lisandro Alaniz,MV261,Whitewater,Green Bay,6:30:00,9:30:00
+FRI,5/28/2021,Mini van,Gabriel Shwetz,MV718,Whitewater,Green Bay,18:00:00,21:15:00
+FRI,5/28/2021,Mini Bus,Brigitta Raskopf,MB486,Green Bay,Oshkosh,10:15:00,10:50:00
+FRI,5/28/2021,Mini van,Sadiq Mifsud,MV987,Green Bay,Oshkosh,18:30:00,19:10:00
+FRI,5/28/2021,Luxury Bus,Ramesh Amble,LB899,Oshkosh,Green Bay,9:30:00,10:00:00
+FRI,5/28/2021,Mini van,Gabriel Shwetz,MV411,Oshkosh,Green Bay,17:00:00,17:45:00
+FRI,5/28/2021,Luxury Bus,Brigitta Raskopf,LB114,Green Bay,Eau Claire,8:00:00,11:10:00
+FRI,5/28/2021,Mini Bus,Sadiq Mifsud,MB675,Green Bay,Eau Claire,12:00:00,15:10:00
+FRI,5/28/2021,Mini Bus,Ramesh Amble,MB449,Eau Claire,Green Bay,9:30:00,12:30:00
+FRI,5/28/2021,Luxury Bus,Jana Neumann,LB341,Eau Claire,Green Bay,15:00:00,18:10:00
+SAT,5/29/2021,Mini van,Curtis Ewell,MV756,Green Bay,Madison,9:00:00,12:00:00
+SAT,5/29/2021,Luxury Bus,Jana Neumann,LB481,Green Bay,Madison,15:00:00,18:30:00
+SAT,5/29/2021,Luxury Bus,Curtis Ewell,LB396,Madison,Green Bay,12:30:00,15:45:00
+SAT,5/29/2021,Mini van,Kajus Althaus,MV945,Madison,Green Bay,16:00:00,19:30:00
+SAT,5/29/2021,Mini van,Carletta Rosenbalm,MV821,Green Bay,Milwaukee,7:45:00,9:15:00
+SAT,5/29/2021,Luxury Bus,Ulrich Fleischer,LB196,Green Bay,Milwaukee,16:00:00,17:30:00
+SAT,5/29/2021,Luxury Bus,Kajus Althaus,LB553,Milwaukee,Green Bay,10:00:00,11:45:00
+SAT,5/29/2021,Mini Bus,Carletta Rosenbalm,MB139,Milwaukee,Green Bay,18:00:00,19:15:00
+SAT,5/29/2021,Luxury Bus,Ulrich Fleischer,LB768,Green Bay,Whitewater,14:30:00,17:10:00
+SAT,5/29/2021,Mini van,Venessa Freiberg,MV222,Green Bay,Whitewater,18:00:00,21:15:00
+SAT,5/29/2021,Mini van,Isolde Holzmann,MV362,Whitewater,Green Bay,6:30:00,9:30:00
+SAT,5/29/2021,Mini Bus,Rosemarie Schroeder,MB109,Whitewater,Green Bay,18:00:00,21:15:00
+SAT,5/29/2021,Mini van,Hasib Kathia,MV924,Green Bay,Oshkosh,10:15:00,10:50:00
+SAT,5/29/2021,Mini Bus,Venessa Freiberg,MB873,Green Bay,Oshkosh,18:30:00,19:10:00
+SAT,5/29/2021,Mini van,Isolde Holzmann,MV417,Oshkosh,Green Bay,9:30:00,10:00:00
+SAT,5/29/2021,Mini van,Rosemarie Schroeder,MV751,Oshkosh,Green Bay,17:00:00,17:45:00
+SAT,5/29/2021,Mini van,Hasib Kathia,MV633,Green Bay,Eau Claire,8:00:00,11:10:00
+SAT,5/29/2021,Mini Bus,Brigitta Raskopf,MB495,Green Bay,Eau Claire,12:00:00,15:10:00
+SAT,5/29/2021,Luxury Bus,Jana Neumann,LB915,Eau Claire,Green Bay,9:30:00,12:30:00
+SAT,5/29/2021,Luxury Bus,Brigitta Raskopf,LB516,Eau Claire,Green Bay,15:00:00,18:10:00
+SUN,5/30/2021,Luxury Bus,Jana Neumann,LB252,Green Bay,Madison,9:00:00,12:00:00
+SUN,5/30/2021,Luxury Bus,Sadiq Mifsud,LB192,Green Bay,Madison,15:00:00,18:30:00
+SUN,5/30/2021,Luxury Bus,Curtis Ewell,LB609,Madison,Green Bay,12:30:00,15:45:00
+SUN,5/30/2021,Mini Bus,Gabriel Shwetz,MB513,Madison,Green Bay,16:00:00,19:30:00
+SUN,5/30/2021,Mini van,Sadiq Mifsud,MV172,Green Bay,Milwaukee,7:45:00,9:15:00
+SUN,5/30/2021,Mini van,Curtis Ewell,MV522,Green Bay,Milwaukee,16:00:00,17:30:00
+SUN,5/30/2021,Mini Bus,Gabriel Shwetz,MB556,Milwaukee,Green Bay,10:00:00,11:45:00
+SUN,5/30/2021,Mini van,Curtis Ewell,MV900,Milwaukee,Green Bay,18:00:00,19:15:00
+SUN,5/30/2021,Luxury Bus,Korina Drivas,LB384,Green Bay,Whitewater,14:30:00,17:10:00
+SUN,5/30/2021,Mini Bus,Lisandro Alaniz,MB202,Green Bay,Whitewater,18:00:00,21:15:00
+SUN,5/30/2021,Mini van,Korina Drivas,MV103,Whitewater,Green Bay,6:30:00,9:30:00
+SUN,5/30/2021,Luxury Bus,Lisandro Alaniz,LB508,Whitewater,Green Bay,18:00:00,21:15:00
+SUN,5/30/2021,Mini van,Gabriel Shwetz,MV499,Green Bay,Oshkosh,10:15:00,10:50:00
+SUN,5/30/2021,Mini van,Brigitta Raskopf,MV578,Green Bay,Oshkosh,18:30:00,19:10:00
+SUN,5/30/2021,Mini Bus,Sadiq Mifsud,MB300,Oshkosh,Green Bay,9:30:00,10:00:00
+SUN,5/30/2021,Mini van,Ramesh Amble,MV971,Oshkosh,Green Bay,17:00:00,17:45:00
+SUN,5/30/2021,Luxury Bus,Gabriel Shwetz,LB804,Green Bay,Eau Claire,8:00:00,11:10:00
+SUN,5/30/2021,Luxury Bus,Brigitta Raskopf,LB685,Green Bay,Eau Claire,12:00:00,15:10:00
+SUN,5/30/2021,Mini van,Sadiq Mifsud,MV831,Eau Claire,Green Bay,9:30:00,12:30:00
+SUN,5/30/2021,Luxury Bus,Ramesh Amble,LB327,Eau Claire,Green Bay,15:00:00,18:10:00
+MON,5/31/2021,Mini Bus,Jana Neumann,MB444,Green Bay,Madison,9:00:00,12:00:00
+MON,5/31/2021,Mini Bus,Curtis Ewell,MB862,Green Bay,Madison,15:00:00,18:30:00
+MON,5/31/2021,Mini van,Jana Neumann,MV248,Madison,Green Bay,12:30:00,15:45:00
+MON,5/31/2021,Mini Bus,Curtis Ewell,MB617,Madison,Green Bay,16:00:00,19:30:00
+MON,5/31/2021,Luxury Bus,Kajus Althaus,LB443,Green Bay,Milwaukee,7:45:00,9:15:00
+MON,5/31/2021,Mini van,Carletta Rosenbalm,MV304,Green Bay,Milwaukee,16:00:00,17:30:00
+MON,5/31/2021,Luxury Bus,Ulrich Fleischer,LB811,Milwaukee,Green Bay,10:00:00,11:45:00
+MON,5/31/2021,Mini Bus,Kajus Althaus,MB434,Milwaukee,Green Bay,18:00:00,19:15:00
+MON,5/31/2021,Luxury Bus,Carletta Rosenbalm,LB644,Green Bay,Whitewater,14:30:00,17:10:00
+MON,5/31/2021,Luxury Bus,Ulrich Fleischer,LB593,Green Bay,Whitewater,18:00:00,21:15:00
+MON,5/31/2021,Mini Bus,Venessa Freiberg,MB331,Whitewater,Green Bay,6:30:00,9:30:00
+MON,5/31/2021,Mini Bus,Isolde Holzmann,MB870,Whitewater,Green Bay,18:00:00,21:15:00
+MON,5/31/2021,Luxury Bus,Rosemarie Schroeder,LB611,Green Bay,Oshkosh,10:15:00,10:50:00
+MON,5/31/2021,Mini Bus,Hasib Kathia,MB185,Green Bay,Oshkosh,18:30:00,19:10:00
+MON,5/31/2021,Mini van,Venessa Freiberg,MV427,Oshkosh,Green Bay,9:30:00,10:00:00
+MON,5/31/2021,Mini van,Isolde Holzmann,MV772,Oshkosh,Green Bay,17:00:00,17:45:00
+MON,5/31/2021,Mini Bus,Rosemarie Schroeder,MB541,Green Bay,Eau Claire,8:00:00,11:10:00
+MON,5/31/2021,Mini van,Hasib Kathia,MV422,Green Bay,Eau Claire,12:00:00,15:10:00
+MON,5/31/2021,Mini Bus,Brigitta Raskopf,MB660,Eau Claire,Green Bay,9:30:00,12:30:00
+MON,5/31/2021,Luxury Bus,Jana Neumann,LB523,Eau Claire,Green Bay,15:00:00,18:10:00
+TUE,6/1/2021,Mini van,Brigitta Raskopf,MV958,Green Bay,Madison,9:00:00,12:00:00
+TUE,6/1/2021,Luxury Bus,Jana Neumann,LB283,Green Bay,Madison,15:00:00,18:30:00
+TUE,6/1/2021,Mini van,Sadiq Mifsud,MV624,Madison,Green Bay,12:30:00,15:45:00
+TUE,6/1/2021,Mini Bus,Curtis Ewell,MB266,Madison,Green Bay,16:00:00,19:30:00
+TUE,6/1/2021,Luxury Bus,Gabriel Shwetz,LB637,Green Bay,Milwaukee,7:45:00,9:15:00
+TUE,6/1/2021,Mini van,Sadiq Mifsud,MV150,Green Bay,Milwaukee,16:00:00,17:30:00
+TUE,6/1/2021,Mini van,Curtis Ewell,MV591,Milwaukee,Green Bay,10:00:00,11:45:00
+TUE,6/1/2021,Mini van,Gabriel Shwetz,MV279,Milwaukee,Green Bay,18:00:00,19:15:00
+TUE,6/1/2021,Mini Bus,Curtis Ewell,MB719,Green Bay,Whitewater,14:30:00,17:10:00
+TUE,6/1/2021,Luxury Bus,Korina Drivas,LB337,Green Bay,Whitewater,18:00:00,21:15:00
+TUE,6/1/2021,Mini Bus,Lisandro Alaniz,MB200,Whitewater,Green Bay,6:30:00,9:30:00
+TUE,6/1/2021,Luxury Bus,Korina Drivas,LB854,Whitewater,Green Bay,18:00:00,21:15:00
+TUE,6/1/2021,Luxury Bus,Lisandro Alaniz,LB224,Green Bay,Oshkosh,10:15:00,10:50:00
+TUE,6/1/2021,Luxury Bus,Gabriel Shwetz,LB908,Green Bay,Oshkosh,18:30:00,19:10:00
+TUE,6/1/2021,Mini Bus,Brigitta Raskopf,MB210,Oshkosh,Green Bay,9:30:00,10:00:00
+TUE,6/1/2021,Mini van,Sadiq Mifsud,MV995,Oshkosh,Green Bay,17:00:00,17:45:00
+TUE,6/1/2021,Mini Bus,Ramesh Amble,MB912,Green Bay,Eau Claire,8:00:00,11:10:00
+TUE,6/1/2021,Mini van,Gabriel Shwetz,MV439,Green Bay,Eau Claire,12:00:00,15:10:00
+TUE,6/1/2021,Luxury Bus,Brigitta Raskopf,LB447,Eau Claire,Green Bay,9:30:00,12:30:00
+TUE,6/1/2021,Mini Bus,Sadiq Mifsud,MB766,Eau Claire,Green Bay,15:00:00,18:10:00
+WEN,6/2/2021,Luxury Bus,Ramesh Amble,LB806,Green Bay,Madison,9:00:00,12:00:00
+WEN,6/2/2021,Mini Bus,Jana Neumann,MB504,Green Bay,Madison,15:00:00,18:30:00
+WEN,6/2/2021,Mini Bus,Curtis Ewell,MB478,Madison,Green Bay,12:30:00,15:45:00
+WEN,6/2/2021,Mini Bus,Jana Neumann,MB445,Madison,Green Bay,16:00:00,19:30:00
+WEN,6/2/2021,Mini Bus,Curtis Ewell,MB246,Green Bay,Milwaukee,7:45:00,9:15:00
+WEN,6/2/2021,Mini van,Kajus Althaus,MV861,Green Bay,Milwaukee,16:00:00,17:30:00
+WEN,6/2/2021,Mini Bus,Carletta Rosenbalm,MB744,Milwaukee,Green Bay,10:00:00,11:45:00
+WEN,6/2/2021,Luxury Bus,Ulrich Fleischer,LB654,Milwaukee,Green Bay,18:00:00,19:15:00
+WEN,6/2/2021,Luxury Bus,Kajus Althaus,LB844,Green Bay,Whitewater,14:30:00,17:10:00
+WEN,6/2/2021,Mini Bus,Carletta Rosenbalm,MB236,Green Bay,Whitewater,18:00:00,21:15:00
+WEN,6/2/2021,Luxury Bus,Ulrich Fleischer,LB775,Whitewater,Green Bay,6:30:00,9:30:00
+WEN,6/2/2021,Mini van,Venessa Freiberg,MV838,Whitewater,Green Bay,18:00:00,21:15:00
+WEN,6/2/2021,Mini van,Isolde Holzmann,MV645,Green Bay,Oshkosh,10:15:00,10:50:00
+WEN,6/2/2021,Luxury Bus,Rosemarie Schroeder,LB346,Green Bay,Oshkosh,18:30:00,19:10:00
+WEN,6/2/2021,Mini Bus,Hasib Kathia,MB483,Oshkosh,Green Bay,9:30:00,10:00:00
+WEN,6/2/2021,Mini Bus,Venessa Freiberg,MB763,Oshkosh,Green Bay,17:00:00,17:45:00
+WEN,6/2/2021,Luxury Bus,Isolde Holzmann,LB671,Green Bay,Eau Claire,8:00:00,11:10:00
+WEN,6/2/2021,Mini Bus,Rosemarie Schroeder,MB823,Green Bay,Eau Claire,12:00:00,15:10:00
+WEN,6/2/2021,Mini Bus,Hasib Kathia,MB460,Eau Claire,Green Bay,9:30:00,12:30:00
+WEN,6/2/2021,Luxury Bus,Brigitta Raskopf,LB834,Eau Claire,Green Bay,15:00:00,18:10:00
+THU,6/3/2021,Mini Bus,Jana Neumann,MB319,Green Bay,Madison,9:00:00,12:00:00
+THU,6/3/2021,Luxury Bus,Brigitta Raskopf,LB461,Green Bay,Madison,15:00:00,18:30:00
+THU,6/3/2021,Luxury Bus,Jana Neumann,LB363,Madison,Green Bay,12:30:00,15:45:00
+THU,6/3/2021,Luxury Bus,Sadiq Mifsud,LB412,Madison,Green Bay,16:00:00,19:30:00
+THU,6/3/2021,Luxury Bus,Curtis Ewell,LB922,Green Bay,Milwaukee,7:45:00,9:15:00
+THU,6/3/2021,Luxury Bus,Gabriel Shwetz,LB195,Green Bay,Milwaukee,16:00:00,17:30:00
+THU,6/3/2021,Mini Bus,Sadiq Mifsud,MB191,Milwaukee,Green Bay,10:00:00,11:45:00
+THU,6/3/2021,Mini van,Curtis Ewell,MV198,Milwaukee,Green Bay,18:00:00,19:15:00
+THU,6/3/2021,Mini Bus,Gabriel Shwetz,MB167,Green Bay,Whitewater,14:30:00,17:10:00
+THU,6/3/2021,Luxury Bus,Curtis Ewell,LB810,Green Bay,Whitewater,18:00:00,21:15:00
+THU,6/3/2021,Mini van,Korina Drivas,MV668,Whitewater,Green Bay,6:30:00,9:30:00
+THU,6/3/2021,Mini Bus,Lisandro Alaniz,MB462,Whitewater,Green Bay,18:00:00,21:15:00
+THU,6/3/2021,Luxury Bus,Korina Drivas,LB455,Green Bay,Oshkosh,10:15:00,10:50:00
+THU,6/3/2021,Luxury Bus,Lisandro Alaniz,LB189,Green Bay,Oshkosh,18:30:00,19:10:00
+THU,6/3/2021,Luxury Bus,Gabriel Shwetz,LB242,Oshkosh,Green Bay,9:30:00,10:00:00
+THU,6/3/2021,Mini Bus,Brigitta Raskopf,MB144,Oshkosh,Green Bay,17:00:00,17:45:00
+THU,6/3/2021,Mini Bus,Sadiq Mifsud,MB885,Green Bay,Eau Claire,8:00:00,11:10:00
+THU,6/3/2021,Mini Bus,Ramesh Amble,MB334,Green Bay,Eau Claire,12:00:00,15:10:00
+THU,6/3/2021,Mini Bus,Gabriel Shwetz,MB490,Eau Claire,Green Bay,9:30:00,12:30:00
+THU,6/3/2021,Mini Bus,Brigitta Raskopf,MB551,Eau Claire,Green Bay,15:00:00,18:10:00
+FRI,6/4/2021,Luxury Bus,Sadiq Mifsud,LB217,Green Bay,Madison,9:00:00,12:00:00
+FRI,6/4/2021,Mini van,Ramesh Amble,MV156,Green Bay,Madison,15:00:00,18:30:00
+FRI,6/4/2021,Luxury Bus,Jana Neumann,LB700,Madison,Green Bay,12:30:00,15:45:00
+FRI,6/4/2021,Mini Bus,Curtis Ewell,MB933,Madison,Green Bay,16:00:00,19:30:00
+FRI,6/4/2021,Mini Bus,Jana Neumann,MB631,Green Bay,Milwaukee,7:45:00,9:15:00
+FRI,6/4/2021,Mini Bus,Curtis Ewell,MB858,Green Bay,Milwaukee,16:00:00,17:30:00
+FRI,6/4/2021,Mini Bus,Kajus Althaus,MB409,Milwaukee,Green Bay,10:00:00,11:45:00
+FRI,6/4/2021,Mini Bus,Carletta Rosenbalm,MB837,Milwaukee,Green Bay,18:00:00,19:15:00
+FRI,6/4/2021,Mini Bus,Ulrich Fleischer,MB385,Green Bay,Whitewater,14:30:00,17:10:00
+FRI,6/4/2021,Luxury Bus,Kajus Althaus,LB426,Green Bay,Whitewater,18:00:00,21:15:00
+FRI,6/4/2021,Mini Bus,Carletta Rosenbalm,MB374,Whitewater,Green Bay,6:30:00,9:30:00
+FRI,6/4/2021,Mini van,Ulrich Fleischer,MV698,Whitewater,Green Bay,18:00:00,21:15:00
+FRI,6/4/2021,Mini van,Venessa Freiberg,MV579,Green Bay,Oshkosh,10:15:00,10:50:00
+FRI,6/4/2021,Mini Bus,Isolde Holzmann,MB874,Green Bay,Oshkosh,18:30:00,19:10:00
+FRI,6/4/2021,Mini van,Rosemarie Schroeder,MV298,Oshkosh,Green Bay,9:30:00,10:00:00
+FRI,6/4/2021,Mini Bus,Hasib Kathia,MB730,Oshkosh,Green Bay,17:00:00,17:45:00
+FRI,6/4/2021,Mini van,Venessa Freiberg,MV489,Green Bay,Eau Claire,8:00:00,11:10:00
+FRI,6/4/2021,Mini Bus,Isolde Holzmann,MB318,Green Bay,Eau Claire,12:00:00,15:10:00
+FRI,6/4/2021,Mini Bus,Rosemarie Schroeder,MB305,Eau Claire,Green Bay,9:30:00,12:30:00
+FRI,6/4/2021,Mini Bus,Hasib Kathia,MB446,Eau Claire,Green Bay,15:00:00,18:10:00
+SAT,6/5/2021,Luxury Bus,Brigitta Raskopf,LB211,Green Bay,Madison,9:00:00,12:00:00
+SAT,6/5/2021,Luxury Bus,Jana Neumann,LB921,Green Bay,Madison,15:00:00,18:30:00
+SAT,6/5/2021,Mini Bus,Brigitta Raskopf,MB552,Madison,Green Bay,12:30:00,15:45:00
+SAT,6/5/2021,Luxury Bus,Jana Neumann,LB753,Madison,Green Bay,16:00:00,19:30:00
+SAT,6/5/2021,Luxury Bus,Sadiq Mifsud,LB705,Green Bay,Milwaukee,7:45:00,9:15:00
+SAT,6/5/2021,Mini Bus,Curtis Ewell,MB884,Green Bay,Milwaukee,16:00:00,17:30:00
+SAT,6/5/2021,Luxury Bus,Gabriel Shwetz,LB890,Milwaukee,Green Bay,10:00:00,11:45:00
+SAT,6/5/2021,Luxury Bus,Sadiq Mifsud,LB688,Milwaukee,Green Bay,18:00:00,19:15:00
+SAT,6/5/2021,Mini Bus,Curtis Ewell,MB308,Green Bay,Whitewater,14:30:00,17:10:00
+SAT,6/5/2021,Mini van,Gabriel Shwetz,MV720,Green Bay,Whitewater,18:00:00,21:15:00
+SAT,6/5/2021,Mini Bus,Curtis Ewell,MB694,Whitewater,Green Bay,6:30:00,9:30:00
+SAT,6/5/2021,Mini van,Korina Drivas,MV830,Whitewater,Green Bay,18:00:00,21:15:00
+SAT,6/5/2021,Luxury Bus,Lisandro Alaniz,LB939,Green Bay,Oshkosh,10:15:00,10:50:00
+SAT,6/5/2021,Luxury Bus,Korina Drivas,LB159,Green Bay,Oshkosh,18:30:00,19:10:00
+SAT,6/5/2021,Mini van,Lisandro Alaniz,MV401,Oshkosh,Green Bay,9:30:00,10:00:00
+SAT,6/5/2021,Mini van,Gabriel Shwetz,MV778,Oshkosh,Green Bay,17:00:00,17:45:00
+SAT,6/5/2021,Luxury Bus,Brigitta Raskopf,LB808,Green Bay,Eau Claire,8:00:00,11:10:00
+SAT,6/5/2021,Luxury Bus,Sadiq Mifsud,LB507,Green Bay,Eau Claire,12:00:00,15:10:00
+SAT,6/5/2021,Luxury Bus,Ramesh Amble,LB338,Eau Claire,Green Bay,9:30:00,12:30:00
+SAT,6/5/2021,Mini van,Gabriel Shwetz,MV179,Eau Claire,Green Bay,15:00:00,18:10:00
+SUN,6/6/2021,Mini van,Brigitta Raskopf,MV110,Green Bay,Madison,9:00:00,12:00:00
+SUN,6/6/2021,Mini van,Sadiq Mifsud,MV953,Green Bay,Madison,15:00:00,18:30:00
+SUN,6/6/2021,Mini Bus,Ramesh Amble,MB942,Madison,Green Bay,12:30:00,15:45:00
+SUN,6/6/2021,Mini Bus,Jana Neumann,MB209,Madison,Green Bay,16:00:00,19:30:00
+SUN,6/6/2021,Mini van,Curtis Ewell,MV670,Green Bay,Milwaukee,7:45:00,9:15:00
+SUN,6/6/2021,Mini Bus,Jana Neumann,MB565,Green Bay,Milwaukee,16:00:00,17:30:00
+SUN,6/6/2021,Mini Bus,Curtis Ewell,MB604,Milwaukee,Green Bay,10:00:00,11:45:00
+SUN,6/6/2021,Mini Bus,Kajus Althaus,MB364,Milwaukee,Green Bay,18:00:00,19:15:00
+SUN,6/6/2021,Mini Bus,Carletta Rosenbalm,MB893,Green Bay,Whitewater,14:30:00,17:10:00
+SUN,6/6/2021,Mini van,Ulrich Fleischer,MV663,Green Bay,Whitewater,18:00:00,21:15:00
+SUN,6/6/2021,Mini van,Kajus Althaus,MV917,Whitewater,Green Bay,6:30:00,9:30:00
+SUN,6/6/2021,Mini van,Carletta Rosenbalm,MV709,Whitewater,Green Bay,18:00:00,21:15:00
+SUN,6/6/2021,Mini van,Ulrich Fleischer,MV706,Green Bay,Oshkosh,10:15:00,10:50:00
+SUN,6/6/2021,Luxury Bus,Venessa Freiberg,LB799,Green Bay,Oshkosh,18:30:00,19:10:00
+SUN,6/6/2021,Mini van,Isolde Holzmann,MV580,Oshkosh,Green Bay,9:30:00,10:00:00
+SUN,6/6/2021,Luxury Bus,Rosemarie Schroeder,LB314,Oshkosh,Green Bay,17:00:00,17:45:00
+SUN,6/6/2021,Mini Bus,Hasib Kathia,MB715,Green Bay,Eau Claire,8:00:00,11:10:00
+SUN,6/6/2021,Luxury Bus,Venessa Freiberg,LB996,Green Bay,Eau Claire,12:00:00,15:10:00
+SUN,6/6/2021,Mini Bus,Isolde Holzmann,MB184,Eau Claire,Green Bay,9:30:00,12:30:00
+SUN,6/6/2021,Mini Bus,Rosemarie Schroeder,MB174,Eau Claire,Green Bay,15:00:00,18:10:00
+MON,6/7/2021,Mini van,Hasib Kathia,MV569,Green Bay,Madison,9:00:00,12:00:00
+MON,6/7/2021,Luxury Bus,Brigitta Raskopf,LB994,Green Bay,Madison,15:00:00,18:30:00
+MON,6/7/2021,Mini Bus,Jana Neumann,MB548,Madison,Green Bay,12:30:00,15:45:00
+MON,6/7/2021,Mini Bus,Brigitta Raskopf,MB869,Madison,Green Bay,16:00:00,19:30:00
+MON,6/7/2021,Mini Bus,Jana Neumann,MB798,Green Bay,Milwaukee,7:45:00,9:15:00
+MON,6/7/2021,Mini van,Sadiq Mifsud,MV254,Green Bay,Milwaukee,16:00:00,17:30:00
+MON,6/7/2021,Luxury Bus,Curtis Ewell,LB390,Milwaukee,Green Bay,10:00:00,11:45:00
+MON,6/7/2021,Mini Bus,Gabriel Shwetz,MB393,Milwaukee,Green Bay,18:00:00,19:15:00
+MON,6/7/2021,Mini van,Sadiq Mifsud,MV333,Green Bay,Whitewater,14:30:00,17:10:00
+MON,6/7/2021,Luxury Bus,Curtis Ewell,LB566,Green Bay,Whitewater,18:00:00,21:15:00
+MON,6/7/2021,Mini van,Gabriel Shwetz,MV400,Whitewater,Green Bay,6:30:00,9:30:00
+MON,6/7/2021,Mini van,Curtis Ewell,MV615,Whitewater,Green Bay,18:00:00,21:15:00
+MON,6/7/2021,Mini Bus,Korina Drivas,MB148,Green Bay,Oshkosh,10:15:00,10:50:00
+MON,6/7/2021,Luxury Bus,Lisandro Alaniz,LB407,Green Bay,Oshkosh,18:30:00,19:10:00
+MON,6/7/2021,Mini Bus,Korina Drivas,MB860,Oshkosh,Green Bay,9:30:00,10:00:00
+MON,6/7/2021,Mini Bus,Lisandro Alaniz,MB375,Oshkosh,Green Bay,17:00:00,17:45:00
+MON,6/7/2021,Mini van,Gabriel Shwetz,MV802,Green Bay,Eau Claire,8:00:00,11:10:00
+MON,6/7/2021,Mini van,Brigitta Raskopf,MV263,Green Bay,Eau Claire,12:00:00,15:10:00
+MON,6/7/2021,Luxury Bus,Sadiq Mifsud,LB115,Eau Claire,Green Bay,9:30:00,12:30:00
+MON,6/7/2021,Mini Bus,Ramesh Amble,MB626,Eau Claire,Green Bay,15:00:00,18:10:00
+TUE,6/8/2021,Mini Bus,Gabriel Shwetz,MB836,Green Bay,Madison,9:00:00,12:00:00
+TUE,6/8/2021,Luxury Bus,Brigitta Raskopf,LB847,Green Bay,Madison,15:00:00,18:30:00
+TUE,6/8/2021,Luxury Bus,Sadiq Mifsud,LB145,Madison,Green Bay,12:30:00,15:45:00
+TUE,6/8/2021,Mini Bus,Ramesh Amble,MB395,Madison,Green Bay,16:00:00,19:30:00
+TUE,6/8/2021,Luxury Bus,Jana Neumann,LB230,Green Bay,Milwaukee,7:45:00,9:15:00
+TUE,6/8/2021,Mini van,Curtis Ewell,MV679,Green Bay,Milwaukee,16:00:00,17:30:00
+TUE,6/8/2021,Mini Bus,Jana Neumann,MB815,Milwaukee,Green Bay,10:00:00,11:45:00
+TUE,6/8/2021,Mini Bus,Curtis Ewell,MB757,Milwaukee,Green Bay,18:00:00,19:15:00
+TUE,6/8/2021,Mini Bus,Kajus Althaus,MB162,Green Bay,Whitewater,14:30:00,17:10:00
+TUE,6/8/2021,Mini van,Carletta Rosenbalm,MV365,Green Bay,Whitewater,18:00:00,21:15:00
+TUE,6/8/2021,Mini Bus,Ulrich Fleischer,MB601,Whitewater,Green Bay,6:30:00,9:30:00
+TUE,6/8/2021,Mini van,Kajus Althaus,MV260,Whitewater,Green Bay,18:00:00,21:15:00
+TUE,6/8/2021,Luxury Bus,Carletta Rosenbalm,LB491,Green Bay,Oshkosh,10:15:00,10:50:00
+TUE,6/8/2021,Mini Bus,Ulrich Fleischer,MB819,Green Bay,Oshkosh,18:30:00,19:10:00
+TUE,6/8/2021,Mini van,Venessa Freiberg,MV625,Oshkosh,Green Bay,9:30:00,10:00:00
+TUE,6/8/2021,Luxury Bus,Isolde Holzmann,LB765,Oshkosh,Green Bay,17:00:00,17:45:00
+TUE,6/8/2021,Mini van,Rosemarie Schroeder,MV442,Green Bay,Eau Claire,8:00:00,11:10:00
+TUE,6/8/2021,Luxury Bus,Hasib Kathia,LB425,Green Bay,Eau Claire,12:00:00,15:10:00
+TUE,6/8/2021,Mini Bus,Venessa Freiberg,MB441,Eau Claire,Green Bay,9:30:00,12:30:00
+TUE,6/8/2021,Luxury Bus,Isolde Holzmann,LB599,Eau Claire,Green Bay,15:00:00,18:10:00
+WEN,6/9/2021,Luxury Bus,Rosemarie Schroeder,LB919,Green Bay,Madison,9:00:00,12:00:00
+WEN,6/9/2021,Mini van,Hasib Kathia,MV646,Green Bay,Madison,15:00:00,18:30:00
+WEN,6/9/2021,Mini van,Brigitta Raskopf,MV270,Madison,Green Bay,12:30:00,15:45:00
+WEN,6/9/2021,Mini van,Jana Neumann,MV118,Madison,Green Bay,16:00:00,19:30:00
+WEN,6/9/2021,Mini Bus,Brigitta Raskopf,MB642,Green Bay,Milwaukee,7:45:00,9:15:00
+WEN,6/9/2021,Luxury Bus,Jana Neumann,LB545,Green Bay,Milwaukee,16:00:00,17:30:00
+WEN,6/9/2021,Luxury Bus,Sadiq Mifsud,LB293,Milwaukee,Green Bay,10:00:00,11:45:00
+WEN,6/9/2021,Mini van,Curtis Ewell,MV343,Milwaukee,Green Bay,18:00:00,19:15:00
+WEN,6/9/2021,Luxury Bus,Gabriel Shwetz,LB355,Green Bay,Whitewater,14:30:00,17:10:00
+WEN,6/9/2021,Mini van,Sadiq Mifsud,MV181,Green Bay,Whitewater,18:00:00,21:15:00
+WEN,6/9/2021,Mini Bus,Curtis Ewell,MB781,Whitewater,Green Bay,6:30:00,9:30:00
+WEN,6/9/2021,Mini van,Gabriel Shwetz,MV454,Whitewater,Green Bay,18:00:00,21:15:00
+WEN,6/9/2021,Mini Bus,Curtis Ewell,MB613,Green Bay,Oshkosh,10:15:00,10:50:00
+WEN,6/9/2021,Mini van,Korina Drivas,MV351,Green Bay,Oshkosh,18:30:00,19:10:00
+WEN,6/9/2021,Luxury Bus,Lisandro Alaniz,LB520,Oshkosh,Green Bay,9:30:00,10:00:00
+WEN,6/9/2021,Mini van,Korina Drivas,MV777,Oshkosh,Green Bay,17:00:00,17:45:00
+WEN,6/9/2021,Mini Bus,Lisandro Alaniz,MB582,Green Bay,Eau Claire,8:00:00,11:10:00
+WEN,6/9/2021,Luxury Bus,Gabriel Shwetz,LB542,Green Bay,Eau Claire,12:00:00,15:10:00
+WEN,6/9/2021,Luxury Bus,Brigitta Raskopf,LB848,Eau Claire,Green Bay,9:30:00,12:30:00
+WEN,6/9/2021,Mini Bus,Sadiq Mifsud,MB430,Eau Claire,Green Bay,15:00:00,18:10:00
+THU,6/10/2021,Luxury Bus,Ramesh Amble,LB636,Green Bay,Madison,9:00:00,12:00:00
+THU,6/10/2021,Mini van,Gabriel Shwetz,MV247,Green Bay,Madison,15:00:00,18:30:00
+THU,6/10/2021,Mini Bus,Brigitta Raskopf,MB842,Madison,Green Bay,12:30:00,15:45:00
+THU,6/10/2021,Mini Bus,Sadiq Mifsud,MB116,Madison,Green Bay,16:00:00,19:30:00
+THU,6/10/2021,Mini Bus,Ramesh Amble,MB906,Green Bay,Milwaukee,7:45:00,9:15:00
+THU,6/10/2021,Mini Bus,Jana Neumann,MB239,Green Bay,Milwaukee,16:00:00,17:30:00
+THU,6/10/2021,Mini Bus,Curtis Ewell,MB901,Milwaukee,Green Bay,10:00:00,11:45:00
+THU,6/10/2021,Mini van,Jana Neumann,MV226,Milwaukee,Green Bay,18:00:00,19:15:00
+THU,6/10/2021,Mini van,Curtis Ewell,MV723,Green Bay,Whitewater,14:30:00,17:10:00
+THU,6/10/2021,Mini van,Kajus Althaus,MV572,Green Bay,Whitewater,18:00:00,21:15:00
+THU,6/10/2021,Mini Bus,Carletta Rosenbalm,MB306,Whitewater,Green Bay,6:30:00,9:30:00
+THU,6/10/2021,Luxury Bus,Ulrich Fleischer,LB141,Whitewater,Green Bay,18:00:00,21:15:00
+THU,6/10/2021,Mini van,Kajus Althaus,MV954,Green Bay,Oshkosh,10:15:00,10:50:00
+THU,6/10/2021,Mini van,Carletta Rosenbalm,MV360,Green Bay,Oshkosh,18:30:00,19:10:00
+THU,6/10/2021,Mini Bus,Ulrich Fleischer,MB678,Oshkosh,Green Bay,9:30:00,10:00:00
+THU,6/10/2021,Mini van,Venessa Freiberg,MV687,Oshkosh,Green Bay,17:00:00,17:45:00
+THU,6/10/2021,Mini Bus,Isolde Holzmann,MB643,Green Bay,Eau Claire,8:00:00,11:10:00
+THU,6/10/2021,Luxury Bus,Rosemarie Schroeder,LB154,Green Bay,Eau Claire,12:00:00,15:10:00
+THU,6/10/2021,Mini van,Hasib Kathia,MV803,Eau Claire,Green Bay,9:30:00,12:30:00
+THU,6/10/2021,Mini Bus,Venessa Freiberg,MB872,Eau Claire,Green Bay,15:00:00,18:10:00
+FRI,6/11/2021,Luxury Bus,Isolde Holzmann,LB349,Green Bay,Madison,9:00:00,12:00:00
+FRI,6/11/2021,Luxury Bus,Rosemarie Schroeder,LB951,Green Bay,Madison,15:00:00,18:30:00
+FRI,6/11/2021,Luxury Bus,Hasib Kathia,LB887,Madison,Green Bay,12:30:00,15:45:00
+FRI,6/11/2021,Mini van,Brigitta Raskopf,MV106,Madison,Green Bay,16:00:00,19:30:00
+FRI,6/11/2021,Luxury Bus,Jana Neumann,LB359,Green Bay,Milwaukee,7:45:00,9:15:00
+FRI,6/11/2021,Mini van,Brigitta Raskopf,MV577,Green Bay,Milwaukee,16:00:00,17:30:00
+FRI,6/11/2021,Luxury Bus,Jana Neumann,LB741,Milwaukee,Green Bay,10:00:00,11:45:00
+FRI,6/11/2021,Luxury Bus,Sadiq Mifsud,LB265,Milwaukee,Green Bay,18:00:00,19:15:00
+FRI,6/11/2021,Mini Bus,Curtis Ewell,MB822,Green Bay,Whitewater,14:30:00,17:10:00
+FRI,6/11/2021,Mini Bus,Gabriel Shwetz,MB913,Green Bay,Whitewater,18:00:00,21:15:00
+FRI,6/11/2021,Mini Bus,Sadiq Mifsud,MB482,Whitewater,Green Bay,6:30:00,9:30:00
+FRI,6/11/2021,Mini Bus,Curtis Ewell,MB404,Whitewater,Green Bay,18:00:00,21:15:00
+FRI,6/11/2021,Mini van,Gabriel Shwetz,MV657,Green Bay,Oshkosh,10:15:00,10:50:00
+FRI,6/11/2021,Mini Bus,Curtis Ewell,MB373,Green Bay,Oshkosh,18:30:00,19:10:00
+FRI,6/11/2021,Mini Bus,Korina Drivas,MB788,Oshkosh,Green Bay,9:30:00,10:00:00
+FRI,6/11/2021,Mini Bus,Lisandro Alaniz,MB894,Oshkosh,Green Bay,17:00:00,17:45:00
+FRI,6/11/2021,Luxury Bus,Korina Drivas,LB281,Green Bay,Eau Claire,8:00:00,11:10:00
+FRI,6/11/2021,Mini Bus,Lisandro Alaniz,MB188,Green Bay,Eau Claire,12:00:00,15:10:00
+FRI,6/11/2021,Mini van,Gabriel Shwetz,MV117,Eau Claire,Green Bay,9:30:00,12:30:00
+FRI,6/11/2021,Mini Bus,Brigitta Raskopf,MB964,Eau Claire,Green Bay,15:00:00,18:10:00
+SAT,6/12/2021,Luxury Bus,Sadiq Mifsud,LB540,Green Bay,Madison,9:00:00,12:00:00
+SAT,6/12/2021,Mini Bus,Ramesh Amble,MB722,Green Bay,Madison,15:00:00,18:30:00
+SAT,6/12/2021,Luxury Bus,Gabriel Shwetz,LB628,Madison,Green Bay,12:30:00,15:45:00
+SAT,6/12/2021,Mini van,Brigitta Raskopf,MV241,Madison,Green Bay,16:00:00,19:30:00
+SAT,6/12/2021,Luxury Bus,Sadiq Mifsud,LB571,Green Bay,Milwaukee,7:45:00,9:15:00
+SAT,6/12/2021,Mini Bus,Ramesh Amble,MB589,Green Bay,Milwaukee,16:00:00,17:30:00
+SAT,6/12/2021,Mini Bus,Jana Neumann,MB665,Milwaukee,Green Bay,10:00:00,11:45:00
+SAT,6/12/2021,Mini van,Curtis Ewell,MV136,Milwaukee,Green Bay,18:00:00,19:15:00
+SAT,6/12/2021,Mini van,Jana Neumann,MV749,Green Bay,Whitewater,14:30:00,17:10:00
+SAT,6/12/2021,Luxury Bus,Curtis Ewell,LB558,Green Bay,Whitewater,18:00:00,21:15:00
+SAT,6/12/2021,Mini Bus,Kajus Althaus,MB101,Whitewater,Green Bay,6:30:00,9:30:00
+SAT,6/12/2021,Luxury Bus,Carletta Rosenbalm,LB983,Whitewater,Green Bay,18:00:00,21:15:00
+SAT,6/12/2021,Luxury Bus,Ulrich Fleischer,LB812,Green Bay,Oshkosh,10:15:00,10:50:00
+SAT,6/12/2021,Luxury Bus,Kajus Althaus,LB849,Green Bay,Oshkosh,18:30:00,19:10:00
+SAT,6/12/2021,Mini van,Carletta Rosenbalm,MV269,Oshkosh,Green Bay,9:30:00,10:00:00
+SAT,6/12/2021,Mini van,Ulrich Fleischer,MV275,Oshkosh,Green Bay,17:00:00,17:45:00
+SAT,6/12/2021,Luxury Bus,Venessa Freiberg,LB607,Green Bay,Eau Claire,8:00:00,11:10:00
+SAT,6/12/2021,Mini Bus,Isolde Holzmann,MB330,Green Bay,Eau Claire,12:00:00,15:10:00
+SAT,6/12/2021,Mini van,Rosemarie Schroeder,MV437,Eau Claire,Green Bay,9:30:00,12:30:00
+SAT,6/12/2021,Mini Bus,Hasib Kathia,MB952,Eau Claire,Green Bay,15:00:00,18:10:00
+SUN,6/13/2021,Luxury Bus,Venessa Freiberg,LB376,Green Bay,Madison,9:00:00,12:00:00
+SUN,6/13/2021,Mini Bus,Isolde Holzmann,MB410,Green Bay,Madison,15:00:00,18:30:00
+SUN,6/13/2021,Luxury Bus,Rosemarie Schroeder,LB573,Madison,Green Bay,12:30:00,15:45:00
+SUN,6/13/2021,Luxury Bus,Hasib Kathia,LB488,Madison,Green Bay,16:00:00,19:30:00
+SUN,6/13/2021,Mini Bus,Brigitta Raskopf,MB827,Green Bay,Milwaukee,7:45:00,9:15:00
+SUN,6/13/2021,Luxury Bus,Jana Neumann,LB627,Green Bay,Milwaukee,16:00:00,17:30:00
+SUN,6/13/2021,Luxury Bus,Brigitta Raskopf,LB299,Milwaukee,Green Bay,10:00:00,11:45:00
+SUN,6/13/2021,Mini Bus,Jana Neumann,MB695,Milwaukee,Green Bay,18:00:00,19:15:00
+SUN,6/13/2021,Luxury Bus,Sadiq Mifsud,LB814,Green Bay,Whitewater,14:30:00,17:10:00
+SUN,6/13/2021,Mini Bus,Curtis Ewell,MB597,Green Bay,Whitewater,18:00:00,21:15:00
+SUN,6/13/2021,Mini van,Gabriel Shwetz,MV496,Whitewater,Green Bay,6:30:00,9:30:00
+SUN,6/13/2021,Luxury Bus,Sadiq Mifsud,LB155,Whitewater,Green Bay,18:00:00,21:15:00
+SUN,6/13/2021,Mini Bus,Curtis Ewell,MB366,Green Bay,Oshkosh,10:15:00,10:50:00
+SUN,6/13/2021,Mini van,Gabriel Shwetz,MV886,Green Bay,Oshkosh,18:30:00,19:10:00
+SUN,6/13/2021,Mini Bus,Curtis Ewell,MB468,Oshkosh,Green Bay,9:30:00,10:00:00
+SUN,6/13/2021,Mini van,Korina Drivas,MV547,Oshkosh,Green Bay,17:00:00,17:45:00
+SUN,6/13/2021,Luxury Bus,Lisandro Alaniz,LB213,Green Bay,Eau Claire,8:00:00,11:10:00
+SUN,6/13/2021,Mini van,Korina Drivas,MV237,Green Bay,Eau Claire,12:00:00,15:10:00
+SUN,6/13/2021,Mini van,Lisandro Alaniz,MV205,Eau Claire,Green Bay,9:30:00,12:30:00
+SUN,6/13/2021,Mini van,Gabriel Shwetz,MV963,Eau Claire,Green Bay,15:00:00,18:10:00
+MON,6/14/2021,Mini van,Brigitta Raskopf,MV667,Green Bay,Madison,9:00:00,12:00:00
+MON,6/14/2021,Mini Bus,Sadiq Mifsud,MB619,Green Bay,Madison,15:00:00,18:30:00
+MON,6/14/2021,Mini van,Ramesh Amble,MV764,Madison,Green Bay,12:30:00,15:45:00
+MON,6/14/2021,Mini van,Gabriel Shwetz,MV930,Madison,Green Bay,16:00:00,19:30:00
+MON,6/14/2021,Mini Bus,Brigitta Raskopf,MB843,Green Bay,Milwaukee,7:45:00,9:15:00
+MON,6/14/2021,Mini Bus,Sadiq Mifsud,MB735,Green Bay,Milwaukee,16:00:00,17:30:00
+MON,6/14/2021,Mini Bus,Ramesh Amble,MB234,Milwaukee,Green Bay,10:00:00,11:45:00
+MON,6/14/2021,Mini Bus,Jana Neumann,MB795,Milwaukee,Green Bay,18:00:00,19:15:00
+MON,6/14/2021,Mini Bus,Curtis Ewell,MB748,Green Bay,Whitewater,14:30:00,17:10:00
+MON,6/14/2021,Mini Bus,Jana Neumann,MB356,Green Bay,Whitewater,18:00:00,21:15:00
+MON,6/14/2021,Luxury Bus,Curtis Ewell,LB918,Whitewater,Green Bay,6:30:00,9:30:00
+MON,6/14/2021,Mini Bus,Kajus Althaus,MB767,Whitewater,Green Bay,18:00:00,21:15:00
+MON,6/14/2021,Mini van,Carletta Rosenbalm,MV557,Green Bay,Oshkosh,10:15:00,10:50:00
+MON,6/14/2021,Luxury Bus,Ulrich Fleischer,LB574,Green Bay,Oshkosh,18:30:00,19:10:00
+MON,6/14/2021,Luxury Bus,Kajus Althaus,LB867,Oshkosh,Green Bay,9:30:00,10:00:00
+MON,6/14/2021,Mini Bus,Carletta Rosenbalm,MB471,Oshkosh,Green Bay,17:00:00,17:45:00
+MON,6/14/2021,Mini Bus,Ulrich Fleischer,MB151,Green Bay,Eau Claire,8:00:00,11:10:00
+MON,6/14/2021,Mini Bus,Venessa Freiberg,MB586,Green Bay,Eau Claire,12:00:00,15:10:00
+MON,6/14/2021,Luxury Bus,Isolde Holzmann,LB367,Eau Claire,Green Bay,9:30:00,12:30:00
+MON,6/14/2021,Mini van,Rosemarie Schroeder,MV289,Eau Claire,Green Bay,15:00:00,18:10:00

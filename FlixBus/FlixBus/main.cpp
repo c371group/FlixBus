@@ -210,7 +210,7 @@ int main()
 	
     try
 	{
-		userTypeMenuView usertypemenuview = userTypeMenuView(&acctRepo, &rteRepo, &revenue_);
+    	userTypeMenuView usertypemenuview = userTypeMenuView(&acctRepo, &rteRepo, &revenue_);
 	}
 	catch (std::exception e)
 	{

@@ -180,6 +180,7 @@ void revenue::calculate_income_from_map()
 // Saves income by date to csv.
 void revenue::add_income_by_date_to_db(std::string date, double amount) {
     std::ofstream fout;
+    fout << std::endl;
     fout.open("revenueDate.csv", std::ios::app);
     fout << date << "," << amount << std::endl;
     fout.close();
@@ -188,6 +189,7 @@ void revenue::add_income_by_date_to_db(std::string date, double amount) {
 // Saves income by date to csv.
 void revenue::add_income_by_vehicle_to_db(std::string vehicle, double amount) {
     std::ofstream fout;
+    fout << std::endl;
     fout.open("revenueVehicle.csv", std::ios::app);
     fout << vehicle << "," << amount << std::endl;
     fout.close();

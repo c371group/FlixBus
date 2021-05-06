@@ -46,7 +46,7 @@ void trip_repo::read_trips_db(std::string source, std::string destination) {
 	std::ifstream input_from_file("Trips502508.csv");
 	std::string line;
 	int lineno = 0;
-
+	std::cout << "Loading trip data from file...." << std::endl;
 	while (std::getline(input_from_file, line)) {
 		lineno++;
 		line += ",";
