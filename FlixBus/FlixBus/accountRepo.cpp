@@ -59,6 +59,8 @@ int account_repo::read_acct_db() {
 			words.push_back(word);
 		customer cust = customer(words[3], words[4], words[5], words[6], words[7]);
 		account acct = account(cust, words[1], words[2]);
+		UniqueID new_acc_id(std::stoi(words[0]));
+		acct.set_acct_id(new_acc_id);
 		add_acct(acct);
 	}
 	return 0;

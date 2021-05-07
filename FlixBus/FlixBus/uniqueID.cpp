@@ -16,6 +16,11 @@ UniqueID::UniqueID(const UniqueID& orig) {
 	id = orig.id;
 }
 
+UniqueID::UniqueID(const int id_)
+{
+	id = id_;
+}
+
 UniqueID& UniqueID::operator=(const UniqueID& orig) {
 	id = orig.id;
 	return(*this);

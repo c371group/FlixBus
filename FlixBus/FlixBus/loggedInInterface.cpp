@@ -452,6 +452,7 @@ int loggedInInterface::menuLogic()
 					new_ticket.set_cost(new_ticket.get_trip()->get_bus()->get_seat_rate(seat_row, seat_column) * new_ticket.get_route()->get_distance());
 					std::string compiled_id = this->acct->get_customer().get_last_name() + "_" + new_ticket.get_route()->get_source() + "_" + new_ticket.get_route()->get_destination() + "_" + new_ticket.get_trip()->get_bus()->get_id_no();
 					new_ticket.set_ticket_id(compiled_id);
+					new_ticket.set_travel_date(selected_trip->get_departure_dt());
 					this->revenue_->add_income_by_date(new_ticket.get_trip()->get_departure_dt().to_string(false), new_ticket.get_cost());
 					this->revenue_->add_income_by_date_to_db(new_ticket.get_trip()->get_departure_dt().to_string(false), new_ticket.get_cost());
 					this->revenue_->add_income_by_vehicle(new_ticket.get_trip()->get_bus()->get_id_no(), new_ticket.get_cost());

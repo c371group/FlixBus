@@ -14,5 +14,6 @@ public:
 	UniqueID();
 	std::string toString();
 	UniqueID(const UniqueID& orig);
+	explicit UniqueID(const int);
 	UniqueID& operator=(const UniqueID& orig);
 };
