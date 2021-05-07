@@ -77,7 +77,7 @@ void account_repo::add_account_to_db(account acct) {
 	If you have any questions or comments about this, contact Mason. */
 	fout.open("AccountsDB.csv", std::ios::app); 
 	fout << std::endl;
-	fout << acct.get_username() << "," << acct.get_password() << ",";
+	fout << acct.get_acct_id().id << "," << acct.get_username() << "," << acct.get_password() << ",";
 	fout << acct.get_customer().get_first_name() << "," << acct.get_customer().get_last_name() << ",";
 	fout << acct.get_customer().get_email() << "," << acct.get_customer().get_address() << ",";   //send to file
 	fout << acct.get_customer().get_contact_number() << std::endl;

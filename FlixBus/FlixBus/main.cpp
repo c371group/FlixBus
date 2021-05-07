@@ -101,16 +101,16 @@ void load_tickets(account_repo* acct_repo, vector<trip_repo>* trip_repo_vect, ro
         int dep_min = std::stoi(split(dep_time, static_cast<char>(58))[1]);
         int dep_sec = std::stoi(split(dep_time, static_cast<char>(58))[2]);
         int dep_year = std::stoi(split(dep_date, '/')[2]);
-        int dep_month = std::stoi(split(dep_date, '/')[1]);
-        int dep_day = std::stoi(split(dep_date, '/')[0]);
+        int dep_month = std::stoi(split(dep_date, '/')[0]);
+        int dep_day = std::stoi(split(dep_date, '/')[1]);
         std::string arr_time = split(line_[7], ' ')[0];
         std::string arr_date = split(line_[7], ' ')[1];
         int arr_hour = std::stoi(split(arr_time, static_cast<char>(58))[0]);
         int arr_min = std::stoi(split(arr_time, static_cast<char>(58))[1]);
         int arr_sec = std::stoi(split(arr_time, static_cast<char>(58))[2]);
         int arr_year = std::stoi(split(arr_date, '/')[2]);
-        int arr_month = std::stoi(split(arr_date, '/')[1]);
-        int arr_day = std::stoi(split(arr_date, '/')[0]);
+        int arr_month = std::stoi(split(arr_date, '/')[0]);
+        int arr_day = std::stoi(split(arr_date, '/')[1]);
         
        
         date_time departure(dep_year, dep_month, dep_day, dep_hour, dep_min, dep_sec);

@@ -41,7 +41,6 @@ int loggedInInterface::menuLogic()
 		}
 		else
 		{
-			//TODO: Change to allow going back to menu
 			switch (choice_int)
 			{
 			case 1: //acct info
@@ -362,7 +361,7 @@ int loggedInInterface::menuLogic()
 					
 				while (trip_choice < 0 || trip_choice > index)
 				{
-					std::cout << "\nWrong choice! Choose between 1 and " << route_index << std::endl;;
+					std::cout << "\nWrong choice! Choose between 1 and " << index << std::endl;;
 					while (true) {
 						std::cout << "\n\nPlease select a trip (or enter 0 to exit): ";
 						if (std::cin >> trip_choice) {
@@ -383,6 +382,13 @@ int loggedInInterface::menuLogic()
 				{
 					std::vector<trip>* list_of_trips = selected_route->get_trip_repo()->get_all_trips();
 					trip* selected_trip = &list_of_trips->at(trip_choice - 1); //&selected_route->get_trip_repo()->getAllTrips()[trip_choice - 1];
+					date_time current_date_time;
+					if(current_date_time.difference_days(selected_trip->get_departure_dt())>14)
+					{
+						std::cout << "\Passengers can reserve seats 2 weeks in advance.\nPlease try again later or select another trip!" << std::endl;
+						system("PAUSE");
+						break;
+					}
 					new_ticket.set_trip(&list_of_trips->at(trip_choice - 1));
 					std::cout << "\nAvailable bus seats." << std::endl;
 					selected_trip->get_bus()->display_free_seats();

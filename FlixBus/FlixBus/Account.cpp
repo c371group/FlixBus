@@ -20,6 +20,8 @@ account::account(customer cust) //Testing purposes
 // Base constructor takes Customer object, username and password.
 account::account(customer cust, std::string username, std::string password)
 {
+	UniqueID acctID;
+	set_acct_id(acctID);
 	this->customer_ = cust;
 	this->username_ = username;
 	this->password_ = password;

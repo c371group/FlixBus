@@ -46,6 +46,7 @@ void interfaceView::set_intcon(interfaceControl intcon)
 // Displaying menu items.
 int interfaceView::display_menu_items(int i)
 {
+	std::cout << "==== FLIX BUS Menu ====" << std::endl;
 	int k = 0;
 	for (int j = 0; j < get_menu_items()[i].size(); j++)
 	{
