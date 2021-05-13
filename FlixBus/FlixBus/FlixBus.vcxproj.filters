@@ -197,5 +197,6 @@
     <None Include="tickets.csv" />
     <None Include="revenueDate.csv" />
     <None Include="revenueVehicle.csv" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

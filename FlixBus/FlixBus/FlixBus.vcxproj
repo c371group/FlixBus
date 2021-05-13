@@ -72,6 +72,7 @@
   <ItemGroup>
     <None Include="AccountsDB.csv" />
     <None Include="busdetails.csv" />
+    <None Include="ClassDiagram.cd" />
     <None Include="revenueDate.csv" />
     <None Include="revenueVehicle.csv" />
     <None Include="RoutesDB.csv" />

@@ -385,7 +385,7 @@ int loggedInInterface::menuLogic()
 					date_time current_date_time;
 					if(current_date_time.difference_days(selected_trip->get_departure_dt())>14)
 					{
-						std::cout << "\Passengers can reserve seats 2 weeks in advance.\nPlease try again later or select another trip!" << std::endl;
+						std::cout << "\nPassengers can reserve seats 2 weeks in advance.\nPlease try again later or select another trip!" << std::endl;
 						system("PAUSE");
 						break;
 					}
